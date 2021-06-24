@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+.signform{
+	height: 1200px;
+}
+.wrapper {
+	margin-top: 8%;
+	margin-bottom: 7%;
+	margin-left: 26%;
+	width: 600px;
+	height: 700px;
+	padding:5px;
+	border: 1px solid black;
+	background: white;
+	
+}
+
+body{
+}
+h1{
+	margin-top: 8%;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 7%;
+}
+#main_logoaa{
+	width: 300px;
+    height: 100px;
+    margin-left: 25%;
+}
+#userId, #userPwd1, #userPwd2, #nickName{
+	width: 500px;
+	height: 40px;
+	margin-left: 10%;
+	font-size: 20px;
+	border-collapse: collapse;
+}
+
+#email{
+	width: 500px;
+	height: 40px;
+	margin-left: 10%;
+	margin-top: 7%;
+	font-size: 20px;
+}
+#sign_male{
+	margin-top: 7%;
+	margin-left: 30%;
+	width: 130px;
+	height: 40px;
+	background: #F2B705;
+	color: white;
+	border-radius: 10px;
+}
+ #sign_female{
+ 	margin-top: 7%;
+	margin-left: 3%;
+	width: 130px;
+	height: 40px;
+	background: white;
+	border-radius: 10px;
+	
+}
+
+#signup{
+	margin-top: 8%;
+	width: 510px;
+	height: 50px;
+	margin-left: 10%;
+	font-size: 20px;
+	background: #F2B705;
+	color: white;
+}

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.admin_menu{
+		width: 200px;
+		height: 790px;
+		background: rgba(242, 159, 5, 0.88);
+	}
+	.menu_label {
+		padding-top: 130px;
+	}
+	.menu_label label:hover{
+   		color: white;
+   		font-weight: bold;
+   		cursor: pointer;
+   		border-bottom: 2px solid white;
+	}
