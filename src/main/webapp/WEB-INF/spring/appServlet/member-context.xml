@@ -17,6 +17,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<context:component-scan base-package="com.kh.Final_CCCC.member" />
+	<context:component-scan base-package="com.kh.Final_cccc.member" />
 	
 </beans>
