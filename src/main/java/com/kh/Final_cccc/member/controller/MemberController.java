@@ -80,7 +80,7 @@ public class MemberController {
 		System.out.println(loginUser.getEmail());
 		System.out.println(loginUser.getGender());
 		
-		return "redirect:backIndex.do"; 		
+		return "../admin_member/admin_Member"; 		
 		
 		} 
 		else {
