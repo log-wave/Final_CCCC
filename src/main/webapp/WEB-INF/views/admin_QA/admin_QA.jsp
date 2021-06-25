@@ -10,12 +10,12 @@
 <title>공지사항 관리</title>
 
 
-<link href="admin_QA.css" rel="stylesheet" type="text/css">
-<link href="../../style.css/admin_index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_QA.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:import url="../admincommon/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
-    <c:import url="../admincommon/menu.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
+    <c:import url="/WEB-INF/views/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 문의 목록 </h2>
 	    <br>
