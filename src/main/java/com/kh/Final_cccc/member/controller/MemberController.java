@@ -54,11 +54,17 @@ public class MemberController {
 	private MemberService mService;
 	
 	
-	
 	@RequestMapping(value="loginPage.me", method=RequestMethod.GET)
 	public String login(HttpServletRequest request) {
 		System.out.println("헤더에서 로그인 요청 넘어옴 ");
 		return "login/login";
+	}
+	
+	
+	@RequestMapping(value="backIndex.do", method=RequestMethod.GET)
+	public String backIndex(HttpServletRequest request) {
+		System.out.println("인덱스 페이지로 이동");
+		return "index";
 	}
 	
 	
@@ -74,7 +80,7 @@ public class MemberController {
 		System.out.println(loginUser.getEmail());
 		System.out.println(loginUser.getGender());
 		
-		return "../admin_member/admin_Member"; 		
+		return "redirect:backIndex.do"; 		
 		
 		} 
 		else {
