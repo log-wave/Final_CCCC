@@ -81,7 +81,8 @@ public class MemberController {
 	
 		if(loginUser != null) {
 		model.addAttribute("loginUser", loginUser);
-		return ""; 		} else {
+		return ""; 		
+		} else {
 		
 			System.out.println(loginUser.getUser_id());
 			return "/WEB-INF/views/error/error";
