@@ -18,7 +18,6 @@
 	justify-content: center;
 	align-items: center;
 	font-size: 30px;
-	font-weight: bold;
 	float: right;
 }
 
@@ -55,13 +54,13 @@ img[name=main_header_img]{
 }
 
 .header_downBox{
+	text-align: center;
 	height:50px;
 	background-color: #F2B705;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 25px;
-	font-weight: bold;
 }
 
 .header_downBox label{
@@ -75,5 +74,20 @@ img[name=main_header_img]{
 	font-weight: bold;
 	cursor: pointer;
 }
-
-
+ul, li { list-style:none; margin:0; padding:0; }
+   #container{
+   width: 1280px;
+   align-items: left;
+   text-align: center;
+   background:rgba(242, 159, 5, 0.88);
+   font-size: 20px;
+   }
+    ul.myMenu {}
+    ul.myMenu > li { display:inline-block; width:200px; padding:15px 20px 15px 20px; border: none; position:relative;}
+    ul.myMenu > li:hover {  }
+    ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
+    ul.myMenu > li:hover ul.submenu { display:block; margin-top: 20px;}
+    ul.myMenu > li ul.submenu > li { display:inline-block; width:200px; padding:5px 10px; background:rgb(5 67 242 / 40%); text-align:center; }
+    ul.myMenu > li ul.submenu > li:hover { background:#FFDC37; }
+    
+  

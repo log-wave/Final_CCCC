@@ -26,13 +26,73 @@
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
 			<label onclick="location.href='loginPage.me'">Login</label>
 		</div>
-		<div class="header_downBox">
-			<label>주제별 레시피</label>
-			<label>재료별 레시피</label>
-			<label>특산물별 레시피</label>
-			<label>공지사항/Q&A</label>
-			<label onclick="location.href='eventList.ev'">이벤트로 이동합니다</label>
-		</div>
+		
+		<div id="container">
+	<ul class="myMenu">
+		<li class="menu1">주제별 레시피
+			<ul class="submenu">
+				<li>편의점 요리</li>
+				<li>간식/야식</li>
+				<li>술안주</li>
+				<li>해장요리</li>
+				<li>손님 접대 요리</li>
+				<li>나들이 요리</li>
+				<li>파티/명절요리</li>
+			</ul>
+		</li>
+		<li class="menu2">재료별 레시피
+			<ul class="submenu">
+				<li>과일류</li>
+				<li>어패류</li>
+				<li>고기류</li>
+				<li>채소류</li>
+				<li>유제품/치즈류</li>
+				<li>감자/고구마류</li>
+				<li>햄/소시지</li>
+			</ul>
+		</li>
+		<li class="menu3">특산물별 레시피
+			<ul class="submenu">
+				<li>서울</li>
+				<li>경기도</li>
+				<li>강원도</li>
+				<li>충청도</li>
+				<li>전라도</li>
+				<li>경상도</li>
+				<li>제주도</li>
+			</ul>
+		</li>
+		<li class="menu4">공지사항/Q&amp;A
+			<ul class="submenu">
+				<li>공지사항</li>
+				<li>Q&amp;A</li>
+			</ul>
+		</li>
+		<li class="menu5">이벤트
+			<ul class="submenu">
+				<li>이벤트</li>
+			</ul>
+		</li>
+	</ul>
+	</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 </body>
 </html>
