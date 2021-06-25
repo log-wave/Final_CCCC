@@ -17,7 +17,7 @@
 			    <option value="">레시피 명</option>
 			    <option value="recipe1">민트초코파인애플피자</option>
 			    <option value="recipe2">솔의눈박카스라면</option>
-			    <option value="recipe3">매운카레순대국</option>
+			    <option value="recipe3">매운맛카레</option>
 			</select>
 			<input type="text">
 			<button>검색</button>
