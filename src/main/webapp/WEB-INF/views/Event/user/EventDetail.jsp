@@ -8,8 +8,9 @@
 <!-- 나중에 이벤트 제목으로 변경할것 -->
 <title>이벤트 상세보기</title>
 
- <link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
- <link href="EventDetail.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
+ <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Event/EventDetail.css" rel="stylesheet" type="text/css">
+ 
 </head>
 <body>
 	<c:import url="../../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
@@ -80,19 +81,19 @@
 				
 				<!-- 하나당 하나씩 -->
 				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/sample1.png">
+					<img src="${pageContext.request.contextPath}/images/event/event1.png">
 				</div>
 				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/sample2.png">
+					<img src="${pageContext.request.contextPath}/images/event/event2.png">
 				</div>
 				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/sample3.png">
+					<img src="${pageContext.request.contextPath}/images/event/event3.png">
 				</div>
 				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/sample4.png">
+					<img src="${pageContext.request.contextPath}/images/event/event4.png">
 				</div>
 				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/sample4.png">
+					<img src="${pageContext.request.contextPath}/images/event/event5.png">
 				</div>
 				
 			</div>

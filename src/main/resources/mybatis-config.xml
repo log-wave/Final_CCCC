@@ -7,11 +7,11 @@
 	
 	<typeAliases>
 		<typeAlias type="com.kh.Final_cccc.member.model.vo.MemberVO" alias="Member"/>
-	
+		
 	</typeAliases>
 	
 	<mappers>
 		<mapper resource="mapper/member-mapper.xml"/>
-	
+		<mapper resource="mapper/event-mapper.xml"/>
 	</mappers>
 </configuration>
