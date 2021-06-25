@@ -61,17 +61,6 @@ public class MemberController {
 		return "login/login";
 	}
 	
-
-	@RequestMapping("backIndexPage.me")
-	public String backIndexPage() {
-		
-		return "/index";
-	}
-	
-	
-	
-	
-	
 	
 	@RequestMapping(value="login.me", method=RequestMethod.POST)
 	public String login(MemberVO m, Model model) {
@@ -79,12 +68,24 @@ public class MemberController {
 		System.out.println("로그인 아이디 :" + m.getUser_id());
 		MemberVO loginUser = mService.memberLogin(m);
 	
-		if(loginUser != null) {
+		if(loginUser.getAuthority().equals("Y")) {
 		model.addAttribute("loginUser", loginUser);
-		return ""; 		} else {
+		System.out.println(loginUser.getUser_name());
+		System.out.println(loginUser.getEmail());
+		System.out.println(loginUser.getGender());
+		
+		return "../admin/admin_Main"; 		
+		
+		} 
+		else {
 		
 			System.out.println(loginUser.getUser_id());
+			System.out.println(loginUser.getUser_name());
+			System.out.println(loginUser.getEmail());
+			System.out.println(loginUser.getGender());
+			System.out.println(loginUser.getAuthority());
 			return "/WEB-INF/views/error/error";
+			
 			}
 	}
 	

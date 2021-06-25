@@ -119,6 +119,19 @@ public class MemberVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
+
+
+	@Override
+	public String toString() {
+		return "MemberVO [user_no=" + user_no + ", user_id=" + user_id + ", user_password=" + user_password
+				+ ", nickname=" + nickname + ", email=" + email + ", gender=" + gender + ", age=" + age + ", user_date="
+				+ user_date + ", authority=" + authority + ", status=" + status + ", survey_yn=" + survey_yn
+				+ ", user_name=" + user_name + "]";
+	}
+	
+	
+	
+	
 	
 }
 	
