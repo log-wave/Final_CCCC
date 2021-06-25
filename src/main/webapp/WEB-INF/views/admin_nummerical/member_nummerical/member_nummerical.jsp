@@ -9,13 +9,12 @@
 <meta charset="UTF-8">
 <title>통계관리</title>
 
-
-<link href="member_nummerical.css" rel="stylesheet" type="text/css">
-<link href="../../../style.css/admin_index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/nummerical/member_nummerical.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:import url="../../admincommon/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
-    <c:import url="../../admincommon/menu.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
+    <c:import url="/WEB-INF/views/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 설문조사 통계 </h2>
 	    <br><br>
@@ -30,11 +29,11 @@
     		<div class="member_nummerical">
     			<div class="member_list">
 	    			<h3>사용자 성별 통계</h3>
-	    			<img src="../../../images/gender_nummerical.png" width="150" height="300">
+	    			<img src="${ pageContext.servletContext.contextPath }/resources/images/gender_nummerical.png" width="150" height="300">
     			</div>
     			<div class="member_list">
 	    			<h3>사용자 나이 통계</h3>
-	    			<img src="../../../images/age_nummerical.png" width="500" height="300">
+	    			<img src="${ pageContext.servletContext.contextPath }/resources/images/age_nummerical.png" width="400" height="300">
     			</div>
 			</div>
 	   

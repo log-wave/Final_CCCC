@@ -10,12 +10,12 @@
 <title>통계관리</title>
 
 
-<link href="survey_nummerical.css" rel="stylesheet" type="text/css">
-<link href="../../../style.css/admin_index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/nummerical/survey_nummerical.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:import url="../../admincommon/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
-    <c:import url="../../admincommon/menu.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
+    <c:import url="/WEB-INF/views/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 설문조사 통계 </h2>
 	    <br><br>
@@ -30,7 +30,7 @@
     		<div class="survey_nummerical">
     			<div class="survey_list">
 	    			<h3>설문조사 통계</h3>
-	    			<img src="../../../images/survey_nummerical.png" width="500" height="300">
+	    			<img src="${ pageContext.servletContext.contextPath }/resources/images/survey_nummerical.png" width="500" height="300">
     			</div>
 			</div>
 	   

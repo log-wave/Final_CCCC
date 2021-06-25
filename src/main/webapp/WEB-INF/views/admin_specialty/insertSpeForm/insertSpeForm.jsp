@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>특산물 등록</title>
 
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="insertSpeForm.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/insertSpeForm/insertSpeForm.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>

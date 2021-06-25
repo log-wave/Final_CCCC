@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>재료 등록</title>
 
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="insertFoForm.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/insertFoForm/insertFoForm.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
