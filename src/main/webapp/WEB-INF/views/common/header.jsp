@@ -23,8 +23,23 @@
 			<button>검색</button>
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG">
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/documents.PNG">
+			
+			<c:if test="${empty loginUser}">
+			
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
 			<label onclick="location.href='loginPage.me'">Login</label>
+			
+			</c:if>
+			
+			
+			<c:if test="${!empty loginUser }">
+			<div>${loginUser.getNickname()}</div>
+			</c:if>
+			
+			
+			
+			
+			
 		</div>
 		<div class="header_downBox">
 			<label>주제별 레시피</label>

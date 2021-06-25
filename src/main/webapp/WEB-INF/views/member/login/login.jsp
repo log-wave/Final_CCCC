@@ -10,12 +10,19 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/login.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/loginUtil.css'/>">
 
+
+<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/resources/js/member/member.js"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">  
 </head>
 <body>
 	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	
 	<form action="login.me" method="post">
+	
+	
+	
 	<div class="login_box">
 		<div class="limiter">
 		<div class="container-login100">
@@ -38,9 +45,15 @@
 					</div>
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
-							로그인
-						</button>
+						<button class="login100-form-btn">로그인</button>
+					</div>
+					<div class="loginErrorMessage" style=" font-weight:bold; margin-top: 20px;">
+						
+						<c:if test="${ !empty msg }">
+							<p style="color:rgb(255,0,0); text-align: center;">${msg }</p>
+						</c:if>
+						
+					
 					</div>
 
 					<div class="text-center p-t-45 p-b-4">
