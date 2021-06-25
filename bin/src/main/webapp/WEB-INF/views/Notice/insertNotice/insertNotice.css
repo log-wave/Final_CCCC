@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+.insertNotice_main{
+	margin-top: 70px;
+	margin-bottom: 150px;
+	display: inline-block;
+}
+
+.insertNotice h4{
+	font-size: 25px;
+	float: left;
+	margin-left: 135px;
+}
+
+#insertNotice_table{
+	float: left;
+	margin-left: 135px;
+}
+
+#insertNotice_table td{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 10px;
+}
+
+.title_td{
+	width: 130px;
+	height: 30px;
+	background: #ECECEC;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.second_td{
+	width: 800px;
+	height: 30px;
+}
+
+.second_td input{
+	width: 500px;
+	height: 30px;
+}
+
+.third_td{
+	width: 130px;
+	height: 400px;
+	background: #ECECEC;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.insertNotice_main button{
+	width:150px;
+	height:40px;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 4px;
+	margin-top: 40px;
+	margin-left: 50px;
+	background: #D1CBC2;
+	color: white;
+}
+
+#button1{
+	background: #F29F05;
+}

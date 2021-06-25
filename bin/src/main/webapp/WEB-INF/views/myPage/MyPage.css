@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+
+.myPage_box{
+	width:1280px;
+	
+}
+
+
+
+.myPage_profile_bigBox{
+	background-color:rgb(246, 246, 246);
+	height: 220px;
+	display: flex;
+	
+}
+
+
+.myPage_profile_box{
+	width:640px;
+	height:220px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.myPage_profileSmallBox{
+	width:280px;
+	height:150px;
+	display: flex;
+	
+}
+
+.myPage_profile_img{
+	width:140px;
+	height:140px;
+	border-radius: 50%;
+	border:2px solid black;
+	
+}
+
+
+.myPage_profile_textAreabox{
+	width: 140px;
+	height: 140px;
+	margin-left: 20px;
+	
+}
+
+
+.myPage_profile_userName{
+	margin-top:50px;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid black;
+	font-size: 20px;
+	
+}
+
+.myPage_profile_userFollowing{
+	margin-top: 13px;
+	text-align: center;
+}
+
+.userFollwing{
+	color: rgb(127, 127, 127);
+}
+
+.userFollowing_number{
+	color: rgb(231, 76, 60);
+}
+
+
+.myPage_profile_changeBox{
+	
+	width:280px;
+	height:150px;
+	display: flex;
+	justify-content: flex-end;
+	align-items:flex-end;
+	margin-left: 80px;
+	
+	
+	
+}
+
+.profile_setting_Btn{
+	width: 130px;
+	height: 50px;
+	box-shadow:none;
+	border-radius:5px;
+	border:1px solid rgba(242, 159, 5, 0.88);
+	background-color: none;
+	color: rgba(242, 159, 5, 0.88);
+	
+
+}
+
+
+
+
+
+.myPage_content_title{
+	width: 1280px;
+	height: 40px;
+	display: flex;
+}
+
+
+.myPage_content_title_myRecipe{
+	width: 425px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.myPage_content_title_myRecipe:hover{
+	border-bottom: 3px solid rgba(242, 159, 5, 0.88);
+}
+
+.myPage_content_title_scrap{
+	width:430px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.myPage_content_title_scrap:hover{
+	border-bottom: 3px solid rgba(242, 159, 5, 0.88);
+}
+	
+
+.myPage_content_title_following{
+	width:425px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.myPage_content_title_following:hover{
+	border-bottom: 3px solid rgba(242, 159, 5, 0.88);
+}
+
+
+.title_common_number{
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
+

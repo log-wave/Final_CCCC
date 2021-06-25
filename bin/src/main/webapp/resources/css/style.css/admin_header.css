@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.header {
+  		width: 1280px;
+  		height: 70px;
+  		display: flex;
+  		justify-content: center;
+		align-items: center;
+	}
+	.header_middle{
+		width: 800px;
+	}
+	.header_admin {
+		justify-content: center;
+		align-items: center;
+		display: flex;
+	}
+	.header_admin label{
+		margin-right: 30px;
+	}
+	img[name=header_admin_img]{
+		width: 40px;
+		height: 40px;
+		margin: 10px;
+		cursor: pointer;
+	}
+	#bar{
+		width: 1280px;
+		height: 2px;
+		background-color:rgb(224, 224, 224);
+	}
+	

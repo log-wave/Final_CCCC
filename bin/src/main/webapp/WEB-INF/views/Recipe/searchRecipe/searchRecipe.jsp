@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레시피 검색 결과</title>
+
+<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
+<link href="searchRecipe.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	<c:import url="../../common/header.jsp"/>
+	<div class="searchRecipe_main">
+		<div class="searchRecipe_option" align="right">
+			<select id="search_option" name="search_option">
+			    <option value="option1">인기 순</option>
+			    <option value="option2">좋아요 순</option>
+			    <option value="option3">최신 순</option>
+			    <option value="option4">무 순</option>
+			</select>
+		</div>
+		<br><br>
+		<div class="searchRecipe_thumnail">
+			<h3>조건에 맞는 레시피가 ?개 있습니다.</h3>
+			<div class="recipeList">
+				<table>
+				<!-- 반복문으로  레시피리스트 돌려버리기 -->
+					<tr>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_1.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_2.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_3.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_4.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_5.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+						<td>
+							<div class="recipe_img">
+								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_6.PNG">
+							</div>
+							<div>
+								<div class="recipe_name" align="center">이름</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		
+	</div>
+	<c:import url="../../common/footer.jsp"/>
+</body>
+</html>

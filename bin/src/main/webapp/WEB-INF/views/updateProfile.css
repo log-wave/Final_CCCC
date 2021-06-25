@@ -1,0 +1,186 @@
+@charset "UTF-8";
+
+
+.total_area{
+	width:600px;
+	margin: auto;
+	margin-bottom:25px;
+	margin-top:25px;
+	height:1000px;
+}
+.p_logoimg{
+	text-align: center;
+}
+.main_area{
+	background: rgb(237,237,237);
+	width:600px;
+	
+}
+.pu_top{
+	padding-top: 50px;
+	text-align: center;
+}
+
+.user_p_img{
+	padding-bottom: 10px;
+	color:lightgray;
+}
+
+.pu_top p{
+	font-size: 30px;	
+}
+
+.pu_mid{
+	width:500px;
+	margin: auto;
+	font-size: 20px;
+	padding-top: 20px;
+}
+
+/* 이메일 & 닉네임*/
+.email_area{
+	margin:0px;
+	width: 500px;
+	height: 80px;
+	display: inline-block;
+	text-align: center;
+	line-height: 80px;
+}
+
+.md_ea_left{
+	width:150px;
+	height: 80px;
+	float: left;
+	
+}
+
+.md_ea_right{
+	width:345px;
+	height: 80px;
+	float: right;
+}
+
+.md_ea_input{
+	width:300px;
+	height: 40px;
+	font-size: 15px;
+}
+
+.nick_area{
+	margin:0px;
+	width: 500px;
+	height: 80px;
+	display: inline-block;
+	text-align: center;
+	line-height: 80px;
+}
+
+.md_na_left{
+	width:150px;
+	height: 80px;
+	float: left;
+	
+}
+
+.md_na_right{
+	width:345px;
+	height: 80px;
+	float: right;
+}
+
+.md_na_input{
+	width:300px;
+	height: 40px;
+	font-size: 15px;
+}
+
+/* 자기소개 영역*/
+.prod_area{
+	margin:0px;
+	width: 500px;
+	height: 100px;
+	display: inline-block;
+	text-align: center;
+}
+
+.md_pda_left{
+	width:150px;
+	height: 80px;
+	float: left;
+	
+}
+
+.md_pda_right{
+	width:345px;
+	height: 80px;
+	float: right;
+}
+
+.md_pda_input{
+	width:300px;
+	height: 80px;
+	font-size: 15px;
+	resize: none;
+}
+/* 비밀번호 변경 영역*/
+
+.pass_area{
+	margin:0px;
+	width: 500px;
+	height: 160px;
+	display: inline-block;
+	text-align: center;
+}
+
+.md_psa_left{
+	width:150px;
+	height: 80px;
+	float: left;
+	
+}
+
+.md_psa_right{
+	width:345px;
+	height: 100px;
+	float: right;
+}
+
+.md_psa_Tinput{
+	width:300px;
+	height: 40px;
+	font-size: 15px;
+}
+.md_psa_Binput{
+	margin-top: 5px;
+	width:300px;
+	height: 40px;
+	font-size: 15px;
+}
+
+/* 버튼 영역*/
+.btn_area{
+	width: 600px;
+	text-align: center;
+	padding-bottom: 30px; 
+}
+.btn_area button{
+	width:150px;
+	height:40px;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 4px;
+	margin-top: 20px;
+	background: #D1CBC2;
+	color: white;
+}
+
+.subtn{
+	width:150px;
+	height:40px;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 4px;
+	margin-top: 20px;
+	background: #F29F05;
+	color: white;
+}

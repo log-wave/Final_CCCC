@@ -19,6 +19,7 @@
 			<div class="counttext">
 				<ul>
 					<li style="font-size: 40px;">콕콕!쿡쿡!에 등록된 레시피 수</li><br>
+					<li><button onclick="location.href='admin.me'">임시</button></li>
 					<li style="font-size: 80px;">5000</li>
 				</ul>
 			</div>

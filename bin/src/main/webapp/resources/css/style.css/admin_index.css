@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@import "admin_header.css";
+@import "admin_main.css";
+@import "footer.css";
+
+body{
+	width:100wh;
+	width:1280px;
+	height: 1830px;
+	margin: auto;
+}

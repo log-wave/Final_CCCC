@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.noticeList_main{
+	margin-top: 70px;
+	margin-bottom: 150px;
+}
+
+.noticeList h2{
+	display: inline;
+	font-size: 35px;
+	border-bottom: 4px solid #E87E73;
+}
+
+#notice_one{
+	width: 800px;
+	height: 70px;
+	border-collapse: separate;
+	border-spacing: 0 20px;
+	
+}
+
+#notice_one td{
+	font-size: 25px;
+	padding: 25px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#notice_one p{
+	opacity: 0.5;
+	
+}
+
+.notice_first_row{
+	border-left: 1px solid black;
+	font-weight: 550;
+}
+
+.notice_last_row{
+	border-right: 1px solid black;
+}
+
+.pagingArea{
+	padding-top: 20px;
+	padding-bottom: 100px;
+	text-align: center;
+}
+
+.pagingArea button{
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 15px;
+	border-style: none;
+}

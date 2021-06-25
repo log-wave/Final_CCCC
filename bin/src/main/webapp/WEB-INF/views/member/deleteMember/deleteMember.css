@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.deleteMember_main{
+	margin-top: 70px;
+	margin-bottom: 150px;
+}
+
+.deleteMember_text{
+	width: 500px;
+	height: 460px;
+	background: #F6F6F6;
+}
+
+.deleteMember_text h2{
+	font-size: 35px;
+}
+
+.deleteMember_text p{
+	font-size: 15px;
+}
+
+.deleteMember_text input{
+	width: 323px;
+	height: 30px;
+	border-radius: 4px;
+}
+
+
+
+.deleteMember_text button{
+	width:150px;
+	height:40px;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 4px;
+	margin-top: 20px;
+	background: #D1CBC2;
+	color: white;
+}
+
+#button1{
+	background: #F29F05;
+}

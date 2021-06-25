@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+
+	.page {
+	 width: 1000px;
+	 height: 790px;
+	 display: inline-block;
+	 vertical-align: top;
+	}
+	#title{
+	margin-top : 80px;
+	text-align: center;
+	}
+	.menu{
+	margin-top: 50px;
+	text-align: left;
+	margin-left: 45px;
+	}
+	.menu label{
+	font-size: 14px;
+	}
+	#recipe_num{
+		margin-right: 40px;
+	}
+	#recipe_name{
+		margin-right: 60px;
+	}
+	#recipe_cate{
+		margin-right: 55px;
+	}
+	#recipe_cate2{
+		margin-right: 160px;
+	}
+	#recipe_menu{
+		margin-right: 200px;
+	}
+	
+	.admin_menu {
+    display: inline-block;
+    }
+    
+    .recipe_list{
+    	width : 950px;
+    	height : 500px;
+		margin: auto;
+		margin-top: 20px;
+    }
+	.recipe_Table{
+	margin-left : 30px;
+	text-align: center;
+	}
+	.recipe_Table td{
+	height: 35px;
+	text-align: left;
+	}
+	.buttonArea{
+		text-align: right;
+	}
+	.buttonArea button {
+		background: rgba(242, 159, 5, 0.88);
+     	color:white;
+     	border-radius: 7px;
+     	border: 0px;
+     	height: 30px;
+     	}    
+    
+    
