@@ -31,7 +31,7 @@
 			<label>재료별 레시피</label>
 			<label>특산물별 레시피</label>
 			<label>공지사항/Q&A</label>
-			<label>이벤트</label>
+			<label onclick="location.href='eventList.ev'">이벤트로 이동합니다</label>
 		</div>
 	</div>
 </body>
