@@ -6,7 +6,7 @@
 		select * 
 		from MEMBER
 <!-- 		where member_id=#{id} and member_pwd=#{pwd} and status='Y' -->
-		where user_id=#{user_id} and status='Y'
+		where user_id=#{user_id} and user_pass=#{user_password} and status='Y'
 	</select>
 	<resultMap type="Member" id="memberResultSet">
 		<id column="user_NO" property="user_no"/>

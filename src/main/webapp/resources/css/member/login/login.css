@@ -422,5 +422,33 @@ input.input100 {
   }
 }
 
+.loginErrorMessage_box{
+	margin-top: 20px;
+	text-align: center;
+	
+}
+
+
+
+.loginErrorMessage{
+	color: #DC6089;
+	font-weight: 400;
+	font-size :20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

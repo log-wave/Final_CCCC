@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/member/login/login.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/member/login/login.css?ver=1.0'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/loginUtil.css'/>">
 
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">  
@@ -36,12 +36,26 @@
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
-
+					
+					
+					<div class="loginErrorMessage_box">
+					
+						<p class="loginErrorMessage">${loginErrorMessage}</p>
+					
+					
+					</div>
+					
+					
+					
+					
+					
+					
 					<div class="container-login100-form-btn m-t-20">
 						<button class="login100-form-btn">
 							로그인
 						</button>
 					</div>
+					
 
 					<div class="text-center p-t-45 p-b-4">
 						<span class="txt1">

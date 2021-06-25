@@ -69,30 +69,31 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="login.me", method=RequestMethod.POST)
-	public String login(MemberVO m, Model model) {
+	public String login(MemberVO m, Model model){
 
 		System.out.println("로그인 아이디 :" + m.getUser_id());
 		MemberVO loginUser = mService.memberLogin(m);
-	
-		if(loginUser.getAuthority().equals("Y")) {
-		model.addAttribute("loginUser", loginUser);
-		System.out.println(loginUser.getUser_name());
-		System.out.println(loginUser.getEmail());
-		System.out.println(loginUser.getGender());
-		
-		return "../admin_member/admin_Member"; 		
-		
-		} 
-		else {
-		
-			System.out.println(loginUser.getUser_id());
-			System.out.println(loginUser.getUser_name());
-			System.out.println(loginUser.getEmail());
-			System.out.println(loginUser.getGender());
-			System.out.println(loginUser.getAuthority());
-			return "/WEB-INF/views/error/error";
-			
+		if(loginUser != null) {
+			if(loginUser.getAuthority().equals("Y")) {
+				model.addAttribute("loginUser", loginUser);
+				
+				
+				
+				return "../admin/admin_Main"; 		
+				
+			}else if(loginUser.getAuthority().equals("N")){
+				model.addAttribute("loginUser", loginUser);
+				return "redirect:backIndex.do"; 	
 			}
+		}else if(loginUser == null){
+			model.addAttribute("loginErrorMessage", "아이디 혹은 비밀번호를 정확히 입력해주세요");
+			
+			
+			 return "login/login"; 
+			
+		}
+		
+		return null;
 	}
 	
 }
