@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+	.page {
+	 width: 1000px;
+	 min-height: 790px;
+	 display: inline-block;
+	 vertical-align: top;
+	}
+	#title{
+	margin-top : 80px;
+	text-align: center;
+	}
+	
+    .nummerical_list{
+    	width : 950px;
+    	height : 500px;
+		margin: auto;
+		margin-top: 20px;
+    }
+    .buttonArea {
+		text-align: center;
+    }
+    .spe_nummerical{
+ 		width : 950px;
+    	min-height : 500px;
+    }
+    .spe_nummerical div{
+	    	margin-left: 200px;
+    }
+    .spe_list{
+    width : 600px;
+    height: 350px;
+    text-align: center;
+    }
+
+    
+    

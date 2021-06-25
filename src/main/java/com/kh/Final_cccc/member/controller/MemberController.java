@@ -74,7 +74,7 @@ public class MemberController {
 		System.out.println(loginUser.getEmail());
 		System.out.println(loginUser.getGender());
 		
-		return "../admin/admin_Main"; 		
+		return "../admin_member/admin_Member"; 		
 		
 		} 
 		else {

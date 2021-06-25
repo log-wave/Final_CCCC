@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+
+	.page {
+	 width: 1000px;
+	 min-height: 790px;
+	 display: inline-block;
+	 vertical-align: top;
+	}
+	#title{
+	margin-top : 80px;
+	text-align: center;
+	}
+	
+    .buttonArea {
+		text-align: center;
+    }
+    .survey_nummerical{
+ 		width : 950px;
+    	min-height : 500px;
+    }
+    .survey_nummerical div{
+	    	margin-left: 200px;
+    }
+    .survey_list{
+    width : 600px;
+    height: 350px;
+    text-align: center;
+    }
+
+
+    
