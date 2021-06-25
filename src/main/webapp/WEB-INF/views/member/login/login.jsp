@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	
-	
+	<form action="login.me" method="post">
 	<div class="login_box">
 		<div class="limiter">
 		<div class="container-login100">
@@ -26,13 +26,13 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="아이디">
+						<input class="input100" type="text" name="user_id" placeholder="아이디">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="pass" placeholder="비밀번호">
+						<input class="input100" type="password" name="user_password" placeholder="비밀번호">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -67,6 +67,8 @@
 		</div>
 	</div>
 	</div>
+	</form>
+	
 	
 	
 	
