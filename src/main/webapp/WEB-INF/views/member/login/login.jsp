@@ -50,7 +50,7 @@
 					<div class="loginErrorMessage" style=" font-weight:bold; margin-top: 20px;">
 						
 						<c:if test="${ !empty msg }">
-							<p style="color:rgb(255,0,0); text-align: center;">${msg }</p>
+							<p style="color:rgb(255,0,0); text-align: center; font-size: 20px;">${msg }</p>
 						</c:if>
 						
 					
