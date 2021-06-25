@@ -62,7 +62,6 @@ img[name=main_header_img]{
 	align-items: center;
 	font-size: 25px;
 	font-weight: bold;
-	
 }
 
 .header_downBox label{
@@ -71,8 +70,8 @@ img[name=main_header_img]{
 }
 
 .header_downBox label:hover{
-	background: beige;
-	color: orangered;
+	transition-duration: 0.5s;
+	color: white;
 	font-weight: bold;
 	cursor: pointer;
 }
