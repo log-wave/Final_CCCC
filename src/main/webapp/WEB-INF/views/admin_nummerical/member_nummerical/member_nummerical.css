@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+	.page {
+	 width: 1000px;
+	 min-height: 790px;
+	 display: inline-block;
+	 vertical-align: top;
+	}
+	#title{
+	margin-top : 80px;
+	text-align: center;
+	}
+	
+    .buttonArea {
+		text-align: center;
+    }
+    .member_nummerical{
+ 		width : 1000px;
+    	height : 500px;
+    }
+    .member_nummerical div{
+	     display: inline-block;
+	     vertical-align: top;
+    }
+    .member_list{
+	    width :480px;
+	    height: 450px;
+	    text-align: center;
+    }
+    
+   
+
+    
+    

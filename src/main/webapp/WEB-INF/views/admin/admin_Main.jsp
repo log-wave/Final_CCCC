@@ -9,14 +9,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
- <link href="../../style.css/admin_index.css" rel="stylesheet" type="text/css">
+ <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-	<c:import url="../admincommon/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
 
-    <c:import url="../admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
+    <c:import url="/WEB-INF/views/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     
-    <c:import url="../common/footer.jsp" charEncoding="UTF-8"></c:import>
+    <c:import url="/WEB-INF/views/common/footer.jsp" charEncoding="UTF-8"></c:import>
 </body>
 </html>
