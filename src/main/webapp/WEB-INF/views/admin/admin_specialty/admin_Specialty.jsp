@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>재료 관리</title>
+<title>특산물 관리</title>
 
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_Specialty.css" rel="stylesheet" type="text/css">
