@@ -9,7 +9,7 @@
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Notice/noticeList.css" rel="stylesheet" type="text/css">
-
+<!-- 주석 -->
 </head>
 <body>
 	<c:import url="../../common/header.jsp"/>

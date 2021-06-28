@@ -18,3 +18,4 @@
 		<mapper resource="mapper/board-mapper.xml"/>
 	</mappers>
 </configuration>
+<!-- 주석 -->

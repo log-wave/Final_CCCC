@@ -1,5 +1,5 @@
 package com.kh.Final_cccc.board.model.vo;
-
+// 주석
 import java.sql.Date;
 
 public class Board {

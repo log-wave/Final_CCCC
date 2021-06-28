@@ -26,3 +26,4 @@
 		<result column="USER_NO" property="bUserNo"/>
 	</resultMap>
 </mapper>
+<!-- 주석 -->

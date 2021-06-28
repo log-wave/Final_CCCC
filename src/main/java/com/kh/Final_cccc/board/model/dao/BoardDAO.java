@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
-
+// 주석
 @Repository("bDAO")
 public class BoardDAO {
 
