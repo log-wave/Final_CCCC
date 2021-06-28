@@ -19,33 +19,50 @@
     <div class="page">
 	    <h2 id="title"> 회원 목록 </h2>
 	    <br>
-			<div class="menu">
-					<label id="mem_num">번호</label>
-					<label id="mem_id">아이디</label>
-					<label id="mem_email">이메일</label>
-					<label id="mem_nick">닉네임</label>
-					<label id="mem_gender">성별</label>
-					<label><input type="checkbox">전체선택</label>
-			</div>
 	    	<div class="member_list">
 	    	<hr>
 			<br>
-	    		<table class="member_Table">
+	    		<table class="member_table">
+		    		<tr>
+						<th width="100px">번호</th>
+						<th width="100px">아이디</th>
+						<th width="300px">이메일</th>
+						<th width="100px">닉네임</th>
+						<th width="100px">성별</th>
+						<th width="150px"><input type="checkbox">전체선택</th>
+					</tr>
+				
+				<c:if test="${ list != null }">
+					<c:forEach var="ad" items="${ list }">
+			    		<tr>
+			    			<td>${ ad.user_no }</td>
+			    			<td>${ ad.user_id }</td>
+			    			<td>${ ad.email}</td>
+			    			<td>${ ad.nickname }</td>
+			    			<td>${ ad.gender }</td>
+			    			<td width="150px"><input type="checkbox"></td>
+			    		</tr>
+				
+	    			
 	    		
-	    		<!-- 추후에 멤버 등록하면 테이블이 쌓이는 기능을 추가 -->
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="250px">Kang123</td>
-	    				<td  width="330px">Kang123@iei.or.kr</td>
-	    				<td  width="260px">강건강</td>
-	    				<td  width="100px">여</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
+	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
+						<%-- <c:param name="bId" value="${  }"/>
+						<c:param name="page" value="${ pi.currentPage }"/> --%>
+					<%-- </c:url> --%>
+					<%-- <a href="${ bdetail }">${ b.bTitle }</a> --%>
+	    			</c:forEach>
+	    		</c:if>
+	    		<c:if test="${ list == null }">
+					<tr>
+						<td colspan="6">조회된 리스트가 없습니다.</td>
+					</tr>
+				</c:if>
+				
 	    			
 	    		</table>
 	    	<br><hr><br>
 	    	<div class="buttonArea">
-				<button id="stop_mem">활동 정치</button>
+				<button id="stop_mem">활동 상태 변경</button>
 				<button id="break_mem">회원 탈퇴</button>
 	    	</div>
     	</div>

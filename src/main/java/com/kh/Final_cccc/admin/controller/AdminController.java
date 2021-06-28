@@ -1,14 +1,31 @@
 package com.kh.Final_cccc.admin.controller;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kh.Final_cccc.admin.model.service.AdminService;
+import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 @Controller
 public class AdminController {
 	
+	@Autowired
+	private AdminService adService;
+	
 	@RequestMapping("adminMember.ad")
-	public String adminMemberList() {
-		return "../admin/admin_member/admin_Member";
+	public String adminMemberList(Model model) {
+		ArrayList<MemberVO> list = adService.selectMemberList();
+		if(list != null) {
+			model.addAttribute("list", list);
+			return "../admin/admin_member/admin_Member";
+		} else {
+			return "../admin/admin_member/admin_Member";
+		}
+		
 	}
 	
 	@RequestMapping("adminRecipe.ad")

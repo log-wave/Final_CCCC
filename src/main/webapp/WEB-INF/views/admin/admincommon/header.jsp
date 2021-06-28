@@ -14,7 +14,7 @@
 	<div class="header_admin">
 		<img name="header_admin_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
 		<label>관리자</label>
-		<label>로그아웃</label>
+		<label onclick="location.href='logoutPage.me';">로그아웃</label>
 	</div>
 </div>
 <div id="bar">
