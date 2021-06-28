@@ -18,27 +18,21 @@
 		<div class="title"><p>이벤트<p></div>
 		
 		<!-- 아이템 하나당 한개씩 -->
-		<div class="item">
-			<!-- 이벤트 썸네일 -->
-			<div class="left">
-				<img src="${ pageContext.servletContext.contextPath }/resources/images/event/event1.png" class="event_img">
-			</div>
-			
-			<!-- 이벤트 제목, 기간 -->
-			<div class="right">
-				<p class="event_Title">나만의 감자요리 레시피를 알려주세요</p>
-				<p class="event_period">참여기간:2021.06.05 ~ 2021.07.05</p>
-			</div>
-		</div>
-		
+
 		<c:forEach var="e" items="${ elist }">
-		<div class="item">
+		<div class="item" >
+		<c:url var="edetail" value="edetail.ev">
+			<c:param name="eventNo" value="${e.eventNo}"/>
+		</c:url>
+			<!-- 이벤트 썸네일 -->
 			<div class="left">
 				<img src="${ pageContext.servletContext.contextPath }/resources/images/event/event2.png" class="event_img">
 			</div>
+			<!-- 이벤트 제목, 기간 -->
 			<div class="right">
-				<p class="event_Title">${e.eventTitle}</p>
-				<p class="event_period">참여기간:${e.eventStart} ~ ${e.eventEnd}</p>
+				<a class="event_Title" href="${ edetail }">${ e.eventTitle }</a>
+				<br><br>
+				<p class="event_period">참여기간: ${e.eventStart} ~ ${e.eventEnd}</p>
 			</div>
 		</div>
 		</c:forEach>

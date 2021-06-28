@@ -13,5 +13,9 @@ public class EventDAO {
 	public ArrayList<Event> selectEventList(SqlSessionTemplate sqlSession) {
 		return(ArrayList)sqlSession.selectList("eventMapper.selectEventList");
 	}
+
+	public Event eventDetail(SqlSessionTemplate sqlSession, int eventNo) {
+		return sqlSession.selectOne("eventMapper.eventDetail", eventNo);
+	}
 	
 }

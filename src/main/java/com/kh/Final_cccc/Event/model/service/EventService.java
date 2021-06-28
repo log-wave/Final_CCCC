@@ -10,6 +10,8 @@ public interface EventService {
 	//int getListCount();  페이징 처리
 	
 	ArrayList<Event> selectEventList();
+
+	Event eventDetail(int eventNo);
 	
 	
 }

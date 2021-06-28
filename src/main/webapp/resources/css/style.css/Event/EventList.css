@@ -26,10 +26,11 @@
 	float:left;
 }
 .right{
-	padding-top: 80px;
-	width:350px;
-	float:right;
+	padding-top: 60px;
 	margin:auto;
+	display: inline-block;
+	margin-left: 30px;
+
 }
 
 .event_img{
@@ -38,8 +39,17 @@
 }
 
 .event_Title{
-	text-align: center;
-	font-size: 25px;
+	text-decoration:none;
+	color:black;
+	display : inline-block;
+	width:380px;
+	text-align: left;
+	font-size: 30px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+
+
 }
 
 .event_period{

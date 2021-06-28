@@ -23,6 +23,11 @@ public class EventServiceimp implements EventService{
 	public ArrayList<Event> selectEventList() {
 		return edao.selectEventList(sqlSession);
 	}
+
+	@Override
+	public Event eventDetail(int eventNo) {
+		return edao.eventDetail(sqlSession, eventNo);
+	}
 	
 }
 		
