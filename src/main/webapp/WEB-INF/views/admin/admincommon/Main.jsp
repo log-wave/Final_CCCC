@@ -23,7 +23,7 @@
 			<label class="admin_menu_nav" id="adminEvent.ad">이벤트 관리</label><br><br>
 			<label class="admin_menu_nav" id="adminSurvey.ad">설문조사 관리</label><br><br>
 			<label class="admin_menu_nav" id="">통계 관리</label><br><br><br>
-			<label class="admin_menu_nav" id="logout">관리자 로그아웃</label>
+			<label class="admin_menu_nav" id="logoutPage.me">관리자 로그아웃</label>
 		</div>
 	</div>
 	

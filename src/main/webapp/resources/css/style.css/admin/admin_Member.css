@@ -11,14 +11,7 @@
 	margin-top : 80px;
 	text-align: center;
 	}
-	.menu{
-	margin-top: 50px;
-	text-align: left;
-	margin-left: 45px;
-	}
-	.menu label{
-	font-size: 14px;
-	}
+	
 	#mem_num{
 		margin-right: 40px;
 	}
@@ -36,7 +29,7 @@
 	}
 	
 	.admin_menu {
-    display: inline-block;
+    	display: inline-block;
     }
     
     .member_list{
@@ -44,29 +37,33 @@
     	height : 400px;
 		margin: auto;
 		margin-top: 20px;
+		
     }
-	.member_Table{
-	margin-left : 30px;
-	text-align: center;
+    
+    .member_table{
+		text-align: center;
 	}
-	.member_Table td{
-	height: 35px;
-	text-align: left;
+	
+	.member_table td{
+		height: 35px;
 	}
+	
 	.buttonArea{
 		text-align: right;
 	}
+	
 	.buttonArea button {
 		background: rgba(242, 159, 5, 0.88);
      	color:white;
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
-     	}    
+     }    
+     	
     .pagingArea{
-	padding-top: 20px;
-	padding-bottom: 100px;
-	text-align: center;
+		padding-top: 20px;
+		padding-bottom: 100px;
+		text-align: center;
 	}
 
 	.pagingArea button{

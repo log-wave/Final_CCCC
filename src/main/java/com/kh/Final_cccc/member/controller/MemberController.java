@@ -99,7 +99,7 @@ public class MemberController {
 				
 				
 				
-				return "../admin/admin_Main"; 		
+				return "../admin/admin_member/admin_Member"; 		
 				
 			}else if(loginUser.getAuthority().equals("N")){
 				model.addAttribute("loginUser", loginUser);
