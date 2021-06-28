@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+	<select id="getListCount" resultType="_int">
+		select count(*) 
+		from board 
+		where board_status='N'
+	</select>
+	<!-- 다시 -->
+	<select id="selectNoticeList" resultMap="boardResultSet">
+		select *
+		from board
+		where (board_status='N') and (board_flag=1)
+		order by board_no desc
+	</select>
+	
+	<resultMap type="Board" id="boardResultSet">
+		<id column="BOARD_NO" property="bNo"/>
+		<result column="BOARD_TITLE" property="bTitle"/>
+		<result column="BOARD_CONTENT" property="bContent"/>
+		<result column="BOARD_CREATE_DATE" property="bCreateDate"/>
+		<result column="BOARD_MODIFY_DATE" property="bModifyDate"/>
+		<result column="BOARD_VIEW" property="bView"/>
+		<result column="BOARD_STATUS" property="bStatus"/>
+		<result column="BOARD_FLAG" property="bFlag"/>
+		<result column="USER_NO" property="bUserNo"/>
+	</resultMap>
+</mapper>

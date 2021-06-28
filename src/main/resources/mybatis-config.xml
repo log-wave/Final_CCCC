@@ -7,13 +7,14 @@
 	
 	<typeAliases>
 		<typeAlias type="com.kh.Final_cccc.member.model.vo.MemberVO" alias="Member"/>
-		
+		<typeAlias type="com.kh.Final_cccc.board.model.vo.Board" alias="Board"/>
 	</typeAliases>
-	
+	<!-- 다시 -->
 	<mappers>
 		<mapper resource="mapper/recipe-mapper.xml"/>
 		<mapper resource="mapper/member-mapper.xml"/>
 		<mapper resource="mapper/event-mapper.xml"/>
 		<mapper resource="mapper/admin-mapper.xml"/>
+		<mapper resource="mapper/board-mapper.xml"/>
 	</mappers>
 </configuration>
