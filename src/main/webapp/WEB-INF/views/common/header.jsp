@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
-
+<!-- 다시 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
 		</li>
 		<li class="menu4">공지사항/Q&amp;A
 			<ul class="submenu">
-				<li>공지사항</li>
+				<li><a href="blist.bo">공지사항</a></li>
 				<li>Q&amp;A</li>
 			</ul>
 		</li>
