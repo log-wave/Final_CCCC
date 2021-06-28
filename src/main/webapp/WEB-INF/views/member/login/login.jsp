@@ -69,7 +69,7 @@
 
 					<div class="text-center" style="margin-top: 20px;">
 						<span class="txt1">
-							회원가입
+							<a href="insertMemberTerms.me">회원가입</a>
 						</span>
 
 						<a href="#" class="txt2 hov1">

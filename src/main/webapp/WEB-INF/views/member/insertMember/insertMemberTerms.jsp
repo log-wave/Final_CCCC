@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>회원가입/이용약관</title>
 
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="insertMemberTerms.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/member/insertMember/insertMemberTerms.css'/>">
 	
 </head>
 <body>
