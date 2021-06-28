@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+
+
+.popUp_box{
+	width: 800px;
+	height: 2500px;
+	border: 1px solid red;
+	margin: auto;	
+}
+
+
+.recipe_name{
+	height:70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:1px solid aqua;
+	font-size: 30px;
+}
+
+
+.bread_cap{
+	width:50px;
+	height: 30px;
+	margin-left:20px; 
+}
+
+
+.popUp_contentBox{
+	width: 800px;
+	height: 800px;
+	border: 1px solid blue;
+	display: flex;
+	flex-direction: row;
+}
+
+
+
+.popUp_contentBox_leftBox{
+	width: 600px;
+	height: 800px;
+	
+	
+}
+
+
+
+.popUp_contentBox_leftBox_recipeImg{
+	width: 500px;
+	height: 400px;
+	background-color: pink;
+	text-align: center;
+
+}
+
+.popUp_contentBox_leftBox_recipeSubImg{
+	margin-top:20px;
+	width: 500px;
+	height: 180px;
+	background-color: #A9D0F5;
+	text-align: center;
+}
+
+.nutritionFacts_listTitle{
+	width: 500px;
+	height: 40px;
+	background-color: #D8D8D8;
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.popUp_contentBox_leftBox_tagTitle{
+	margin-top :30px;
+	width: 500px;
+	height: 40px;
+	background-color: #D8D8D8;
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.popUp_contentBox_leftBox_tagList{
+	width: 500px;
+	height: 120px;
+	background-color: #F6D8CE;
+	text-align: center;
+	
+}
+
+
+
+.popUp_contentBox_leftBox_recipeTitle{
+	margin-top :30px;
+	width: 500px;
+	height: 40px;
+	background-color: #D8D8D8;
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+
+.popUp_contentBox_leftBox_recipeDetail{
+	
+	margin-top: 30px;
+	width: 500px;
+	height: 900px;
+	background-color: #F5A9F2;
+
+}
+
+.popUp_contentBox_leftBox_reviewTitle{
+	
+	margin-top :30px;
+	width: 500px;
+	height: 40px;
+	background-color: #D8D8D8;
+	display:flex;
+	justify-content: flex-start;
+	align-items: center;
+	
+	
+}
+
+
+.popUp_contentBox_leftBox_writeReview{
+	
+	margin-top:30px;
+	width: 500px;
+	height: 200px;
+	background-color: #F2E0F7;
+}
+
+.popUp_contentBox_leftBox_list{
+	
+	width: 500px;
+	height: 160px;
+	background-color: #F3F781;
+	text-align: center;
+	
+	
+}
+
+.popUp_contentBox_righttBox{
+	width: 200px;
+	height: 800px;
+	background-color: rgba(224, 224, 224, 0.54);
+}
+
+
+
+
+
+.popUp_contentBox_righttBox_profileBox{
+	height: 150px;
+	
+	
+}
+
+.popUp_contentBox_righttBox_profileBox_innerBox{
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	height: 150px;
+	
+}
+
+.popUp_usreName{
+	margin-top: 10px;
+}
+
+
+.popUp_contentBox_righttBox_title{
+	height:70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.popUp_contentBox_righttBox_cookTime{
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.popUp_contentBox_righttBox_scrapBtnBox{
+	text-align: center;
+	margin-top: 10px;
+	
+}
+
+.scrapBtn{
+	width: 120px;
+	height: 30px;
+	background-color:#fff;
+	color: rgba(242, 159, 5, 0.88);
+	border-style: none;
+	border-radius: 8px;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+.popUp_contentBox_righttBox_snsLogo{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.popUp_contentBox_righttBox_listTitle{
+	text-align: center;
+	margin-top: 30px;
+}
+
+.popUp_contentBox_righttBox_list{
+	width:130px;
+	height: 330px;
+	background-color: #fff;
+	margin: auto;
+	margin-top: 38px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+

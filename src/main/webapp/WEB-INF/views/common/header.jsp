@@ -44,35 +44,36 @@
 	<ul class="myMenu">
 		<li class="menu1">주제별 레시피
 			<ul class="submenu">
-				<li>편의점 요리</li>
-				<li>간식/야식</li>
-				<li>술안주</li>
-				<li>해장요리</li>
-				<li>손님 접대 요리</li>
-				<li>나들이 요리</li>
-				<li>파티/명절요리</li>
+				<li><a href="RList.rp?sort_no=1&&type=1">편의점 요리</a></li>
+				<li><a href="RList.rp?sort_no=2&&type=1">간식/야식</a></li>
+				<li><a href="RList.rp?sort_no=3&&type=1">술안주</a></li>
+				<li><a href="RList.rp?sort_no=4&&type=1">해장요리</a></li>
+				<li><a href="RList.rp?sort_no=5&&type=1">손님 접대 요리</a></li>
+				<li><a href="RList.rp?sort_no=6&&type=1">나들이 요리</a></li>
+				<li><a href="RList.rp?sort_no=7&&type=1">파티/명절요리</a></li>
+				<li><a href="RList.rp?sort_no=8&&type=1">일반요리</a></li>
 			</ul>
 		</li>
 		<li class="menu2">재료별 레시피
 			<ul class="submenu">
-				<li>과일류</li>
-				<li>어패류</li>
-				<li>고기류</li>
-				<li>채소류</li>
-				<li>유제품/치즈류</li>
-				<li>감자/고구마류</li>
-				<li>햄/소시지</li>
+				<li><a href="RList.rp?sort_no=1&&type=2">과일류</a></li>
+				<li><a href="RList.rp?sort_no=2&&type=2">어패류</a></li>
+				<li><a href="RList.rp?sort_no=3&&type=2">고기류</a></li>
+				<li><a href="RList.rp?sort_no=4&&type=2">채소류</a></li>
+				<li><a href="RList.rp?sort_no=5&&type=2">유제품/치즈류</a></li>
+				<li><a href="RList.rp?sort_no=6&&type=2">감자/고구마류</a></li>
+				<li><a href="RList.rp?sort_no=7&&type=2">햄/소시지</a></li>
 			</ul>
 		</li>
 		<li class="menu3">특산물별 레시피
 			<ul class="submenu">
-				<li>서울</li>
-				<li>경기도</li>
-				<li>강원도</li>
-				<li>충청도</li>
-				<li>전라도</li>
-				<li>경상도</li>
-				<li>제주도</li>
+				<li><a href="RList.rp?sort_no=1&&type=3">서울</a></li>
+				<li><a href="RList.rp?sort_no=2&&type=3">경기도</a></li>
+				<li><a href="RList.rp?sort_no=3&&type=3">강원도</a></li>
+				<li><a href="RList.rp?sort_no=4&&type=3">충청도</a></li>
+				<li><a href="RList.rp?sort_no=5&&type=3">전라도</a></li>
+				<li><a href="RList.rp?sort_no=6&&type=3">경상도</a></li>
+				<li><a href="RList.rp?sort_no=7&&type=3">제주도</a></li>
 			</ul>
 		</li>
 		<li class="menu4">공지사항/Q&amp;A
