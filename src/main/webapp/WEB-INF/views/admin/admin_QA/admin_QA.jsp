@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 관리</title>
+<title>Q&A 관리</title>
 
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_QA.css" rel="stylesheet" type="text/css">

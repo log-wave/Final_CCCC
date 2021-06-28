@@ -5,8 +5,8 @@
 	margin-bottom: 150px;
 }
 .insertMember_terms{
-	width: 500px;
-	height: 460px;
+	width: 40%;
+	height: 50%;
 	padding-top: 17px;
 	padding-bottom: 17px;
 	background: #F6F6F6;
@@ -30,6 +30,7 @@
 
 .insertMember_terms textarea{
 	margin: 20px;
+	resize: none;
 }
 
 .insertMember_main button{

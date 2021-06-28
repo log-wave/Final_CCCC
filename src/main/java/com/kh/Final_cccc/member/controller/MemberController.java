@@ -124,6 +124,11 @@ public class MemberController {
 		return "insertMember/insertMemberTerms";
 	}
 	
+	@RequestMapping(value="insertMemberForm.me", method=RequestMethod.GET)
+	public String insertMemberForm(HttpServletRequest request) {
+		
+		return "insertMember/InsertMember";
+	}
 	
 	
 	
