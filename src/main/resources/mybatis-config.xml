@@ -11,6 +11,7 @@
 	</typeAliases>
 	
 	<mappers>
+		<mapper resource="mapper/recipe-mapper.xml"/>
 		<mapper resource="mapper/member-mapper.xml"/>
 		<mapper resource="mapper/event-mapper.xml"/>
 		<mapper resource="mapper/admin-mapper.xml"/>
