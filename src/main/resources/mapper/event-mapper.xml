@@ -20,4 +20,11 @@
 		<result property="eventCreateDate" column="EVENT_CREATE_DATE"/>
 		<result property="eventModifyDate" column="EVENT_MODIFY_DATE"/>
 	</resultMap>
+	
+	<select id="eventDetail" resultMap="eventResultSet">
+		SELECT *
+		FROM EVENT
+		WHERE EVENT_STATUS='Y'AND EVENT_NO = #{eventNo}
+	</select>
+	
 </mapper>

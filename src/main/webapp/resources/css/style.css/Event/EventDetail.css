@@ -83,6 +83,7 @@
 }
 
 
+
 /* 사용자 페이지 */
 .u_mainArea{ /* detail_form의 width가 변경되면 mainArea의 width도 같이 변경 */
 	width:800px;
@@ -96,7 +97,7 @@
 	padding-top: 70px;
 	width:800px;
 	margin: auto;
-	font-size: 40px;
+	font-size: 35px;
 	float: left;
 	padding-bottom: 40px;
 }
@@ -108,7 +109,7 @@
 
 .u_t_img{
 	width: 800px;
-	height: 400px;
+	height: 1000px;
 }
 
 .u_bottom{
@@ -135,8 +136,9 @@
 }
 
 .u_detail_text{
-	margin-top: 25px;
-	font-size: 20px;
+	margin-top: 23px;
+	font-size: 25px;
 	vertical-align: middle;
-	padding-left: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
