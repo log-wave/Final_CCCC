@@ -14,9 +14,11 @@ import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.Pagination;
 
+
+
 @Controller
 public class BoardController {
-	
+	// 다시
 	@Autowired
 	private BoardService bService;
 	

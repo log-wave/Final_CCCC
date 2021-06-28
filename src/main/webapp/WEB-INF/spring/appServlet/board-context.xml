@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	
+	<!-- 다시 -->
 	<mvc:annotation-driven/>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />

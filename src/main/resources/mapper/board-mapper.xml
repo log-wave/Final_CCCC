@@ -6,7 +6,7 @@
 		from board 
 		where board_status='N'
 	</select>
-	
+	<!-- 다시 -->
 	<select id="selectNoticeList" resultMap="boardResultSet">
 		select *
 		from board
