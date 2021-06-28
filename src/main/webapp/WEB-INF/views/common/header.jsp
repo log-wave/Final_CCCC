@@ -22,7 +22,6 @@
 			<input type="text">
 			<button>검색</button>
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG">
-			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/documents.PNG">
 			<c:if test="${empty loginUser}">
 			
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
@@ -32,9 +31,14 @@
 			
 			
 			<c:if test="${!empty loginUser }">
-			<div>${loginUser.getNickname()}</div>
+			<div>
+				<p style="font-size: 16px;">${loginUser.getNickname()}</p>
+			</div>
+			<div style="margin-left: 30px;">
+				<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
+			</div>
 			</c:if>
-		</div>
+			</div>
 		
 		<div id="container">
 	<ul class="myMenu">
