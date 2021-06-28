@@ -1,6 +1,8 @@
 package com.kh.Final_cccc.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.member.service.MemberService;
@@ -62,9 +66,25 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="backIndex.do", method=RequestMethod.GET)
-	public String backIndex(HttpServletRequest request) {
+	public String backIndex(HttpServletRequest reques) {
 		System.out.println("인덱스 페이지로 이동");
+		
+		
 		return "index";
+	}
+	
+	
+	@RequestMapping(value="logoutPage.me")
+	public String logoutPage(HttpSession session,SessionStatus status) {
+		
+	
+		
+		status.setComplete();
+		
+		System.out.println("setComplete가 실행된 후의 세션값 유무 확인");
+		
+		
+		return "redirect:backIndex.do"; 
 	}
 	
 	
@@ -95,5 +115,23 @@ public class MemberController {
 		
 		return null;
 	}
+	
+	
+	
+	@RequestMapping(value="insertMemberTerms.me", method=RequestMethod.GET)
+	public String insertMemberTermsPage(HttpServletRequest request) {
+		
+		return "insertMember/insertMemberTerms";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
