@@ -25,3 +25,21 @@
 	margin-right: 30px;
 	margin-left: 30px;
 }
+
+.recipeList{
+	display: inline-block;
+	width: 1200px;
+	display: flex;
+	height: 900px;
+	margin-bottom: 150px;
+}
+
+
+.recipe_items{
+	width: 350px;
+	height: 200px;
+	
+	text-align: center;
+	margin-bottom: 50px;
+	
+}

@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>레시피 검색 결과</title>
 
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="searchRecipe.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Recipe/searchRecipe.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -26,61 +26,23 @@
 		<div class="searchRecipe_thumnail">
 			<h3>조건에 맞는 레시피가 ?개 있습니다.</h3>
 			<div class="recipeList">
-				<table>
+				
 				<!-- 반복문으로  레시피리스트 돌려버리기 -->
-					<tr>
-						<td>
+					<c:forEach var="r" items="${rList }">
+						<c:url var="rDetail" value="rDetail.rp">
+							<c:param name="recipeNo" value="${r.recipe_no }"/>
+						</c:url>
+						<div class="recipe_items" onclick="window.open('${rDetail}')">
+						
 							<div class="recipe_img">
 								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_1.PNG">
 							</div>
 							<div>
-								<div class="recipe_name" align="center">이름</div>
+								<div class="recipe_name" align="center">${r.recipe_title }</div>
 							</div>
-						</td>
-						<td>
-							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_2.PNG">
-							</div>
-							<div>
-								<div class="recipe_name" align="center">이름</div>
-							</div>
-						</td>
-						<td>
-							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_3.PNG">
-							</div>
-							<div>
-								<div class="recipe_name" align="center">이름</div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_4.PNG">
-							</div>
-							<div>
-								<div class="recipe_name" align="center">이름</div>
-							</div>
-						</td>
-						<td>
-							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_5.PNG">
-							</div>
-							<div>
-								<div class="recipe_name" align="center">이름</div>
-							</div>
-						</td>
-						<td>
-							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_6.PNG">
-							</div>
-							<div>
-								<div class="recipe_name" align="center">이름</div>
-							</div>
-						</td>
-					</tr>
-				</table>
+						
+						</div>
+					</c:forEach>
 			</div>
 		</div>
 		
