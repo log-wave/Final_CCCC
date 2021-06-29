@@ -35,4 +35,9 @@ public class AdminServiceImpl implements AdminService{
 	public ArrayList<MemberVO> selectMemberList(PageInfo pi) {
 		return adDAO.getSelectMemberList(sqlSession, pi);
 	}
+
+	@Override
+	public int getMemberListCount() {
+		return adDAO.getMemberListCount(sqlSession);
+	}
 }

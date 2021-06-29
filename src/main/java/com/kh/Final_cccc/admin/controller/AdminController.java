@@ -23,9 +23,6 @@ public class AdminController {
 	@Autowired
 	private AdminService adService;
 	
-	@Autowired
-	private BoardService bService;
-	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
 		int currentPage = 1;
@@ -33,14 +30,14 @@ public class AdminController {
 			currentPage = page;
 		}
 		
-		int listCount = bService.getListCount();
+		int listCount = adService.getMemberListCount();
 		
 		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 		
 		ArrayList<MemberVO> list = adService.selectMemberList(pi);
 		
 		if(list != null) {
-			mv.addObject("list", list).addObject("pi", pi).setViewName("noticeList/noticeList");
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_member/admin_Member");
 		} else {
 			return null;
 		}

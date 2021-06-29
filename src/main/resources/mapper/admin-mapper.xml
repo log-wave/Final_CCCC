@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="adminMapper">
+	<select id="getMemberListCount" resultType="_int">
+		select count(*) 
+		from member 
+		where status='Y' and authority='N'
+	</select>
 
 	<select id="selectMemberList" resultMap="memberResultSet">
 		select * 

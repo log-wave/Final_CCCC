@@ -15,4 +15,6 @@ public interface AdminService {
 
 	ArrayList<Event> selectEventList();
 
+	int getMemberListCount();
+
 }

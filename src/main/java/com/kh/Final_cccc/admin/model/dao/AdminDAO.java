@@ -28,4 +28,8 @@ public class AdminDAO {
 		return (ArrayList)sqlSession.selectList("adminMapper.selectEventList");
 	}
 
+	public int getMemberListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.getMemberListCount");
+	}
+
 }
