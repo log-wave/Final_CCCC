@@ -47,5 +47,19 @@
 		insert into board
 		values(seq_board_no.nextval, #{bTitle}, #{bContent}, sysdate, sysdate, default, 'N', 1, 1)   
 	</insert>
+	
+	<update id="updateBoard">
+		update board
+		<set>
+		board_title=#{bTitle}, board_content=#{bContent}, board_modify_date=sysdate
+		</set>
+		where board_no = #{bNo}
+	</update>
+	
+	<update id="deleteBoard">
+		update board
+		set board_status='Y'
+		where board_no = #{bNo}
+	</update>
 </mapper>
 	

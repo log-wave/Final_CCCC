@@ -80,4 +80,38 @@ public class BoardController {
 			throw new BoardException("게시글 등록에 실패하였습니다.");
 		}
 	}
+	
+	@RequestMapping("bupView.bo")
+	public String boardUpdateForm(@RequestParam("bNo") int bNo, @RequestParam("page") int page, Model model) {
+		
+		Board board = bService.selectBoard(bNo);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("page", page);
+		return "updateNotice/updateNotice";
+	}
+	
+	@RequestMapping("bupdate.bo")
+	public String updateBoard(@ModelAttribute Board b, @RequestParam("page") int page, HttpServletRequest request) {
+		
+		int result = bService.updateBoard(b);
+		
+		if(result > 0) {
+			return "redirect:bdetail.bo?bNo="+b.getbNo() + "&page=" + page;
+		} else {
+			throw new BoardException("게시글 수정에 실패하였습니다.");
+		}
+		
+	}
+	
+	@RequestMapping("bdelete.bo")
+	public String deleteBoard(@RequestParam("bNo") int bNo) {
+		int result = bService.deleteBoard(bNo);
+		
+		if(result > 0) {
+			return "redirect:blist.bo";
+		}else {
+			throw new BoardException("게시글 삭제에 실패하였습니다.");
+		}
+	}
 }

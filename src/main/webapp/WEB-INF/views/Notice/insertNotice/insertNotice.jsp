@@ -27,7 +27,10 @@
 				</tr>
 			</table>
 		</div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="location.href='blist.bo'">목록으로</button>
+		<c:url var="blist" value="blist.bo">
+			<c:param name="page" value="${ page }"/>
+		</c:url>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="location.href='${ blist }'">목록으로</button>
 		<button id="button1">등록</button>
 	</div>
 	</form>

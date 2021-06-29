@@ -38,13 +38,11 @@
 			</tr>
 			</c:forEach>	
 			</table>
-			<br>
-			<br>
 			<c:if test="${ loginUser.user_id eq 'admin' }">
-	 			&nbsp; &nbsp; &nbsp;
 				<button onclick="location.href='binsertView.bo';">작성하기</button>
 	 		</c:if>
-			
+			<br>
+			<br>
 			<br>
 			<br>
 		<table id="paging">	
