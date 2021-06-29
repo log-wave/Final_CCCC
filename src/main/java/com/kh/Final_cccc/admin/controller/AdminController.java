@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
+import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.Pagination;
@@ -22,6 +23,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adService;
+	
+	@Autowired
+	private BoardService bService;
 	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
@@ -73,8 +77,25 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminBoard.ad")
-	public String adminBoardList() {
-		return "../admin/admin_notice/admin_Notice";
+	public ModelAndView adminBoardList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = bService.getListCount();
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Board> list = bService.selectList(pi);
+		
+		if(list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_notice/admin_Notice");
+		} else {
+			return null;
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping("adminEvent.ad")

@@ -19,81 +19,40 @@
     <div class="page">
 	    <h2 id="title"> 공지사항 목록 </h2>
 	    <br>
-			<div class="menu">
-					<label id="no_num">번호</label>
-					<label id="no_title">제목</label>
-					<label id="no_content">내용</label>
-					<label><input type="checkbox">전체선택</label>
-			</div>
 	    	<div class="notice_list">
 	    	<hr>
 			<br>
 	    		<table class="notice_Table">
-	    		
 	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
+	    				<th  width="80px">번호</th>
+	    				<th  width="150px">제목</th>
+	    				<th  width="500px">내용</th>
+	    				<th  width="90px"><input type="checkbox">전체선택</th>
 	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">콕콕 쿡쿡 접속 장애 안내</td>
-	    				<td  width="530px">2021년 2월 1일 오후 1시경에 발생한 홈페이지 접속 장애로 인해</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			
-	    			
+	    			<c:if test="${ list != null }">
+					<c:forEach var="ad" items="${ list }">
+			    		<tr>
+			    			<td>${ ad.bNo }</td>
+			    			<td style="border-left: 1px solid black">${ ad.bTitle}</td>
+			    			<td style="border-left: 1px solid black">${ ad.bContent }</td>
+			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectone();"></td>
+			    		</tr>
+				
 	    			
 	    		
+	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
+						<%-- <c:param name="bId" value="${  }"/>
+						<c:param name="page" value="${ pi.currentPage }"/> --%>
+					<%-- </c:url> --%>
+					<%-- <a href="${ bdetail }">${ b.bTitle }</a> --%>
+	    			</c:forEach>
+	    		</c:if>
+	    		<c:if test="${ list == null }">
+					<tr>
+						<td colspan="6">조회된 리스트가 없습니다.</td>
+					</tr>
+				</c:if>
+	    			
 	    		</table>
 	    	<br><hr><br>
 	    	<div class="buttonArea">
@@ -102,14 +61,49 @@
     	</div>
     	
     	<!-- 페이징 -->
-			<div class="pagingArea">
-			<button>&lt;</button>
-                <!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
-			</div>
+			<table id="pagingArea">	
+		<!-- 페이징 처리 -->
+			<tr align="center" height="20" id="buttonTab">
+				<td colspan="6">
+				
+					<!-- [이전] -->
+					<c:if test="${ pi.currentPage <= 1 }">
+						<button>&lt;</button>
+					</c:if>
+					<c:if test="${ pi.currentPage > 1 }">
+						<c:url var="before" value="adminBoard.ad">
+							<c:param name="page" value="${ pi.currentPage - 1 }"/>
+						</c:url>
+						<a href="${ before }"><button>&lt;</button></a>
+					</c:if>
+					
+					<!-- 페이지 -->
+					<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+						<c:if test="${ p eq pi.currentPage }">
+							<button><font color="red" size="4"><b>${ p }</b></font></button>
+						</c:if>
+						
+						<c:if test="${ p ne pi.currentPage }">
+							<c:url var="pagination" value="adminBoard.ad">
+								<button><c:param name="page" value="${ p }"/></button>
+							</c:url>
+							<a href="${ pagination }"><button>${ p }</button></a>
+						</c:if>
+					</c:forEach>
+					
+					<!-- [다음] -->
+					<c:if test="${ pi.currentPage >= pi.maxPage }">
+						<button>&gt;</button>
+					</c:if>
+					<c:if test="${ pi.currentPage < pi.maxPage }">
+						<c:url var="after" value="adminBoard.ad">
+							<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+						</c:url> 
+						<a href="${ after }"><button>&gt;</button></a>
+					</c:if>
+				</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
