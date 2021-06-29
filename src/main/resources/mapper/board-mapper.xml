@@ -8,8 +8,10 @@
 	</select>
 	<!-- 다시 -->
 	<select id="selectNoticeList" resultMap="boardResultSet">
-		select *
-		from board
+		select b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_CREATE_DATE, b.BOARD_MODIFY_DATE, 
+		b.BOARD_VIEW, b.BOARD_STATUS, b.BOARD_FLAG, b.USER_NO, m.NICKNAME
+		from board b
+		join member m on (b.user_no = m.user_no)
 		where (board_status='N') and (board_flag=1)
 		order by board_no desc
 	</select>
@@ -24,5 +26,22 @@
 		<result column="BOARD_STATUS" property="bStatus"/>
 		<result column="BOARD_FLAG" property="bFlag"/>
 		<result column="USER_NO" property="bUserNo"/>
+		<result column="NICKNAME" property="nickName"/>
 	</resultMap>
+	
+	<update id="addReadCount">
+		update board
+		set board_view = board_view + 1
+		where board_no = #{bNo}
+	</update>
+	
+	<select id="selectBoard" resultMap="boardResultSet">
+		select b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_CREATE_DATE, b.BOARD_MODIFY_DATE, 
+		b.BOARD_VIEW, b.BOARD_STATUS, b.BOARD_FLAG, b.USER_NO, m.NICKNAME
+		from board b
+		join member m on (b.user_no = m.user_no)
+		where b.board_no = #{bNo}
+	</select>
+	
 </mapper>
+	

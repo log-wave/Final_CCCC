@@ -31,7 +31,7 @@
 					${ b.bTitle }		
 				</c:if>
 			</td>
-			<td align="center">${ b.bUserNo }</td>
+			<td align="center">${ b.nickName }</td>
 			<td align="center">${ b.bCreateDate }</td>
 			<td align="center">${ b.bView }</td>
 			</tr>
