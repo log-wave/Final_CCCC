@@ -12,6 +12,8 @@ public interface EventService {
 	ArrayList<Event> selectEventList();
 
 	Event eventDetail(int eventNo);
+
+	int insertEvent(Event event);
 	
 	
 }

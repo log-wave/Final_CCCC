@@ -27,4 +27,10 @@
 		WHERE EVENT_STATUS='Y'AND EVENT_NO = #{eventNo}
 	</select>
 	
+	<insert id="insertEvent">
+		INSERT INTO EVENT VALUES(SEQ_EVENT_NO.NEXTVAL, #{eventContent}, 'Y', 1 , #{eventTitle},
+		  #{eventStart},  #{eventEnd} , sysdate, sysdate)
+	
+	</insert>
+	
 </mapper>
