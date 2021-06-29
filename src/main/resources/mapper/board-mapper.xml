@@ -43,5 +43,9 @@
 		where b.board_no = #{bNo}
 	</select>
 	
+	<insert id="insertBoard">
+		insert into board
+		values(seq_board_no.nextval, #{bTitle}, #{bContent}, sysdate, sysdate, default, 'N', 1, 1)   
+	</insert>
 </mapper>
 	
