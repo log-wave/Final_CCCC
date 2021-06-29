@@ -2,30 +2,15 @@
 
 
 	.page {
-	 width: 1000px;
-	 height: 790px;
-	 display: inline-block;
-	 vertical-align: top;
-	}
-	#title{
-	margin-top : 80px;
-	text-align: center;
+		 width: 1000px;
+		 height: 790px;
+		 display: inline-block;
+		 vertical-align: top;
 	}
 	
-	#mem_num{
-		margin-right: 40px;
-	}
-	#mem_id{
-		margin-right: 60px;
-	}
-	#mem_email{
-		margin-right: 55px;
-	}
-	#mem_nick{
-		margin-right: 160px;
-	}
-	#mem_gender{
-		margin-right: 200px;
+	#title{
+		margin-top : 80px;
+		text-align: center;
 	}
 	
 	.admin_menu {
@@ -42,10 +27,20 @@
     
     .member_table{
 		text-align: center;
+		border-collapse: collapse;
+	}
+	
+	.member_table th{
+		border-bottom: 1px solid black;
 	}
 	
 	.member_table td{
 		height: 35px;
+		max-width: 140px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding: 5px;
 	}
 	
 	.buttonArea{
