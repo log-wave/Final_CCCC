@@ -17,5 +17,9 @@ public class EventDAO {
 	public Event eventDetail(SqlSessionTemplate sqlSession, int eventNo) {
 		return sqlSession.selectOne("eventMapper.eventDetail", eventNo);
 	}
+
+	public int insertEvent(SqlSessionTemplate sqlSession, Event event) {
+		return sqlSession.insert("eventMapper.insertEvent", event);
+	}
 	
 }

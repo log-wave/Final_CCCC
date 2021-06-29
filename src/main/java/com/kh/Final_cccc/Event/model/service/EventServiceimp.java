@@ -28,6 +28,11 @@ public class EventServiceimp implements EventService{
 	public Event eventDetail(int eventNo) {
 		return edao.eventDetail(sqlSession, eventNo);
 	}
+
+	@Override
+	public int insertEvent(Event event) {
+		return edao.insertEvent(sqlSession, event);
+	}
 	
 }
 		
