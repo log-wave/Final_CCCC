@@ -32,9 +32,22 @@
 				</tr>
 			</table>
 		</div>
+		<c:url var="bupView" value="bupView.bo">
+			<c:param name="bNo" value="${ board.bNo }"/>
+			<c:param name="page" value="${ page }"/>
+		</c:url>
+		<c:url var="bdelete" value="bdelete.bo">
+			<c:param name="bNo" value="${ board.bNo }"/>
+		</c:url>
+		<c:url var="blist" value="blist.bo">
+			<c:param name="page" value="${ page }"/>
+		</c:url>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>삭제</button> 
-		<button id="button1">수정</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="location.href='${ blist }'">목록으로</button>
+		<c:if test="${ loginUser.user_id eq 'admin' }">
+			<button onclick="location.href='${ bdelete }'">삭제</button> 
+			<button id="button1" onclick="location.href='${ bupView }'">수정</button>
+	 	</c:if>
 	</div>
 	<c:import url="../../common/footer.jsp"/>
 </body>

@@ -53,3 +53,16 @@
 	font-size: 15px;
 	border-style: none;
 }
+a{
+	text-decoration: none;
+}
+.noticeList_main button{
+	width:100px;
+	height:30px;
+	font-weight: bold;
+	border-style: none;
+	margin-left: 650px;
+	border-radius: 4px;
+	background: #F29F05;
+	color: white;
+}

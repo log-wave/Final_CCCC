@@ -46,4 +46,14 @@ public class BoardServiceImpl implements BoardService {
 		return bDAO.insertBoard(sqlSession, b);
 	}
 
+	@Override
+	public int updateBoard(Board b) {
+		return bDAO.updateBoard(sqlSession, b);
+	}
+
+	@Override
+	public int deleteBoard(int bNo) {
+		return bDAO.deleteBoard(sqlSession, bNo);
+	}
+
 }
