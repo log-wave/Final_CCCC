@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,11 +39,24 @@ public class BoardController {
 		ArrayList<Board> list = bService.selectList(pi);
 		
 		if(list != null) {
-			mv.addObject("list", list).addObject("pi", pi).setViewName("noticeList");
+			mv.addObject("list", list).addObject("pi", pi).setViewName("noticeList/noticeList");
 		} else {
 			throw new BoardException("게시글 전체 조회에 실패하였습니다.");
 		}
 		
 		return mv;
+	}
+	
+	@RequestMapping("bdetail.bo")
+	public String boardDetail(@RequestParam("page") int page, @RequestParam("bNo") int bNo, Model model) {
+		
+		Board board = bService.selectBoard(bNo);
+		
+		if(board != null) {
+			model.addAttribute("page", page).addAttribute("board", board);
+			return "noticeDetail/noticeDetail";
+		} else {
+			throw new BoardException("게시판 상세보기에 실패하였습니다.");
+		}
 	}
 }

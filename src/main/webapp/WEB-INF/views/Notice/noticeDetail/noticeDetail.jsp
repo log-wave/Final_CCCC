@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="noticeDetail.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/Notice/noticeDetail/noticeDetail.css?ver=1.0'/>">
 </head>
 <body>
 	<c:import url="../../common/header.jsp"/>
@@ -16,30 +16,19 @@
 			<table id="noticeDetail_table">
 				<tr>
 					<td class="title_td">제목</td>
-					<td class="second_td" colspan="3">[안내] 콕콕 쿡쿡 접속 장애 안내<label>조회:2</label></td>
+					<td class="second_td" colspan="3">${ board.bTitle }<label>조회 : ${ board.bView }</label></td>
 				</tr>
 				<tr>
 					<td class="title_td">작성자</td>
-					<td class="second_td">관리자</td>
-					<td class="title_td">3</td>
-					<td class="second_td">4</td>
+					<td class="second_td">${ board.nickName }</td>
+					<td class="title_td">날짜</td>
+					<td class="second_td">${ board.bCreateDate }</td>
 				</tr>
 				<tr>
 					<td class="third_td">내용</td>
 					<td class="fourth_td" colspan="3">
 						<label>
-							안녕하세요.<br>
-							콕콕 쿡쿡 입니다.<br>
-							<br>
-							2021년 1월 31일 오후 1시경에 발생한 홈페이지 접속 장애로 인해<br>
-							서비스 이용에 불편을 끼쳐드려 대단히 죄송합니다.<br>
-							<br>
-							현재 문제에 대한 조치가 완료되어 정상적인 서비스 이용이 가능합니다.<br>
-							이후 원활한 서비스 제공을 위해 지속적으로 확인해<br>
-							<br>
-							서비스 이용에 불편이 없도록 최선을 다하겠습니다.<br>
-							<br>
-							다시 한번 서비스 이용에 불편을 드려 죄송합니다.<br>
+							${ board.bContent }
 						</label>
 					</td>
 				</tr>

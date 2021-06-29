@@ -22,5 +22,13 @@ public class BoardDAO {
 		
 		return (ArrayList)sqlSession.selectList("boardMapper.selectNoticeList", null, rowBounds);
 	}
+
+	public int addReadCount(SqlSessionTemplate sqlSession, int bNo) {
+		return sqlSession.update("boardMapper.addReadCount", bNo);
+	}
+
+	public Board selectBoard(SqlSessionTemplate sqlSession, int bNo) {
+		return sqlSession.selectOne("boardMapper.selectBoard", bNo);
+	}
 	
 }

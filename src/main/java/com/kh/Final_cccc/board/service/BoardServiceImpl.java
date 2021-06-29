@@ -29,4 +29,16 @@ public class BoardServiceImpl implements BoardService {
 		return bDAO.selectList(sqlSession, pi);
 	}
 
+	@Override
+	public Board selectBoard(int bNo) {
+		Board b = null;
+		
+		int result = bDAO.addReadCount(sqlSession, bNo);
+		
+		if(result > 0) {
+			b = bDAO.selectBoard(sqlSession, bNo);
+		}
+		return b;
+	}
+
 }
