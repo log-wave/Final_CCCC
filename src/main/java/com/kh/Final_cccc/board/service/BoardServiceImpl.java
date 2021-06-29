@@ -41,4 +41,9 @@ public class BoardServiceImpl implements BoardService {
 		return b;
 	}
 
+	@Override
+	public int insertBoard(Board b) {
+		return bDAO.insertBoard(sqlSession, b);
+	}
+
 }

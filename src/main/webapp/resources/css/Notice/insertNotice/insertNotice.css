@@ -1,18 +1,23 @@
 @charset "UTF-8";
 
-.noticeDetail_main{
+.insertNotice_main{
 	margin-top: 70px;
 	margin-bottom: 150px;
 	display: inline-block;
 }
 
-#noticeDetail_table{
-	width: 900px;
+.insertNotice h4{
+	font-size: 25px;
 	float: left;
-	margin-left: 160px;
+	margin-left: 135px;
 }
 
-#noticeDetail_table td{
+#insertNotice_table{
+	float: left;
+	margin-left: 135px;
+}
+
+#insertNotice_table td{
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	padding: 10px;
@@ -27,14 +32,13 @@
 }
 
 .second_td{
-	width: 130px;
+	width: 800px;
 	height: 30px;
-	text-align: center;
-	vertical-align: middle;
 }
 
-.second_td label{
-	float: right;
+.second_td input{
+	width: 500px;
+	height: 30px;
 }
 
 .third_td{
@@ -45,7 +49,7 @@
 	vertical-align: middle;
 }
 
-.noticeDetail_main button{
+.insertNotice_main button{
 	width:150px;
 	height:40px;
 	font-weight: bold;
@@ -59,8 +63,4 @@
 
 #button1{
 	background: #F29F05;
-}
-
-textarea{
-	background: white;
 }
