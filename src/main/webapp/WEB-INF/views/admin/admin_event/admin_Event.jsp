@@ -19,75 +19,42 @@
     <div class="page">
 	    <h2 id="title"> 이벤트 목록 </h2>
 	    <br>
-			<div class="menu">
-					<label id="ev_num">번호</label>
-					<label id="ev_title">제목</label>
-					<label id="ev_content">내용</label>
-					<label><input type="checkbox">전체선택</label>
-			</div>
 	    	<div class="event_list">
 	    	<hr>
 			<br>
-	    		<table class="event_Table" >
-	    		
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="50px">1</td>
-	    				<td  width="250px">나만의 봄나물 레시피를 알려</td>
-	    				<td  width="500px">봄이 왔어요~ 마트에 나가보니 봄나물이 많이 나왔 더라구요</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			
-	    	
+	    		<table class="event_table">
+		    		<tr>
+						<th width="100px">번호</th>
+						<th width="150px">제목</th>
+						<th width="700px">내용</th>
+						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
+					</tr>
+				
+				<c:if test="${ list != null }">
+					<c:forEach var="ad" items="${ list }">
+			    		<tr>
+			    			<td>${ ad.eventNo }</td>
+			    			<td style="border-left: 1px solid black">${ ad.eventTitle }</td>
+			    			<td style="border-left: 1px solid black">${ ad.eventContent}</td>
+			    			<td style="border-left: 1px solid black"><input type="checkbox" name="event_select" onclick="selectone();"></td>
+			    		</tr>
+				
 	    			
 	    		
+	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
+						<%-- <c:param name="bId" value="${  }"/>
+						<c:param name="page" value="${ pi.currentPage }"/> --%>
+					<%-- </c:url> --%>
+					<%-- <a href="${ bdetail }">${ b.bTitle }</a> --%>
+	    			</c:forEach>
+	    		</c:if>
+	    		<c:if test="${ list == null }">
+					<tr>
+						<td colspan="6">조회된 리스트가 없습니다.</td>
+					</tr>
+				</c:if>
+				
+	    			
 	    		</table>
 	    	<br><hr><br>
 	    	<div class="buttonArea">
@@ -105,5 +72,38 @@
                 <button>&gt;</button>
 			</div>
 	</div>
+	
+	<script>
+		var all = document.getElementById("all");
+		var category = document.getElementsByName("event_select");
+		
+		function selectAll(){
+			if(all.checked){
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = true;
+				}
+			} else {
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = false;
+				}
+			}
+		}
+		
+		function selectOne(){
+			var count = 0;
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					count++;
+				}
+			}
+			
+			if(count != 12){
+				all.checked = false;
+			} else {
+				all.checked = true;
+			}
+		}
+	</script>
 </body>
 </html>

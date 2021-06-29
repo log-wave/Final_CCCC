@@ -25,22 +25,26 @@
 	    		<table class="member_table">
 		    		<tr>
 						<th width="100px">번호</th>
-						<th width="100px">아이디</th>
+						<th width="150px">아이디</th>
 						<th width="300px">이메일</th>
-						<th width="100px">닉네임</th>
-						<th width="100px">성별</th>
-						<th width="150px"><input type="checkbox">전체선택</th>
+						<th width="150px">닉네임</th>
+						<th width="60px">성별</th>
+						<th width="60px">상태</th>
+						<th width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
 				<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
 			    		<tr>
 			    			<td>${ ad.user_no }</td>
-			    			<td>${ ad.user_id }</td>
-			    			<td>${ ad.email}</td>
-			    			<td>${ ad.nickname }</td>
-			    			<td>${ ad.gender }</td>
-			    			<td width="150px"><input type="checkbox"></td>
+			    			<td style="border-left: 1px solid black">${ ad.user_id }</td>
+			    			<td style="border-left: 1px solid black">${ ad.email}</td>
+			    			<td style="border-left: 1px solid black">${ ad.nickname }</td>
+			    			<td style="border-left: 1px solid black">${ ad.gender }</td>
+			    			<c:if test="${ ad.status eq 'Y'}">
+			    				<td style="border-left: 1px solid black">정상</td>
+			    			</c:if>
+			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectone();"></td>
 			    		</tr>
 				
 	    			
@@ -77,5 +81,38 @@
                 <button>&gt;</button>
 			</div>
 	</div>
+	
+	<script>
+		var all = document.getElementById("all");
+		var category = document.getElementsByName("mem_select");
+		
+		function selectAll(){
+			if(all.checked){
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = true;
+				}
+			} else {
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = false;
+				}
+			}
+		}
+		
+		function selectOne(){
+			var count = 0;
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					count++;
+				}
+			}
+			
+			if(count != 12){
+				all.checked = false;
+			} else {
+				all.checked = true;
+			}
+		}
+	</script>
 </body>
 </html>

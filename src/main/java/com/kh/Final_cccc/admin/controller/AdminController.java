@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 @Controller
 public class AdminController {
@@ -29,8 +31,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminRecipe.ad")
-	public String adminRecipeList() {
-		return "../admin/admin_recipe/admin_Recipe";
+	public String adminRecipeList(Model model) {
+		ArrayList<Recipe> list = adService.selectRecipeList();
+		if(list != null) {
+			model.addAttribute("list", list);
+			return "../admin/admin_recipe/admin_Recipe";
+		} else {
+			return "../admin/admin_recipe/admin_Recipe";
+		}
+		
 	}
 	
 	@RequestMapping("adminMaterial.ad")
@@ -54,8 +63,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminEvent.ad")
-	public String adminEventList() {
-		return "../admin/admin_event/admin_Event";
+	public String adminEventList(Model model) {
+		ArrayList<Event> list = adService.selectEventList();
+		if(list != null) {
+			model.addAttribute("list", list);
+			return "../admin/admin_event/admin_Event";
+		} else {
+			return "../admin/admin_event/admin_Event";
+		}
 	}
 	
 	@RequestMapping("adminSurvey.ad")
