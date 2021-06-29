@@ -1,8 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="recipeMapper">
-	<select id="selectmateList" >
-	
+	<select id="selectsubList" resultMap="selectResult">
+		select *
+		from RECIPE
+		where sort_sub = #{sort_no} and r_status ='Y'
+		order by recipe_no
 	</select>
 	
+	<select id="selectmateList" resultMap="selectResult">
+		select *
+		from RECIPE
+		where sort_mate = #{sort_no} and r_status ='Y'
+		order by recipe_no
+	</select>
+	
+	<select id="selectspecList" resultMap="selectResult">
+		select *
+		from RECIPE
+		where sort_spec = #{sort_no} and r_status ='Y'
+		order by recipe_no
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe" id="selectResult">
+		<id property="recipe_no" column="RECIPE_NO"/>
+		<result property="recipe_title" column="RECIPE_TITLE"/>
+		<result property="recipe_explain" column="RECIPE_EXPLAN"/>
+		<result property="cooking_time" column="COOKING_TIME"/>
+		<result property="user_no" column="USER_NO"/>
+		<result property="material_no" column="MATERIAL_NO"/>
+		<result property="sort_sub" column="SORT_SUB"/>
+		<result property="sort_mate" column="SORT_MATE"/>
+		<result property="sort_spec" column="SORT_SPEC"/>
+		<result property="recipe_create_date" column="RECIPE_CREATEDATE"/>
+		<result property="recipe_modify_date" column="RECIPE_MODIFYDATE"/>
+		<result property="r_status" column="R_STATUS"/>
+	</resultMap>
+	
+	<select id="selectRecipe" resultMap="selectResult">
+		select * 
+		from RECIPE
+		where RECIPE_NO = #{recipeNo}
+	</select>
+	
+	<select id="selectrMate" resultMap="selectRMResult">
+		select *
+		from RECIPE_MATE
+		where RECIPE_NO = #{recipeNo}
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.recipe.model.vo.ReMaterial" id="selectRMResult">
+		<id property="RM_no" column="RM_NO"/>
+		<result property="material_no" column="MATERIAL_NO"/>
+		<result property="recipe_no" column="RECIPE_NO"/>
+	</resultMap>
+	
+	<select id="selectProcess" resultMap="selectRPResult">
+		select *
+		from R_PROCESS
+		where RECIPE_NO = #{recipeNo}
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.recipe.model.vo.RecipeProcess" id="selectRPResult">
+		<id property="rp_no" column="RP_NO"/>
+		<result property="rp_comment" column="RP_COMENT"/>
+		<result property="recipe_no" column="RECIPE_NO"/>
+	</resultMap>
 </mapper>

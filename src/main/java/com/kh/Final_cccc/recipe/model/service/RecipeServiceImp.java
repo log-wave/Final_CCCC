@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.Final_cccc.recipe.model.dao.recipeDAO;
+import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
+import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
 
 @Service("rService")
 public class RecipeServiceImp implements RecipeService{
@@ -34,6 +36,24 @@ public class RecipeServiceImp implements RecipeService{
 	public ArrayList<Recipe> selectspecList(int sort_no) {
 		// 특산물별 목록 불러오기
 		return rDAO.selectspecList(sort_no, sqlSession);
+	}
+
+	@Override
+	public Recipe selectRecipe(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectRecipe(recipeNo, sqlSession);
+	}
+
+	@Override
+	public ArrayList<ReMaterial> selectrMate(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectrMate(recipeNo, sqlSession);
+	}
+
+	@Override
+	public ArrayList<RecipeProcess> selectProcess(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectProcess(recipeNo, sqlSession);
 	}
 	
 	
