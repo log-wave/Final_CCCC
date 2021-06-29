@@ -7,7 +7,6 @@
 		from MEMBER
 <!-- 		where member_id=#{id} and member_pwd=#{pwd} and status='Y' -->
 		where status='Y' and authority='N'
-		order by user_no asc
 	</select>
 	<resultMap type="Member" id="memberResultSet">
 		<id column="user_NO" property="user_no"/>

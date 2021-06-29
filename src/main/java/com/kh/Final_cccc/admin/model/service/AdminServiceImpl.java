@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.dao.AdminDAO;
+import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
@@ -21,11 +22,6 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDAO adDAO;
 
 	@Override
-	public ArrayList<MemberVO> selectMemberList() {
-		return adDAO.getSelectMemberList(sqlSession);
-	}
-
-	@Override
 	public ArrayList<Recipe> selectRecipeList() {
 		return adDAO.getSelectRecipeList(sqlSession);
 	}
@@ -33,5 +29,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ArrayList<Event> selectEventList() {
 		return adDAO.getSelectEventList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<MemberVO> selectMemberList(PageInfo pi) {
+		return adDAO.getSelectMemberList(sqlSession, pi);
 	}
 }
