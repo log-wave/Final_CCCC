@@ -24,7 +24,7 @@
 			<br>
 	    		<table class="member_table">
 		    		<tr>
-						<th width="100px">번호</th>
+						<th width="80px">번호</th>
 						<th width="150px">아이디</th>
 						<th width="300px">이메일</th>
 						<th width="150px">닉네임</th>
