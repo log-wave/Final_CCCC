@@ -7,15 +7,16 @@
 <meta charset="UTF-8">
 <title>공지사항</title>
 <!-- 다시 -->
-<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
-<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Notice/noticeList.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/Notice/noticeList/noticeList.css?ver=1.0'/>">
 
 </head>
 <body>
 	<c:import url="../../common/header.jsp"/>
+	<br><br>
 	<div class="noticeList_main" align="center">
 		<div class="noticeList">
-			<h2>공지사항</h2><br><br><br><br><br><br>
+			<h2>공지사항</h2><br><br><br><br>
 			<table id="notice_one">
 			<c:forEach var="b" items="${ list }">
 			<tr>
@@ -36,9 +37,17 @@
 			<td align="center">${ b.bView }</td>
 			</tr>
 			</c:forEach>	
+			</table>
+			<br>
+			<br>
+			<c:if test="${ loginUser.user_id eq 'admin' }">
+	 			&nbsp; &nbsp; &nbsp;
+				<button onclick="location.href='binsertView.bo';">작성하기</button>
+	 		</c:if>
 			
 			<br>
 			<br>
+		<table id="paging">	
 		<!-- 페이징 처리 -->
 		<tr align="center" height="20" id="buttonTab">
 			<td colspan="6">

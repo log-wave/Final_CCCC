@@ -27,9 +27,7 @@
 				<tr>
 					<td class="third_td">내용</td>
 					<td class="fourth_td" colspan="3">
-						<label>
-							${ board.bContent }
-						</label>
+						<textarea rows="30" cols="100" style="resize:none;" readonly="readonly" disabled>${ board.bContent }</textarea>
 					</td>
 				</tr>
 			</table>

@@ -2,9 +2,12 @@ package com.kh.Final_cccc.board.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,9 +57,27 @@ public class BoardController {
 		
 		if(board != null) {
 			model.addAttribute("page", page).addAttribute("board", board);
+			System.out.println(board.getbContent());
 			return "noticeDetail/noticeDetail";
 		} else {
 			throw new BoardException("게시판 상세보기에 실패하였습니다.");
+		}
+	}
+	
+	@RequestMapping("binsertView.bo")
+	public String boardInsertForm() {
+		return "insertNotice/insertNotice";
+	}
+	
+	@RequestMapping("binsert.bo")
+	public String insertBoard(@ModelAttribute Board b, HttpServletRequest request) {
+		
+		int result = bService.insertBoard(b);
+		
+		if(result > 0) {
+			return "redirect:blist.bo";
+		} else {
+			throw new BoardException("게시글 등록에 실패하였습니다.");
 		}
 	}
 }
