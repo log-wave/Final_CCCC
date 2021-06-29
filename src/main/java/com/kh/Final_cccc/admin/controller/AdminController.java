@@ -6,9 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
+import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.board.service.BoardService;
+import com.kh.Final_cccc.common.Pagination;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
@@ -19,15 +24,25 @@ public class AdminController {
 	private AdminService adService;
 	
 	@RequestMapping("adminMember.ad")
-	public String adminMemberList(Model model) {
-		ArrayList<MemberVO> list = adService.selectMemberList();
-		if(list != null) {
-			model.addAttribute("list", list);
-			return "../admin/admin_member/admin_Member";
-		} else {
-			return "../admin/admin_member/admin_Member";
+	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
 		}
 		
+		int listCount = adService.getMemberListCount();
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		ArrayList<MemberVO> list = adService.selectMemberList(pi);
+		
+		if(list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_member/admin_Member");
+		} else {
+			return null;
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping("adminRecipe.ad")
