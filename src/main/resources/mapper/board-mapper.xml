@@ -90,5 +90,24 @@
 		join member m on (b.user_no = m.user_no)
 		where b.board_no = #{bNo}
 	</select>
+	
+	<insert id="insertqaBoard">
+		insert into board
+		values(seq_board_no.nextval, #{bTitle}, #{bContent}, sysdate, sysdate, default, 'N', 2, #{bUserNo})   
+	</insert>
+	
+	<update id="updateqaBoard">
+		update board
+		<set>
+		board_title=#{bTitle}, board_content=#{bContent}, board_modify_date=sysdate
+		</set>
+		where board_no = #{bNo}
+	</update>
+	
+	<update id="deleteqaBoard">
+		update board
+		set board_status='Y'
+		where board_no = #{bNo}
+	</update>
 </mapper>
 	
