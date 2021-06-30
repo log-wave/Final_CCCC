@@ -17,7 +17,7 @@
 	<!-- 관리자용 -->
 	<form>
 	<div class="mainArea">
-		<p class="title">이벤트 등록</p>
+		<p class="title">이벤트 조회</p>
 			
 		<table class="detail_form">
 			<tr class="detail_title">
@@ -56,7 +56,7 @@
 			<tr class="detail_content">
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="83" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
+						<textarea rows="20" cols="87" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
 						<input type="hidden">
 					</td>
 			</tr>
@@ -82,9 +82,9 @@
 		
 		<div>
 			<div class="u_top">
-				<img src="${pageContext.request.contextPath}/images/event/event_139_thum.png" class="u_t_img">
+				<img src="${pageContext.request.contextPath}/images/event/event_139_thum.png" class="u_t_img" width="600px" height="900px">	
 			</div>
-			
+			<br><br>
 			<div class="u_e_text">
 				<div class="u_detail_text">
 				<!-- 
@@ -92,7 +92,7 @@
 					개행구분문자를 array에 하나씩 받아서 arrayList의 길이만큼<p>를 반복하는 식
 					아무값도 없는 엔터나 arrayList에 들어가면 <br>을 추가
 				 -->
-					<p>${event.eventContent}</p>
+					${event.eventContent}
 					
 				</div>
 			</div>

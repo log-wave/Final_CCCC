@@ -143,12 +143,12 @@ td.date{
 
 .u_top{
 	width: 800px;
-	margin: auto;
+	text-align: center;
 }
 
 .u_t_img{
-	width: 800px;
-	height: 1000px;
+	width: 600px;
+	height: 900px
 }
 
 .u_bottom{
@@ -180,4 +180,8 @@ td.date{
 	vertical-align: middle;
 	padding-left: 10px;
 	padding-right: 10px;
+	width: 600px;
+	height: 300px;
+	margin: auto;
+	margin-top: 10px;
 }
