@@ -84,7 +84,7 @@
 		</li>
 		<li class="menu5">이벤트
 			<ul class="submenu">
-				<li>이벤트</li>
+				<li><a href="eventList.ev">이벤트</a></li>
 			</ul>
 		</li>
 	</ul>
