@@ -61,5 +61,34 @@
 		set board_status='Y'
 		where board_no = #{bNo}
 	</update>
+	
+	<select id="getqListCount" resultType="_int">
+		select count(*) 
+		from board 
+		where board_status='N'
+	</select>
+	
+	<select id="selectqaList" resultMap="boardResultSet">
+		select b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_CREATE_DATE, b.BOARD_MODIFY_DATE, 
+		b.BOARD_VIEW, b.BOARD_STATUS, b.BOARD_FLAG, b.USER_NO, m.NICKNAME
+		from board b
+		join member m on (b.user_no = m.user_no)
+		where (board_status='N') and (board_flag=2)
+		order by board_no desc
+	</select>
+	
+	<update id="addReadqaCount">
+		update board
+		set board_view = board_view + 1
+		where board_no = #{bNo}
+	</update>
+	
+	<select id="selectqaBoard" resultMap="boardResultSet">
+		select b.BOARD_NO, b.BOARD_TITLE, b.BOARD_CONTENT, b.BOARD_CREATE_DATE, b.BOARD_MODIFY_DATE, 
+		b.BOARD_VIEW, b.BOARD_STATUS, b.BOARD_FLAG, b.USER_NO, m.NICKNAME
+		from board b
+		join member m on (b.user_no = m.user_no)
+		where b.board_no = #{bNo}
+	</select>
 </mapper>
 	

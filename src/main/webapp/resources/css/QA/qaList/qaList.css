@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
-.noticeList_main{
-	margin-top: 70px;
+.qaList_main{
+ 	margin-top: 70px;
 	margin-bottom: 150px;
 }
 
-.noticeList h2{
+.qaList h2{
 	display: inline;
 	font-size: 35px;
 	border-bottom: 4px solid #E87E73;
 }
 
-#notice_one{
+#qa_one{
 	width: 800px;
 	height: 70px;
 	border-collapse: separate;
@@ -19,30 +19,42 @@
 	
 }
 
-#notice_one td{
+#qa_one td{
 	font-size: 20px;
 	padding: 25px;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 }
 
-#notice_one tr{
-	z-index: 0;
-	border: 1px solid black;
-}
-
-#notice_one p{
+#qa_one p{
 	opacity: 0.5;
 	
 }
 
-.notice_first_row{
+.qa_first_row{
 	border-left: 1px solid black;
 	font-weight: 550;
 }
 
-.notice_last_row{
+.qa_last_row{
 	border-right: 1px solid black;
+}
+
+.qa_question{
+	float: right;
+	margin-right: 240px;
+}
+
+.qaList_main button{
+	width:120px;
+	height:40px;
+	font-weight: bold;
+	border-style: none;
+	border-radius: 4px;
+	margin-left: 650px;
+	background: #D1CBC2;
+	color: white;
+	background: #F29F05;
 }
 
 .pagingArea{
@@ -58,17 +70,8 @@
 	font-size: 15px;
 	border-style: none;
 }
-.noticeList a{
+
+.qaList a{
 	text-decoration: none;
 	color: #787878;
-}
-.noticeList_main button{
-	width:100px;
-	height:30px;
-	font-weight: bold;
-	border-style: none;
-	margin-left: 650px;
-	border-radius: 4px;
-	background: #F29F05;
-	color: white;
 }

@@ -57,7 +57,6 @@ public class BoardController {
 		
 		if(board != null) {
 			model.addAttribute("page", page).addAttribute("board", board);
-			System.out.println(board.getbContent());
 			return "noticeDetail/noticeDetail";
 		} else {
 			throw new BoardException("게시판 상세보기에 실패하였습니다.");
@@ -114,4 +113,42 @@ public class BoardController {
 			throw new BoardException("게시글 삭제에 실패하였습니다.");
 		}
 	}
+	
+	@RequestMapping("qlist.qa")
+	public ModelAndView qaList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		
+		int currentPage = 1; // 연산에 사용할 변수
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = bService.getqListCount();
+		
+		// 페이징 처리를 위한 연산 : Pagination
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Board> list = bService.selectqList(pi);
+		
+		if(list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("qaList/qaList");
+		} else {
+			throw new BoardException("게시글 전체 조회에 실패하였습니다.");
+		}
+		
+		return mv;
+	}
+	@RequestMapping("qdetail.qa")
+	public String qaDetail(@RequestParam("page") int page, @RequestParam("bNo") int bNo, Model model) {
+		
+		Board board = bService.selectqaBoard(bNo);
+		
+		if(board != null) {
+			model.addAttribute("page", page).addAttribute("board", board);
+			return "qaDetail/qaDetail";
+		} else {
+			throw new BoardException("게시판 상세보기에 실패하였습니다.");
+		}
+	}
+	
+	
 }
