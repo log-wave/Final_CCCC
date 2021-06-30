@@ -10,7 +10,7 @@ import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.dao.AdminDAO;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
-import com.kh.Final_cccc.recipe.model.vo.Recipe;
+//import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 @Service("adService")
 public class AdminServiceImpl implements AdminService{
@@ -21,10 +21,10 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDAO adDAO;
 
-	@Override
-	public ArrayList<Recipe> selectRecipeList() {
-		return adDAO.getSelectRecipeList(sqlSession);
-	}
+//	@Override
+//	public ArrayList<Recipe> selectRecipeList() {
+//		return adDAO.getSelectRecipeList(sqlSession);
+//	}
 
 	@Override
 	public ArrayList<Event> selectEventList() {
@@ -39,5 +39,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int getMemberListCount() {
 		return adDAO.getMemberListCount(sqlSession);
+	}
+
+	@Override
+	public MemberVO getMemberDetail(String id) {
+		return adDAO.getMemberDetail(sqlSession, id);
 	}
 }
