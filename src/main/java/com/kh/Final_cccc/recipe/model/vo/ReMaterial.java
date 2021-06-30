@@ -1,7 +1,7 @@
 package com.kh.Final_cccc.recipe.model.vo;
 
 public class ReMaterial {
-	//레시피당 재료 클래스
+	//레시피당 재료 클래스 
 	private int RM_no;
 	private int material_no;
 	private int recipe_no;
