@@ -47,21 +47,37 @@ public class RecipeController {
 		
 		//레시피 개요
 		Recipe r_info = rService.selectRecipe(recipeNo);
-		//재료정보
+		//재료정보(영양정보& 재료목록)
 		ArrayList<ReMaterial> r_mate = rService.selectrMate(recipeNo);
 		//조리과정
 		ArrayList<RecipeProcess> r_process = rService.selectProcess(recipeNo);
 		
-		//영양정보
-		
 		//회원정보 고민해볼것
 		
-		/*
-		 * System.out.println("개요 : " + r_info); System.out.println("재료정보 : " + r_mate);
-		 * System.out.println("조리과정 : " + r_process);
-		 */
+		//영양정보  계산하기
+		int kcal = 0, fat = 0, carbo = 0, sugar = 0;
 		
-		model.addAttribute("r_info", r_info).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process);
+		if(r_mate != null) {
+			for(int i = 0; i < r_mate.size(); i++) {
+				//칼로리
+				kcal += r_mate.get(i).getKcal();
+				//지방
+				fat += r_mate.get(i).getFat();
+				//탄수화물
+				carbo += r_mate.get(i).getCarbo();
+				//당
+				sugar += r_mate.get(i).getSugar();
+			}
+		}
+		int nutritionArr[] = {kcal, fat, carbo, sugar};
+		
+		ArrayList<Integer> nutlist = new ArrayList<>();
+		for(int i = 0; i < nutritionArr.length; i++) {
+			nutlist.add(nutritionArr[i]);
+		}
+		
+		
+		model.addAttribute("r_info", r_info).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist);
 		return "/RecipeDetail/RecipeDetail";
 	}
 }

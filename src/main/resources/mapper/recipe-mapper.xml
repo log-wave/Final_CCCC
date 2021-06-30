@@ -44,15 +44,22 @@
 	</select>
 	
 	<select id="selectrMate" resultMap="selectRMResult">
-		select *
-		from RECIPE_MATE
-		where RECIPE_NO = #{recipeNo}
+		select rm.rm_no, rm.material_no, rm.recipe_no, ma.material_name, ma.standard, ma.kcal, ma.protein, ma.fat, ma.carbo, ma.sugar
+		from recipe_mate rm, material ma
+		where rm.material_no = ma.material_no
+		and RECIPE_NO = #{recipeNo}
 	</select>
 	
 	<resultMap type="com.kh.Final_cccc.recipe.model.vo.ReMaterial" id="selectRMResult">
 		<id property="RM_no" column="RM_NO"/>
 		<result property="material_no" column="MATERIAL_NO"/>
 		<result property="recipe_no" column="RECIPE_NO"/>
+		<result property="material_name" column="MATERIAL_NAME"/>
+		<result property="standard" column="STANDARD"/>
+		<result property="kcal" column="KCAL"/>
+		<result property="fat" column="FAT"/>
+		<result property="carbo" column="CARBO"/>
+		<result property="sugar" column="SUGAR"/>
 	</resultMap>
 	
 	<select id="selectProcess" resultMap="selectRPResult">

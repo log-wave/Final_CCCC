@@ -28,14 +28,16 @@
 				</div>
 				<div class="nutritionFacts_listTitle">영양정보</div>
 				<div class="popUp_contentBox_leftBox_list">
-					영양정보 리스트 영역
+					<c:forEach var="n" items="${ nutArr}">
+						<p>${n }</p>
+					</c:forEach>
 				
 				
 				</div>
 				<div class="popUp_contentBox_leftBox_tagTitle">태그 정보</div>
 				<div class="popUp_contentBox_leftBox_tagList">
 				
-					태그 리스트 영역
+					태그 리스트 영역(빼야 할지도 모름)
 					
 				</div>
 				<div class="popUp_contentBox_leftBox_recipeTitle">레시피</div>
@@ -82,7 +84,7 @@
 				<div class="popUp_contentBox_righttBox_listTitle"><span>재료 리스트</span></div>
 				<div class="popUp_contentBox_righttBox_list">재료 리스트 항목 영역
 					<c:forEach var="m" items="${r_mate }">
-						<p>${m.material_no }</p>
+						<p>${m.material_name }</p>
 					</c:forEach>
 				</div>
 					<!-- 재료 리스트 항목 영역의 경우 백엔드 기능구현 할때 폼형식으로 수정해야함  -->
