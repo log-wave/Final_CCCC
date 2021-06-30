@@ -3,6 +3,7 @@ package com.kh.Final_cccc.recipe.model.vo;
 import java.sql.Date;
 
 public class Recipe {
+	//레시피 정보 클래스
 	private int recipe_no;
 	private String recipe_title;
 	private String recipe_explain;
