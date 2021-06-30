@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
-import com.kh.Final_cccc.recipe.model.vo.Recipe;
+//import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 public interface AdminService {
 
 	ArrayList<MemberVO> selectMemberList(PageInfo pi);
 
-	ArrayList<Recipe> selectRecipeList();
+//	ArrayList<Recipe> selectRecipeList();
 
 	ArrayList<Event> selectEventList();
 
 	int getMemberListCount();
+
+	MemberVO getMemberDetail(String id);
 
 }

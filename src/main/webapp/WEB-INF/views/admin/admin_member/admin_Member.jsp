@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>사용자 관리</title>
-
+<script type="text/javascript" src="${ pageContext.servletContext.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_Member.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
@@ -26,23 +26,30 @@
 		    		<tr>
 						<th width="80px">번호</th>
 						<th width="150px">아이디</th>
-						<th width="300px">이메일</th>
 						<th width="150px">닉네임</th>
-						<th width="60px">성별</th>
+						<th width="200px">가입일</th>
 						<th width="60px">상태</th>
 						<th width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
 				<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
-			    		<tr>
+			    		<tr class="click">
 			    			<td>${ ad.user_no }</td>
-			    			<td style="border-left: 1px solid black">${ ad.user_id }</td>
-			    			<td style="border-left: 1px solid black">${ ad.email}</td>
-			    			<td style="border-left: 1px solid black">${ ad.nickname }</td>
-			    			<td style="border-left: 1px solid black">${ ad.gender }</td>
+			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_id }</td>
+			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.nickname }</td>
+			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_date}</td>
+			    			<%-- <c:if test="${ ad.gender eq 'M'}">
+			    				<td style="border-left: 1px solid black">남</td>
+			    			</c:if>
+			    			<c:if test="${ ad.gender eq 'Y'}">
+			    				<td style="border-left: 1px solid black">여</td>
+			    			</c:if> --%>
 			    			<c:if test="${ ad.status eq 'Y'}">
 			    				<td style="border-left: 1px solid black">정상</td>
+			    			</c:if>
+			    			<c:if test="${ ad.status eq 'N'}">
+			    				<td style="border-left: 1px solid black">탈퇴</td>
 			    			</c:if>
 			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectone();"></td>
 			    		</tr>
@@ -148,6 +155,17 @@
 				all.checked = true;
 			}
 		}
+		
+		function memberInfo(member_id){
+			var url ='<%=request.getContextPath()%>/memberDetailForm.ad?id=' + member_id;
+			window.open(url, 'memberInfo', 'width=300px, height=320px');
+		}
+		
+		$('.click').on('mouseover',function(){
+			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
+		}).on('mouseout',function(){
+			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
 	</script>
 </body>
 </html>

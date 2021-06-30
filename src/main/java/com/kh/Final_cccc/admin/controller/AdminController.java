@@ -16,7 +16,6 @@ import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.Pagination;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
-import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 @Controller
 public class AdminController {
@@ -49,15 +48,29 @@ public class AdminController {
 		return mv;
 	}
 	
+	@RequestMapping("memberDetailForm.ad")
+	public String myInfoView(@RequestParam(value="id") String id, Model model) {
+		MemberVO member = adService.getMemberDetail(id);
+		
+		if(member != null) {
+			model.addAttribute("m", member);
+			return "admin_member/admin_mypage";
+		} else {
+			System.out.println("안됨");
+			return null;
+		}
+		
+	}
+	
 	@RequestMapping("adminRecipe.ad")
 	public String adminRecipeList(Model model) {
-		ArrayList<Recipe> list = adService.selectRecipeList();
-		if(list != null) {
-			model.addAttribute("list", list);
+//		ArrayList<Recipe> list = adService.selectRecipeList();
+//		if(list != null) {
+//			model.addAttribute("list", list);
 			return "../admin/admin_recipe/admin_Recipe";
-		} else {
-			return "../admin/admin_recipe/admin_Recipe";
-		}
+//		} else {
+//			return "../admin/admin_recipe/admin_Recipe";
+//		}
 		
 	}
 	
