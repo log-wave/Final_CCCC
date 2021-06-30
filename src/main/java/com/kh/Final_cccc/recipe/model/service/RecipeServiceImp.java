@@ -40,19 +40,19 @@ public class RecipeServiceImp implements RecipeService{
 
 	@Override
 	public Recipe selectRecipe(int recipeNo) {
-		// TODO Auto-generated method stub
+		// 레시피 정보
 		return rDAO.selectRecipe(recipeNo, sqlSession);
 	}
 
 	@Override
 	public ArrayList<ReMaterial> selectrMate(int recipeNo) {
-		// TODO Auto-generated method stub
+		// 레시피 사용 재료
 		return rDAO.selectrMate(recipeNo, sqlSession);
 	}
 
 	@Override
 	public ArrayList<RecipeProcess> selectProcess(int recipeNo) {
-		// TODO Auto-generated method stub
+		// 레시피 조리과정
 		return rDAO.selectProcess(recipeNo, sqlSession);
 	}
 	

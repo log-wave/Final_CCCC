@@ -1,7 +1,7 @@
 package com.kh.Final_cccc.recipe.model.vo;
 
 public class RecipeProcess {
-//조리과정 클래스
+	//조리과정 클래스
 	private int rp_no;
 	private String rp_comment;
 	private int recipe_no;

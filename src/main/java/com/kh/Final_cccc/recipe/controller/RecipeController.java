@@ -23,7 +23,7 @@ public class RecipeController {
 	@RequestMapping("RList.rp")
 	public ModelAndView RecipeList(@RequestParam("sort_no") int sort_no, @RequestParam("type") int type,
 			ModelAndView mv) {
-//		System.out.println("no : " + sort_no + "type : " + type);
+
 		
 		ArrayList<Recipe> rList = null;
 		switch(type) {
@@ -43,7 +43,7 @@ public class RecipeController {
 	@RequestMapping("rDetail.rp")
 	public String RecipeList(@RequestParam("recipeNo") int recipeNo, Model model) {
 		
-//		System.out.println("진입 성공 : " + recipeNo);
+
 		
 		//레시피 개요
 		Recipe r_info = rService.selectRecipe(recipeNo);
