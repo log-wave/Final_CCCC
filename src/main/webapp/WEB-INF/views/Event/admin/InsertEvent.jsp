@@ -38,7 +38,7 @@
 					<th>썸네일 이미지</th>
 					<td>
 						<div class="titleimage_upload">
-							<img id= "titleImg" name= "titleImg" width="580px" height="225px">
+							<img id= "titleImg" name= "titleImg" width="600px" height="225px">
 						</div>
 						<input type="hidden">
 					</td>
@@ -48,7 +48,7 @@
 					<th>세부 이미지</th>
 					<td>
 						<div class="image_upload">
-							<img id= "contentImg"name="image_upload" width="580px" height="900px">
+							<img id= "contentImg"name="image_upload" width="600px" height="900px">
 						</div>
 						<input type="hidden">
 					</td>
@@ -57,7 +57,7 @@
 				<tr class="insert_content">
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="85" id="insert_ta"  name="eventContent"></textarea>
+						<textarea rows="20" cols="87" id="insert_ta"  name="eventContent"></textarea>
 						<input type="hidden">
 					</td>
 				</tr>

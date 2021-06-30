@@ -23,49 +23,58 @@
 			<tr class="detail_title">
 				<th>제목</th>
 				<td class="detail_text">
-					나만의 감자요리 레시피를 올려주세요~
+					${event.eventTitle }
 					<input type="hidden" name="">
 				</td>
-				
 			</tr>
-			
+			<tr class="detail_date">
+					<th>기간</th>
+					<td class="date">
+						${ event.eventStart } ~ ${ event.eventEnd }
+						<input type="hidden">
+					</td>
+			</tr>
+			<tr class="detail_titleimage">
+					<th>썸네일 이미지</th>
+					<td>
+						<div class="titleimage_upload">
+							<img id= "titleImg" name= "titleImg" width="600px" height="225px">
+						</div>
+						<input type="hidden">
+					</td>
+			</tr>
 			<tr class="detail_image">
-				<th>이미지</th>
+				<th>세부 이미지</th>
 				<td>
-					<div class="detail_image"></div>
+					<div class="image_upload">
+					<img id= "contentImg"name="image_upload" width="600px" height="900px">
+					</div>
 					<input type="hidden" name="">
 				</td>
 			</tr>
 			
 			<tr class="detail_content">
-				<th>내용</th>
-				<td class="detail_text">
-				<input type="hidden" name="">
-				<!-- 
-					textarea에서 추가되면 이를 개행구분문자를 넣고 서블렛에서 view로 보내줄때
-					개행구분문자를 array에 하나씩 받아서 arrayList의 길이만큼<p>를 반복하는 식
-					아무값도 없는 엔터나 arrayList에 들어가면 <br>을 추가
-				 -->
-					<p>안녕하세요~쿡쿡 콕콕입니다.</p> 
-					<p>요즘 감자가 제철이라고 해요~ 마트나 시장에 가면 햇감자가 많이 나오더라구요.</p> 
-					<p>나만의 비법이 담긴 감자 활용 레시피를 알려주세요!</p> 
-					<p><br></p>
-					<p>레시피를 올려주신 분들 중 추첨을 통해 소정의 상품을 증정합니다.</p> 
-					<p>노하우가 담긴 특별한 레시피를 기대합니다.</p> 
-					<p><br></p>
- 					<p>주변 분들에게 쿡쿡 콕콕 이벤트 입소문 많이 내주시길 부탁드려요 :)</p>
-				</td>
+					<th>내용</th>
+					<td>
+						<textarea rows="20" cols="83" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
+						<input type="hidden">
+					</td>
 			</tr>
+			
+			
 		</table>
 		<!-- 로그인유저가 admin이 아닐경우 등장하지 않음
 			또는 유저용 view를 하나 더 만들기 -->
 		<div class="btn_area">
-			<button class="cnbtn">취소</button>
+			<button  type="button" class="cnbtn" onclick="location.href='eventList.ev'">목록</button>
 			<input type="submit" class="subtn" value="저장">
 		</div>
 	</div>
 	</form>
 	<br clear ="all">
+	
+	
+	
 	<!-- 이용자용 -->
 	↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓이용자일때만 등장합니다↓↓↓↓↓↓↓↓↓↓↓↓↓
 	<div class="u_mainArea">
@@ -75,28 +84,6 @@
 			<div class="u_top">
 				<img src="${pageContext.request.contextPath}/images/event/event_139_thum.png" class="u_t_img">
 			</div>
-			<%-- <div class="u_bottom">
-				<!-- 이미지 슬라이드로 구현? -->
-				<!-- 스토리보드대로 -->
-				
-				<!-- 하나당 하나씩 -->
-				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/event1.png">
-				</div>
-				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/event2.png">
-				</div>
-				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/event3.png">
-				</div>
-				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/event4.png">
-				</div>
-				<div class="u_items">
-					<img src="${pageContext.request.contextPath}/images/event/event5.png">
-				</div>
-				
-			</div> --%>
 			
 			<div class="u_e_text">
 				<div class="u_detail_text">
