@@ -27,7 +27,8 @@
 				<tr>
 					<td class="third_td">내용</td>
 					<td class="fourth_td" colspan="3">
-						<textarea rows="30" cols="100" style="resize:none;" readonly="readonly" disabled>${ board.bContent }</textarea>
+						<textarea rows="30" cols="100" style="resize:none;" readonly="readonly" disabled>${ board.bContent }</textarea> 
+						<!-- 라벨은 데이터베이스 데이터를 가져와서 뿌리면 띄어쓰기와 엔터가 안먹히므로 textarea로 받아옴 -->
 					</td>
 				</tr>
 			</table>

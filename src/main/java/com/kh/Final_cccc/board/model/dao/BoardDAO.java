@@ -42,5 +42,24 @@ public class BoardDAO {
 	public int deleteBoard(SqlSessionTemplate sqlSession, int bNo) {
 		return sqlSession.update("boardMapper.deleteBoard", bNo);
 	}
+
+	public int getqListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("boardMapper.getqListCount");
+	}
+
+	public ArrayList<Board> selectqList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("boardMapper.selectqaList", null, rowBounds);
+	}
+
+	public int addReadqaCount(SqlSessionTemplate sqlSession, int bNo) {
+		return sqlSession.update("boardMapper.addReadqaCount", bNo);
+	}
+
+	public Board selectqaBoard(SqlSessionTemplate sqlSession, int bNo) {
+		return sqlSession.selectOne("boardMapper.selectqaBoard", bNo);
+	}
 	
 }

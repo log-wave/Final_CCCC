@@ -79,7 +79,7 @@
 		<li class="menu4">공지사항/Q&amp;A
 			<ul class="submenu">
 				<li><a href="blist.bo">공지사항</a></li>
-				<li>Q&amp;A</li>
+				<li><a href="qlist.qa">Q&amp;A</a></li>
 			</ul>
 		</li>
 		<li class="menu5">이벤트

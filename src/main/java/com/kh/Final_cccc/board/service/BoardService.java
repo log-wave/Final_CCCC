@@ -19,4 +19,11 @@ public interface BoardService{
 
 	int deleteBoard(int bNo);
 
+	int getqListCount();
+
+	ArrayList<Board> selectqList(PageInfo pi);
+
+	Board selectqaBoard(int bNo);
+
+
 }

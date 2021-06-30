@@ -56,4 +56,26 @@ public class BoardServiceImpl implements BoardService {
 		return bDAO.deleteBoard(sqlSession, bNo);
 	}
 
+	@Override
+	public int getqListCount() {
+		return bDAO.getqListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Board> selectqList(PageInfo pi) {
+		return bDAO.selectqList(sqlSession, pi);
+	}
+
+	@Override
+	public Board selectqaBoard(int bNo) {
+		Board b = null;
+		
+		int result = bDAO.addReadqaCount(sqlSession, bNo);
+		
+		if(result > 0) {
+			b = bDAO.selectqaBoard(sqlSession, bNo);
+		}
+		return b;
+	}
+
 }

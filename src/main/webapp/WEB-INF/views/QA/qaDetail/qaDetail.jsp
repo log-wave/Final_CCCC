@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q&A</title>
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="qaDetail.css" rel="stylesheet" type="text/css">
+<title>Q&amp;A</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/QA/qaDetail/qaDetail.css?ver=1.0'/>">
 </head>
 <body>
 	<c:import url="../../common/header.jsp"/>
@@ -16,45 +16,39 @@
 			<table id="qaDetail_table">
 				<tr>
 					<td class="title_td">제목</td>
-					<td class="second_td" colspan="3">회원 가입 방법을 알려주세요<label>조회:2</label></td>
+					<td class="second_td" colspan="3">${ board.bTitle }<label>조회 : ${ board.bView }</label></td>
 				</tr>
 				<tr>
 					<td class="title_td">작성자</td>
-					<td class="second_td">회원1</td>
-					<td class="title_td">3</td>
-					<td class="second_td">4</td>
+					<td class="second_td">${ board.nickName }</td>
+					<td class="title_td">날짜</td>
+					<td class="second_td">${ board.bCreateDate }</td>
 				</tr>
 				<tr>
 					<td class="third_td">내용</td>
 					<td class="fourth_td" colspan="3">
-						<label>
-							회원가입을 하고 싶은데... 회원가입 방법을 알려주세요!!
-						</label>
+						<textarea rows="30" cols="100" style="resize:none;" readonly="readonly" disabled>${ board.bContent }</textarea> 
+						<!-- 라벨은 데이터베이스 데이터를 가져와서 뿌리면 띄어쓰기와 엔터가 안먹히므로 textarea로 받아옴 -->
 					</td>
 				</tr>
 			</table>
 		</div>
+		<c:url var="qupView" value="qupView.qa">
+			<c:param name="bNo" value="${ board.bNo }"/>
+			<c:param name="page" value="${ page }"/>
+		</c:url>
+		<c:url var="qdelete" value="qdelete.qa">
+			<c:param name="bNo" value="${ board.bNo }"/>
+		</c:url>
+		<c:url var="qlist" value="qlist.qa">
+			<c:param name="page" value="${ page }"/>
+		</c:url>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button>삭제</button> 
-		<button id="button1">수정</button>
-		
-		<!-- 관리자 부분 -->
-		<div class="qaDetail_answer">
-		<br><br>
-			<h4 align="left">답변</h4>
-			<br>
-			<textarea rows="4" cols="100" placeholder="내용을 입력해주세요."></textarea>
-			<br>
-			<div style="margin-right: 80px;">
-				<button>취소</button>
-				<button id="button1">등록</button>
-			</div>
-		<!-- 사용자 부분 -->
-		
-		</div>
-		
-		
-		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="location.href='${ qlist }'">목록으로</button>
+		<c:if test="${ loginUser != null && loginUser.user_no eq board.bUserNo }">
+			<button onclick="location.href='${ qdelete }'">삭제</button> 
+			<button id="button1" onclick="location.href='${ qupView }'">수정</button>
+	 	</c:if>
 	</div>
 	<c:import url="../../common/footer.jsp"/>
 </body>

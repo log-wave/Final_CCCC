@@ -45,7 +45,7 @@
 			<br>
 			<br>
 			<br>
-		<table id="paging">	
+		<table id="pagingArea">	
 		<!-- 페이징 처리 -->
 		<tr align="center" height="20" id="buttonTab">
 			<td colspan="6">
@@ -64,7 +64,7 @@
 				<!-- 페이지 -->
 				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 					<c:if test="${ p eq pi.currentPage }">
-						<font color="red" size="4"><b>[${ p }]</b></font>
+						<font color="red"><b>${ p }&nbsp;&nbsp;</b></font>
 					</c:if>
 					
 					<c:if test="${ p ne pi.currentPage }">

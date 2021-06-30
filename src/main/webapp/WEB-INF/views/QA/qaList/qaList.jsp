@@ -5,63 +5,86 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Q&A</title>
+<title>Q&amp;A</title>
 
-<link href="../../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="qaList.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/QA/qaList/qaList.css?ver=1.0'/>">
 
 </head>
 <body>
 	<c:import url="../../common/header.jsp"/>
 	<div class="qaList_main" align="center">
 		<div class="qaList">
-			<h2>Q&A</h2><br><br><br><br><br><br>
+			<h2>Q&amp;A</h2><br><br><br><br><br><br>
 			<table id="qa_one">
-			<%-- <c:forEach var="b" items="${ list }"> 여기다가 반복문 돌려서 뽑아내면 됨 --%>
-				<tr>
-					<td class="qa_first_row">5.  레시피 리뷰는 어떻게 등록하나요?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><p>회원1</p></td>
-					<td><p>2021-05-31</p></td>
-					<td class="qa_last_row"><p>2</p></td>
-				</tr>
-				<tr>
-					<td class="qa_first_row">4.  레시피를 삭제하고 싶어요</td>
-					<td><p>회원1</p></td>
-					<td><p>2021-05-31</p></td>
-					<td class="qa_last_row"><p>2</p></td>
-				</tr>
-				<tr>
-					<td class="qa_first_row">3.  회원가입은 어떻게 하나요?</td>
-					<td><p>회원1</p></td>
-					<td><p>2021-05-31</p></td>
-					<td class="qa_last_row"><p>2</p></td>
-				</tr>
-				<tr>
-					<td class="qa_first_row">2.  닉네임은 어떻게 변경하나요?</td>
-					<td><p>회원1</p></td>
-					<td><p>2021-05-31</p></td>
-					<td class="qa_last_row"><p>2</p></td>
-				</tr>
-				<tr>
-					<td class="qa_first_row">1.  회원 탈퇴 방법을 알려주세요</td>
-					<td><p>회원1</p></td>
-					<td><p>2021-05-31</p></td>
-					<td class="qa_last_row"><p>2</p></td>
-				</tr>
+			<c:forEach var="b" items="${ list }"> 
+			<tr>
+				<td align="left">
+				<c:if test="${ !empty loginUser }">
+					<c:url var="qdetail" value="qdetail.qa">
+						<c:param name="bNo" value="${ b.bNo }"/>
+						<c:param name="page" value="${ pi.currentPage }"/>
+					</c:url>
+					<a href="${ qdetail }">${ b.bTitle }</a>
+				</c:if>
+				<c:if test="${ empty loginUser }">
+					${ b.bTitle }		
+				</c:if>
+			</td>
+			<td align="center">${ b.nickName }</td>
+			<td align="center">${ b.bCreateDate }</td>
+			<td align="center">${ b.bView }</td>
+			</tr>
+			</c:forEach>	
 			</table>
-			<div class="qa_question">
-				<button>질문하기</button>
-			</div>
+			<c:if test="${ !empty loginUser }">
+				<button onclick="location.href='qinsertView.qa';">질문하기</button>
+	 		</c:if>
 			<br><br><br><br>
 			
-			<div class="pagingArea">
-				<button>&lt;</button>
-				<!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>&gt;</button>
-			</div>
+				<table id="pagingArea">	
+				<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
+					
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							[이전] &nbsp;
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="qlist.qa">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }">[이전]</a> &nbsp;
+						</c:if>
+						
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<font color="red"><b>${ p }&nbsp;&nbsp;</b></font>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="qlist.qa">
+									<c:param name="page" value="${ p }"/>
+								</c:url>
+								<a href="${ pagination }">${ p }</a> &nbsp;
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							[다음]
+						</c:if>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="qlist.qa">
+								<c:param name="page" value="${ pi.currentPage + 1 }"/>
+							</c:url> 
+							<a href="${ after }">[다음]</a>
+						</c:if>
+					</td>
+				</tr>
+				</table>
 		</div>
 	</div>
 	<c:import url="../../common/footer.jsp"/>
