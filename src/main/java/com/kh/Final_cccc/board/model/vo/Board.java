@@ -17,6 +17,19 @@ public class Board {
 	public Board() {
 		
 	}
+	public Board(int bNo, String bTitle, String bContent, Date bCreateDate, Date bModifyDate, int bView, String bStatus,
+			int bFlag, int bUserNo) {
+		super();
+		this.bNo = bNo;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bCreateDate = bCreateDate;
+		this.bModifyDate = bModifyDate;
+		this.bView = bView;
+		this.bStatus = bStatus;
+		this.bFlag = bFlag;
+		this.bUserNo = bUserNo;
+	}
 
 	public Board(int bNo, String bTitle, String bContent, Date bCreateDate, Date bModifyDate, int bView, String bStatus,
 			int bFlag, int bUserNo, String nickName) {

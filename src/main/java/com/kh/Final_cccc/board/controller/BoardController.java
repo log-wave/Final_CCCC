@@ -150,5 +150,55 @@ public class BoardController {
 		}
 	}
 	
+	@RequestMapping("qinsertView.qa")
+	public String qaInsertForm() {
+		return "insertQA/insertQA";
+	}
 	
+	@RequestMapping("qinsert.qa")
+	public String insertqaBoard(@ModelAttribute Board b, HttpServletRequest request, @RequestParam("buserNo") int buserNo) {
+		
+		b.setbUserNo(buserNo);
+
+		int result = bService.insertqaBoard(b);
+		
+		if(result > 0) {
+			return "redirect:qlist.qa";
+		} else {
+			throw new BoardException("게시글 등록에 실패하였습니다.");
+		}
+	}
+	@RequestMapping("qupView.qa")
+	public String qaUpdateForm(@RequestParam("bNo") int bNo, @RequestParam("page") int page, Model model) {
+		
+		Board board = bService.selectqaBoard(bNo);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("page", page);
+		return "updateQA/updateQA";
+	}
+	
+	@RequestMapping("qupdate.qa")
+	public String updateqaBoard(@ModelAttribute Board b, @RequestParam("page") int page, HttpServletRequest request) {
+		
+		int result = bService.updateqaBoard(b);
+		
+		if(result > 0) {
+			return "redirect:qdetail.qa?bNo="+b.getbNo() + "&page=" + page;
+		} else {
+			throw new BoardException("게시글 수정에 실패하였습니다.");
+		}
+		
+	}
+	
+	@RequestMapping("qdelete.qa")
+	public String deleteqaBoard(@RequestParam("bNo") int bNo) {
+		int result = bService.deleteqaBoard(bNo);
+		
+		if(result > 0) {
+			return "redirect:qlist.qa";
+		}else {
+			throw new BoardException("게시글 삭제에 실패하였습니다.");
+		}
+	}
 }

@@ -25,5 +25,11 @@ public interface BoardService{
 
 	Board selectqaBoard(int bNo);
 
+	int insertqaBoard(Board b);
+
+	int updateqaBoard(Board b);
+
+	int deleteqaBoard(int bNo);
+
 
 }
