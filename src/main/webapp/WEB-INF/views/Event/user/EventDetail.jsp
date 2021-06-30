@@ -56,7 +56,7 @@
 			<tr class="detail_content">
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="87" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
+						<textarea style="width: 600px; height: 300px" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
 						<input type="hidden">
 					</td>
 			</tr>

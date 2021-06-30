@@ -57,7 +57,7 @@
 				<tr class="insert_content">
 					<th>내용</th>
 					<td>
-						<textarea rows="20" cols="87" id="insert_ta"  name="eventContent"></textarea>
+						<textarea style="width: 600px; height: 300px" id="insert_ta"  name="eventContent"></textarea>
 						<input type="hidden">
 					</td>
 				</tr>
