@@ -19,9 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.Final_cccc.Event.exception.EventException;
 import com.kh.Final_cccc.Event.model.service.EventService;
 import com.kh.Final_cccc.Event.model.vo.Event;
+import com.kh.Final_cccc.Event.model.vo.PageInfo;
 import com.kh.Final_cccc.common.Files;
+import com.kh.Final_cccc.common.PagenationEvent;
 
 import oracle.net.aso.b;
 
@@ -32,13 +35,23 @@ public class EventController {
 		private EventService eService;
 	
 	@RequestMapping(value="eventList.ev" , method=RequestMethod.GET)
-	public ModelAndView EventList(ModelAndView mv) {
+	public ModelAndView EventList(@RequestParam(value="page" , required= false)Integer page, ModelAndView mv) {
 		
-		ArrayList<Event> elist = eService.selectEventList();
-			
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		int listCount = eService.getListCount();
+
+		PageInfo pi = PagenationEvent.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Event> elist = eService.selectEventList(pi);
+		
 		if(elist != null) {
-			mv.addObject("elist", elist).setViewName("user/EventList");
-		} 
+			mv.addObject("elist", elist).addObject("pi", pi).setViewName("user/EventList");
+		} else { 
+			throw new EventException("이벤트 전체 조회에 실패하였습니다.");
+		}
 		return mv;
 	}
 	
@@ -49,6 +62,8 @@ public class EventController {
 		
 		if(event != null) {
 			mv.addObject("event", event).setViewName("user/EventDetail");
+		}else {
+			throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 		}
 		System.out.println(event);
 		return mv;
@@ -128,7 +143,9 @@ public class EventController {
 			
 		}
 		
+		
 		System.out.println(filesList);
+		
 		
 		return renameFileName;
 		

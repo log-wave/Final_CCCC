@@ -61,18 +61,18 @@
 }
 
 .titleimage_upload{
-	width: 580px;
+	width: 600px;
 	height: 225px;
-	margin:auto;
+	margin-left: 5px;
 	margin-top:8px;
 	margin-bottom:8px;
 	border: 3px dashed lightgray;
 }
 
 .image_upload{
-	width: 580px;
+	width: 600px;
 	height: 900px;
-	margin:auto;
+	margin-left: 5px;
 	margin-top:8px;
 	margin-bottom:8px;
 	border: 3px dashed lightgray;
@@ -82,11 +82,14 @@
 	border-style:none;
 	border-bottom: 1px solid black;
 	height: 300px;
+	
 }
 
 #insert_ta{
 	resize: none;
-	margin: 5px;
+	margin-top:8px;
+	margin-bottom:8px;
+	margin-left: 5px;
 }
 
 .btn_area{

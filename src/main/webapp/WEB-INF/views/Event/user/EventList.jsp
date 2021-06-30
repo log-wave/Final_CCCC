@@ -23,6 +23,7 @@
 		<div class="item" >
 		<c:url var="edetail" value="edetail.ev">
 			<c:param name="eventNo" value="${e.eventNo}"/>
+			<c:param name ="page" value="${pi.currentPage}"/>
 		</c:url>
 			<!-- 이벤트 썸네일 -->
 			<div class="left">
@@ -41,12 +42,41 @@
 		
 		<!-- 페이징 -->
 		<div class="pagingArea">
-			<button>&lt;</button>
-                <!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
+		
+				<c:if test="${ pi.currentPage <= 1 }">
+					<button>&lt;</button>
+				</c:if>
+				<c:if test="${ pi.currentPage > 1 }">
+					<c:url var="before" value="eventList.ev">
+						<c:param name="page" value="${ pi.currentPage - 1 }"/>
+					</c:url>
+					<a href="${ before }"><button>&lt;</button></a> &nbsp;
+				</c:if>
+				
+               	<!-- 페이지 -->
+				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					<c:if test="${ p eq pi.currentPage }">
+						<font color="red" size="4"><b><button>${ p }</button></b></font>
+					</c:if>  
+					
+					<c:if test="${ p ne pi.currentPage }">
+						<c:url var="pagenation" value="eventList.ev">
+							<c:param name="page" value="${ p }"/>
+						</c:url>
+						<a href="${ pagenation }">${ p }</a> &nbsp;
+					</c:if>
+				</c:forEach>
+
+                <c:if test="${ pi.currentPage >= pi.maxPage }">
+					<button>&gt;</button>
+				</c:if>
+				<c:if test="${ pi.currentPage < pi.maxPage }">
+					<c:url var="after" value="eventList.ev">
+						<c:param name="page" value="${ pi.currentPage + 1 }"/>
+					</c:url> 
+					<a href="${ after }"><button>&gt;</button></a>
+				</c:if>
+                
 		</div>
 	</div>
 	

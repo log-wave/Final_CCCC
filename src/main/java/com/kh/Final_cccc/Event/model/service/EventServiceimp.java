@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.Final_cccc.Event.model.dao.EventDAO;
 import com.kh.Final_cccc.Event.model.vo.Event;
+import com.kh.Final_cccc.Event.model.vo.PageInfo;
 
 @Service("eService")
 public class EventServiceimp implements EventService{
@@ -19,10 +20,7 @@ public class EventServiceimp implements EventService{
 	@Autowired
 	private EventDAO edao;
 	
-	@Override
-	public ArrayList<Event> selectEventList() {
-		return edao.selectEventList(sqlSession);
-	}
+	
 
 	@Override
 	public Event eventDetail(int eventNo) {
@@ -33,6 +31,22 @@ public class EventServiceimp implements EventService{
 	public int insertEvent(Event event) {
 		return edao.insertEvent(sqlSession, event);
 	}
+
+	@Override
+	public int getListCount() {
+		return edao.getListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Event> selectEventList(PageInfo pi) {
+		return edao.selectEventList(sqlSession, pi);
+	}
+
+	
+
+	
+
+	
 	
 }
 		

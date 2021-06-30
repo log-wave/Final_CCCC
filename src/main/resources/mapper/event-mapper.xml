@@ -5,7 +5,7 @@
 		SELECT *
 		FROM EVENT
 		WHERE EVENT_STATUS='Y'
-		ORDER BY EVENT_NO ASC
+		ORDER BY EVENT_NO DESC
 	</select>
 	
 	
@@ -32,5 +32,13 @@
 		  #{eventStart},  #{eventEnd} , sysdate, sysdate)
 	
 	</insert>
+	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) 
+		FROM EVENT
+		WHERE EVENT_STATUS='Y'
+	</select>
+	
+	
 	
 </mapper>
