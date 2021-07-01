@@ -80,7 +80,7 @@ public class EventController {
 		
 		System.out.println(event);
 	if(ServletFileUpload.isMultipartContent(request))	{
-		savaFile(eventImg, request);
+//		savaFile(eventImg, request);
 	};
 	
 	int result = eService.insertEvent(event);
@@ -93,7 +93,7 @@ public class EventController {
 		return "user/EventList";
 	}
 	
-	private ArrayList<String> savaFile(MultipartFile[] eventImg, HttpServletRequest request) {
+	private String savaFile(MultipartFile eventImg, HttpServletRequest request) {
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String savePath = root + "/uploadFiles";
 
@@ -102,49 +102,18 @@ public class EventController {
 		if(!folder.exists()) {
 			folder.mkdirs();
 		}
-		ArrayList<String> originFileName = new ArrayList<String>();   	
-		ArrayList<String> renameFileName = new ArrayList<String>();	
-
 		
-		for(int i=0; i<eventImg.length; i++) {
-			originFileName.add(eventImg[i].getOriginalFilename()); 
-			
-			System.out.println("기존 파일명 : "+ originFileName); 
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS" + i);
-			renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))
-					+"." + eventImg[i].getOriginalFilename().substring(originFileName.lastIndexOf(".") + 1));
-			
-			System.out.println("새로운 파일명 : " + renameFileName);
-			String renamePath = folder + "/" + renameFileName;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
+		String originFileName = eventImg.getOriginalFilename(); 
+		String renameFileName = sdf.format(new Date(System.currentTimeMillis())) + "." + originFileName.substring(originFileName.lastIndexOf(".") + 1);
+		String renamePath = folder + "/" + renameFileName;
 		
 			try {
-				eventImg[i].transferTo(new File(renamePath));
+				eventImg.transferTo(new File(renamePath));
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("파일 전송 에러 : " + e.getMessage());
 			}
-		}
-		
-		ArrayList<Files> filesList = new ArrayList<Files>();	
-		for(int i = 0; i<eventImg.length; i++){
-		Files files = new Files();
-		files.setFilePath(savePath);
-		files.setFileName(originFileName.get(i));
-		files.setChangeName(renameFileName.get(i));
-		files.setRefFlag(2);
-		
-		if( i == originFileName.size() - 1) {
-			files.setFileYn("N");
-			} else {
-				files.setFileYn("Y");
-			}
-			filesList.add(files);
-			
-		}
-		
-		
-		System.out.println(filesList);
 		
 		
 		return renameFileName;

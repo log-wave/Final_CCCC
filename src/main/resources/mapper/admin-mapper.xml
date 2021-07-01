@@ -53,6 +53,12 @@
 		<result property="eventCreateDate" column="EVENT_CREATE_DATE"/>
 		<result property="eventModifyDate" column="EVENT_MODIFY_DATE"/>
 	</resultMap>
+	
+	<update id="memberStatusUpdate">
+		update member
+		set status = 'N'
+		where user_no = #{check}
+	</update>
 
 
 </mapper>
