@@ -20,8 +20,9 @@
 		<div class="countarea">
 			<div class="counttext">
 				<ul>
-					<li style="font-size: 40px;">콕콕쿡쿡 누적 레시피 수</li><br>
-					<li style="font-size: 80px;">5000</li>
+					<li style="font-size: 40px;">누적 레시피 수</li><br>
+					<li style="font-size: 80px;">5 0 0 0 </li>
+					
 				</ul>
 			</div>
 		</div>
@@ -74,8 +75,9 @@
 		
 		<br clear ="all">
 		
+		<div class="main_mapBox_title"><span><span class="pink">집에 있는 재료</span>로 만들 수 있는 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
+		<br>
 		<div class="main_myRecipe" >
-			
 	      <div class="left_area">
 	         <div class="left_box_find">
 	         	<input type="text"class="srchIng">

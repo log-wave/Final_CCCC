@@ -24,6 +24,11 @@
 #search_recipe{
 	width:110px;
 	height:40px;
+	cursor: pointer;
+}
+
+#searchBtn {
+	cursor:pointer;
 }
 
 .header_topBox input{
