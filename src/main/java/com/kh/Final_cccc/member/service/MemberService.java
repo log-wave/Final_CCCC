@@ -6,5 +6,9 @@ public interface MemberService {
 
 	
 	MemberVO memberLogin(MemberVO m);
+
+	int userIdCheck(String user_id);
+
+	int nickNameCheck(String nickName);
 	
 }

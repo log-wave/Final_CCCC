@@ -14,6 +14,9 @@
 </head>
 <body>
 	<div class="insertMember_main" align="center">
+		<div>
+			<img  src="resources/images/cccc_logo.PNG	"/>
+		</div>
 		<div class="insertMember_terms">
 			<label>이용약관, 개인정보 수집 및 이용에 모두 동의합니다.</label>
 			<input type="checkbox" id="all" value="전체선택"  onclick="selectAll();">

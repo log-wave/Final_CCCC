@@ -24,4 +24,16 @@ public class MemberServiceImpl implements MemberService{
 	
 
 	}
+
+	@Override
+	public int userIdCheck(String user_id) {
+		
+		return mDAO.idCheck(sqlSession, user_id);
+	}
+
+	@Override
+	public int nickNameCheck(String nickName) {
+		
+		return mDAO.nickNameCheck(sqlSession,nickName);
+	}
 }

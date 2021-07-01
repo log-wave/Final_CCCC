@@ -119,9 +119,7 @@
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>
 		
-		
-		
-	
+
 		
 	
 	<!-- UTF-8 인코딩 설정 --> 

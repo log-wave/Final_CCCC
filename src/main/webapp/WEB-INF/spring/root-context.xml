@@ -29,10 +29,90 @@
 	</bean>
 	
 	<!-- 파일 업로드 -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="100000000"/>
-		<property name="maxInMemorySize"  value="100000000"/>
+
+	
+	<!-- Spring Email Attachment Configuration -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+       
+    </bean>
+	
+	
+	   <!-- Send Email Exception Resolver i.e. In Case Of Exception The Controller Will Navigate To 'error.jsp' & Will Display The Exception Message -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error</prop>
+            </props>
+        </property>
+    </bean>   
+	
+	 <!-- Spring Email Sender Bean Configuration -->
+       <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" /> <!-- gmail을 사용 -->
+        <property name="port" value="587" />
+        <property name="username" value="tenzi1763@gmail.com" />
+        <property name="password" value="hmtbjogwotkozdvq" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+    
+   	 <!-- 타임 리프 관련 설정  -->
+  	
+	 <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+	  <property name="templateEngine" ref="templateEngine" />
+	  <property name="characterEncoding" value="UTF-8" />
 	</bean>
+	
+	
+	<bean id="emailTemplateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+	  <property name="prefix" value="/WEB-INF/views/template/" />
+	  <property name="suffix" value=".html" />
+	  <property name="templateMode" value="HTML" />
+	  <property name="characterEncoding" value="UTF-8" />
+	  <property name="cacheable" value="false" />
+	</bean>
+	
+	<bean id="templateResolver" class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+	  <property name="prefix" value="/WEB-INF/views/" />
+	  <property name="suffix" value=".html" />
+	  <property name="templateMode" value="HTML" />
+	  <property name="characterEncoding" value="UTF-8" />
+	  <property name="cacheable" value="false" />
+	</bean>
+	
+	
+	
+	<bean id="templateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+	  <property name="templateResolver">
+	    <ref bean="templateResolver" />
+	  </property>
+	  <property name="additionalDialects">
+	    <set>
+	      <bean
+	        class="org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect" />
+	      <bean
+	        class="org.thymeleaf.extras.java8time.dialect.Java8TimeDialect" />
+	    </set>
+	  </property>
+	</bean>
+	  
+	<bean id="emailTemplateEngine" class="org.thymeleaf.spring5.SpringTemplateEngine">
+	  <property name="templateResolver" ref="emailTemplateResolver" />
+	</bean>
+		  	
+
+	
+	 
+  
+
+
 	
 	
 	
