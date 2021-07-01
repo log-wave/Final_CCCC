@@ -13,4 +13,14 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.login", m);
 	}
 
+	public int idCheck(SqlSessionTemplate sqlSession,String user_id) {
+		
+		return sqlSession.selectOne("memberMapper.idCheck", user_id);
+	}
+
+	public int nickNameCheck(SqlSessionTemplate sqlSession, String nickName) {
+		
+		return sqlSession.selectOne("memberMapper.nickNameCheck",nickName);
+	}
+
 }

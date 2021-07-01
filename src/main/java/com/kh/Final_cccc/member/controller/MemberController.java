@@ -2,16 +2,16 @@ package com.kh.Final_cccc.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.member.service.MemberService;
@@ -130,9 +130,21 @@ public class MemberController {
 		return "insertMember/InsertMember";
 	}
 	
+	// id 중복 체크 컨트롤러
+	@RequestMapping(value = "idCheck.me", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(@RequestParam("user_id") String user_id) {
+
+		return mService.userIdCheck(user_id);
+	}
 	
-	
-	
+	// 닉네임 중복 체크 컨트롤러
+	@RequestMapping(value = "nickNameCheck.me", method = RequestMethod.GET)
+	@ResponseBody
+	public int nickNameCheck(@RequestParam("nickName") String nickName) {
+
+		return mService.nickNameCheck(nickName);
+	}
 	
 	
 	
