@@ -12,18 +12,19 @@
 <body>
 	<div class="main">
 		<div class="main_imgBox">
-			<div class="main_image" style="background-image: url(resources/images/main.png); background-size: 100%"></div>
+			<div class="main_image" style="background-image: url(resources/images/main5.png); background-size: 100%">
+			<button id="startBtn" onclick="location.href='insertMemberForm.me'"> 시작하기 </button>
+			</div>
 		</div>
 		
 		<div class="countarea">
 			<div class="counttext">
 				<ul>
-					<li style="font-size: 40px;">콕콕!쿡쿡!에 등록된 레시피 수</li><br>
+					<li style="font-size: 40px;">콕콕쿡쿡 누적 레시피 수</li><br>
 					<li style="font-size: 80px;">5000</li>
 				</ul>
 			</div>
 		</div>
-		
 		<div class="main_mapBox">
 			<div class="main_mapBox_title"><span><span class="green">지역 특산물</span>로 만들 수 있는 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
 			<div class="main_mapBox_contentBox">
