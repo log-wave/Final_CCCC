@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.kh.Final_cccc.member.model.vo.MemberVO" alias="Member"/>
 		<typeAlias type="com.kh.Final_cccc.board.model.vo.Board" alias="Board"/>
+		<typeAlias type="com.kh.Final_cccc.board.model.vo.QA_Answer" alias="QA_Answer"/>
 	</typeAliases>
 	<!-- 다시 -->
 	<mappers>
