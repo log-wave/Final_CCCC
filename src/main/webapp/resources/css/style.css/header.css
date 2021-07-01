@@ -8,14 +8,14 @@
 
 #main_logo{
 	width:350px;
-	height:129px;
+	height:130px;
+	cursor: pointer;
 }
 
 .header_topBox{
 	width:930px;
 	height:130px;
 	display: flex;
-	justify-content: center;
 	align-items: center;
 	font-size: 30px;
 	float: right;
@@ -48,7 +48,6 @@ img[name=main_header_img]{
 	margin: 10px;
 	cursor: pointer;
 }
-
 .header_topBox label{
 	font-size: 20px;
 }
@@ -61,11 +60,13 @@ img[name=main_header_img]{
 	justify-content: center;
 	align-items: center;
 	font-size: 25px;
+	
 }
 
 .header_downBox label{
 	margin-right: 50px;
 	font-size: 20px;
+	
 }
 
 .header_downBox label:hover{
@@ -74,6 +75,12 @@ img[name=main_header_img]{
 	font-weight: bold;
 	cursor: pointer;
 }
+
+.submenu  a{
+	text-decoration: none;
+	color :#313131;
+}
+
 ul, li { list-style:none; margin:0; padding:0; }
    #container{
    width: 1280px;
@@ -82,12 +89,13 @@ ul, li { list-style:none; margin:0; padding:0; }
    background:rgba(242, 159, 5, 0.88);
    font-size: 20px;
    }
+   
+   
     ul.myMenu {}
-    ul.myMenu > li { display:inline-block; width:200px; padding:15px 20px 15px 20px; border: none; position:relative;}
+    ul.myMenu > li {cursor: pointer; display:inline-block; width:200px; padding:15px 20px 15px 20px; border: none; position:relative;}
     ul.myMenu > li:hover {  }
     ul.myMenu > li ul.submenu { display:none; position:absolute; top:30px; left:0; }
     ul.myMenu > li:hover ul.submenu { display:block; margin-top: 20px;}
-    ul.myMenu > li ul.submenu > li { display:inline-block; width:200px; padding:5px 10px; background:rgb(5 67 242 / 40%); text-align:center; }
-    ul.myMenu > li ul.submenu > li:hover { background:#FFDC37; }
-    
+    ul.myMenu > li ul.submenu > li { display:inline-block; width:200px; padding:10px; background:rgb(245,245,245,0.6); text-align:center; }
+    ul.myMenu > li ul.submenu > li:hover { background:rgba(255,255,255,0.9); text-decoration:underline;}
   

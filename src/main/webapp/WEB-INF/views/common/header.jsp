@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="header">
-		<img id="main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/cccc_logo.PNG">
+		<img id="main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/logo2.png" onclick = "location.href='${pageContext.servletContext.contextPath}'" >
 		<div class="header_topBox">
 			<select id="search_recipe" name="search_recipe">
 			    <option value="">레시피 명</option>
@@ -89,24 +89,7 @@
 		</li>
 	</ul>
 	</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	</div>
 </body>
 </html>
