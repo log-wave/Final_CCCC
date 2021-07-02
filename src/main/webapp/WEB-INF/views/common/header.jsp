@@ -20,12 +20,12 @@
 			    <option value="recipe3">매운카레순대국</option>
 			</select>
 			<input type="text">
-			<button>검색</button>
+			<button id="searchBtn">검색</button>
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG">
 			<c:if test="${empty loginUser}">
 			
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
-			<label onclick="location.href='loginPage.me'">Login</label>
+			<label  style="cursor: pointer" onclick="location.href='loginPage.me'">Login</label>
 			
 			</c:if>
 			
@@ -38,7 +38,7 @@
 				<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
 			</div>
 			</c:if>
-			</div>
+		</div>
 		
 		<div id="container">
 	<ul class="myMenu">
