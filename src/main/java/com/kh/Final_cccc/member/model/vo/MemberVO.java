@@ -5,17 +5,17 @@ import java.sql.Date;
 public class MemberVO {
 	
 	private int user_no;
-	private String user_id;
-	private String user_password;
-	private String nickname;
+	private String user_id; //
+	private String user_password; //
+	private String nickname;//
 	private String email;
-	private String gender;
-	private int age;
-	private Date user_date;
-	private String authority;
-	private String status;
-	private String survey_yn;
-	private String user_name;
+	private String gender; 
+	private String age;
+	private Date user_date; //
+	private String authority; //
+	private String status;//
+	private String survey_yn; //
+	private String user_name; //
 	
 	
 	public MemberVO() {
@@ -25,7 +25,7 @@ public class MemberVO {
 
 
 	public MemberVO(int user_no, String user_id, String user_password, String nickname, String email, String gender,
-			int age, Date user_date, String authority, String status, String survey_yn, String user_name) {
+			String age, Date user_date, String authority, String status, String survey_yn, String user_name) {
 		super();
 		this.user_no = user_no;
 		this.user_id = user_id;
@@ -83,10 +83,10 @@ public class MemberVO {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	public Date getUser_date() {
