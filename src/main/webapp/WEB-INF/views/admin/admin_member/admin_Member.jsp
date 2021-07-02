@@ -51,7 +51,10 @@
 			    			<c:if test="${ ad.status eq 'N'}">
 			    				<td style="border-left: 1px solid black">탈퇴</td>
 			    			</c:if>
-			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectone();"></td>
+			    			<c:if test="${ ad.status eq 'S'}">
+			    				<td style="border-left: 1px solid black">정지</td>
+			    			</c:if>
+			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectOne();" value="${ ad.user_no}"></td>
 			    		</tr>
 				
 	    			
@@ -73,8 +76,12 @@
 	    		</table>
 	    	<br><hr><br>
 	    	<div class="buttonArea">
-				<button id="stop_mem">활동 상태 변경</button>
-				<button id="break_mem">회원 탈퇴</button>
+				<button id="changeStatus">활동 상태 변경</button>
+				<select id="status_select_box" name="status_select_box">
+					<option value="Y">정상</option>
+					<option value="N">탈퇴</option>
+					<option value="S">정지</option>
+				</select>
 	    	</div>
     	</div>
     	
@@ -165,6 +172,37 @@
 			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
 		}).on('mouseout',function(){
 			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
+		
+		$('#changeStatus').on('click', function(){
+			 /* var element = $("select")[0], worked = false; */
+			    /* if (document.createEvent) { // all browsers
+			        var e = document.createEvent("MouseEvents");
+			        e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+			        worked = element.dispatchEvent(e);
+			    } else if (element.fireEvent) { // ie
+			        worked = element.fireEvent("onmousedown");
+			    }
+			    if (!worked) { // unknown browser / error
+			        alert("It didn't worked in your browser.");
+			    } */
+			var checkArr = [];
+			$('input[name="mem_select"]:checked').each(function() {
+				checkArr.push($(this).val());
+			});
+			
+			if (confirm('해당 회원들의 상태를 변경하시겠습니까?')) {
+				$.ajax({
+					type: 'post',
+					url:'updateMemberStatus.ad',
+					data:{
+						check:checkArr
+					},
+					success:function(data){
+						window.location.reload();
+					}		
+				});
+			}
 		});
 	</script>
 </body>

@@ -62,6 +62,20 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping("updateMemberStatus.ad")
+	public String updateMemberStatus(@RequestParam(value="check[]") String[] check) {
+		int result = 0;
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			result = adService.getUpdateMemberStatus(check[i]);
+		}
+		if(result > 0) {
+			return "redirect:adminMember.ad";
+		} else {
+			System.out.println("안됨");
+			return null;
+		}
+	}
+	
 	@RequestMapping("adminRecipe.ad")
 	public String adminRecipeList(Model model) {
 //		ArrayList<Recipe> list = adService.selectRecipeList();
