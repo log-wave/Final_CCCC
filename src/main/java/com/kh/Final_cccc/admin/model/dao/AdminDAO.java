@@ -35,8 +35,8 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.memberDetail", id);
 	}
 
-	public int getUpdateMemberStatus(SqlSessionTemplate sqlSession, String check) {
-		return sqlSession.update("adminMapper.memberStatusUpdate", check);
+	public int getUpdateMemberStatus(SqlSessionTemplate sqlSession, MemberVO m) {
+		return sqlSession.update("adminMapper.memberStatusUpdate", m);
 	}
 
 }

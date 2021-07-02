@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,11 +64,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping("updateMemberStatus.ad")
-	public String updateMemberStatus(@RequestParam(value="check[]") String[] check) {
+	public String updateMemberStatus(@RequestParam(value="check[]", required=false) String[] check, @RequestParam(value="status", required=false) String status, @ModelAttribute MemberVO m) {
 		int result = 0;
 		for(int i = 0; i <= check.length - 1; i++ ) {
-			result = adService.getUpdateMemberStatus(check[i]);
+			m.setUser_id(check[i]);
+			m.setStatus(status);
+			result = adService.getUpdateMemberStatus(m);
 		}
+		
 		if(result > 0) {
 			return "redirect:adminMember.ad";
 		} else {
