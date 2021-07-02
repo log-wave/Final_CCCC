@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
-	<settings>
-		<setting name="jdbcTypeForNull" value="NULL"/> <!-- 비어있는 값이 들어오면 null로 사용할 것 -->
-	</settings>
-	
-	<typeAliases>
-		<typeAlias type="com.kh.Final_cccc.member.model.vo.MemberVO" alias="Member"/>
-		<typeAlias type="com.kh.Final_cccc.board.model.vo.Board" alias="Board"/>
-		<typeAlias type="com.kh.Final_cccc.board.model.vo.QA_Answer" alias="QA_Answer"/>
-	</typeAliases>
-	<!-- 다시 -->
-	<mappers>
-		<!-- <mapper resource="mapper/recipe-mapper.xml"/> -->
-		<mapper resource="mapper/member-mapper.xml"/>
-		<mapper resource="mapper/event-mapper.xml"/>
-		<mapper resource="mapper/admin-mapper.xml"/>
-		<mapper resource="mapper/board-mapper.xml"/>
-	</mappers>
+   <settings>
+      <setting name="jdbcTypeForNull" value="NULL"/> <!-- 비어있는 값이 들어오면 null로 사용할 것 -->
+   </settings>
+   
+   <typeAliases>
+      <typeAlias type="com.kh.Final_cccc.member.model.vo.MemberVO" alias="Member"/>
+      <typeAlias type="com.kh.Final_cccc.board.model.vo.Board" alias="Board"/>
+      <typeAlias type="com.kh.Final_cccc.board.model.vo.QA_Answer" alias="QA_Answer"/>
+   </typeAliases>
+   <!-- 다시 -->
+   <mappers>
+      <mapper resource="mapper/recipe-mapper.xml"/>
+      <mapper resource="mapper/member-mapper.xml"/>
+      <mapper resource="mapper/event-mapper.xml"/>
+      <mapper resource="mapper/admin-mapper.xml"/>
+      <mapper resource="mapper/board-mapper.xml"/>
+   </mappers>
 </configuration>
