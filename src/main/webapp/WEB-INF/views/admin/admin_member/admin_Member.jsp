@@ -39,12 +39,7 @@
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_id }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.nickname }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_date}</td>
-			    			<%-- <c:if test="${ ad.gender eq 'M'}">
-			    				<td style="border-left: 1px solid black">남</td>
-			    			</c:if>
-			    			<c:if test="${ ad.gender eq 'Y'}">
-			    				<td style="border-left: 1px solid black">여</td>
-			    			</c:if> --%>
+			    
 			    			<c:if test="${ ad.status eq 'Y'}">
 			    				<td style="border-left: 1px solid black">정상</td>
 			    			</c:if>
@@ -54,16 +49,8 @@
 			    			<c:if test="${ ad.status eq 'S'}">
 			    				<td style="border-left: 1px solid black">정지</td>
 			    			</c:if>
-			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectOne();" value="${ ad.user_no}"></td>
+			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectOne();" value="${ ad.user_id }"></td>
 			    		</tr>
-				
-	    			
-	    		
-	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
-						<%-- <c:param name="bId" value="${  }"/>
-						<c:param name="page" value="${ pi.currentPage }"/> --%>
-					<%-- </c:url> --%>
-					<%-- <a href="${ bdetail }">${ b.bTitle }</a> --%>
 	    			</c:forEach>
 	    		</c:if>
 	    		<c:if test="${ list == null }">
@@ -71,11 +58,23 @@
 						<td colspan="6">조회된 리스트가 없습니다.</td>
 					</tr>
 				</c:if>
-				
-	    			
+
 	    		</table>
 	    	<br><hr><br>
-	    	<div class="buttonArea">
+	    	<div id="searchArea" style="float: left">
+				<label>검색 조건</label>
+				<select id="searchCondition" name="searchCondition">
+					<option>-------</option>
+					<option value="writer">작성자</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select>
+		
+				<input id="searchValue" type="search">
+				<button onclick="searchBoard();">검색하기</button>
+			</div>
+			
+	    	<div class="buttonArea" style="margin-top: -10px;">
 				<button id="changeStatus">활동 상태 변경</button>
 				<select id="status_select_box" name="status_select_box">
 					<option value="Y">정상</option>
@@ -175,18 +174,8 @@
 		});
 		
 		$('#changeStatus').on('click', function(){
-			 /* var element = $("select")[0], worked = false; */
-			    /* if (document.createEvent) { // all browsers
-			        var e = document.createEvent("MouseEvents");
-			        e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-			        worked = element.dispatchEvent(e);
-			    } else if (element.fireEvent) { // ie
-			        worked = element.fireEvent("onmousedown");
-			    }
-			    if (!worked) { // unknown browser / error
-			        alert("It didn't worked in your browser.");
-			    } */
 			var checkArr = [];
+			var status = $('#status_select_box').val();
 			$('input[name="mem_select"]:checked').each(function() {
 				checkArr.push($(this).val());
 			});
@@ -196,7 +185,8 @@
 					type: 'post',
 					url:'updateMemberStatus.ad',
 					data:{
-						check:checkArr
+						check:checkArr,
+						status:status
 					},
 					success:function(data){
 						window.location.reload();
@@ -204,6 +194,13 @@
 				});
 			}
 		});
+		
+		function searchBoard(){
+			var searchCondition = $("#searchCondition").val();
+			var searchValue = $("#searchValue").val();
+	
+			location.href="search.bo?searchCondition="+searchCondition+"&searchValue="+searchValue;
+		}
 	</script>
 </body>
 </html>

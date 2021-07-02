@@ -19,6 +19,6 @@ public interface AdminService {
 
 	MemberVO getMemberDetail(String id);
 
-	int getUpdateMemberStatus(String check);
+	int getUpdateMemberStatus(MemberVO m);
 
 }

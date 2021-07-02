@@ -56,8 +56,8 @@
 	
 	<update id="memberStatusUpdate">
 		update member
-		set status = 'N'
-		where user_no = #{check}
+		set status = #{status}
+		where user_id = #{user_id}
 	</update>
 
 

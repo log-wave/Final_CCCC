@@ -47,7 +47,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public int getUpdateMemberStatus(String check) {
-		return adDAO.getUpdateMemberStatus(sqlSession, check);
+	public int getUpdateMemberStatus(MemberVO m) {
+		return adDAO.getUpdateMemberStatus(sqlSession, m);
 	}
 }
