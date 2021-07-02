@@ -1,11 +1,15 @@
 package com.kh.Final_cccc.member.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,6 +57,8 @@ import com.kh.Final_cccc.member.service.MemberService;
 
 @Controller // MemberController를 Controller의 성질을 갖는 객체로 등록하겠다.
 public class MemberController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private MemberService mService;
@@ -147,7 +153,26 @@ public class MemberController {
 	}
 	
 	
-	
+	//회원가입 컨트롤러 
+	@RequestMapping(value = "insertUser.me", method = RequestMethod.POST)
+	public String insertMember(@ModelAttribute MemberVO m ,@RequestParam("yy")String age  ) {
+		
+		logger.info("회원가입 컨트롤러 진입");
+		m.setAge(age);
+		
+		System.out.println(m);
+		
+		mService.insertMember(m);
+		
+		
+		return "redirect:backIndex.do";
+		
+			
+			
+		
+		
+		
+	}
 	
 	
 	
