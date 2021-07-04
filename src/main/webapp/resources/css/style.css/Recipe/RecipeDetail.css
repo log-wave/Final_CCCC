@@ -106,9 +106,9 @@
 	
 	margin-top: 30px;
 	width: 500px;
-	height: 900px;
+	min-height: 900px;
 	background-color: #F5A9F2;
-
+	text-align: center;
 }
 
 .popUp_contentBox_leftBox_reviewTitle{
@@ -137,7 +137,6 @@
 	
 	width: 500px;
 	height: 160px;
-	background-color: #F3F781;
 	text-align: center;
 	
 	
@@ -215,13 +214,53 @@
 }
 
 .popUp_contentBox_righttBox_list{
-	width:130px;
+	width:160px;
 	height: 330px;
-	background-color: #fff;
+	overflow: auto;	
 	margin: auto;
 	margin-top: 38px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
+.nutTable{
+	width:500px;
+	height:160px;
+	border: 1px solid black;
+}
+
+.nut_items_top{
+	width:100px;
+	height:60px;
+	vertical-align: middle;
+}
+
+.nut_items_bot{
+	width:100px;;
+	height:100px;
+	vertical-align: middle;
+	background-size: 95% 95%;
+	background-repeat: no-repeat;
+}
+
+
+.rp_mate_list li{
+	background-color: white;
+	width:130px;
+	height:40px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.rp_items{
+	
+}
+
+.rp_items img{
+	width:400px;
+	height:400px;
+	background-color: blue;
+}
+
 

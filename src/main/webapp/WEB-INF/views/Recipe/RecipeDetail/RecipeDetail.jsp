@@ -28,25 +28,36 @@
 				</div>
 				<div class="nutritionFacts_listTitle">영양정보</div>
 				<div class="popUp_contentBox_leftBox_list">
-					<c:forEach var="n" items="${ nutArr}">
-						<p>${n }</p>
-					</c:forEach>
+					<table class="nutTable">
+						<tr>
+							<td class="nut_items_top" id="ni_1">칼로리</td>
+							<td class="nut_items_top" id="ni_2">단백질</td>
+							<td class="nut_items_top" id="ni_3">지방</td>
+							<td class="nut_items_top" id="ni_4">탄수화물</td>
+							<td class="nut_items_top" id="ni_5">당</td>
+						</tr>
+						<tr>
+							<td class="nut_items_bot" background="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png">${nutArr.get(0) }</td>
+							<td class="nut_items_bot" background="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut2.png">${nutArr.get(1) }</td>
+							<td class="nut_items_bot" background="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut3.png">${nutArr.get(2) }</td>
+							<td class="nut_items_bot" background="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut4.png">${nutArr.get(3) }</td>
+							<td class="nut_items_bot" background="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut5.png">${nutArr.get(4) }</td>
+						</tr>
+					</table>
 				
 				
 				</div>
-				<div class="popUp_contentBox_leftBox_tagTitle">태그 정보</div>
-				<div class="popUp_contentBox_leftBox_tagList">
 				
-					태그 리스트 영역(빼야 할지도 모름)
-					
-				</div>
 				<div class="popUp_contentBox_leftBox_recipeTitle">레시피</div>
 				<div class="popUp_contentBox_leftBox_recipeDetail">
 					
 					레시피 작성 순서 영역
 				
 				<c:forEach var="p" items="${ r_process}">
-					<p>${p.rp_comment }</p>
+					<div class="rp_items">
+						<img class="item_images" src="${ pageContext.servletContext.contextPath }/resources/images/event/event2.png"/>
+						<p>${p.rp_comment }</p>
+					</div>
 				</c:forEach>
 				
 				
@@ -82,10 +93,13 @@
 				
 				</div>
 				<div class="popUp_contentBox_righttBox_listTitle"><span>재료 리스트</span></div>
-				<div class="popUp_contentBox_righttBox_list">재료 리스트 항목 영역
-					<c:forEach var="m" items="${r_mate }">
-						<p>${m.material_name }</p>
-					</c:forEach>
+				<div class="popUp_contentBox_righttBox_list">
+					<ul class="rp_mate_list">
+						<c:forEach var="m" items="${r_mate }">
+							<li>${m.material_name }</li>
+						</c:forEach>
+						
+					</ul>
 				</div>
 					<!-- 재료 리스트 항목 영역의 경우 백엔드 기능구현 할때 폼형식으로 수정해야함  -->
 			
