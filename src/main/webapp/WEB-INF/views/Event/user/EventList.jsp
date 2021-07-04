@@ -19,24 +19,28 @@
 		
 		<!-- 아이템 하나당 한개씩 -->
 
-		<c:forEach var="e" items="${ elist }">
-		<div class="item" >
-		<c:url var="edetail" value="edetail.ev">
-			<c:param name="eventNo" value="${e.eventNo}"/>
-			<c:param name ="page" value="${pi.currentPage}"/>
-		</c:url>
-			<!-- 이벤트 썸네일 -->
-			<div class="left">
-				<img src="${ pageContext.servletContext.contextPath }/resources/images/event/event2.png" class="event_img">
-			</div>
-			<!-- 이벤트 제목, 기간 -->
-			<div class="right">
-				<a class="event_Title" href="${ edetail }">${ e.eventTitle }</a>
-				<br><br>
-				<p class="event_period">참여기간: ${e.eventStart} ~ ${e.eventEnd}</p>
-			</div>
-		</div>
-		</c:forEach>
+			<c:forEach var="e" items="${ elist }" >
+					<div class="item" >
+					<c:url var="edetail" value="edetail.ev">
+						<c:param name="eventNo" value="${e.eventNo}"/>
+						<c:param name ="page" value="${pi.currentPage}"/>
+					</c:url>
+						<!-- 이벤트 썸네일 -->
+						<div class="left">
+						<c:forEach var="f" items="${files}"> 
+						<c:if test ="${e.eventNo eq f.refNo}">
+							<img src="${pageContext.request.contextPath}/resources/uploadFiles/${f.changeName}" class="event_img">
+						</c:if>
+						</c:forEach>
+						</div>
+						<!-- 이벤트 제목, 기간 -->
+						<div class="right">
+							<a class="event_Title" href="${ edetail }">${ e.eventTitle }</a>
+							<br><br>
+							<p class="event_period">참여기간: ${e.eventStart} ~ ${e.eventEnd}</p>
+						</div>
+					</div>
+			</c:forEach>
 		
 		
 		

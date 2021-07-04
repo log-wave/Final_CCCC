@@ -38,7 +38,7 @@
 					<th>썸네일 이미지</th>
 					<td>
 						<div class="titleimage_upload">
-							<img id= "titleImg" name= "titleImg" width="600px" height="225px">
+							<img id= "titleImg" src ="${pageContext.request.contextPath}/resources/uploadFiles/${files.get(0).changeName}"name= "titleImg" width="600px" height="225px">
 						</div>
 						<input type="hidden">
 					</td>
@@ -47,7 +47,7 @@
 				<th>세부 이미지</th>
 				<td>
 					<div class="image_upload">
-					<img id= "contentImg"name="image_upload" width="600px" height="900px">
+					<img id= "contentImg" src="${pageContext.request.contextPath}/resources/uploadFiles/${files.get(1).changeName}"name="image_upload" width="600px" height="900px">
 					</div>
 					<input type="hidden" name="">
 				</td>
@@ -56,7 +56,7 @@
 			<tr class="detail_content">
 					<th>내용</th>
 					<td>
-						<textarea style="width: 600px; height: 300px" id="detail_ta"  name="eventContent" readonly="readonly">${event.eventContent}</textarea>
+						<textarea style="width: 600px; height: 300px" id="detail_ta"  name="eventContent" readonly="readonly" disabled>${event.eventContent}</textarea>
 						<input type="hidden">
 					</td>
 			</tr>
@@ -82,7 +82,7 @@
 		
 		<div>
 			<div class="u_top">
-				<img src="${pageContext.request.contextPath}/images/event/event_139_thum.png" class="u_t_img" width="600px" height="900px">	
+				<img src="${pageContext.request.contextPath}/resources/uploadFiles/${files.get(1).changeName}" class="u_t_img" width="600px" height="900px">	
 			</div>
 			<br><br>
 			<div class="u_e_text">
@@ -92,7 +92,7 @@
 					개행구분문자를 array에 하나씩 받아서 arrayList의 길이만큼<p>를 반복하는 식
 					아무값도 없는 엔터나 arrayList에 들어가면 <br>을 추가
 				 -->
-					${event.eventContent}
+					<textarea style="width: 600px; height: 300px" id="detail_ta"  name="eventContent" readonly="readonly" disabled>${event.eventContent}</textarea>
 					
 				</div>
 			</div>
