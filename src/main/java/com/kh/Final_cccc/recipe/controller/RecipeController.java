@@ -55,12 +55,14 @@ public class RecipeController {
 		//회원정보 고민해볼것
 		
 		//영양정보  계산하기
-		int kcal = 0, fat = 0, carbo = 0, sugar = 0;
+		int kcal = 0, fat = 0, protein = 0, carbo = 0, sugar = 0;
 		
 		if(r_mate != null) {
 			for(int i = 0; i < r_mate.size(); i++) {
 				//칼로리
 				kcal += r_mate.get(i).getKcal();
+				//단백질
+				protein += r_mate.get(i).getProtein();
 				//지방
 				fat += r_mate.get(i).getFat();
 				//탄수화물
@@ -69,7 +71,7 @@ public class RecipeController {
 				sugar += r_mate.get(i).getSugar();
 			}
 		}
-		int nutritionArr[] = {kcal, fat, carbo, sugar};
+		int nutritionArr[] = {kcal, protein, fat, carbo, sugar};
 		
 		ArrayList<Integer> nutlist = new ArrayList<>();
 		for(int i = 0; i < nutritionArr.length; i++) {
@@ -81,3 +83,4 @@ public class RecipeController {
 		return "/RecipeDetail/RecipeDetail";
 	}
 }
+

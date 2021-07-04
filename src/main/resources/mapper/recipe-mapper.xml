@@ -56,6 +56,7 @@
 		<result property="recipe_no" column="RECIPE_NO"/>
 		<result property="material_name" column="MATERIAL_NAME"/>
 		<result property="standard" column="STANDARD"/>
+		<result property="protein" column="PROTEIN"/>
 		<result property="kcal" column="KCAL"/>
 		<result property="fat" column="FAT"/>
 		<result property="carbo" column="CARBO"/>
