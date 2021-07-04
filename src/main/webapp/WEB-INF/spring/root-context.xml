@@ -29,22 +29,25 @@
 	</bean>
 	
 	<!-- 파일 업로드 -->
-
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="100000000"/>
+		<property name="maxInMemorySize"  value="100000000"/>
+	</bean>
 	
-	<!-- Spring Email Attachment Configuration -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+	 <!-- Spring Email Attachment Configuration -->
+   <!-- <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
        
-    </bean>
+    </bean> -->
 	
 	
 	   <!-- Send Email Exception Resolver i.e. In Case Of Exception The Controller Will Navigate To 'error.jsp' & Will Display The Exception Message -->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+   <!--  <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
                 <prop key="java.lang.Exception">error</prop>
             </props>
         </property>
-    </bean>   
+    </bean -->
 	
 	 <!-- Spring Email Sender Bean Configuration -->
        <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">

@@ -1,4 +1,4 @@
-package com.kh.Final_cccc.common;
+package com.kh.Final_cccc.Files.vo;
 
 import java.sql.Date;
 
@@ -8,21 +8,21 @@ public class Files {
 	private String fileName;
 	private String changeName;
 	private String filePath;
-	private Date uplodDate;
+	private Date uploadDate;
 	private String fileYn;
 	private int refNo;
 	private int refFlag;
 
 	public Files() {}
 
-	public Files(int fileNo, String fileName, String changeName, String filePath, Date uplodDate, String fileYn,
+	public Files(int fileNo, String fileName, String changeName, String filePath, Date uploadDate, String fileYn,
 			int refNo, int refFlag) {
 		super();
 		this.fileNo = fileNo;
 		this.fileName = fileName;
 		this.changeName = changeName;
 		this.filePath = filePath;
-		this.uplodDate = uplodDate;
+		this.uploadDate = uploadDate;
 		this.fileYn = fileYn;
 		this.refNo = refNo;
 		this.refFlag = refFlag;
@@ -60,12 +60,12 @@ public class Files {
 		this.filePath = filePath;
 	}
 
-	public Date getUplodDate() {
-		return uplodDate;
+	public Date getuploadDate() {
+		return uploadDate;
 	}
 
-	public void setUplodDate(Date uplodDate) {
-		this.uplodDate = uplodDate;
+	public void setuploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
 	}
 
 	public String getFileYn() {
@@ -94,8 +94,8 @@ public class Files {
 
 	@Override
 	public String toString() {
-		return "File [fileNo=" + fileNo + ", fileName=" + fileName + ", changeName=" + changeName + ", filePath="
-				+ filePath + ", uplodDate=" + uplodDate + ", fileYn=" + fileYn + ", refNo=" + refNo + ", refFlag="
+		return "Files [fileNo=" + fileNo + ", fileName=" + fileName + ", changeName=" + changeName + ", filePath="
+				+ filePath + ", uploadDate=" + uploadDate + ", fileYn=" + fileYn + ", refNo=" + refNo + ", refFlag="
 				+ refFlag + "]";
 	}
 	

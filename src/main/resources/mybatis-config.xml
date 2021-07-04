@@ -17,5 +17,6 @@
       <mapper resource="mapper/event-mapper.xml"/>
       <mapper resource="mapper/admin-mapper.xml"/>
       <mapper resource="mapper/board-mapper.xml"/>
+      <mapper resource="mapper/files-mapper.xml"/>
    </mappers>
 </configuration>

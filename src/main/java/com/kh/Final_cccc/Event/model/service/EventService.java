@@ -2,8 +2,10 @@ package com.kh.Final_cccc.Event.model.service;
 
 import java.util.ArrayList;
 
+
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.Event.model.vo.PageInfo;
+
 
 
 public interface EventService {
@@ -16,6 +18,7 @@ public interface EventService {
 	int insertEvent(Event event);
 
 	int getListCount();
+
 
 	
 	

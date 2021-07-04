@@ -3,6 +3,7 @@ package com.kh.Final_cccc.Event.model.service;
 import java.util.ArrayList;
 
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +42,6 @@ public class EventServiceimp implements EventService{
 	public ArrayList<Event> selectEventList(PageInfo pi) {
 		return edao.selectEventList(sqlSession, pi);
 	}
-
-	
 
 	
 

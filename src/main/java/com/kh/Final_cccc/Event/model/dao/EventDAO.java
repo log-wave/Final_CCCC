@@ -1,6 +1,8 @@
 package com.kh.Final_cccc.Event.model.dao;
 
+
 import java.util.ArrayList;
+
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -31,5 +33,5 @@ public class EventDAO {
 	public int getListCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("eventMapper.getListCount");
 	}
-	
+
 }
