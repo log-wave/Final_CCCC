@@ -27,24 +27,17 @@
 	    				<th  width="80px">번호</th>
 	    				<th  width="150px">제목</th>
 	    				<th  width="500px">내용</th>
-	    				<th  width="90px"><input type="checkbox">전체선택</th>
+	    				<th  width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
 	    			<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
-			    		<tr>
+			    		<tr class="click">
 			    			<td>${ ad.bNo }</td>
-			    			<td style="border-left: 1px solid black">${ ad.bTitle}</td>
-			    			<td style="border-left: 1px solid black">${ ad.bContent }</td>
-			    			<td width="90px" style="border-left: 1px solid black"><input type="checkbox" name="mem_select" onclick="selectone();"></td>
+			    			<td style="border-left: 1px solid black" onclick="noticeInfo('${ ad.bNo }')">${ ad.bTitle}</td>
+			    			<td style="border-left: 1px solid black" onclick="noticeInfo('${ ad.bNo }')">${ ad.bContent }</td>
+			    			<td width="90px" style="border-left: 1px solid black" ><input type="checkbox" name="notice_select" onclick="selectOne();"></td>
 			    		</tr>
-				
-	    			
-	    		
-	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
-						<%-- <c:param name="bId" value="${  }"/>
-						<c:param name="page" value="${ pi.currentPage }"/> --%>
-					<%-- </c:url> --%>
-					<%-- <a href="${ bdetail }">${ b.bTitle }</a> --%>
+			
 	    			</c:forEach>
 	    		</c:if>
 	    		<c:if test="${ list == null }">
@@ -56,6 +49,7 @@
 	    		</table>
 	    	<br><hr><br>
 	    	<div class="buttonArea">
+	    		<button id="insert_no">공지 작성</button>
 				<button id="delete_no">공지 삭제</button>
 	    	</div>
     	</div>
@@ -105,5 +99,49 @@
 			</tr>
 		</table>
 	</div>
+	
+	<script>
+		var all = document.getElementById("all");
+		var category = document.getElementsByName("notice_select");
+		
+		function selectAll(){
+			if(all.checked){
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = true;
+				}
+			} else {
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = false;
+				}
+			}
+		}
+		
+		function selectOne(){
+			var count = 0;
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					count++;
+				}
+			}
+			
+			if(count != 12){
+				all.checked = false;
+			} else {
+				all.checked = true;
+			}
+		}
+		
+		function noticeInfo(notice_no){
+			var url ='<%=request.getContextPath()%>/noticeDetailForm.ad?id=' + notice_no;
+			window.open(url, 'noticeInfo', 'width=300px, height=320px');
+		}
+		
+		$('.click').on('mouseover',function(){
+			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
+		}).on('mouseout',function(){
+			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
+	</script>
 </body>
 </html>
