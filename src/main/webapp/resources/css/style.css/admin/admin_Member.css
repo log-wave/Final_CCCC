@@ -58,6 +58,7 @@
     #pagingArea{
     	margin-top: -100px;
 		margin-left: 400px;
+		display: inline-block;
 	}
 
 	#pagingArea button{
