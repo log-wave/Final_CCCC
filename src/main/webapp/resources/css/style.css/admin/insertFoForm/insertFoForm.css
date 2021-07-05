@@ -1,49 +1,99 @@
 @charset "UTF-8";
 
-	.insertFo_main{
-		margin-top: 70px;
-		margin-bottom: 150px;
-	}
-	
-	.insertFo_text{
-		width: 500px;
-		height: 800px;
-		background: #F6F6F6;
-	}
-	
-	.insertFo_text h2{
-		font-size: 35px;
-	}
-	
-	.inputArea{
-	width: 350px;
-	height: 200px;
-	text-align: left;
-	
-	}
-	.inputArea p{
-	display: inline-block;
-	margin-right: 10px;
-	margin-bottom: 60px;
-	
-	}
-	
-	.insertFo_text button{
-		width:150px;
-		height:40px;
-		font-weight: bold;
-		border-style: none;
-		border-radius: 4px;
-		margin-top: 20px;
-		background: #D1CBC2;
-		color: white;
-	}
-	
-	#button1{
-		background: #F29F05;
-	}
-	.insertFo_text input  {
-	 width: 220px;
-	 height: 20px;
-	}
-	
+.page{
+    width: 300px;
+    height: 430px;
+
+    margin: auto;
+}
+.food_title{
+    text-align:center;
+    width:100px;
+    margin: auto;
+    font-size: 20px;
+    border-bottom: 5px solid #F29F05;
+    font-weight: bold;
+}
+
+.food_main{
+    margin: auto;
+}
+.input_foodName{
+    width:300px;
+    height:32px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.food_label{
+    float:left;
+    width:55px;
+    height: 30px;
+    text-align: center;
+    margin-left:40px;
+    margin-right: 5px;
+    border-bottom: 2px solid #F29F05;
+}
+.input_blank{
+    width:200px;
+    height:30px;
+    float: right;
+}
+
+.input_blank input{
+    width:180px;
+    height:29px;
+}
+.food_ingre{
+    padding-left:10px;
+}
+.labels{
+    width:80px;
+    height: 30px;
+    margin: auto;
+    text-align:center; 
+    font-weight: bold;
+    border-bottom: 2px solid #F29F05;
+}
+.add{
+    width:65px;
+    height:25px;
+    border-radius: 5px;
+    border-style: none;
+    background: #F29F05;
+    color: white;
+}
+
+.reset{
+    width:65px;
+    height:25px;
+    border-radius: 5px;
+    border-style: none;
+    background: #D1CBC2;
+    color: white;
+}
+
+.btn_area{
+    width:300px;
+    text-align: center;
+}
+.btn_area button{
+    width:60px;
+    height:20px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    background: #D1CBC2;
+    color: white;
+}
+
+.subtn{
+    width:60px;
+    height:20px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    background: #F29F05;
+    color: white;
+}

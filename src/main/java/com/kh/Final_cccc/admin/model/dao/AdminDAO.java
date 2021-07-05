@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 @Repository("adDAO")
@@ -37,6 +38,16 @@ public class AdminDAO {
 
 	public int getUpdateMemberStatus(SqlSessionTemplate sqlSession, MemberVO m) {
 		return sqlSession.update("adminMapper.memberStatusUpdate", m);
+	}
+
+	public int getMateListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.getMateListCount");
+	}
+
+	public ArrayList<Material> getSelectMateList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return  (ArrayList)sqlSession.selectList("adminMapper.getSelectMateList", null, rowBounds);
 	}
 
 }

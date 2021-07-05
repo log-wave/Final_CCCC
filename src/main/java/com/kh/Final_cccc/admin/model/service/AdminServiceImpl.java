@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.dao.AdminDAO;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 //import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
@@ -49,5 +50,15 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int getUpdateMemberStatus(MemberVO m) {
 		return adDAO.getUpdateMemberStatus(sqlSession, m);
+	}
+
+	@Override
+	public int getMateListCount() {
+		return adDAO.getMateListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Material> selectMateList(PageInfo pi) {
+		return adDAO.getSelectMateList(sqlSession, pi);
 	}
 }
