@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,6 +51,82 @@
 			<button id="button1" onclick="location.href='${ qupView }'">수정</button>
 	 	</c:if>
 	</div>
+	
+	<c:if test="${ loginUser.user_id eq 'admin'}">
+	<table class="replyTable">
+		<tr>
+			<td><textarea cols="55" rows="3" id="rContent"></textarea></td>
+			<td><button id="rSubmit">등록하기</button></td>
+		</tr>
+	</table>
+	</c:if>
+			<table class="replyTable" id="rtb">
+		<thead>
+			<tr>
+				<td colspan="2"><b id="rCount"></b></td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	
+	<script>
+		
+		$(function(){
+			getAnswerList()
+			
+			$('#rSubmit').on('click', function(){
+				var rContent = $('#rContent').val();
+				var refBno = ${board.bNo};
+				console.log("값 : " + rContent + refBno);
+				$.ajax({
+					url: 'addAnswer.qa',
+					data: {rContent:rContent, refBno:refBno},
+					success: function(data){
+						console.log(data);
+						
+						if(data == 'success'){
+							$('#rContent').val('');
+							getAnswerList(); // 답변 리스트 불러오기
+						}
+					}
+				});
+			});
+		});
+		
+		function getAnswerList(){
+			var bNo = ${board.bNo};
+			
+			$.ajax({
+				url: 'qaList.qa',
+				data: {bNo:bNo},
+				dataType: 'json',
+				success: function(data){
+					console.log(data);
+					var $tableBody = $('#rtb tbody');
+					$tableBody.html('');
+					
+					$('#rCount').text('답변(' + data.length + ')');
+					if(data.length > 0){
+						for(var i in data) {
+							var $tr = $('<tr>');
+							var $rContent = $('<td>').text(data[i].Answer_Content);
+							var $rCreateDate = $('<td width=100>').text(data[i].As_Create_Date);
+							
+							$tr.append($rContent);
+							$tr.append($rCreateDate);
+							$tableBody.append($tr);
+						}
+					} else {
+						var $tr = $('<tr>');
+						var $rContent = $('<td colspan=3>').text('등록된 답변이 없습니다.');
+						
+						$tr.append($rContent);
+						$tableBody.append($tr);
+					}
+				}
+			});
+		}
+	</script>
 	<c:import url="../../common/footer.jsp"/>
 </body>
 </html>

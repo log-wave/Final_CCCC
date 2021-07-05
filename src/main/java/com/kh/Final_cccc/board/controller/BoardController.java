@@ -1,20 +1,29 @@
 package com.kh.Final_cccc.board.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.board.exception.BoardException;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.board.model.vo.QA_Answer;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.Pagination;
 
@@ -25,7 +34,7 @@ public class BoardController {
 	// 다시
 	@Autowired
 	private BoardService bService;
-	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	@RequestMapping("blist.bo")
 	public ModelAndView boardList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
 		
@@ -200,5 +209,39 @@ public class BoardController {
 		}else {
 			throw new BoardException("게시글 삭제에 실패하였습니다.");
 		}
+	}
+	
+	@RequestMapping("addAnswer.qa")
+    @ResponseBody
+    public String addAnswer(@ModelAttribute QA_Answer qa,@RequestParam("rContent")String Answer_Content,@RequestParam("refBno")int bNo ) {
+		
+        qa.setAnswer_Content(Answer_Content);
+        qa.setbNo(bNo);
+        
+        System.out.println(qa);
+        logger.info("답변 작성 컨트롤러 진입");
+        int result = bService.insertAnswer(qa);
+        System.out.println(qa);
+        if(result > 0) {
+        	
+            return "success";
+        } else {
+            System.out.println("답변 등록에 실패하였습니다.");
+            throw new BoardException("답변 등록에 실패하였습니다.");
+        }
+	}
+	
+	@RequestMapping("qaList.qa")
+	@ResponseBody
+	public void getAnswerList(@RequestParam("bNo") int bNo, HttpServletResponse response) throws JsonIOException, IOException {
+		
+		ArrayList<QA_Answer> list = bService.selectAnswerList(bNo);
+		System.out.println("아ㅓ뇌라ㅓㅁ노이ㅏㄴ뫼ㅏ로" + list);
+		response.setContentType("application/json;charset=utf-8");
+//		Gson gson = new Gson();
+		GsonBuilder gb = new GsonBuilder();
+		GsonBuilder dateGb = gb.setDateFormat("yyyy-MM-dd");
+		Gson gson = dateGb.create();
+		gson.toJson(list, response.getWriter());	
 	}
 }
