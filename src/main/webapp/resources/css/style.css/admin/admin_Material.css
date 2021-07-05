@@ -11,44 +11,36 @@
 	margin-top : 80px;
 	text-align: center;
 	}
+	
+	.admin_menu {
+    	display: inline-block;
+    }
 	.menu{
 	margin-top: 50px;
 	text-align: left;
 	margin-left: 45px;
 	}
-	.menu label{
-	font-size: 14px;
-	}
-	#food_num{
-		margin-right: 70px;
-	}
-	#food_name{
-		margin-right: 80px;
-	}
-	#food_standard{
-		margin-right: 270px;
-	}
-	#nutrient{
-		margin-right: 220px;
-	}
 	
-	.admin_menu {
-    display: inline-block;
-    }
-    
-    .food_list{
+    .material_list{
     	width : 950px;
     	height : 500px;
 		margin: auto;
 		margin-top: 20px;
     }
-	.food_Table{
-	margin-left : 35px;
+	.material_table{
 	text-align: center;
+	border-collapse: collapse;
 	}
-	.food_Table td{
-	height: 35px;
-	text-align: left;
+	.material_table th{
+	 border-bottom: 1px solid black;
+	}
+	.material_table td{
+		height: 35px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		padding: 5px;
+		border-bottom: 1px solid black;
+	
 	}
 	.buttonArea{
 		text-align: right;
@@ -59,6 +51,7 @@
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
+     	cursor: pointer;
      	}    
      .pagingArea{
 	padding-top: 20px;

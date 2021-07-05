@@ -59,6 +59,28 @@
 		set status = #{status}
 		where user_id = #{user_id}
 	</update>
-
-
+	
+	<select id="getMateListCount"  resultType="_int"> 
+		select count(*) 
+		from  MATERIAL
+	</select>
+	
+	
+	<resultMap type="com.kh.Final_cccc.material.model.vo.Material" id="mateResultMap">
+	<id property="materialNo" column="MATERIAL_NO"/>
+		<result property="materialName" column="MATERIAL_NAME"/>
+		<result property="standard" column="STANDARD"/>
+		<result property="kacl" column="KCAL"/>
+		<result property="protein" column="PROTEIN"/>
+		<result property="fat" column="FAT"/>
+		<result property="carbo" column="CARBO"/>
+		<result property="sugar" column="SUGAR"/>
+		<result property="classFi" column="CLASSFI"/>
+	</resultMap>
+	
+	<select id="getSelectMateList" resultMap="mateResultMap"> 
+		select * 
+		from MATERIAL
+		order by MATERIAL_NO desc
+	</select>
 </mapper>

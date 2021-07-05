@@ -16,6 +16,7 @@ import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.Pagination;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 @Controller
@@ -93,8 +94,26 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminMaterial.ad")
-	public String adminMaterialList() {
-		return "../admin/admin_food/admin_Food";
+	public ModelAndView adminMaterialList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = adService.getMateListCount();
+		
+		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Material> list = adService.selectMateList(pi);
+		
+		if(list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_material/admin_Material");
+		} else {
+			return null;
+		}
+		
+		return mv;
 	}
 	
 	@RequestMapping("adminSpeciality.ad")
@@ -144,5 +163,9 @@ public class AdminController {
 	public String adminSurveyList() {
 		return "../admin/admin_member/admin_Member";
 	}
-
+	@RequestMapping("insertMate.ad")
+	public String admininsertmateForm() {
+		return"../admin/admin_material/insertMateForm/insertmateForm";
+	}
+	
 }
