@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.board.model.vo.QA_Answer;
 //다시
 public interface BoardService{
 
@@ -31,5 +32,8 @@ public interface BoardService{
 
 	int deleteqaBoard(int bNo);
 
+	int insertAnswer(QA_Answer qa);
+
+	ArrayList<QA_Answer> selectAnswerList(int bNo);
 
 }

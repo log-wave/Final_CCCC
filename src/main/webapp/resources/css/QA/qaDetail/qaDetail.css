@@ -2,7 +2,7 @@
 
 .qaDetail_main{
 	margin-top: 70px;
-	margin-bottom: 150px;
+	margin-bottom: 50px;
 	display: inline-block;
 }
 
@@ -75,4 +75,38 @@
 	height:30px;
 	margin-left: 20px;
 	float: right;
+}
+#rContent{
+	width: 870px;
+	margin-right: 60px;
+	border: 1.5px solid black;
+}
+#rSubmit{
+	width:80px;
+	height:30px;
+	font-weight: bold;
+	border-style: none;
+	margin: 15px 0px 50px 730px;
+	border-radius: 4px;
+	background: #F29F05;
+	color: white;
+}
+textarea{
+	background: white;
+	border: none;
+}
+
+.AnswerDivOne{
+	width: 870px;
+	margin-right: 60px;
+	border: 2px solid lightgray;
+}
+
+#Answer_logo{
+	margin-top: 5px;
+}
+
+#AnswerAdmin{
+	text-align: left;
+	font-size: 25px;
 }
