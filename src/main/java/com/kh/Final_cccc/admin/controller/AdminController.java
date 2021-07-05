@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
+import com.kh.Final_cccc.board.exception.BoardException;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
@@ -147,6 +148,25 @@ public class AdminController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("noticeDetailForm.ad")
+	public String noticeDetail(@RequestParam(value="id") int id, Model model) {
+		Board board = bService.selectBoard(id);
+		
+		if(board != null) {
+			model.addAttribute("board", board);
+			return "admin_notice/admin_noticeDetail";
+		} else {
+			System.out.println("실패");
+			return null;
+		}
+	}
+	
+	@RequestMapping("binsertView.ad")
+	public String boardInsertForm() {
+		return "../Notice/insertNotice/insertNotice";
+	}
+	
 	
 	@RequestMapping("adminEvent.ad")
 	public String adminEventList(Model model) {

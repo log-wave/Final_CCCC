@@ -134,13 +134,18 @@
 		
 		function noticeInfo(notice_no){
 			var url ='<%=request.getContextPath()%>/noticeDetailForm.ad?id=' + notice_no;
-			window.open(url, 'noticeInfo', 'width=300px, height=320px');
+			window.open(url, 'noticeInfo', 'width=1200px, height=820px');
 		}
 		
 		$('.click').on('mouseover',function(){
 			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
 		}).on('mouseout',function(){
 			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
+		
+		$('#insert_no').on('click', function(){
+			var url ='<%=request.getContextPath()%>/binsertView.bo';
+			window.open(url, 'noticeInfo', 'width=1200px, height=820px');
 		});
 	</script>
 </body>

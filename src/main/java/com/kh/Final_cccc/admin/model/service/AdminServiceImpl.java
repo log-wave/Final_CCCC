@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.dao.AdminDAO;
+import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
@@ -60,5 +61,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ArrayList<Material> selectMateList(PageInfo pi) {
 		return adDAO.getSelectMateList(sqlSession, pi);
+	}
+
+	@Override
+	public Board getBoardDetail(String id) {
+		return adDAO.getBoardDetail(sqlSession, id);
 	}
 }

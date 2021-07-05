@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/Notice/insertNotice/insertNotice.css?ver=1.0'/>">
 </head>
 <body>
-	<c:import url="../../common/header.jsp"/>
+	
 	<form action="binsert.bo" method="post">
 	<div class="insertNotice_main" align="center">
 		<div class="insertNotice">
@@ -30,10 +30,16 @@
 		<c:url var="blist" value="blist.bo">
 			<c:param name="page" value="${ page }"/>
 		</c:url>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="location.href='${ blist }'">목록으로</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="window.close()">돌아가기</button>
 		<button id="button1">등록</button>
 	</div>
 	</form>
-	<c:import url="../../common/footer.jsp"/>
+	
+	<script>
+		$('#button1').on('click', function(){
+			location.href='<%= request.getContextPath() %>/binsert.bo'
+			window.close();
+		});
+	</script>
 </body>
 </html>

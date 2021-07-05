@@ -3,6 +3,7 @@ package com.kh.Final_cccc.admin.model.service;
 import java.util.ArrayList;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
+import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
@@ -25,6 +26,8 @@ public interface AdminService {
 	int getMateListCount();
 
 	ArrayList<Material> selectMateList(PageInfo pi);
+
+	Board getBoardDetail(String id);
 
 
 }
