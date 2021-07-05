@@ -8,6 +8,8 @@ import java.util.Random;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -23,15 +25,21 @@ import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.kh.Final_cccc.member.service.MemberService;
+
 
 @Controller
 public class EmailController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(EmailController.class);
 	
 	static String emailToRecipient, emailSubject, emailMessage,userName;
 	static final String emailFromRecipient = "zerad1763@gmail.com";
 
 	static ModelAndView modelViewObj = new ModelAndView("jsonView");
 	
+	@Autowired
+	private MemberService mService;
 	
 	@Autowired
     private JavaMailSender mailSenderObj;
@@ -117,4 +125,38 @@ public class EmailController {
          return modelViewObj; 
          
     }
+    
+ // 이메일 중복 체크 컨트롤러
+ 	@RequestMapping(value = "emailCheck.me", method = RequestMethod.GET)
+ 	@ResponseBody
+ 	public int emailCheck(@RequestParam("email") String email) {
+ 		
+ 		
+ 		
+ 		System.out.println(email);
+ 		logger.info("이메일 중복검사 컨트롤러 진입");
+ 		
+ 		
+ 		return  mService.emailCheck(email);
+		/*
+		 * if(result >0) { System.out.println("정상으로 받아오네"); return "정상으로 받아옴";
+		 * 
+		 * }else { System.out.println("못받아오네........ajax쪽에 문제가 있는듯"); return "받아오지 못하네";
+		 * }
+		 */
+ 		
+ 	
+ 		
+ 		
+ 		
+ 	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

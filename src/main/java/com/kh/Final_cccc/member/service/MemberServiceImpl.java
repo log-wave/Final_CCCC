@@ -51,4 +51,10 @@ public class MemberServiceImpl implements MemberService{
 		loggger.info("insertMember 서비스impl 진입성공");
 		return mDAO.insertMember(sqlSession, m);
 	}
+
+	@Override
+	public int emailCheck(String email) {
+		loggger.info("이메일 중복검사 서비스Impl 진입성공");
+		return mDAO.emailCheck(sqlSession, email);
+	}
 }
