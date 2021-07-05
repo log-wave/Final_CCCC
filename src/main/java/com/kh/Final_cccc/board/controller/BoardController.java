@@ -83,7 +83,7 @@ public class BoardController {
 		int result = bService.insertBoard(b);
 		
 		if(result > 0) {
-			return "redirect:blist.bo";
+			return "redirect:adminBoard.ad";
 		} else {
 			throw new BoardException("게시글 등록에 실패하였습니다.");
 		}
