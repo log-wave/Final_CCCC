@@ -218,6 +218,21 @@
     	</form>
 		<script type="text/javascript">
 		
+		$(function(){
+			
+			$("#signUpBtn").prop("disabled", true);
+			$("#signUpBtn").css("background-color", "#E2E2E2");
+		});
+		
+		
+		
+		
+		function disabeldSignUpBtn(){
+			
+			$("#signUpBtn").prop("disabled", true);
+			$("#signUpBtn").css("background-color", "#E2E2E2");
+			
+		}
 		//아이디 유효성 검사 
 	     $('#user_id').change(function(){
 		
@@ -236,9 +251,8 @@
             	
            	
         		$("#id_check").text("아이디는 영문및 숫자만 가능합니다. ");
-				$("#id_check").css("color", "red");
-				$("#signUpBtn").prop("disabled", true);
-				$("#signUpBtn").css("background-color", "#E2E2E2");
+    			$("#id_check").css("color", "red");
+        		disabeldSignUpBtn();
 				
 				return false;
             }
@@ -251,8 +265,7 @@
 			
 			$("#id_check").text("아이디는 최소 4자리 이상이어야 합니다. ");
 			$("#id_check").css("color", "red");
-			$("#signUpBtn").prop("disabled", true);
-			$("#signUpBtn").css("background-color", "#E2E2E2");
+			disabeldSignUpBtn();
 		}	
 		
 		
@@ -262,8 +275,7 @@
 			
 			$("#id_check").text("아이디에는 공백을 포함할 수 없습니다.");
 			$("#id_check").css("color", "red");
-			$("#signUpBtn").prop("disabled", true);
-			$("#signUpBtn").css("background-color", "#E2E2E2");
+			disabeldSignUpBtn();
 		
 		
 			
@@ -272,8 +284,8 @@
 			
 			$("#id_check").text("아이디에는 특수문자를 포함할 수없습니다.");
 			$("#id_check").css("color", "red");
-			$("#signUpBtn").prop("disabled", true);
-			$("#signUpBtn").css("background-color", "#E2E2E2");
+			disabeldSignUpBtn();
+			
 			
 			
 		
@@ -289,9 +301,8 @@
    				if(data == 1){
    					
    					$("#id_check").text("사용중이거나 탈퇴한 아이디 입니다. ");
-						$("#id_check").css("color", "red");
-						$("#signUpBtn").prop("disabled",true);
-   					$("#signUpBtn").css("background-color", "#E2E2E2");
+   					$("#id_check").css("color", "red");
+   					disabeldSignUpBtn();
 						
 						return false;
 						
@@ -301,7 +312,7 @@
 						$("#id_check").css("color", "green");
 						$("#signUpBtn").prop("disabled",false);
 						
-						return 'yes';
+						
    				}
 
 				}
@@ -323,30 +334,27 @@
        		 var eng = pass01.search(/[a-z]/ig);
        		 var spe = pass01.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
        		 
-       		 if(pass01.length<8 || pass01.length > 20){
+       		 if(pass01.length<8 || pass01.length >20){
        			 
        			 
        			 $("#pass01_check").text("8~20 자리 이내로 입력해주세요. ");
-       			 $("#pass01_check").css("color", "red");
-       			 $("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+     			 $("#pass01_check").css("color", "red");
+       			 disabeldSignUpBtn();
    				
        			 
        		 }else if(pass01.search(/\s/) !=-1){
        			 
        			 
        			 $("#pass01_check").text("비밀번호는 공백 없이 입력해주세요. ");
-   				 $("#pass01_check").css("color", "red");
-       		 	 r$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#pass01_check").css("color", "red");
+       			 disabeldSignUpBtn();
        		 
        		 }else if(num <0 || eng<0 || spe <0){
        			 
        			 
        			 $("#pass01_check").text("영문 , 숫자 , 특수문자를 혼합하여 입력해주세요. ");
-   				 $("#pass01_check").css("color", "red");
-   				 $("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#pass01_check").css("color", "red");
+       			 disabeldSignUpBtn();
        		 
        		 }else{
        			 $("#pass01_check").text("사용 가능한 비밀번호 입니다. ");
@@ -371,9 +379,8 @@
        			
        	
        			$("#pass02_check").text("비밀번호가 일치하지 않습니다. ");
-   				$("#pass02_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#pass02_check").css("color", "red");
+       			disabeldSignUpBtn();
        		
        		}else{
        			$("#pass02_check").text("비밀번호가 일치합니다. ");
@@ -397,26 +404,22 @@
        			
        	
        			$("#name_check").text("이름은 최소 2글자를 입력해야 합니다. ");
-   				$("#name_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#name_check").css("color", "red");
+       			disabeldSignUpBtn();
    				
        		}else if(krNameCheck.test(name)){
        			
        	
        			$("#name_check").text("이름은 한글만 입력 가능합니다. ");
-   				$("#name_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#name_check").css("color", "red");
+       			disabeldSignUpBtn();
        		
        		}else if(specialCheck.test(name)){
        			
        			$('.focused-input').focus();
        			$("#name_check").text("이름에 특수문자를 사용할 수 없습니다. ");
-   				$("#name_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
-       			
+       			$("#name_check").css("color", "red");
+       			disabeldSignUpBtn();
        		
        			
        		}else
@@ -463,9 +466,8 @@
    				
    			
        			$("#nickName_check").text("닉네임은 최소 2자리 이상이어야 합니다. ");
-   				$("#nickName_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#nickName_check").css("color", "red");
+       			disabeldSignUpBtn();
    				
    			
        		
@@ -474,9 +476,7 @@
    			
    				$("#nickName_check").text("닉네임에는 공백을 포함할 수 없습니다.");
    				$("#nickName_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
-   			
+   				disabeldSignUpBtn();
    			
        		
    				
@@ -485,17 +485,14 @@
    	
    				$("#nickName_check").text("닉네임은 한글  2~10자 , 영문 및 숫자 2~20자 입니다.");
    				$("#nickName_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
-   				
+   				disabeldSignUpBtn();
    			
    			}else if(specialCheck.test(nickName.val())){
    				
    			
    				$("#nickName_check").text("닉네임에는 특수문자를 포함할 수없습니다.");
    				$("#nickName_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+   				disabeldSignUpBtn();
    			
    			
    			}else{
@@ -511,10 +508,8 @@
    	    					
    	    					$('.focused-input').focus();
    	    					$("#nickName_check").text("사용중이거나 탈퇴한 닉네임 입니다. ");
-   							$("#nickName_check").css("color", "red");
-   							$("#signUpBtn").prop("disabled", true);
-           					$("#signUpBtn").css("background-color", "#E2E2E2");
-   	    				
+   	    					$("#nickName_check").css("color", "red");
+   	    					disabeldSignUpBtn();
    	    				}else{
    	    					$("#nickName_check").text("사용 가능한닉네임 입니다.");
    							$("#nickName_check").css("color", "green");
@@ -543,16 +538,14 @@
        		
        		if(!yearPattern.test(yy)){
        			$("#yy_check").text("태어난 년도 4자리를 정확히 입력해주세요.");
-   				$("#yy_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-				$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#yy_check").css("color", "red");
+       			disabeldSignUpBtn();
 				return false;
        		
        		}else if(yy > nowYear){
        			$("#yy_check").text("태어난 년도 4자리를 정확히 입력해주세요.");
-   				$("#yy_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-				$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#yy_check").css("color", "red");
+       			disabeldSignUpBtn();
        			return false;
        		}else
        			$("#yy_check").text("생년월일을 사용하실수 있습니다.");
@@ -577,9 +570,8 @@
        		
        		if(!(dd>=1 || dd<=31)){
        			$("#yy_check").text("태어난 일(날짜) 를 정확히 입력해주세요.");
-   				$("#yy_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#yy_check").css("color", "red");
+       			disabeldSignUpBtn();
        		
        		
        		}else
@@ -611,41 +603,60 @@
        		var email = $('#email').val();
        		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; //이메일 유효성 코드
        		
-       	
+		
        		
        		if(email =="" || email==null){
        			
        			$("#email_check").text("이메일은 필수 입력 사항입니다.");
-   				$("#email_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+       			$("#email_check").css("color", "red");
+       			disabeldSignUpBtn();
        		
        		}else if(email.search(/\s/) !=-1){
    				
    			
    				$("#email_check").text("이메일에는 공백을 포함할 수 없습니다.");
    				$("#email_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
+   				disabeldSignUpBtn();
    				
        		
        		}else if(!regex.test(email)){
-       			
-       			$("#email_check").text("이메일 형식을 정확히 입력해주세요.");
-   				$("#email_check").css("color", "red");
-   				$("#signUpBtn").prop("disabled", true);
-					$("#signUpBtn").css("background-color", "#E2E2E2");
-       			
-       			
-       		}else{
-       			$("#email_check").text("사용 가능한 이메일입니다.");
-   				$("#email_check").css("color", "green");
-   				
-   				$("#signUpBtn").prop("disabled", false);
-					
    			
-       		}
-       		
+   			$("#email_check").text("이메일 형식을 정확히 입력해주세요.");
+   			$("#email_check").css("color", "red");
+   			disabeldSignUpBtn();
+   			
+    			
+    		}else{
+    			
+    			
+				var email = $('#email').val();
+   				
+   				$.ajax({
+   	    			url : "emailCheck.me?email=" + email,
+   	    			type : "get",
+   	    			success : function(data) {
+   	    				
+   	    				if(data == 1){
+   	    					
+   	    					
+   	    					$("#email_check").text("사용중이거나 탈퇴한 이메일 입니다. ");
+   	    					$("#email_check").css("color", "red");
+   	    					disabeldSignUpBtn();
+   	    				}else{
+   	    					$("#email_check").text("사용 가능한닉네임 입니다.");
+   							$("#email_check").css("color", "green");
+   							$("#signUpBtn").prop("disabled", false);
+           				
+   	    				}
+
+   					}
+
+   	    		});
+ 
+    		}
+   			
+ 		
+   			
 
        	}); 		
    		
@@ -706,9 +717,8 @@
 	    					
 	        			}else{
 	        				$("#email_confirmCheck").text("이메일 인증번호가 일치하지 않습니다.");
-	    					$("#email_confirmCheck").css("color", "red");
-	    					$("#signUpBtn").prop("disabled", true);
-       					$("#signUpBtn").css("background-color", "#E2E2E2");
+	        				$("#email_confirmCheck").css("color", "red");
+	        				disabeldSignUpBtn();
 	    					
 	    				
 	        				

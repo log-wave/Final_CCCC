@@ -36,4 +36,12 @@ public class MemberDAO {
 	
 	}
 
+	public int emailCheck(SqlSessionTemplate sqlSession, String email) {
+	
+		loggger.info("이메일 중복검사 dao 진입 성공");
+		System.out.println("이메일 종북체크" + email);
+		
+		return sqlSession.selectOne("memberMapper.emailCheck", email);
+	}
+
 }
