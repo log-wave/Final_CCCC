@@ -159,6 +159,7 @@ public class BoardController {
 		}
 	}
 	
+	
 	@RequestMapping("qinsertView.qa")
 	public String qaInsertForm() {
 		return "insertQA/insertQA";
