@@ -18,7 +18,7 @@ public interface BoardService{
 
 	int updateBoard(Board b);
 
-	int deleteBoard(int bNo);
+	int deleteBoard(String check);
 
 	int getqListCount();
 
