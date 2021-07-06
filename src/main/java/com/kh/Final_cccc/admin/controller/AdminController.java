@@ -186,7 +186,7 @@ public class AdminController {
 	public String adminSurveyList() {
 		return "../admin/admin_member/admin_Member";
 	}
-	@RequestMapping("insertMate.ad")
+	@RequestMapping("insertMateForm.ad")
 	public String admininsertmateForm() {
 		return"../admin/admin_material/insertMateForm/insertmateForm";
 	}
