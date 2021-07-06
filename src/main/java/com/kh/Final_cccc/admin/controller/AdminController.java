@@ -2,6 +2,7 @@ package com.kh.Final_cccc.admin.controller;
 
 import java.util.ArrayList;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.board.model.vo.Board;
-import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
+import com.kh.Final_cccc.common.PagenationAdmin;
 import com.kh.Final_cccc.common.Pagination;
+import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
@@ -28,6 +30,9 @@ public class AdminController {
 	@Autowired
 	private BoardService bService;
 	
+	@Autowired
+	private MaterialService maService;
+	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
 		int currentPage = 1;
@@ -37,7 +42,7 @@ public class AdminController {
 		
 		int listCount = adService.getMemberListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
 		
 		ArrayList<MemberVO> list = adService.selectMemberList(pi);
 		
@@ -103,7 +108,7 @@ public class AdminController {
 		
 		int listCount = adService.getMateListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
 		
 		ArrayList<Material> list = adService.selectMateList(pi);
 		
@@ -114,6 +119,24 @@ public class AdminController {
 		}
 		
 		return mv;
+	}
+	
+	@RequestMapping("deleteMateStatus.ad") 
+	public String deleteMateStatus(@RequestParam(value="check[]", required=false) String[] check, @ModelAttribute Material material) {
+		int result = 0;
+		
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			material.setMaterialNo(Integer.parseInt(check[i]));
+			result = maService.getdeleteMateStatus(material);
+		}
+		
+		if(result > 0) {
+			return "redirect:adminMaterial.ad";
+		} else {
+			System.out.println("재료 삭제 안됨");
+			return null;
+		}
+		
 	}
 	
 	@RequestMapping("adminSpeciality.ad")
@@ -135,7 +158,7 @@ public class AdminController {
 		
 		int listCount = bService.getListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.board.model.vo.PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 		
 		ArrayList<Board> list = bService.selectList(pi);
 		
@@ -163,7 +186,8 @@ public class AdminController {
 	public String adminSurveyList() {
 		return "../admin/admin_member/admin_Member";
 	}
-	@RequestMapping("insertMate.ad")
+	
+	@RequestMapping("insertMateForm.ad")
 	public String admininsertmateForm() {
 		return"../admin/admin_material/insertMateForm/insertmateForm";
 	}

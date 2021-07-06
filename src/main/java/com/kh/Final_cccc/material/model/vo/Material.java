@@ -4,27 +4,29 @@ public class Material {
 	private int materialNo;
 	private String materialName;
 	private String standard;
-	private int kacl;
+	private int kcal;
 	private int protein;
 	private int fat;
 	private int carbo;
 	private int sugar;
 	private int classFi;
+	private String status;
 	
 	public Material() {}
 
-	public Material(int materialNo, String materialName, String standard, int kacl, int protein, int fat, int carbo,
-			int sugar, int classFi) {
+	public Material(int materialNo, String materialName, String standard, int kcal, int protein, int fat, int carbo,
+			int sugar, int classFi, String status) {
 		super();
 		this.materialNo = materialNo;
 		this.materialName = materialName;
 		this.standard = standard;
-		this.kacl = kacl;
+		this.kcal = kcal;
 		this.protein = protein;
 		this.fat = fat;
 		this.carbo = carbo;
 		this.sugar = sugar;
 		this.classFi = classFi;
+		this.status = status;
 	}
 
 	public int getMaterialNo() {
@@ -51,12 +53,12 @@ public class Material {
 		this.standard = standard;
 	}
 
-	public int getKacl() {
-		return kacl;
+	public int getKcal() {
+		return kcal;
 	}
 
-	public void setKacl(int kacl) {
-		this.kacl = kacl;
+	public void setKcal(int kcal) {
+		this.kcal = kcal;
 	}
 
 	public int getProtein() {
@@ -99,12 +101,19 @@ public class Material {
 		this.classFi = classFi;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Material [materialNo=" + materialNo + ", materialName=" + materialName + ", standard=" + standard
-				+ ", kacl=" + kacl + ", protein=" + protein + ", fat=" + fat + ", carbo=" + carbo + ", sugar=" + sugar
-				+ ", classFi=" + classFi + "]";
+				+ ", kcal=" + kcal + ", protein=" + protein + ", fat=" + fat + ", carbo=" + carbo + ", sugar=" + sugar
+				+ ", classFi=" + classFi + ", status=" + status + "]";
 	}
-	
 	
 }
