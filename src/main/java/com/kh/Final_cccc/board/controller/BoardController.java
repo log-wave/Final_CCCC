@@ -78,48 +78,60 @@ public class BoardController {
 	}
 	
 	@RequestMapping("binsert.bo")
-	public String insertBoard(@ModelAttribute Board b, HttpServletRequest request) {
+	public void insertBoard(@ModelAttribute Board b, HttpServletResponse response) throws JsonIOException, IOException {
 		
 		int result = bService.insertBoard(b);
 		
-		if(result > 0) {
-			return "redirect:adminBoard.ad";
-		} else {
-			throw new BoardException("게시글 등록에 실패하였습니다.");
-		}
+		String msg = null;
+		if (result > 0)
+			msg = "등록 성공";
+		else
+			msg = "등록 중 오류가 발생했습니다.";
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(msg, response.getWriter());
 	}
 	
 	@RequestMapping("bupView.bo")
-	public String boardUpdateForm(@RequestParam("bNo") int bNo, @RequestParam("page") int page, Model model) {
+	public String boardUpdateForm(@RequestParam("bNo") int bNo, Model model) {
 		
 		Board board = bService.selectBoard(bNo);
 		
 		model.addAttribute("board", board);
-		model.addAttribute("page", page);
 		return "updateNotice/updateNotice";
 	}
 	
 	@RequestMapping("bupdate.bo")
-	public String updateBoard(@ModelAttribute Board b, @RequestParam("page") int page, HttpServletRequest request) {
-		
+	public void updateBoard(@ModelAttribute Board b, @RequestParam("bNo") String bNo, @RequestParam("bTitle") String title, @RequestParam("bContent") String content, HttpServletResponse response) throws JsonIOException, IOException {
+		b.setbNo(Integer.parseInt(bNo));
+		b.setbTitle(title);
+		b.setbContent(content);
 		int result = bService.updateBoard(b);
 		
-		if(result > 0) {
-			return "redirect:bdetail.bo?bNo="+b.getbNo() + "&page=" + page;
-		} else {
-			throw new BoardException("게시글 수정에 실패하였습니다.");
-		}
+		String msg = null;
+		if (result > 0)
+			msg = "수정 성공";
+		else
+			msg = "수정 중 오류가 발생했습니다.";
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(msg, response.getWriter());
 		
 	}
 	
 	@RequestMapping("bdelete.bo")
-	public String deleteBoard(@RequestParam("bNo") int bNo) {
-		int result = bService.deleteBoard(bNo);
+	public String deleteBoard(@RequestParam(value="check[]", required=false) String[] check){
+		int result = 0;
+		
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			result = bService.deleteBoard(check[i]);
+		}
 		
 		if(result > 0) {
-			return "redirect:blist.bo";
-		}else {
-			throw new BoardException("게시글 삭제에 실패하였습니다.");
+			return "redirect:adminBoard.ad";
+		} else {
+			System.out.println("안됨");
+			return null;
 		}
 	}
 	

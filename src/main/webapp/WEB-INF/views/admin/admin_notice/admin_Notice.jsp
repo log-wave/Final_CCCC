@@ -35,7 +35,7 @@
 			    			<td>${ ad.bNo }</td>
 			    			<td style="border-left: 1px solid black" onclick="noticeInfo('${ ad.bNo }')">${ ad.bTitle}</td>
 			    			<td style="border-left: 1px solid black" onclick="noticeInfo('${ ad.bNo }')">${ ad.bContent }</td>
-			    			<td width="90px" style="border-left: 1px solid black" ><input type="checkbox" name="notice_select" onclick="selectOne();"></td>
+			    			<td width="90px" style="border-left: 1px solid black" ><input type="checkbox" name="notice_select" onclick="selectOne();" value="${ ad.bNo }"></td>
 			    		</tr>
 			
 	    			</c:forEach>
@@ -146,6 +146,26 @@
 		$('#insert_no').on('click', function(){
 			var url ='<%=request.getContextPath()%>/binsertView.bo';
 			window.open(url, 'noticeInfo', 'width=1200px, height=820px');
+		});
+		
+		$('#delete_no').on('click', function(){
+			var checkArr = [];
+			$('input[name="notice_select"]:checked').each(function() {
+				checkArr.push($(this).val());
+			});
+			if (confirm('해당 공지사항을 삭제하시겠습니까?')) {
+				$.ajax({
+					type: 'post',
+					url:'bdelete.bo',
+					data:{
+						check:checkArr
+						
+					},
+					success:function(data){
+						window.location.reload();
+					}		
+				});
+			}
 		});
 	</script>
 </body>

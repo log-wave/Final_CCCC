@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
+<script type="text/javascript" src="${ pageContext.servletContext.contextPath }/resources/js/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/Notice/noticeDetail/noticeDetail.css?ver=1.0'/>">
 </head>
@@ -33,22 +34,17 @@
 				</tr>
 			</table>
 		</div>
-		<c:url var="bupView" value="bupView.bo">
-			<c:param name="bNo" value="${ board.bNo }"/>
-			<c:param name="page" value="${ page }"/>
-		</c:url>
-		<c:url var="bdelete" value="bdelete.bo">
-			<c:param name="bNo" value="${ board.bNo }"/>
-		</c:url>
-		<c:url var="blist" value="blist.bo">
-			<c:param name="page" value="${ page }"/>
-		</c:url>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" onclick="window.close();">돌아가기</button>
-		<c:if test="${ loginUser.user_id eq 'admin' }">
-			<button id="button1" onclick="location.href='${ bupView }'">수정</button>
-	 	</c:if>
+		<button id="button1">수정</button>
+	 	
 	</div>
+	
+	<script>
+		$('#button1').on('click', function(){
+			location.href = '<%=request.getContextPath()%>/bupView.bo?bNo=' + '${ board.bNo }';
+		});
+	</script>
 	
 </body>
 </html>
