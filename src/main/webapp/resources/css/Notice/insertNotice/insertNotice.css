@@ -11,6 +11,9 @@
 	float: left;
 	margin-left: 135px;
 }
+button{
+	cursor: pointer;
+}
 
 #insertNotice_table{
 	float: left;

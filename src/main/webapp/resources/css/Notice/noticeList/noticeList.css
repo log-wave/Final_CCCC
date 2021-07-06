@@ -10,6 +10,9 @@
 	font-size: 35px;
 	border-bottom: 4px solid #E87E73;
 }
+button{
+	cursor: pointer;
+}
 
 #notice_one{
 	width: 800px;

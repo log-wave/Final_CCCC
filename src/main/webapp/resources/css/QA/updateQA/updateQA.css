@@ -22,6 +22,9 @@
 	border-bottom: 1px solid black;
 	padding: 10px;
 }
+button{
+	cursor: pointer;
+}
 
 .title_td{
 	width: 130px;

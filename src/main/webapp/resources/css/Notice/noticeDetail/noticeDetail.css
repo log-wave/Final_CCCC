@@ -11,6 +11,9 @@
 	float: left;
 	margin-left: 160px;
 }
+button{
+	cursor: pointer;
+}
 
 #noticeDetail_table td{
 	border-top: 1px solid black;
