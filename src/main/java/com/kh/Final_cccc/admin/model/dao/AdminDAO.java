@@ -2,13 +2,13 @@ package com.kh.Final_cccc.admin.model.dao;
 
 import java.util.ArrayList;
 
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
-import com.kh.Final_cccc.admin.model.vo.PageInfo;
+import com.kh.Final_cccc.board.model.vo.Board;
+import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
@@ -49,6 +49,10 @@ public class AdminDAO {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return  (ArrayList)sqlSession.selectList("adminMapper.getSelectMateList", null, rowBounds);
+	}
+
+	public Board getBoardDetail(SqlSessionTemplate sqlSession, String id) {
+		return sqlSession.selectOne("adminMapper.boardDetail", id);
 	}
 
 }
