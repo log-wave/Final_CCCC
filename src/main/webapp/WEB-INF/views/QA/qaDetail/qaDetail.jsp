@@ -51,29 +51,27 @@
 			<button id="button1" onclick="location.href='${ qupView }'">수정</button>
 	 	</c:if>
 	</div>
-	
-	<c:if test="${ loginUser.user_id eq 'admin'}">
+	<c:if test="${loginUser.authority eq 'Y'}">
 	<table class="replyTable">
 		<tr>
-			<td><textarea cols="55" rows="3" id="rContent"></textarea></td>
-			<td><button id="rSubmit">등록하기</button></td>
+			<td><textarea cols="55" rows="3" id="rContent" style="resize:none;"></textarea></td>
+			<td><br><button id="rSubmit">등록하기</button></td>
 		</tr>
 	</table>
 	</c:if>
-			<table class="replyTable" id="rtb">
+			<table class="answerTable" id="rtb">
 		<thead>
 			<tr>
-				<td colspan="2"><b id="rCount"></b></td>
+				<td colspan="2"><img src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG" style="width: 25px;height: 25px;"><b id="rCount"></b></td>
 			</tr>
 		</thead>
 		<tbody></tbody>
 	</table>
-	
+	<br><br>
 	<script>
 		
 		$(function(){
 			getAnswerList()
-			
 			$('#rSubmit').on('click', function(){
 				var rContent = $('#rContent').val();
 				var refBno = ${board.bNo};
@@ -87,7 +85,7 @@
 						if(data == 'success'){
 							$('#rContent').val('');
 							getAnswerList(); // 답변 리스트 불러오기
-						}
+						} 
 					}
 				});
 			});
@@ -105,16 +103,18 @@
 					var $tableBody = $('#rtb tbody');
 					$tableBody.html('');
 					
-					$('#rCount').text('답변(' + data.length + ')');
+					$('#rCount').text(' 관리자님의 답변');
 					if(data.length > 0){
 						for(var i in data) {
 							var $tr = $('<tr>');
-							var $rContent = $('<td>').text(data[i].Answer_Content);
-							var $rCreateDate = $('<td width=100>').text(data[i].As_Create_Date);
+							var $td = $('<td>');
+							var $rContent = $('<textarea cols="55" rows="10" style="resize:none; overflow:visible;" readonly="readonly" disabled id="AtextA">').text(data[i].Answer_Content);
+							var $rCreateDate = $('<td width=100 id="ACD">').text(data[i].As_Create_Date);
 							
+							$tableBody.append($tr);
+							$tableBody.append($td);
 							$tr.append($rContent);
 							$tr.append($rCreateDate);
-							$tableBody.append($tr);
 						}
 					} else {
 						var $tr = $('<tr>');
