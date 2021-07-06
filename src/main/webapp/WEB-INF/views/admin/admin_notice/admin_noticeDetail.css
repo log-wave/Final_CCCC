@@ -1,26 +1,18 @@
 @charset "UTF-8";
 
-.insertNotice_main{
+.noticeDetail_main{
 	margin-top: 70px;
 	margin-bottom: 150px;
 	display: inline-block;
 }
 
-.insertNotice h4{
-	font-size: 25px;
+#noticeDetail_table{
+	width: 900px;
 	float: left;
-	margin-left: 135px;
-}
-button{
-	cursor: pointer;
+	margin-left: 160px;
 }
 
-#insertNotice_table{
-	float: left;
-	margin-left: 135px;
-}
-
-#insertNotice_table td{
+#noticeDetail_table td{
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	padding: 10px;
@@ -35,13 +27,14 @@ button{
 }
 
 .second_td{
-	width: 800px;
+	width: 130px;
 	height: 30px;
+	text-align: center;
+	vertical-align: middle;
 }
 
-.second_td input{
-	width: 500px;
-	height: 30px;
+.second_td label{
+	float: right;
 }
 
 .third_td{
@@ -52,7 +45,7 @@ button{
 	vertical-align: middle;
 }
 
-.insertNotice_main button{
+.noticeDetail_main button{
 	width:150px;
 	height:40px;
 	font-weight: bold;

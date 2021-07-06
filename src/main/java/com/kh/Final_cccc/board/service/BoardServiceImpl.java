@@ -3,12 +3,16 @@ package com.kh.Final_cccc.board.service;
 import java.util.ArrayList;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.Final_cccc.board.controller.BoardController;
 import com.kh.Final_cccc.board.model.dao.BoardDAO;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.model.vo.PageInfo;
+import com.kh.Final_cccc.board.model.vo.QA_Answer;
 
 @Service("bService")
 public class BoardServiceImpl implements BoardService {
@@ -18,7 +22,7 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Autowired
 	private BoardDAO bDAO;
-	
+	private static final Logger logger = LoggerFactory.getLogger(BoardServiceImpl.class);
 	@Override
 	public int getListCount() {
 		return bDAO.getListCount(sqlSession);
@@ -52,7 +56,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int deleteBoard(int bNo) {
+	public int deleteBoard(String bNo) {
 		return bDAO.deleteBoard(sqlSession, bNo);
 	}
 
@@ -92,6 +96,19 @@ public class BoardServiceImpl implements BoardService {
 	public int deleteqaBoard(int bNo) {
 		return bDAO.deleteqaBoard(sqlSession, bNo);
 	}
+
+	@Override
+	public int insertAnswer(QA_Answer qa) {
+		logger.info("답변 작성 serviceImpl 진입");
+		return bDAO.insertAnswer(sqlSession, qa);
+	}
+
+	@Override
+	public ArrayList<QA_Answer> selectAnswerList(int bNo) {
+		return bDAO.selectAnswerList(sqlSession, bNo);
+	}
+
+	
 
 	
 }

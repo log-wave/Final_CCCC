@@ -15,7 +15,7 @@
 	<c:import url="../../common/header.jsp"/>
 	<div class="qaList_main" align="center">
 		<div class="qaList">
-			<h2>Q&amp;A</h2><br><br><br><br><br><br>
+			<h2>Q&amp;A</h2><br><br><br><br>
 			<table id="qa_one">
 			<c:forEach var="b" items="${ list }"> 
 			<tr>
