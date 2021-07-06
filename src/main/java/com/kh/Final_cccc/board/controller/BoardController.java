@@ -226,20 +226,16 @@ public class BoardController {
 	
 	@RequestMapping("addAnswer.qa")
     @ResponseBody
-    public String addAnswer(@ModelAttribute QA_Answer qa,@RequestParam("rContent")String Answer_Content,@RequestParam("refBno")int bNo ) {
+    public String addAnswer(@ModelAttribute QA_Answer qa,@RequestParam("rContent")String Answer_Content,@RequestParam("refBno")int bNo) {
 		
         qa.setAnswer_Content(Answer_Content);
         qa.setbNo(bNo);
         
-        System.out.println(qa);
-        logger.info("답변 작성 컨트롤러 진입");
+        
         int result = bService.insertAnswer(qa);
-        System.out.println(qa);
         if(result > 0) {
-        	
             return "success";
         } else {
-            System.out.println("답변 등록에 실패하였습니다.");
             throw new BoardException("답변 등록에 실패하였습니다.");
         }
 	}
@@ -248,8 +244,8 @@ public class BoardController {
 	@ResponseBody
 	public void getAnswerList(@RequestParam("bNo") int bNo, HttpServletResponse response) throws JsonIOException, IOException {
 		
+		
 		ArrayList<QA_Answer> list = bService.selectAnswerList(bNo);
-		System.out.println("아ㅓ뇌라ㅓㅁ노이ㅏㄴ뫼ㅏ로" + list);
 		response.setContentType("application/json;charset=utf-8");
 //		Gson gson = new Gson();
 		GsonBuilder gb = new GsonBuilder();

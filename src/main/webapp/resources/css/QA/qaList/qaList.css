@@ -4,7 +4,9 @@
  	margin-top: 70px;
 	margin-bottom: 150px;
 }
-
+.qaList{
+	padding-top:32px;
+}
 .qaList h2{
 	display: inline;
 	font-size: 35px;
@@ -17,6 +19,9 @@
 	border-collapse: separate;
 	border-spacing: 0 20px;
 	
+}
+button{
+	cursor: pointer;
 }
 
 #qa_one td{
