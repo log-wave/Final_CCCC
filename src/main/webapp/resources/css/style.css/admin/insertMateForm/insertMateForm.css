@@ -6,53 +6,49 @@
 
     margin: auto;
 }
-.food_title{
+.mate_title{
     text-align:center;
     width:100px;
     margin: auto;
-    font-size: 20px;
-    border-bottom: 5px solid #F29F05;
+    font-size: 23px;
     font-weight: bold;
-}
-
-.food_main{
-    margin: auto;
-}
-.input_foodName{
-    width:300px;
-    height:32px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-.food_label{
-    float:left;
-    width:55px;
-    height: 30px;
-    text-align: center;
-    margin-left:40px;
-    margin-right: 5px;
     border-bottom: 2px solid #F29F05;
 }
+
+.mate_main{
+    margin: auto;
+}
+.input_mateName{
+    width:400px;
+    height:32px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.mate_label{
+    float:left;
+    width:75px;
+    height: 30px;
+    margin-right: 5px;
+}
 .input_blank{
-    width:200px;
+    width:300px;
     height:30px;
     float: right;
+   
 }
 
 .input_blank input{
     width:180px;
     height:29px;
 }
-.food_ingre{
-    padding-left:10px;
-}
 .labels{
-    width:80px;
+    width:200px;
     height: 30px;
-    margin: auto;
-    text-align:center; 
     font-weight: bold;
-    border-bottom: 2px solid #F29F05;
+}
+#classFi{
+	width: 190px;
+	height: 35px;
 }
 .add{
     width:65px;
@@ -77,8 +73,8 @@
     text-align: center;
 }
 .btn_area button{
-    width:60px;
-    height:20px;
+    width:80px;
+    height:30px;
     font-weight: bold;
     border-style: none;
     border-radius: 4px;
@@ -88,8 +84,8 @@
 }
 
 .subtn{
-    width:60px;
-    height:20px;
+    width:80px;
+    height:30px;
     font-weight: bold;
     border-style: none;
     border-radius: 4px;

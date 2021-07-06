@@ -67,4 +67,5 @@ public class AdminServiceImpl implements AdminService{
 	public Board getBoardDetail(String id) {
 		return adDAO.getBoardDetail(sqlSession, id);
 	}
+
 }

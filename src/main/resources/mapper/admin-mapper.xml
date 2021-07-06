@@ -63,6 +63,7 @@
 	<select id="getMateListCount"  resultType="_int"> 
 		select count(*) 
 		from  MATERIAL
+		where STATUS = 'Y'
 	</select>
 	
 	
@@ -70,7 +71,7 @@
 	<id property="materialNo" column="MATERIAL_NO"/>
 		<result property="materialName" column="MATERIAL_NAME"/>
 		<result property="standard" column="STANDARD"/>
-		<result property="kacl" column="KCAL"/>
+		<result property="kcal" column="KCAL"/>
 		<result property="protein" column="PROTEIN"/>
 		<result property="fat" column="FAT"/>
 		<result property="carbo" column="CARBO"/>
@@ -81,6 +82,7 @@
 	<select id="getSelectMateList" resultMap="mateResultMap"> 
 		select * 
 		from MATERIAL
+		where STATUS = 'Y'
 		order by MATERIAL_NO desc
 	</select>
 </mapper>

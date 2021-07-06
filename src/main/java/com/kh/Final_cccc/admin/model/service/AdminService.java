@@ -29,5 +29,4 @@ public interface AdminService {
 
 	Board getBoardDetail(String id);
 
-
 }
