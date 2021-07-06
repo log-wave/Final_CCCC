@@ -2,6 +2,8 @@ package com.kh.Final_cccc.admin.controller;
 
 import java.util.ArrayList;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
-import com.kh.Final_cccc.board.exception.BoardException;
+import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.board.model.vo.Board;
-import com.kh.Final_cccc.board.model.vo.PageInfo;
 import com.kh.Final_cccc.board.service.BoardService;
+import com.kh.Final_cccc.common.PagenationAdmin;
 import com.kh.Final_cccc.common.Pagination;
+import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
@@ -38,7 +41,7 @@ public class AdminController {
 		
 		int listCount = adService.getMemberListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
 		
 		ArrayList<MemberVO> list = adService.selectMemberList(pi);
 		
@@ -104,7 +107,7 @@ public class AdminController {
 		
 		int listCount = adService.getMateListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
 		
 		ArrayList<Material> list = adService.selectMateList(pi);
 		
@@ -136,7 +139,7 @@ public class AdminController {
 		
 		int listCount = bService.getListCount();
 		
-		PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.board.model.vo.PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
 		
 		ArrayList<Board> list = bService.selectList(pi);
 		
