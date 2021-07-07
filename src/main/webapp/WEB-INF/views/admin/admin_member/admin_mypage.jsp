@@ -26,7 +26,7 @@
 					</tr>
 					<tr>
 						<td>성별</td>
-						<c:if test="${ m.gender eq 'Y'}">
+						<c:if test="${ m.gender eq 'F'}">
 							<td>여</td>
 						</c:if>
 						<c:if test="${ m.gender eq 'M'}">
