@@ -17,90 +17,173 @@
 	<c:import url="/WEB-INF/views/admin/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
-	    <h2 id="title"> 문의 목록 </h2>
+	    <h2 id="title"> Q&A 목록 </h2>
 	    <br>
-			<div class="menu">
-					<label id="no_num">번호</label>
-					<label id="no_title">제목</label>
-					<label id="no_content">내용</label>
-					<label><input type="checkbox">전체선택</label>
-			</div>
 	    	<div class="QA_list">
 	    	<hr>
 			<br>
 	    		<table class="QA_Table">
-	    		
 	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
+	    				<th  width="85px">번호</th>
+	    				<th  width="150px">제목</th>
+	    				<th  width="500px">내용</th>
+	    				<th  width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
-	    			<tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr><tr>
-	    				<td  width="80px">1</td>
-	    				<td  width="250px">회원 탈퇴 방법을 알려주세요</td>
-	    				<td  width="560px">오른쪽 상단 [사람모양 아이콘>회원가입]을 통해 가입이 가능합니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-					    			
+	    			<c:if test="${ list != null }">
+					<c:forEach var="ad" items="${ list }">
+			    		<tr class="click">
+			    			<td>${ ad.bNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="qaInfo('${ ad.bNo }')">${ ad.bTitle}</td>
+			    			<td style="border-left: 1px solid black" onclick="qaInfo('${ ad.bNo }')">${ ad.bContent }</td>
+			    			<td width="90px" style="border-left: 1px solid black" ><input type="checkbox" name="qa_select" onclick="selectOne();" value="${ ad.bNo }"></td>
+			    		</tr>
+			
+	    			</c:forEach>
+	    		</c:if>
+	    		<c:if test="${ list == null }">
+					<tr>
+						<td colspan="6">조회된 리스트가 없습니다.</td>
+					</tr>
+				</c:if>
 	    			
-	    		
 	    		</table>
 	    	<br><hr><br>
+	    	<div id="searchArea" style="float: left">
+				<label>검색 조건</label>
+				<select id="searchCondition" name="searchCondition">
+					<option>-------</option>
+					<option value="writer">작성자</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select>
+		
+				<input id="searchValue" type="search">
+				<button onclick="searchBoard();">검색하기</button>
+			</div>
 	    	<div class="buttonArea">
-				<button id="delete_QA">문의 삭제</button>
+	    		<button id="insert_no">공지 작성</button>
+				<button id="delete_no">공지 삭제</button>
 	    	</div>
     	</div>
     	
-    	<!-- 페이징 -->
-			<div class="pagingArea">
-			<button>&lt;</button>
-                <!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
-			</div>
+    	</div>
+    	<div align="center">
+    		<!-- 페이징 -->
+				<table id="pagingArea">	
+			<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
+					
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="adminQAboard.ad">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a>
+						</c:if>
+						
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<button><font color="red" size="4"><b>${ p }</b></font></button>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="adminQAboard.ad">
+									<button><c:param name="page" value="${ p }"/></button>
+								</c:url>
+								<a href="${ pagination }"><button>${ p }</button></a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="adminQAboard.ad">
+								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
+	
+	<script>
+		var all = document.getElementById("all");
+		var category = document.getElementsByName("qa_select");
+		
+		function selectAll(){
+			if(all.checked){
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = true;
+				}
+			} else {
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = false;
+				}
+			}
+		}
+		
+		function selectOne(){
+			var count = 0;
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					count++;
+				}
+			}
+			
+			if(count != 12){
+				all.checked = false;
+			} else {
+				all.checked = true;
+			}
+		}
+		
+		function qaInfo(qa_no){
+			var url ='<%=request.getContextPath()%>/qaDetailForm.ad?id=' + qa_no;
+			window.open(url, 'noticeInfo', 'width=1200px, height=820px');
+		}
+		
+		$('.click').on('mouseover',function(){
+			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
+		}).on('mouseout',function(){
+			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
+		
+		$('#delete_qa').on('click', function(){
+			var checkArr = [];
+			$('input[name="qa_select"]:checked').each(function() {
+				checkArr.push($(this).val());
+			});
+			if (confirm('해당 Q&A를 삭제하시겠습니까?')) {
+				$.ajax({
+					type: 'post',
+					url:'bdelete.bo',
+					data:{
+						check:checkArr
+						
+					},
+					success:function(data){
+						window.location.reload();
+					}		
+				});
+			}
+		});
+		
+		function searchBoard(){
+			var searchCondition = $("#searchCondition").val();
+			var searchValue = $("#searchValue").val();
+	
+			location.href="search.bo?searchCondition="+searchCondition+"&searchValue="+searchValue;
+		}
+	</script>
 </body>
 </html>

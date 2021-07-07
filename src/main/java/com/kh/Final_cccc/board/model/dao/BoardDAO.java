@@ -91,6 +91,28 @@ public class BoardDAO {
 		return (ArrayList)sqlSession.selectList("boardMapper.selectAnswerList", bNo);
 	}
 
+	public int deleteAnswer(SqlSessionTemplate sqlSession, String bNum) {
+		int bNo = Integer.parseInt(bNum);
+		
+		return sqlSession.delete("boardMapper.deleteAnswer", bNo);
+	}
+
+	public ArrayList<Board> selectAdminQList(SqlSessionTemplate sqlSession,
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("boardMapper.selectqaList", null, rowBounds);
+	}
+
+	public ArrayList<Board> selectAdminList(SqlSessionTemplate sqlSession,
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return (ArrayList)sqlSession.selectList("boardMapper.selectNoticeList", null, rowBounds);
+	}
+
 	
 	
 }
