@@ -27,4 +27,9 @@ public class MaterialServiceimp implements MaterialService{
 	public int getdeleteMateStatus(Material material) {
 		return maDAO.getdeleteMateStatus(sqlSession, material);
 	}
+
+	@Override
+	public Material getMaterialDetail(int matrialNo) {
+		return maDAO.MaterialDetail(sqlSession, matrialNo);
+	}
 }

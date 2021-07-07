@@ -32,6 +32,9 @@ public class AdminController {
 	@Autowired
 	private BoardService bService;
 	
+	@Autowired
+	private MaterialService maService;
+	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
 		int currentPage = 1;
@@ -120,6 +123,24 @@ public class AdminController {
 		return mv;
 	}
 	
+	@RequestMapping("materialDetailForm.ad")
+	public String mateInfoView(@RequestParam(value="no") int matrialNo, Model model) {
+		Material material = maService.getMaterialDetail(matrialNo);
+		
+		if(material != null) {
+			model.addAttribute("material", material);
+			return "admin_material/admin_MaterialDetail";
+		} else {
+			System.out.println("재료 상세보기 실패");
+			return null;
+		}
+	}
+	
+	@RequestMapping("insertMateForm.ad")
+	public String admininsertmateForm() {
+		return"../admin/admin_material/insertMateForm/insertmateForm";
+	}
+	
 	@RequestMapping("adminSpeciality.ad")
 	public String adminSpecialityList() {
 		return "../admin/admin_specialty/admin_Specialty";
@@ -186,9 +207,6 @@ public class AdminController {
 	public String adminSurveyList() {
 		return "../admin/admin_member/admin_Member";
 	}
-	@RequestMapping("insertMateForm.ad")
-	public String admininsertmateForm() {
-		return"../admin/admin_material/insertMateForm/insertmateForm";
-	}
+	
 	
 }

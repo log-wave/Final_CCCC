@@ -16,6 +16,7 @@ import com.kh.Final_cccc.board.exception.BoardException;
 import com.kh.Final_cccc.material.exception.MaterialException;
 import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
+import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 @Controller
 public class MaterialController {
@@ -42,6 +43,24 @@ public class MaterialController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping(value="deleteMateStatus.ad")
+	public String getdeleteMateStatus(@RequestParam(value="check[]", required=false) int [] check, @ModelAttribute Material material) {
+		
+		int result = 0;
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			material.setMaterialNo(check[i]);
+			result = maService.getdeleteMateStatus(material);
+		}
+		
+		if(result > 0) {
+			return "redirect:adminMaterial.ad";
+		} else {
+			System.out.println("재료 삭제 안됨");
+			return null;
+		}
+	}
+	
 	
 	
 	

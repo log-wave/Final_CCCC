@@ -18,4 +18,8 @@ public class MaterialDAO {
 		return sqlSession.update("materialMapper.deleteMateStatus", material);
 	}
 
+	public Material MaterialDetail(SqlSessionTemplate sqlSession, int matrialNo) {
+		return sqlSession.selectOne("materialMapper.detailMate", matrialNo);
+	}
+
 }

@@ -33,11 +33,11 @@
 	    			<c:if test="${ list != null }">
 	    			<c:forEach var="ad" items="${ list }">	
 	    			<tr class= "click">
-	    				<td>${ad.materialNo }</td>
-	    				<td style="	border-left: 1px solid black">${ad.materialName}</td>
-	    				<td style="	border-left: 1px solid black">${ad.standard}</td>
-	    				<td style="	border-left: 1px solid black"> 칼로리 : ${ad.kcal}, 단백질 : ${ad.protein}, 지방 : ${ad.fat}, 탄수화물 : ${ad.carbo}, 당 : ${ad.sugar} </td>
-	    				<td style="	border-left: 1px solid black"><input type="checkbox" name = "mate_select" onclick="selectOne();" value="${ ad.materialNo }" ></td>
+		    				<td onclick="mateInfo('${ ad.materialNo }')">${ad.materialNo} </td>
+		    				<td style="border-left: 1px solid black" onclick="mateInfo('${ ad.materialNo }')">${ad.materialName}</td>
+		    				<td style="border-left: 1px solid black" onclick="mateInfo('${ ad.materialNo }')">${ad.standard}</td>
+		    				<td style="border-left: 1px solid black" onclick="mateInfo('${ ad.materialNo }')"> 칼로리 : ${ad.kcal}, 단백질 : ${ad.protein}, 지방 : ${ad.fat}, 탄수화물 : ${ad.carbo}, 당 : ${ad.sugar} </td>
+		    				<td style="border-left: 1px solid black"><input type="checkbox" name = "mate_select" onclick="selectOne();" value="${ ad.materialNo }" ></td>
 	    			</tr>
 	    			</c:forEach>
 	    		  	</c:if>		
@@ -102,11 +102,19 @@
                 
 		</div>
 	</div>
-	<!-- onclick="location.href='insertMate.ad';" -->
+	
+	
+	
 	<script>
-	 function mateinsert() { 
+	function mateInfo(materialNo){
+		var url ='<%=request.getContextPath()%>/materialDetailForm.ad?no='+ materialNo;
+		window.open(url, 'mateInfo', 'width=300px', 'height=320px');
+	}
+	
+	
+	function mateinsert() { 
 		 var url = '<%=request.getContextPath()%>/insertMateForm.ad';
-		window.open(url ,"insertMate", "width=500, height=500, left=100, top=50"); 
+		window.open(url ,"insertMate", "width=500, height=800, left=100, top=50"); 
 		}
 	 
 	 <!-- tr 배경색상 변경-->

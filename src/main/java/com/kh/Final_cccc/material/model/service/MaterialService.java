@@ -10,4 +10,6 @@ public interface MaterialService {
 
 	int getdeleteMateStatus(Material material);
 
+	Material getMaterialDetail(int matrialNo);
+
 }
