@@ -20,15 +20,5 @@
 	
 	
 </body>
-<% String strReferer = request.getHeader("referer"); %>
-	<% if(strReferer == null) { %>
-	
-<script>
-	alert("정상적인 경로를 통해 다시 접근해 주십시오.");
-	document.location.href= '<%=request.getContextPath()%>/adminMember.ad';
-</script>
-
-<% return;
-}%>
 </html>
 
