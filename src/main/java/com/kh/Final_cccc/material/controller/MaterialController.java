@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.board.exception.BoardException;
+import com.kh.Final_cccc.common.PagenationAdmin;
 import com.kh.Final_cccc.material.exception.MaterialException;
 import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
@@ -23,6 +26,9 @@ public class MaterialController {
 
 	@Autowired
 		private MaterialService maService;
+	
+	@Autowired
+		private AdminService adService;
 	
 	
 	@RequestMapping(value="insertMate.ad") 
@@ -59,6 +65,29 @@ public class MaterialController {
 			System.out.println("재료 삭제 안됨");
 			return null;
 		}
+	}
+	
+	@RequestMapping(value="searchMate.ad")
+	public ModelAndView materialSearch(@RequestParam(value="page", required=false) Integer page, @RequestParam("searchValue") String value , ModelAndView mv) {
+		System.out.println(value);
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			
+			int listCount = maService.searchMateListCount(value);
+			System.out.println(listCount);
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<Material> list = maService.searchMateList(value , pi);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("value" , value).setViewName("admin_material/admin_Material");
+		}
+			
+		return mv;
 	}
 	
 	

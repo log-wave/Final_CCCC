@@ -10,7 +10,7 @@
 <title>재료 관리</title>
 
 
-<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_Material.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/material/admin_Material.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -26,7 +26,7 @@
 	    			<tr>
 						<th width="100px">번호</th>
 						<th width="220px">재료명</th>
-						<th width="100px">기준</th>
+						<th width="100px">기준(g)</th>
 						<th width="450px">영양성분</th>
 						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
@@ -53,51 +53,62 @@
 				<button id="insert_mate" onclick="mateinsert()">재료 추가</button>
 				<button id="delete_mate">재료 삭제</button>
 	    	</div>
+	    	
     	<div id="searchArea" style="float: left">
 				<select id="searchCondition" name="searchCondition">
 					<option value="mateName">재료명</option>
 				</select>
 				<input id="searchValue" type="search">
-				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
-			</div>
-			<br><br>
+				<button id="searchBtn" onclick="searchMate()">검색하기</button>
+		</div>
+		<br><br>
 			
 			
     	<!-- 페이징 -->
 		<div class="pagingArea">
-		
+			<!-- 이전 -->
 				<c:if test="${ pi.currentPage <= 1 }">
 					<button>&lt;</button>
 				</c:if>
 				<c:if test="${ pi.currentPage > 1 }">
-					<c:url var="before" value="adminMaterial.ad">
+					<c:url var="matelistback" value="${ loc }">
 						<c:param name="page" value="${ pi.currentPage - 1 }"/>
+						<c:if test="${ value ne null }">
+							<c:param name="searchValue" value="${ value }"/>
+						</c:if>
 					</c:url>
-					<a href="${ before }"><button>&lt;</button></a> &nbsp;
+					<a href="${ matelistback }"><button>&lt;</button></a> &nbsp;
 				</c:if>
 				
-               	<!-- 페이지 -->
+               	<!-- 숫자 -->
 				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+					<!-- 현재 페이지와 번호버튼이 같을 때 -->
 					<c:if test="${ p eq pi.currentPage }">
 						<font color="red" size="4"><b><button>${ p }</button></b></font>
 					</c:if>  
-					
+					<!-- 현태 페이지와 번호버튼이 같지 않을 때 -->
 					<c:if test="${ p ne pi.currentPage }">
-						<c:url var="pagenation" value="adminMaterial.ad">
+						<c:url var="matelistCheck" value="${ loc }">
 							<c:param name="page" value="${ p }"/>
+							<c:if test="${ value ne null }">
+								<c:param name="searchValue" value="${ value }"/>
+							</c:if>
 						</c:url>
-						<a href="${ pagenation }">${ p }</a> &nbsp;
+						<a href="${ matelistCheck }">${ p }</a> &nbsp;
 					</c:if>
 				</c:forEach>
-
+				<!-- 다음 -->
                 <c:if test="${ pi.currentPage >= pi.maxPage }">
 					<button>&gt;</button>
 				</c:if>
 				<c:if test="${ pi.currentPage < pi.maxPage }">
-					<c:url var="after" value="adminMaterial.ad">
+					<c:url var="matelistNext" value="${loc}">
 						<c:param name="page" value="${ pi.currentPage + 1 }"/>
+						<c:if test="${ value ne null }">
+							<c:param name="searchValue" value="${ value }"/>
+						</c:if>
 					</c:url> 
-					<a href="${ after }"><button>&gt;</button></a>
+					<a href="${ matelistNext }"><button>&gt;</button></a>
 				</c:if>
                 
 		</div>
@@ -106,12 +117,13 @@
 	
 	
 	<script>
+	<!-- 재료 상세조회 팝업 실행 -->
 	function mateInfo(materialNo){
 		var url ='<%=request.getContextPath()%>/materialDetailForm.ad?no='+ materialNo;
-		window.open(url, 'mateInfo', 'width=300px', 'height=320px');
+		window.open(url, 'mateInfo',  "width=500, height=800, left=100, top=50");
 	}
 	
-	
+	<!-- 재료추가 팝업 실행-->
 	function mateinsert() { 
 		 var url = '<%=request.getContextPath()%>/insertMateForm.ad';
 		window.open(url ,"insertMate", "width=500, height=800, left=100, top=50"); 
@@ -161,6 +173,11 @@
 				checkArr.push($(this).val());
 			});
 			
+			if(checkArr == "") {
+				alert("삭제할 재료를 선택해주세요");
+				return;
+			} 
+			
 			console.log(checkArr);
 			if (confirm('해당 재료를  삭제하시겠습니까?')) {
 				$.ajax({
@@ -170,11 +187,18 @@
 						check:checkArr,
 					},
 					success:function(data){
+						
 						window.location.reload();
 					}		
 				});
 			}
 		});
+		
+		<!-- 검색 기능 -->
+		function searchMate(){
+			var searchValue = $("#searchValue").val();
+			location.href= "searchMate.ad?searchValue="+searchValue;
+		}
 	</script>
 </body>
 </html>
