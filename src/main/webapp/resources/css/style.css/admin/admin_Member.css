@@ -22,7 +22,7 @@
     	height : 400px;
 		margin: auto;
 		margin-top: 20px;
-		
+		display: inline-block;
     }
     
     .member_table{
@@ -54,12 +54,6 @@
      	border: 0px;
      	height: 30px;
      }    
-     	
-    #pagingArea{
-    	margin-top: -100px;
-		margin-left: 400px;
-		display: inline-block;
-	}
 
 	#pagingArea button{
 		width: 35px;

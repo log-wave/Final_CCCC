@@ -21,6 +21,7 @@
     	height : 500px;
 		margin: auto;
 		margin-top: 20px;
+		display: inline-block;
     }
 	.notice_Table{
 		text-align: center;
@@ -48,11 +49,6 @@
      	border: 0px;
      	height: 30px;
      }
-        
-    #pagingArea{
-		margin-top: -100px;
-		margin-left: 300px;
-	}
 
 	#pagingArea button{
 		width: 35px;

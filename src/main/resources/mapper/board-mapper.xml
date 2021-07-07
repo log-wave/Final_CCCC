@@ -127,5 +127,10 @@
 		<result column="AS_CREATE_DATE" property="As_Create_Date"/>
 		<result column="ANSWER_CONTENT" property="Answer_Content"/>
 	</resultMap>
+	
+	<delete id="deleteAnswer">
+		delete from qa_answer
+		where board_no = ${bNo}
+	</delete>
 </mapper>
 	

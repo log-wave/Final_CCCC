@@ -39,4 +39,10 @@ public interface BoardService{
 
 	ArrayList<QA_Answer> selectAnswerList(int bNo);
 
+	int deleteAnswer(String bNo);
+
+	ArrayList<Board> selectAdminQList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
+
+	ArrayList<Board> selectAdminList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
+
 }

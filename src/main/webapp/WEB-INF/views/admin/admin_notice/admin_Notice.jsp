@@ -24,7 +24,7 @@
 			<br>
 	    		<table class="notice_Table">
 	    			<tr>
-	    				<th  width="80px">번호</th>
+	    				<th  width="85px">번호</th>
 	    				<th  width="150px">제목</th>
 	    				<th  width="500px">내용</th>
 	    				<th  width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
@@ -48,56 +48,70 @@
 	    			
 	    		</table>
 	    	<br><hr><br>
+	    	<div id="searchArea" style="float: left">
+				<label>검색 조건</label>
+				<select id="searchCondition" name="searchCondition">
+					<option>-------</option>
+					<option value="writer">작성자</option>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select>
+		
+				<input id="searchValue" type="search">
+				<button onclick="searchBoard();">검색하기</button>
+			</div>
 	    	<div class="buttonArea">
 	    		<button id="insert_no">공지 작성</button>
 				<button id="delete_no">공지 삭제</button>
 	    	</div>
     	</div>
     	
-    	<!-- 페이징 -->
-			<table id="pagingArea">	
-		<!-- 페이징 처리 -->
-			<tr align="center" height="20" id="buttonTab">
-				<td colspan="6">
-				
-					<!-- [이전] -->
-					<c:if test="${ pi.currentPage <= 1 }">
-						<button>&lt;</button>
-					</c:if>
-					<c:if test="${ pi.currentPage > 1 }">
-						<c:url var="before" value="adminBoard.ad">
-							<c:param name="page" value="${ pi.currentPage - 1 }"/>
-						</c:url>
-						<a href="${ before }"><button>&lt;</button></a>
-					</c:if>
+    	<div align="center">
+    		<!-- 페이징 -->
+				<table id="pagingArea">	
+			<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
 					
-					<!-- 페이지 -->
-					<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
-						<c:if test="${ p eq pi.currentPage }">
-							<button><font color="red" size="4"><b>${ p }</b></font></button>
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="adminBoard.ad">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a>
 						</c:if>
 						
-						<c:if test="${ p ne pi.currentPage }">
-							<c:url var="pagination" value="adminBoard.ad">
-								<button><c:param name="page" value="${ p }"/></button>
-							</c:url>
-							<a href="${ pagination }"><button>${ p }</button></a>
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<button><font color="red" size="4"><b>${ p }</b></font></button>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="adminBoard.ad">
+									<button><c:param name="page" value="${ p }"/></button>
+								</c:url>
+								<a href="${ pagination }"><button>${ p }</button></a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
 						</c:if>
-					</c:forEach>
-					
-					<!-- [다음] -->
-					<c:if test="${ pi.currentPage >= pi.maxPage }">
-						<button>&gt;</button>
-					</c:if>
-					<c:if test="${ pi.currentPage < pi.maxPage }">
-						<c:url var="after" value="adminBoard.ad">
-							<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
-						</c:url> 
-						<a href="${ after }"><button>&gt;</button></a>
-					</c:if>
-				</td>
-			</tr>
-		</table>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="adminBoard.ad">
+								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 	<script>
@@ -167,6 +181,13 @@
 				});
 			}
 		});
+		
+		function searchBoard(){
+			var searchCondition = $("#searchCondition").val();
+			var searchValue = $("#searchValue").val();
+	
+			location.href="search.bo?searchCondition="+searchCondition+"&searchValue="+searchValue;
+		}
 	</script>
 </body>
 </html>

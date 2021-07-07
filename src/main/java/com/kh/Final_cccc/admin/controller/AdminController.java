@@ -1,8 +1,9 @@
 package com.kh.Final_cccc.admin.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.admin.model.vo.PageInfo;
@@ -147,8 +150,52 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminQAboard.ad")
-	public String adminQAboardList() {
-		return "../admin/admin_QA/admin_QA";
+	public ModelAndView adminQAboardList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = bService.getqListCount();
+		
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Board> list = bService.selectAdminQList(pi);
+		
+		if(list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_QA/admin_QA");
+		} else {
+			return null;
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("qaDetailForm.ad")
+	public String qaDetail(@RequestParam(value="id") int id, Model model) {
+		Board board = bService.selectqaBoard(id);
+		
+		if(board != null) {
+			model.addAttribute("board", board);
+			return "admin_QA/admin_qaDetail";
+		} else {
+			System.out.println("실패");
+			return null;
+		}
+	}
+	
+	@RequestMapping("deleteAnswer.ad")
+	public void deleteAnswer(@RequestParam("bNo") String bNo, HttpServletResponse response) throws JsonIOException, IOException {
+		int result = bService.deleteAnswer(bNo);
+		
+		String msg = null;
+		if (result > 0)
+			msg = "삭제 성공";
+		else
+			msg = "삭제 중 오류가 발생했습니다.";
+		
+		response.setContentType("application/json; charset=UTF-8");
+		new Gson().toJson(msg, response.getWriter());
 	}
 	
 	@RequestMapping("adminBoard.ad")
@@ -160,9 +207,9 @@ public class AdminController {
 		
 		int listCount = bService.getListCount();
 		
-		com.kh.Final_cccc.board.model.vo.PageInfo pi = Pagination.getPageInfo(currentPage, listCount);
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
 		
-		ArrayList<Board> list = bService.selectList(pi);
+		ArrayList<Board> list = bService.selectAdminList(pi);
 		
 		if(list != null) {
 			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_notice/admin_Notice");

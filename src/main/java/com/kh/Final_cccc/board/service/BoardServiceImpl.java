@@ -108,7 +108,21 @@ public class BoardServiceImpl implements BoardService {
 		return bDAO.selectAnswerList(sqlSession, bNo);
 	}
 
-	
+	@Override
+	public int deleteAnswer(String bNo) {
+		return bDAO.deleteAnswer(sqlSession, bNo);
+	}
+
+	@Override
+	public ArrayList<Board> selectAdminQList(com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		return bDAO.selectAdminQList(sqlSession, pi);
+	}
+
+	@Override
+	public ArrayList<Board> selectAdminList(com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		// TODO Auto-generated method stub
+		return bDAO.selectAdminList(sqlSession, pi);
+	}
 
 	
 }

@@ -24,7 +24,7 @@
 			<br>
 	    		<table class="member_table">
 		    		<tr>
-						<th width="80px">번호</th>
+						<th width="85px">번호</th>
 						<th width="150px">아이디</th>
 						<th width="150px">닉네임</th>
 						<th width="200px">가입일</th>
@@ -84,50 +84,52 @@
 	    	</div>
     	</div>
     	
-    	<!-- 페이징 -->
-		<table id="pagingArea">	
-		<!-- 페이징 처리 -->
-			<tr align="center" height="20" id="buttonTab">
-				<td colspan="6">
-				
-					<!-- [이전] -->
-					<c:if test="${ pi.currentPage <= 1 }">
-						<button>&lt;</button>
-					</c:if>
-					<c:if test="${ pi.currentPage > 1 }">
-						<c:url var="before" value="adminMember.ad">
-							<c:param name="page" value="${ pi.currentPage - 1 }"/>
-						</c:url>
-						<a href="${ before }"><button>&lt;</button></a>
-					</c:if>
+    	<div align="center">
+	    	<!-- 페이징 -->
+			<table id="pagingArea">	
+			<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
 					
-					<!-- 페이지 -->
-					<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
-						<c:if test="${ p eq pi.currentPage }">
-							<button><font color="red" size="4"><b>${ p }</b></font></button>
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="adminMember.ad">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a>
 						</c:if>
 						
-						<c:if test="${ p ne pi.currentPage }">
-							<c:url var="pagination" value="adminMember.ad">
-								<button><c:param name="page" value="${ p }"/></button>
-							</c:url>
-							<a href="${ pagination }"><button>${ p }</button></a> &nbsp;
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<button><font color="red" size="4"><b>${ p }</b></font></button>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="adminMember.ad">
+									<button><c:param name="page" value="${ p }"/></button>
+								</c:url>
+								<a href="${ pagination }"><button>${ p }</button></a> &nbsp;
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
 						</c:if>
-					</c:forEach>
-					
-					<!-- [다음] -->
-					<c:if test="${ pi.currentPage >= pi.maxPage }">
-						<button>&gt;</button>
-					</c:if>
-					<c:if test="${ pi.currentPage < pi.maxPage }">
-						<c:url var="after" value="adminMember.ad">
-							<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
-						</c:url> 
-						<a href="${ after }"><button>&gt;</button></a>
-					</c:if>
-				</td>
-			</tr>
-		</table>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="adminMember.ad">
+								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 	<script>
