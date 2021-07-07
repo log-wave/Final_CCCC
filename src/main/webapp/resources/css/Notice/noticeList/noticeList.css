@@ -15,7 +15,7 @@ button{
 }
 
 #notice_one{
-	width: 800px;
+	width: 1000px;
 	height: 70px;
 	border-collapse: separate;
 	border-spacing: 0 20px;
@@ -66,12 +66,13 @@ button{
 	color: #787878;
 }
 .noticeList_main button{
-	width:100px;
-	height:30px;
+	width:120px;
+	height:40px;
 	font-weight: bold;
 	border-style: none;
-	margin-left: 650px;
 	border-radius: 4px;
-	background: #F29F05;
+	margin-left: 880px;
+	background: #D1CBC2;
 	color: white;
+	background: #F29F05;
 }
