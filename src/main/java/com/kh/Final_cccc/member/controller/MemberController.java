@@ -1,11 +1,10 @@
 package com.kh.Final_cccc.member.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,8 +70,31 @@ public class MemberController {
 	}
 	
 	
+	@RequestMapping(value="myPage.me", method=RequestMethod.GET)
+	public String moveMyPage(HttpServletRequest request) {
+		System.out.println("헤더에서 마이페이지 요청 넘어옴 ");
+		return "myPage/MyPage";
+	}
+	
+	@RequestMapping(value="withdrawalGuide.me", method=RequestMethod.GET)
+	public String moveWithdrawalGuide(HttpServletRequest request) {
+
+		return "myPage/withdrawalGuide";
+	}
+	
+	
+	@RequestMapping(value="deleteMemberPage.me", method=RequestMethod.GET)
+	public String movDeleteMemberPage(HttpServletRequest request) {
+
+		return "deleteMember/deleteMember";
+	}
+	
+	
+	
+	
 	@RequestMapping(value="backIndex.do", method=RequestMethod.GET)
 	public String backIndex(HttpServletRequest reques) {
+		
 		System.out.println("인덱스 페이지로 이동");
 		
 		
@@ -166,14 +188,68 @@ public class MemberController {
 		
 		
 		return "redirect:backIndex.do";
-		
-			
-			
-		
-		
+
 		
 	}
 	
+	//회원탈퇴 체크 컨트롤러 
+	
+	@RequestMapping(value="deleteMemberCheck.me", method=RequestMethod.POST)
+	@ResponseBody
+	public int deleteMemberCheck(MemberVO m, Model model,SessionStatus status ){
+		
+		logger.info("회원 탈퇴 체크 컨트롤러 진입");
+		
+		System.out.println(m.getUser_id());
+		System.out.println(m.getUser_password());
+		status.setComplete();
+		int result = mService.deleteMemberCheck(m);
+		
+		return result;
+	}
+	
+	//회원탈퇴 pass_cnt 카운트 검사 컨트롤러
+	@RequestMapping(value="count_DeleteMemberCheck_Num.me", method=RequestMethod.POST)
+	@ResponseBody
+	public int count_DeleteMemberCheck_Num(MemberVO m, Model model ){
+		
+		logger.info("회원 탈퇴 카운트 검사 컨트롤러 진입");
+		
+		System.out.println(m.getUser_id());
+		System.out.println(m.getUser_password());
+		System.out.println(m);
+		int result = mService.count_DeleteMemberCheck_Num(m);
+		System.out.println("회원탈퇴 카운트 검사  결과 " + result);
+		return result;
+	}	
 	
 	
+	//회원탈퇴 pass_cnt 카운트 누적 컨트롤러
+	@RequestMapping(value="pass_cnt.me", method=RequestMethod.POST)
+	@ResponseBody
+	public int count_pass_cnt(MemberVO m, Model model ){
+		
+		logger.info("회원 탈퇴 카운트 컨트롤러 진입");
+		
+		System.out.println(m.getUser_id());
+		System.out.println(m.getUser_password());
+		
+		int result = mService.count_pass_cnt(m);
+		
+		
+		return result;
+	}
+		
+	@RequestMapping(value="find_user_password.me", method=RequestMethod.GET)
+	public String find_user_passwordPage(HttpServletRequest reques) {
+		
+		System.out.println("비밀번호 찾기 페이지로 이동");
+		
+		
+		return "findUserPassword/findUserPassword";
+	}	
+
+		
+		
+		
 }

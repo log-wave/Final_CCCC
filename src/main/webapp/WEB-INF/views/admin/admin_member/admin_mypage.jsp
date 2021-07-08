@@ -48,7 +48,7 @@
 					</tr>
 					<tr>
 						<td>가입일</td>
-						<td>${ m.user_date }</td>
+						<td>${ m.u_cre_date }</td>
 					</tr>
 					<tr>
 						<td>상태</td>

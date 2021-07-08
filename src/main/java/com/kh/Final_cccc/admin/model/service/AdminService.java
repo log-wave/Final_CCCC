@@ -30,4 +30,8 @@ public interface AdminService {
 
 	Board getBoardDetail(String id);
 
+	int searchMemberListCount(MemberVO m);
+
+	ArrayList<MemberVO> selectSearchMemberResultList(MemberVO m, PageInfo pi);
+
 }

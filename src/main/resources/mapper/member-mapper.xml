@@ -16,11 +16,15 @@
 		<result column="EMAIL" property="email"/>
 		<result column="GENDER" property="gender"/>
 		<result column="AGR" property="age"/>
-		<result column="USER_DATE" property="user_date"/>
 		<result column="AUTHORITY" property="authority"/>
 		<result column="STATUS" property="status"/>
 		<result column="SURVEY_YN" property="survey_yn"/>
 		<result column="USER_NAME" property="user_name"/>
+		<result column="U_CRE_DATE" property="u_cre_date"/>
+		<result column="U_MOD_DATE" property="u_mod_date"/>
+		<result column="U_DEL_DATE" property="u_del_date"/>
+		<result column="PASS_CNT" property="pass_cnt"/>
+			
 	</resultMap>
 	
 	
@@ -59,9 +63,50 @@
 	<!-- 회원가입 쿼리  -->
 	
 	<insert id="insertMember">
-	INSERT INTO MEMBER VALUES (SEQ_USER_NO.NEXTVAL,#{user_id},#{user_password},#{nickname},#{email},#{gender},#{age},SYSDATE,DEFAULT,DEFAULT,DEFAULT,#{user_name})
+	INSERT INTO MEMBER VALUES (SEQ_USER_NO.NEXTVAL,#{user_id},#{user_password},#{nickname},#{email},#{gender},#{age},DEFAULT,DEFAULT,DEFAULT,#{user_name},SYSDATE,DEFAULT,DEFAULT,#{pass_cnt})
 
 	</insert>
+	
+	
+	<!-- 회원탈퇴 아이디 / 비밀번호 체크  -->
+	<update id="deleteMemberCheck"  parameterType="Member">
+		
+		UPDATE MEMBER
+		SET STATUS = 'N',PASS_CNT= 0
+		WHERE USER_ID = #{user_id} AND USER_PASS = #{user_password}
+
+	
+	
+	</update>
+	
+	<!-- 회원탈퇴 키운트 누적 쿼리  -->
+	<update id="count_pass_cnt"  parameterType="Member">
+		
+		UPDATE MEMBER
+		SET PASS_CNT = PASS_CNT+1
+		WHERE USER_ID = #{user_id} 
+
+	</update>
+	
+
+	<!-- 회원탈퇴 카운트 검사 쿼리-->
+	<select id="count_DeleteMemberCheck_Num" resultType="int" parameterType="Member">
+			
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE USER_ID = #{user_id} AND PASS_CNT >=5
+	
+	
+	</select>
+	
+	
+	
+	
+
+	
+	
+	
+	
 
 
 </mapper>

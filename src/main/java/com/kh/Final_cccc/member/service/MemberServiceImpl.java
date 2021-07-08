@@ -1,5 +1,7 @@
 package com.kh.Final_cccc.member.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,4 +59,40 @@ public class MemberServiceImpl implements MemberService{
 		loggger.info("이메일 중복검사 서비스Impl 진입성공");
 		return mDAO.emailCheck(sqlSession, email);
 	}
+
+	@Override
+	public int deleteMemberCheck(MemberVO m) {
+		
+		loggger.info("회원탈퇴체크 서비스 impl 진입성공");
+		return mDAO.deleteMemberCheck(sqlSession,m);
+	}
+
+	@Override
+	public int count_pass_cnt(MemberVO m) {
+		
+
+		loggger.info("회원탈퇴 카운트  서비스 impl 진입성공");
+		return mDAO.count_pass_cnt(sqlSession,m);
+		
+	}
+
+	@Override
+	public int count_DeleteMemberCheck_Num(MemberVO m) {
+		
+		loggger.info("회원탈퇴 카운트 검사 서비스 impl 진입성공");
+		return mDAO.count_DeleteMemberCheck_Num(sqlSession,m);
+		
+		
+		
+	}
+
+
+
+
+
+
+
+
+
+	
 }

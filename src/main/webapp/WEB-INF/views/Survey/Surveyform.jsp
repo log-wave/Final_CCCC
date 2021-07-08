@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,6 @@
 	<link rel="stylesheet" href="${ pageContext.servletContext.contextPath }/view/Survey/Surveyform.css">
 </head>
 <body>
-
 	<div class="surveyall">
 <img align="top" id="main_logosurvey" src="${ pageContext.servletContext.contextPath }/images/cccc_logo.PNG">	
 	<h2 align="center">설문조사</h2>
@@ -18,7 +17,10 @@
 	
 응답해 주신 여러분의 소중한 답변은 저희 콕콕 쿡쿡 사이트의 서비스 통계자료에 귀중하게 사용될 것이며 , 수집정보는 통계분석 이외의 타 목적으로 활용하거나 공개하지 않습니다."></textarea>
 </div>
+	
+	<form action="svSubmit.sv" method="post">
 	<div class="surveyArea" align="center">
+				<input type="hidden" name="user_no" value="${ loginUser.user_no }">
 				<table id="SurveyTable">
 					<tr>
 						<td><span class="spans">1. 하루에, 집에서 밥 먹는 횟수는?</span></td>
@@ -26,10 +28,10 @@
 					<tr>
 						<th height="80px"></th>
 						<td colspan="3">
-							<input type="radio" name="chk_info1" value="1"> 아주만족 &nbsp;
-							<input type="radio" name="chk_info1" value="2"> 2 &nbsp;
-							<input type="radio" name="chk_info1" value="3"> 3 &nbsp;
-							<input type="radio" name="chk_info1" value="4"> 4 &nbsp;
+							<input type="radio" name="chk_info1" value="자주 먹는다"> 자주 먹는다 &nbsp;
+							<input type="radio" name="chk_info1" value="가끔 먹는다"> 가끔 먹는다 &nbsp;
+							<input type="radio" name="chk_info1" value="거의 안먹는다"> 거의 안먹는다 &nbsp;
+							<input type="radio" name="chk_info1" value="안먹는다"> 안먹는다 &nbsp;
 						</td>
 					</tr>
 					
@@ -41,36 +43,36 @@
 					<tr>
 						<th height="80px"></th>
 						<td colspan="3">
-							<input type="radio" name="chk_info2" value="1"> 1 &nbsp;
-							<input type="radio" name="chk_info2" value="2"> 2 &nbsp;
-							<input type="radio" name="chk_info2" value="3"> 3 &nbsp;
-							<input type="radio" name="chk_info2" value="4"> 4 &nbsp;
+							<input type="radio" name="chk_info2" value="아주 좋아한다"> 아주 좋아한다 &nbsp;
+							<input type="radio" name="chk_info2" value="좋아한다"> 좋아한다 &nbsp;
+							<input type="radio" name="chk_info2" value="보통이다"> 보통이다 &nbsp;
+							<input type="radio" name="chk_info2" value="싫어한다"> 싫어한다 &nbsp;
 						</td>
 					</tr>
 					
 					<tr>
-						<td><span class="spans">3. 집에서 요리하는 횟수는?</span></td>
+						<td><span class="spans">3. 하루에 집에서 요리하는 횟수는?</span></td>
 					</tr>
 					<tr>
 						<th height="80px"></th>
 						<td colspan="3">
-							<input type="radio" name="chk_info3" value="1"> 1 &nbsp;
-							<input type="radio" name="chk_info3" value="2"> 2 &nbsp;
-							<input type="radio" name="chk_info3" value="3"> 3 &nbsp;
-							<input type="radio" name="chk_info3" value="4"> 4 &nbsp;
+							<input type="radio" name="chk_info3" value="3회"> 3회 &nbsp;
+							<input type="radio" name="chk_info3" value="2회"> 2회 &nbsp;
+							<input type="radio" name="chk_info3" value="1회"> 1회 &nbsp;
+							<input type="radio" name="chk_info3" value="0회"> 0회 &nbsp;
 						</td>
 					</tr>
 
 					<tr>
-						<td><span class="spans">4. 좋아하는 음식은?</span></td>
+						<td><span class="spans">4. 하루에 몇끼 드시나요?</span></td>
 					</tr>
 					<tr>
 						<th height="80px"> </th>
 						<td colspan="3">
-							<input type="radio" name="chk_info4" value="1"> 1 &nbsp;
-							<input type="radio" name="chk_info4" value="2"> 2 &nbsp;
-							<input type="radio" name="chk_info4" value="3"> 3 &nbsp;	
-							<input type="radio" name="chk_info4" value="4"> 4 &nbsp;
+							<input type="radio" name="chk_info4" value="4끼 이상"> 4끼 이상 &nbsp;
+							<input type="radio" name="chk_info4" value="3끼"> 3끼 &nbsp;
+							<input type="radio" name="chk_info4" value="2끼"> 2끼 &nbsp;	
+							<input type="radio" name="chk_info4" value="1끼"> 1끼 &nbsp;
 						</td>
 						
 					</tr>
@@ -80,23 +82,25 @@
 					<tr>
 						<th height="80px"></th>
 						<td colspan="3">
-							<input type="radio" name="chk_info5" value="1"> 1 &nbsp;
-							<input type="radio" name="chk_info5" value="2"> 2 &nbsp;
-							<input type="radio" name="chk_info5" value="3"> 3 &nbsp;	
-							<input type="radio" name="chk_info5" value="4"> 4 &nbsp;
+							<input type="radio" name="chk_info5" value="매우 도움"> 매우 도움 &nbsp;
+							<input type="radio" name="chk_info5" value="도움이 됨"> 도움이 됨 &nbsp;
+							<input type="radio" name="chk_info5" value="보통"> 보통 &nbsp;	
+							<input type="radio" name="chk_info5" value="도움 안됨"> 도움 안됨 &nbsp;
 						</td>
 						
 					</tr>
 					
 				</table>
 			<span>
-			<button id= "exit">취소</button>
+			<input type="button" onclick="cancel()" value="취소">
 			<button id= "submit">제출</button>
 				</span>
 			<br>
 			<br>
 			
-			</div>		
 			</div>
+			</form>		
+			</div>
+			
 </body>
 </html>

@@ -20,6 +20,60 @@
 		from MEMBER
  		where user_id=#{id} and authority='N'
 	</select>
+	
+	<select id="searchMemberListCount" parameterType="com.kh.Final_cccc.member.model.vo.MemberVO" resultType="_int">
+		select count(*)
+		from member
+		where authority='N'
+		<!-- <if test="user_no != null"> // user_no가 int여서 null이 아니고 0이 기본값으로 나오기 때문에 적용이 안되었었음
+			and user_no like '%' || #{user_no} || '%'
+		</if>
+		<if test="user_id != null">
+			and user_id like '%' || #{user_id} || '%'
+		</if>
+		<if test="nickname != null">
+			and nickname like '%' || #{nickname} || '%'
+		</if>
+		<if test="status != null">
+			and status like '%' || #{status} || '%'
+		</if> -->
+		<choose>
+			<when test="user_no != 0">
+				and user_no like '%' || #{user_no} || '%'
+			</when>
+			<when test="user_id != null">
+				and user_id like '%' || #{user_id} || '%'
+			</when>
+			<when test="nickname != null">
+				and nickname like '%' || #{nickname} || '%'
+			</when>
+			<when test="status != null">
+				and status like '%' || #{status} || '%'
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectSearchMemberResultList" parameterType="com.kh.Final_cccc.member.model.vo.MemberVO" resultMap="memberResultSet">
+		select *
+		from member
+		where authority='N'
+		<choose>
+			<when test="user_no != 0">
+				and user_no like '%' || #{user_no} || '%'
+			</when>
+			<when test="user_id != null">
+				and user_id like '%' || #{user_id} || '%'
+			</when>
+			<when test="nickname != null">
+				and nickname like '%' || #{nickname} || '%'
+			</when>
+			<when test="status != null">
+				and status like '%' || #{status} || '%'
+			</when>
+		</choose>
+		order by USER_NO desc
+	</select>
+	
 	<resultMap type="Member" id="memberResultSet">
 		<id column="user_NO" property="user_no"/>
 		<result column="USER_ID" property="user_id"/>
@@ -28,11 +82,14 @@
 		<result column="EMAIL" property="email"/>
 		<result column="GENDER" property="gender"/>
 		<result column="AGR" property="age"/>
-		<result column="USER_DATE" property="user_date"/>
 		<result column="AUTHORITY" property="authority"/>
 		<result column="STATUS" property="status"/>
 		<result column="SURVEY_YN" property="survey_yn"/>
 		<result column="USER_NAME" property="user_name"/>
+		<result column="U_CRE_DATE" property="u_cre_date"/>
+		<result column="U_MOD_DATE" property="u_mod_date"/>
+		<result column="U_DEL_DATE" property="u_del_date"/>
+		<result column="PASS_CNT" property="pass_cnt"/>
 	</resultMap>
 	
 	<select id="selectEventList" resultMap="eventResultSet">
