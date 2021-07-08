@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="surveyMapper">
+ 
+ 	<!-- <resultMap type="Survey" id="SurveyResultSet">
+		<id column="SURVEY_NO" property="survey_no"/>
+		<result column="SURVEY_ONE" property="survey_one"/>
+		<result column="SURVEY_TWO" property="survey_two"/>
+		<result column="SURVEY_THREE" property="survey_three"/>
+		<result column="SURVEY_FOUR" property="survey_four"/>
+		<result column="SURVEY_FIVE" property="survey_five"/>
+		<result column="USER_NO" property="user_no"/>
+	</resultMap> -->
+	
+	<insert id="insertSurvey">
+		insert into survey
+		values(seq_survey_no.nextval, #{survey_one}, #{survey_two}, #{survey_three}, #{survey_four}, #{survey_five}, #{user_no}, default)   
+	</insert>
+	
+	<update id="updateSurvey">
+		UPDATE member m
+    	SET m.survey_yn = 'Y'
+    	where user_no = #{ user_no };
+	</update>
+</mapper>

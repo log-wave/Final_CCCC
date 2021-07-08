@@ -91,7 +91,7 @@
          <url-pattern>*.bo</url-pattern>
       </servlet-mapping>
       
-      <!-- 공지 관련 -->
+      <!-- qa 관련 -->
 	<servlet>
       <servlet-name>QAServlet</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -119,7 +119,19 @@
 		<url-pattern>*.ad</url-pattern>
 	</servlet-mapping>
 		
-
+	 <!-- 설문 관련 -->
+	<servlet>
+      <servlet-name>SurveyServlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/spring/appServlet/sv-context.xml</param-value>
+         </init-param>
+      </servlet>
+      <servlet-mapping>
+         <servlet-name>SurveyServlet</servlet-name>
+         <url-pattern>*.sv</url-pattern>
+      </servlet-mapping>
 		
 	
 	<!-- UTF-8 인코딩 설정 --> 

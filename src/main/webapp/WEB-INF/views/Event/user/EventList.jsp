@@ -16,7 +16,7 @@
 	
 		<!-- 제목 -->
 		<div class="title"><p>이벤트<p></div>
-		
+		<a href="svinsertView.sv">임시 설문조사 링크</a>
 		<!-- 아이템 하나당 한개씩 -->
 
 			<c:forEach var="e" items="${ elist }" >
