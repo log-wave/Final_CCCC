@@ -33,4 +33,22 @@
 		<result column="CLASSFI" property="classFi"/>
 		<result column="STATUS" property="status"/>
 	</resultMap>
+	
+	<select id="searchMateListCount" resultType="_int">
+		select count(*)
+		from material
+		where status = 'Y'
+		<if test="value != null">
+			and material_name like  '%' || #{value} || '%'
+		</if>
+	</select>
+	
+	<select id="searchMateList" resultMap="mateResultSet">
+		select *
+		from material
+		where status = 'Y'
+		<if test="value != null">
+			and material_name like  '%' || #{value} || '%'
+		</if>
+	</select>
 </mapper>

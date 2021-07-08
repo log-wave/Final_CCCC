@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.material.model.dao.MaterialDAO;
 import com.kh.Final_cccc.material.model.vo.Material;
 
@@ -31,5 +32,15 @@ public class MaterialServiceimp implements MaterialService{
 	@Override
 	public Material getMaterialDetail(int matrialNo) {
 		return maDAO.MaterialDetail(sqlSession, matrialNo);
+	}
+
+	@Override
+	public int searchMateListCount(String value) {
+		return maDAO.searchMateListCount(sqlSession, value);
+	}
+
+	@Override
+	public ArrayList<Material> searchMateList(String value, PageInfo pi) {
+		return maDAO.searchMateList(sqlSession, value, pi);
 	}
 }

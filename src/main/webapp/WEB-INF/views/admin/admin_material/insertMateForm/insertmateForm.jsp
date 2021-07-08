@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>재료추가</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/insertMateForm/insertMateForm.css" rel="stylesheet" type="text/css">
+<link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/material/insertMateForm.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
