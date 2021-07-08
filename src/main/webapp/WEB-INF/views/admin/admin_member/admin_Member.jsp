@@ -71,19 +71,50 @@
 
 	    		</table>
 	    	<br><hr><br>
-	    	<div id="searchArea" style="float: left">
-				<label>검색 조건</label>
-				<select id="searchCondition" name="searchCondition">
-					<option>-------</option>
-					<option value="no">번호</option>
-					<option value="id">아이디</option>
-					<option value="nick">닉네임</option>
-					<option value="state">상태</option>
-				</select>
-		
-				<input id="searchValue" type="search">
-				<button onclick="searchBoard();">검색하기</button>
-			</div>
+	    	<c:if test="${ searchValue eq null and searchCondition eq null}">
+		    	<div id="searchArea" style="float: left">
+					<label>검색 조건</label>
+					<select id="searchCondition" name="searchCondition">
+						<option value="">-------</option>
+						<option value="no">번호</option>
+						<option value="id">아이디</option>
+						<option value="nick">닉네임</option>
+						<option value="state">상태</option>
+					</select>
+					
+					<input id="searchValue" type="search" onkeyup="searchEnterKey();">
+					<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+				</div>
+			</c:if>
+			<c:if test="${ searchValue ne null and searchCondition ne null}">
+				<div id="searchArea" style="float: left">
+					<label>검색 조건</label>
+					<select id="searchCondition" name="searchCondition" >
+						<option value="">-------</option>
+						<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
+						<option value="id"<c:if test="${ searchCondition eq 'id' }">selected</c:if>>아이디</option>
+						<option value="nick"<c:if test="${ searchCondition eq 'nick' }">selected</c:if>>닉네임</option>
+						<option value="state"<c:if test="${ searchCondition eq 'state' }">selected</c:if>>상태</option>
+					</select>
+					
+					<c:if test="${searchCondition ne 'state'}">
+						<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
+						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+					</c:if>
+					<c:if test="${ searchValue eq 'Y' and searchCondition eq 'state'}">
+						<input id="searchValue" type="search" value="정상" onkeyup="searchEnterKey();">
+						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+					</c:if>
+					<c:if test="${ searchValue eq 'N' and searchCondition eq 'state'}">
+						<input id="searchValue" type="search" value="탈퇴" onkeyup="searchEnterKey();">
+						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+					</c:if>
+					<c:if test="${ searchValue eq 'S' and searchCondition eq 'state'}">
+						<input id="searchValue" type="search" value="정지" onkeyup="searchEnterKey();">
+						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+					</c:if>
+				</div>
+			</c:if>
 			
 	    	<div class="buttonArea" style="margin-top: -10px;">
 				<button id="changeStatus">활동 상태 변경</button>
@@ -212,8 +243,26 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
-	
-			location.href="searchAdminMember.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			if(searchCondition == "" || searchValue == ""){
+				alert("똑바로 검색 해주세요.");
+				window.location.reload();
+			} else {
+				if(searchCondition == "state" && searchValue == "정상"){
+					searchValue = 'Y';
+				} else if(searchCondition == "state" && searchValue == "정지"){
+					searchValue = 'S';
+				} else if(searchCondition == "state" && searchValue == "탈퇴"){
+					searchValue= 'N';
+				}
+				location.href="searchAdminMember.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			}
+		}
+		
+		function searchEnterKey(){
+			if (window.event.keyCode == 13) {
+				 
+	        	$('#searchBtn').click();
+	        }
 		}
 	</script>
 </body>
