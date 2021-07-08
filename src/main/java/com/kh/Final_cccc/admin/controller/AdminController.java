@@ -91,6 +91,41 @@ public class AdminController {
 		}
 	}
 	
+	@RequestMapping("searchAdminMember.ad")
+	public ModelAndView memberSearch(@RequestParam(value="page", required=false) Integer page, @RequestParam("searchValue") String value, 
+			@RequestParam("searchCondition") String condition, MemberVO m, ModelAndView mv) {
+		
+		if(condition.equals("no")) {
+			m.setUser_no(Integer.parseInt(value));
+		}
+		else if(condition.equals("id")) {
+			m.setUser_id(value);
+		}
+		else if(condition.equals("nick")) {
+			m.setNickname(value);
+		}
+		else if(condition.equals("state")) {
+			m.setStatus(value);
+		}
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			int listCount = adService.searchMemberListCount(m);
+			
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<MemberVO> list = adService.selectSearchMemberResultList(m, pi);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue" , value).addObject("searchCondition", condition).setViewName("admin_member/admin_Member");
+		}
+		
+		return mv;
+	}
+	
 	@RequestMapping("adminRecipe.ad")
 	public String adminRecipeList(Model model) {
 //		ArrayList<Recipe> list = adService.selectRecipeList();

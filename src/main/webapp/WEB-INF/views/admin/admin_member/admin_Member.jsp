@@ -48,7 +48,7 @@
 			    			<td>${ ad.user_no }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_id }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.nickname }</td>
-			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_date}</td>
+			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.u_cre_date}</td>
 			    
 			    			<c:if test="${ ad.status eq 'Y'}">
 			    				<td style="border-left: 1px solid black">정상</td>
@@ -75,9 +75,10 @@
 				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
 					<option>-------</option>
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
-					<option value="content">내용</option>
+					<option value="no">번호</option>
+					<option value="id">아이디</option>
+					<option value="nick">닉네임</option>
+					<option value="state">상태</option>
 				</select>
 		
 				<input id="searchValue" type="search">
@@ -212,7 +213,7 @@
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
 	
-			location.href="search.bo?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			location.href="searchAdminMember.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
 		}
 	</script>
 </body>
