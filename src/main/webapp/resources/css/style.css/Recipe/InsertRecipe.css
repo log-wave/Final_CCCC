@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.insertRecipe_pageTitle{
+	width: 1280px;
+	height:100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+	margin-top: 50px;
+
+}
+
+.insertRecipe_main{
+	width:1100px;
+	min-height: 1200px;
+	border: 1px solid black;
+	margin:auto;
+}
+/* 왼쪽의 padding-left:135px;
+	오른쪽의 margin-right: 25px; */
+.rp_insert_area{
+	width: 1100px;
+	display: flex;
+	height: 90px;
+	border: 1px solid red;
+}
+
+.insertRecipe_subTitile{
+	width: 300px;
+	padding-left: 135px;
+	margin:auto;
+	font-size: 25px;
+}
+
+.insertRecipe_inputBox{
+	width: 700px;
+	height: 85px;
+	margin:auto;
+	margin-right: 40px;
+}
+
+.rp_insert_inputbox{
+	width:660px;
+	min-height:55px;
+	border: 0.5px solid #787878;
+	border-radius: 5px;
+	background-color: #ECECEC;
+	margin-top: 10px;
+	font-size: 17px;
+}
+
+.insertRecipe_inputBox p{
+	margin-top: 5px;
+	color: lightgray;
+}
+
+.rp_addMate_btn{
+	width: 130px;
+	height: 30px;
+	border: 0.9px solid #F29F05;
+	border-radius: 5px;
+	background-color: #ffcf6c;
+	color: white;
+	margin-top: 27px;	
+}
+.rp_Mate_area{
+	width:950px;
+	min-height: 100px;
+	margin: auto;
+	border:1px solid green;
+}
+
+
+.rp_added_area{
+	width:300px;
+	height:200px;
+	border: 1px solid blue; 
+}

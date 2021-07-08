@@ -1,14 +1,21 @@
 package com.kh.Final_cccc.recipe.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.service.RecipeService;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
@@ -81,6 +88,24 @@ public class RecipeController {
 		
 		model.addAttribute("r_info", r_info).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist);
 		return "/RecipeDetail/RecipeDetail";
+	}
+	
+	@RequestMapping("insertRecipeForm.rp")
+	public String insertRpform() {
+		
+		return "/insertRecipe/InsertRecipe";
+	}
+	
+	@RequestMapping("MList.rp")
+	@ResponseBody
+	public void MateList(@RequestParam("mNo") int mNo, HttpServletResponse response) throws JsonIOException, IOException {
+		System.out.println("m : "+mNo);
+		response.setContentType("application/json; charset=UTF-8");
+		ArrayList<Material> mList = rService.selectmaterialList(mNo);
+		
+		System.out.println(mList);
+		
+		new GsonBuilder().create().toJson(mList, response.getWriter());
 	}
 }
 

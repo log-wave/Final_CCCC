@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.dao.recipeDAO;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
@@ -54,6 +55,12 @@ public class RecipeServiceImp implements RecipeService{
 	public ArrayList<RecipeProcess> selectProcess(int recipeNo) {
 		// 레시피 조리과정
 		return rDAO.selectProcess(recipeNo, sqlSession);
+	}
+
+	@Override
+	public ArrayList<Material> selectmaterialList(int mNo) {
+		// 재료리스트 가져오기
+		return rDAO.selectmaterialList(sqlSession, mNo);
 	}
 	
 	

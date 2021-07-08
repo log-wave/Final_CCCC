@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
@@ -40,6 +41,11 @@ public class recipeDAO {
 	public ArrayList<RecipeProcess> selectProcess(int recipeNo, SqlSessionTemplate sqlSession) {
 		// 조리과정 불러오기
 		return (ArrayList)sqlSession.selectList("recipeMapper.selectProcess", recipeNo);
+	}
+
+	public ArrayList<Material> selectmaterialList(SqlSessionTemplate sqlSession, int mNo) {
+		// 재료 리스트 가져오기
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectMaterialList", mNo);
 	}
 
 }
