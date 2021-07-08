@@ -19,5 +19,6 @@
       <mapper resource="mapper/board-mapper.xml"/>
       <mapper resource="mapper/files-mapper.xml"/>
       <mapper resource="mapper/material-mapper.xml"/>
+      <mapper resource="mapper/speciality-mapper.xml"/>
    </mappers>
 </configuration>

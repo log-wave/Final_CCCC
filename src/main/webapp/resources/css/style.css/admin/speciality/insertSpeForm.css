@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+.Spage{
+    width: 300px;
+    height: 470px;
+    margin: auto;
+}
+
+.Smain{
+    width:300px;
+    margin: auto;
+}
+
+.S_title{
+    text-align:center;
+    width:120px;
+    margin: auto;
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 2px solid #F29F05;
+}
+
+.sp_area{
+    width: 300px;
+    margin: auto;
+    margin-left: 40px;
+}
+
+.town_btnArea{
+    padding-top: 15px;
+}
+
+.spe_label{
+	font-weight: bold;
+	min-width: 100px;
+    height:29px;
+    padding-top:5px;
+    display: inline-block;
+}
+.townBtn{
+    width:60px;
+    height:30px;
+    font-size: 12px;
+    border-radius: 3px;
+    background-color: white;
+    border: 1px solid #F29F05;
+}
+
+.input_spName{
+    width: 300px;
+    padding-top: 15px;
+    display: inline-block;
+}
+
+
+.input_blank{
+    width:200px;
+    float: right;
+}
+
+.input_blank input{
+    width:150px;
+    height:25px;
+}
+.choice{
+    width: 300px;
+    height: 30px;
+    display: flex;
+    margin-bottom: 15px;
+}
+.choice_food{
+    width:65px;
+    height:28px;
+    border: 2px solid #F29F05;
+    font-size:12px;
+    line-height:26x;
+    text-align: center;
+}
+
+.sp_info{
+    width:250px;
+    resize: none;
+}
+
+.btn_area{
+    width:300px;
+    padding-left:40px;
+}
+.btn_area button{
+    width:60px;
+    height:20px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    background: #D1CBC2;
+    color: white;
+}
+
+.subtn{
+    width:60px;
+    height:20px;
+    font-weight: bold;
+    border-style: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    background: #F29F05;
+    color: white;
+}

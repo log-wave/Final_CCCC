@@ -25,6 +25,8 @@ import com.kh.Final_cccc.common.Pagination;
 import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.speciality.model.vo.Speciality;
+import com.kh.Final_cccc.speciality.service.SpecialityService;
 
 @Controller
 public class AdminController {
@@ -37,6 +39,9 @@ public class AdminController {
 	
 	@Autowired
 	private MaterialService maService;
+
+	@Autowired
+	private SpecialityService speService;
 	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
@@ -145,8 +150,26 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminSpeciality.ad")
-	public String adminSpecialityList() {
-		return "../admin/admin_specialty/admin_Specialty";
+	public ModelAndView adminSpecialityList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = speService.getSpeListCount();
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Speciality> list = speService.selectSpeList(pi);
+		
+		  if(list != null) {
+			  mv.addObject("list", list).addObject("pi",pi).setViewName("admin_speciality/admin_Speciality"); 
+		 } else { 
+			 return null; 
+		 }
+		 
+		return mv;
+	
 	}
 	
 	@RequestMapping("adminQAboard.ad")
