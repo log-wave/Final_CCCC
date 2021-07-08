@@ -1,7 +1,9 @@
 package com.kh.Final_cccc.member.service;
 
 
-import com.kh.Final_cccc.member.controller.MemberController;
+
+
+
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 public interface MemberService {
@@ -17,6 +19,17 @@ public interface MemberService {
 	int insertMember(MemberVO m);
 
 	int emailCheck(String email);
+
+	int deleteMemberCheck(MemberVO m);
+
+	int count_pass_cnt(MemberVO m);
+
+	int count_DeleteMemberCheck_Num(MemberVO m);
+
+
+	
+
+
 	
 	
 	

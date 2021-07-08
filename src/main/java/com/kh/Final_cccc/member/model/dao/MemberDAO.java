@@ -1,5 +1,7 @@
 package com.kh.Final_cccc.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,5 +45,38 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne("memberMapper.emailCheck", email);
 	}
+	
+	//파라미터가 여러 개 있으므로 map 형식으로 리턴 
+
+
+
+	public int deleteMemberCheck(SqlSessionTemplate sqlSession, MemberVO m) {
+		loggger.info("회원탈퇴체크 DAO 진입성공");
+		
+		return sqlSession.update("memberMapper.deleteMemberCheck", m);
+	
+	}
+
+	public int count_pass_cnt(SqlSessionTemplate sqlSession, MemberVO m) {
+		
+		loggger.info("회원탈퇴체크 DAO 진입성공");
+		
+		return sqlSession.update("memberMapper.count_pass_cnt", m);
+	}
+
+	public int count_DeleteMemberCheck_Num(SqlSessionTemplate sqlSession, MemberVO m) {
+		
+		loggger.info("회원탈퇴 카운트 검사 dao 진입");
+		
+		return sqlSession.selectOne("memberMapper.count_DeleteMemberCheck_Num", m);
+		
+	
+	}
+
+
+	
+
+	
+
 
 }

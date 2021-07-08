@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/login.css?ver=1.0'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/loginUtil.css'/>">
-
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">  
 </head>
 <body>
@@ -26,13 +26,13 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="user_id" placeholder="아이디">
+						<input class="input100" type="text" id="user_id" name="user_id" placeholder="아이디">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" name="user_password" placeholder="비밀번호">
+						<input class="input100" type="password" id="user_password" name="user_password" placeholder="비밀번호">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -45,13 +45,8 @@
 					
 					</div>
 					
-					
-					
-					
-					
-					
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" id="login_btn" onclick="return loginCheck();">
 							로그인
 						</button>
 					</div>
@@ -83,10 +78,28 @@
 	</div>
 	</form>
 	
-	
-	
-	
 	<c:import url="/WEB-INF/views/common/footer.jsp" charEncoding="UTF-8"></c:import>
+	
+	
+	<script type="text/javascript">
+
+		/* 처음시작하는 if 에 정확히 입력했을때 로직작성하고 
+		else{
+			
+			틀렸을때 카운트 누적되는데 
+			
+			if(5회이상 )
+			
+		}}
+		 */
+		
+	</script>
+	
+	
+	
+	
+	
+	
 	
 	
 </body>
