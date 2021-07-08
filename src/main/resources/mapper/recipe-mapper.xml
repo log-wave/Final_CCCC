@@ -74,4 +74,23 @@
 		<result property="rp_comment" column="RP_COMENT"/>
 		<result property="recipe_no" column="RECIPE_NO"/>
 	</resultMap>
+	
+	<select id="selectMaterialList" resultMap="selectMtResult">
+		select * 
+		from MATERIAL 
+		where CLASSFI = #{mNo}
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.material.model.vo.Material" id="selectMtResult">
+		<id column="MATERIAL_NO" property="materialNo"/>
+		<result column="MATERIAL_NAME" property="materialName"/>
+		<result column="STANDARD" property="standard"/>
+		<result column="KCAL" property="kcal"/>
+		<result column="PROTEIN" property="protein"/>
+		<result column="FAT" property="fat"/>
+		<result column="CARBO" property="carbo"/>
+		<result column="SUGAR" property="sugar"/>
+		<result column="CLASSFI" property="classFi"/>
+		<result column="STATUS" property="status"/>
+	</resultMap>
 </mapper>

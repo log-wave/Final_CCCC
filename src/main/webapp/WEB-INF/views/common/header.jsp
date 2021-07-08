@@ -23,7 +23,8 @@
 			</select>
 			<input type="text">
 			<button id="searchBtn">검색</button>
-			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG">
+			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG"
+			onclick="location.href='insertRecipeForm.rp'">
 			<c:if test="${empty loginUser}">
 			
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
