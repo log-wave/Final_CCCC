@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+
+	.page {
+	 width: 1070px;
+	 height: 790px;
+	 display: inline-block;
+	 vertical-align: top;
+	}
+	#title{
+	margin-top : 80px;
+	text-align: center;
+	}
+	
+	.admin_menu {
+    	display: inline-block;
+    }
+	.menu{
+	margin-top: 50px;
+	text-align: left;
+	margin-left: 45px;
+	}
+	
+    .sepciality_list{
+    	width : 950px;
+    	min-height : 500px;
+		margin: auto;
+    }
+	.sepciality_table{
+	text-align: center;
+	border-collapse: collapse;
+	}
+	.sepciality_table th{
+	 border-bottom: 1px solid black;
+	}
+	.sepciality_table td{
+	max-width: 140px;
+		height: 35px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		border-bottom: 1px solid black;
+		padding: 5px;
+	
+	}
+	.buttonArea{
+		text-align: right;
+		width: 1000px;
+	}
+	.buttonArea button {
+		background: rgba(242, 159, 5, 0.88);
+     	color:white;
+     	border-radius: 7px;
+     	border: 0px;
+     	height: 30px;
+     	cursor: pointer;
+     	}    
+    #searchArea{
+	width : 1070px;
+	height: 30px;
+	text-align: center;
+} 	
+    .pagingArea{
+	padding-top: 20px;
+	padding-bottom: 100px;
+	text-align: center;
+	}
+
+	.pagingArea button{
+		width: 35px;
+		height: 35px;
+		border-radius: 5px;
+		font-size: 15px;
+		border-style: none;
+	}
+    #searchCondition, #searchValue{
+    height: 30px;
+    }
+    #searchBtn{
+     	color:black;
+     	border-radius: 2px;
+     	border: 0px;
+     	height: 30px;
+     	cursor: pointer;
+    
+    }

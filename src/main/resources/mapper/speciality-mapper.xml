@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="specialityMapper">
+
+
+	<select id="getSpeListCount" resultType="_int">
+		select count(*)
+		from SPECIALITY
+	</select>
+	
+	<select id= "selectSpeList" resultMap="SpeResultMap">
+		select *
+		from SPECIALITY
+	
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.speciality.model.vo.Speciality" id="SpeResultMap">
+		<id column="SPECIALITY_NO" property="specialityNo"/>
+		<result column="SPECIALITY_REGION" property="specialityRegion"/>
+		<result column="SPECIALITY_NAME" property="specialityName"/>
+		<result column="SPECIALITY_INFO" property="specialityInfo"/>
+		<result column="MATERIAL_NO" property="materialNo"/>
+	</resultMap>
+	
+	<select id= "selectSpeDetail" resultMap="SpeResultMap">
+		select *
+		from SPECIALITY
+		where Speciality_No = #{specialityNo}
+	</select>
+</mapper>
