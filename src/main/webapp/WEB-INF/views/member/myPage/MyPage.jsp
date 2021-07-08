@@ -8,12 +8,16 @@
 <title>마이 페이지</title>
 <script src="https://kit.fontawesome.com/307ff02242.js" crossorigin="anonymous"></script>
 
-<link href="../../style.css/index.css" rel="stylesheet" type="text/css">
-<link href="MyPage.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/member/myPage/myPage.css?ver=1.0'/>">
+
+
+
+
 <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">  
 </head>
 <body>
-	<c:import url="/view/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	
 	<div class="myPage_box">
 		<div class="myPage_profile_bigBox">
@@ -23,7 +27,7 @@
 					
 					<div class="myPage_profile_textAreabox">
 						<div class="myPage_profile_userName">
-							강건강
+							${loginUser.getUser_name()}
 						</div>
 						<div class="myPage_profile_userFollowing"> 
 							<span class="userFollwing">팔로잉</span>
@@ -34,9 +38,12 @@
 				
 				</div>
 			</div>
-			<div class="myPage_profile_changeBox">
+			<div class="myPage_profile_changeBox" style="display:flex; justify-content: space-between;">
 				<div>
 					<button class="profile_setting_Btn"><i class="fas fa-user-cog fa-2x"></i><span style="margin-left: 7px;">프로필 설정</span></button>
+				</div>
+				<div>
+					<button class="profile_setting_Btn" style="cursor:pointer;"  onclick="location.href='withdrawalGuide.me'"><span>회원 탈퇴</span></button>
 				</div>
 			</div>
 		
@@ -52,13 +59,7 @@
 
 	
 	
-	
-	
-	
-	
-	
-	
-	<c:import url="/view/common/footer.jsp" charEncoding="UTF-8"></c:import>
+	<c:import url="/WEB-INF/views/common/footer.jsp" charEncoding="UTF-8"></c:import>
 	
 	
 </body>
