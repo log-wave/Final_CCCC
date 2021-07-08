@@ -61,8 +61,7 @@
 				<button onclick="searchBoard();">검색하기</button>
 			</div>
 	    	<div class="buttonArea">
-	    		<button id="insert_no">공지 작성</button>
-				<button id="delete_no">공지 삭제</button>
+				<button id="delete_qa">Q&A 삭제</button>
 	    	</div>
     	</div>
     	

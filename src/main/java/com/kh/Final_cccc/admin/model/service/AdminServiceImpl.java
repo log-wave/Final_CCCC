@@ -69,4 +69,14 @@ public class AdminServiceImpl implements AdminService{
 		return adDAO.getBoardDetail(sqlSession, id);
 	}
 
+	@Override
+	public int searchMemberListCount(MemberVO m) {
+		return adDAO.searchMemberListCount(sqlSession, m);
+	}
+
+	@Override
+	public ArrayList<MemberVO> selectSearchMemberResultList(MemberVO m, PageInfo pi) {
+		return adDAO.selectSearchMemberResultList(sqlSession, m, pi);
+	}
+
 }

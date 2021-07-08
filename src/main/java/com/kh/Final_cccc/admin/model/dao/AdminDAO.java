@@ -56,4 +56,14 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.boardDetail", id);
 	}
 
+	public int searchMemberListCount(SqlSessionTemplate sqlSession, MemberVO m) {
+		return sqlSession.selectOne("adminMapper.searchMemberListCount", m);
+	}
+
+	public ArrayList<MemberVO> selectSearchMemberResultList(SqlSessionTemplate sqlSession, MemberVO m, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchMemberResultList" , m, rowBounds);
+	}
+
 }
