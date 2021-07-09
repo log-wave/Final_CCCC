@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.common.PagenationAdmin;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.speciality.model.vo.Speciality;
@@ -20,6 +22,8 @@ public class SpecialityController {
 	@Autowired
 	private SpecialityService speService;
 	
+	@Autowired
+	private AdminService adService;
 	
 	@RequestMapping("specialityDetailForm.ad")
 	public String specialityDetail(@RequestParam(value="no") int specialityNo, Model model ) {
@@ -40,5 +44,54 @@ public class SpecialityController {
 		return "admin_speciality/insertSpeForm/insertSpeForm";
 	}
 	
+	@RequestMapping("searchSpeciality.ad") 
+	public ModelAndView searchSpeciality(@RequestParam(value="page", required = false) Integer page, @RequestParam("searchValue") String value, 
+			@RequestParam("searchCondition") String condition, Speciality spe, ModelAndView mv) {
+		
+		System.out.println(condition);
+		System.out.println(value);
+		
+		if(condition.equals("region")) {
+			spe.setSpecialityRegion(value);
+		} else if(condition.equals("speName")) {
+			spe.setSpecialityName(value);
+		}
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			int listCount = speService.searchSpeListCount(spe);
+			
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<Speciality> list = speService.searchSpeResultList(spe, pi);
+			System.out.println("list" + list);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue" , value).addObject("searchCondition", condition).setViewName("admin_speciality/admin_Speciality");
+		}
+		
+		return mv;
+	}
 	
+	@RequestMapping("deleteSpeStatus.ad")
+	public String deleteSpeStatus(@RequestParam(value="check[]", required=false) int [] check, @ModelAttribute Speciality spe) {
+		
+		System.out.println(check);
+		int result = 0;
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			spe.setSpecialityNo(check[i]);
+			result = speService.getdeleteSpeStatus(spe);
+		}
+		
+		if(result > 0) {
+			return "redirect:adminSpeciality.ad";
+		} else {
+			System.out.println("재료 삭제 안됨");
+			return null;
+		}
+		
+	}
 }

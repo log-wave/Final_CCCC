@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>특산물 추가</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="${ pageContext.servletContext.contextPath }/js/jquery-3.6.0.min.js"></script>
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/speciality/insertSpeForm.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -19,7 +18,7 @@
         </div>
         	<br>  <br>  <br>
         <div class="sp_area">
-            <div id="town_textArea" class="spe_label">선택지역 </div> 
+            <div id="town_textArea" class="spe_label">선택지역</div> 
             <div class="town_btnArea">
                 <button type="button" class="townBtn" id="서울"  value="서울">서 울</button>
                 <button type="button" class="townBtn" id="경기도" value="경기도">경 기 도</button>
@@ -29,33 +28,46 @@
                 <button type="button" class="townBtn" id="전라도" value="전라도">전 라 도</button>
                 <button type="button" class="townBtn" id="경상도" value="경상도">경 상 도</button>
                 <button type="button" class="townBtn" id="제주도" value="제주도">제 주 도</button>
-                <button type="button" class="townBtn" id="전국"  value="전국">전 국</button>
             </div><br>
             
+             <div class="spe_label">기존 재료 선택</div>
+             <div class="insertRecipe_inputBox">
+            <div class="select_Mate" onchange="setArea2(this.value)">
+               <select name="firstCate"class="select_Mate" onchange="setArea2(this.value)">
+					<option value="1">곡류</option>
+					<option value="2">면/만두류</option>
+					<option value="3">빵류</option>
+					<option value="6">감자/고구마류</option>
+					<option value="7">묵/두부</option>
+					<option value="8">콩/견과류</option>
+					<option value="9">채소류</option>
+					<option value="10">과일류</option>
+					<option value="11">고기류</option>
+					<option value="12">햄/소시지</option>
+					<option value="13">계란류</option>
+					<option value="14">어패류</option>
+					<option value="15">해조류</option>
+					<option value="16">유제품/치즈류</option>
+					<option value="17">양념류</option>
+					<option value="18">초콜렛/사탕</option>
+					<option value="19">음료/주류</option>
+					<option value="20">가공재료</option>
+					<option value="21">기타</option>
+					<option value="22">버섯류</option>
+					<option value="23">향신료</option>
+                </select>
+                <select name="secCate" class="secCate">
+                <option></option>
+				</select>
+            </div>
+            </div>
             <div class="input_spName">
                 <div class="spe_label">특산물 명 :</div>
                 <div class="input_blank">
                     <input type="text">
                 </div>
             </div>
-            
-            <div class="choice">
-                <select class="s0">
-                    <option>대분류</option>
-                    <option>고기</option>
-                    <option>야채</option>
-                    <option>생선</option>
-                </select>
-                &nbsp;
-                <select class="s1">
-                    <option>선택하세요.</option>
-                    
-                </select>
-                &nbsp;
-                <input type="hidden"> <!-- 컨트롤러에 들어갈 값 -->
-                <div class="choice_food">돼지고기</div>
-            </div>
-            <br>
+            <br><br>
             <div>
             	<div class="spe_label">특산물 정보</div>
                 <textarea rows="10" cols="30" class="sp_info"></textarea>
@@ -71,19 +83,54 @@
 </div>
 </body>
 <script>
-    $('.townBtn').click(function(){
-        var text = $('#town_textArea').html();
-        
-        console.log(text);
-        
-        text += $(this).val() + " ";
-        
-        $('#town_textArea').html(text);
-        
-    });
-    
-    $(document).ready(function(){
-        var meat =['돼지고기', '소고기' ,'닭고기']
-    });
+
+		var townBtn = document.getElementsByClassName("townBtn");
+
+		function handleClick(event) {
+		  console.log(event.target);
+		  // console.log(this);
+		  // 콘솔창을 보면 둘다 동일한 값이 나온다
+		
+		  console.log(event.target.classList);
+		
+		  if (event.target.classList[1] === "clicked") {
+		    event.target.classList.remove("clicked");
+		  } else {
+		    for (var i = 0; i < townBtn.length; i++) {
+		    	townBtn[i].classList.remove("clicked");
+		    }
+		
+		    event.target.classList.add("clicked");
+		  }
+		}
+		
+		function init() {
+		  for (var i = 0; i < townBtn.length; i++) {
+			  townBtn[i].addEventListener("click", handleClick);
+		  }
+		}
+		
+		init();
+		
+		
+		function setArea2(f){
+			var target =$("select[name='secCate']");
+			
+			target.empty();
+			//에이젝스로 가져오기
+			 $.ajax({
+				 type:'POST',
+				url:'MList.rp',
+				data:{mNo:f},
+				success:function(data){
+					
+					for(var i in data){
+						target.append('<option value="' + data[i].materialNo + '" id="addedMate">' + data[i].materialName +'</option>' );
+					}
+				}
+				
+			}); 
+		}
+		
 </script>
 </html>

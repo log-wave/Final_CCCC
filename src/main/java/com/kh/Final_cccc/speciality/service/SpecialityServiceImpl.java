@@ -33,4 +33,19 @@ public class SpecialityServiceImpl implements SpecialityService {
 	public Speciality specialityDetail(int specialityNo) {
 		return speDAO.selectSpeDetail(sqlSession ,specialityNo);
 	}
+
+	@Override
+	public int searchSpeListCount(Speciality spe) {
+		return speDAO.searchSpeListCount(sqlSession, spe);
+	}
+
+	@Override
+	public ArrayList<Speciality> searchSpeResultList(Speciality spe, PageInfo pi) {
+		return speDAO.searchSpeResultList(sqlSession, spe);
+	}
+
+	@Override
+	public int getdeleteSpeStatus(Speciality spe) {
+		return speDAO.deleteSpeStatus(sqlSession, spe);
+	}
 }

@@ -6,12 +6,14 @@
 	<select id="getSpeListCount" resultType="_int">
 		select count(*)
 		from SPECIALITY
+		where status ='Y'
 	</select>
 	
 	<select id= "selectSpeList" resultMap="SpeResultMap">
 		select *
 		from SPECIALITY
-	
+		where status ='Y'
+		order by SPECIALITY_NO desc
 	</select>
 	
 	<resultMap type="com.kh.Final_cccc.speciality.model.vo.Speciality" id="SpeResultMap">
@@ -27,4 +29,38 @@
 		from SPECIALITY
 		where Speciality_No = #{specialityNo}
 	</select>
+	
+	<select id="selectSpeListCount" resultType="_int">
+		select count (*)
+		from SPECIALITY
+		where STATUS ='Y'
+		<choose>
+			<when test ="specialityRegion !=null" >
+				and speciality_region like '%' || #{specialityRegion} || '%'
+			</when>
+			<when test ="specialityName !=null" >
+				and speciality_name like '%' || #{specialityName} || '%'
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectSpeResultList" resultMap="SpeResultMap">
+		select *
+		from SPECIALITY
+		where status ='Y'
+		<choose>
+			<when test = "specialityRegion !=null" >
+				and speciality_region like '%' || #{specialityRegion} || '%'
+			</when>
+			<when test = "specialityName !=null" >
+				and speciality_name like '%' || #{specialityName} || '%'
+			</when>
+		</choose>
+	</select>
+	
+	<update id="deleteSpeStatus">
+		update SPECIALITY
+		set status='N'
+		where speciality_no = #{specialityNo}
+	</update>
 </mapper>
