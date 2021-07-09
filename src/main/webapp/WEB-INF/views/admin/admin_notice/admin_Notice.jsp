@@ -19,8 +19,7 @@
     <div class="page">
 	    <h2 id="title"> 공지사항 목록 </h2>
 	    <br>
-	    	<div class="notice_list">
-	    	<hr>
+	    	<div class="notice_list" align="center">
 			<br>
 	    		<table class="notice_Table">
 	    			<tr>
@@ -47,7 +46,13 @@
 				</c:if>
 	    			
 	    		</table>
-	    	<br><hr><br>
+	    	<br>
+	    	
+	    	<div class="buttonArea">
+	    		<button id="insert_no">공지 작성</button>
+				<button id="delete_no">공지 삭제</button>
+	    	</div>
+	    	
 	    	<div id="searchArea" style="float: left">
 				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
@@ -60,10 +65,6 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-	    	<div class="buttonArea">
-	    		<button id="insert_no">공지 작성</button>
-				<button id="delete_no">공지 삭제</button>
-	    	</div>
     	</div>
     	
     	<div align="center">

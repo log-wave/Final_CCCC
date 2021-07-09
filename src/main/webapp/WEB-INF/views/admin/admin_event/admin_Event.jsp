@@ -19,8 +19,7 @@
     <div class="page">
 	    <h2 id="title"> 이벤트 목록 </h2>
 	    <br>
-	    	<div class="event_list">
-	    	<hr>
+	    	<div class="event_list" align="center">
 			<br>
 	    		<table class="event_table">
 		    		<tr>
@@ -56,7 +55,10 @@
 				
 	    			
 	    		</table>
-	    	<br><hr><br>
+	    		<br>
+	    	<div class="buttonArea">
+				<button id="delete_ev">이벤트 삭제</button>
+	    	</div>
 	    	
 	    	<div id="searchArea" style="float: left">
 				<label>검색 조건</label>
@@ -70,10 +72,6 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-			
-	    	<div class="buttonArea">
-				<button id="delete_ev">이벤트 삭제</button>
-	    	</div>
     	</div>
     	
 		<div align="center">

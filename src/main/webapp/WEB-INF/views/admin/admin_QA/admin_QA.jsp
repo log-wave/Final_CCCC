@@ -19,8 +19,7 @@
     <div class="page">
 	    <h2 id="title"> Q&A 목록 </h2>
 	    <br>
-	    	<div class="QA_list">
-	    	<hr>
+	    	<div class="QA_list" align="center">
 			<br>
 	    		<table class="QA_Table">
 	    			<tr>
@@ -47,7 +46,12 @@
 				</c:if>
 	    			
 	    		</table>
-	    	<br><hr><br>
+	    	<br>
+	    	
+	    	<div class="buttonArea">
+				<button id="delete_qa">Q&A 삭제</button>
+	    	</div>
+	    	
 	    	<div id="searchArea" style="float: left">
 				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
@@ -60,9 +64,6 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-	    	<div class="buttonArea">
-				<button id="delete_qa">Q&A 삭제</button>
-	    	</div>
     	</div>
     	
     	<div align="center">
