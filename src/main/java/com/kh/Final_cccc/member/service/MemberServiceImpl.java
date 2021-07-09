@@ -86,6 +86,18 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public MemberVO loginCheck(MemberVO m) {
+		loggger.info("로그인체크 서비스 Impl 진입 성공");
+		return mDAO.loginCheck(sqlSession,m);
+	}
+
+	@Override
+	public int reset_pass_cnt(String user_id) {
+		loggger.info("reset_pass_cnt 서비스 Impl 진입 성공");
+		return mDAO.reset_pass_cnt(sqlSession,user_id);
+	}
+
 
 
 

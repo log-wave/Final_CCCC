@@ -26,6 +26,10 @@ public interface MemberService {
 
 	int count_DeleteMemberCheck_Num(MemberVO m);
 
+	MemberVO loginCheck(MemberVO m);
+
+	int reset_pass_cnt(String user_id);
+
 
 	
 
