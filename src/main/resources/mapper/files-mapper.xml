@@ -32,4 +32,11 @@
 		ORDER BY FILE_NO DESC
 	</select>
 	
+	<select id="selectAdminFilesList" resultMap="filesResultSet"> 
+		SELECT * 
+		FROM TABLE_FILE
+		WHERE REF_FLAG = 2 and FILE_Yn = 'Y'
+		ORDER BY FILE_NO DESC
+	</select>
+	
 </mapper>

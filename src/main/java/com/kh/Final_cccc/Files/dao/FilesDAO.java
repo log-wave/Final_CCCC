@@ -23,4 +23,9 @@ public class FilesDAO {
 		return (ArrayList)sqlSession.selectList("filesMapper.selectFilesList", pi);
 	}
 
+	public ArrayList<Files> selectAdminFileList(SqlSessionTemplate sqlSession,
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		return (ArrayList)sqlSession.selectList("filesMapper.selectAdminFilesList", pi);
+	}
+
 }

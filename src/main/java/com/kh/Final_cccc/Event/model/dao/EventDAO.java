@@ -34,4 +34,13 @@ public class EventDAO {
 		return sqlSession.selectOne("eventMapper.getListCount");
 	}
 
+	public ArrayList<Event> selectAdminEventList(SqlSessionTemplate sqlSession,
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		
+		return(ArrayList)sqlSession.selectList("eventMapper.selectEventList" , null , rowBounds);
+	}
+
 }

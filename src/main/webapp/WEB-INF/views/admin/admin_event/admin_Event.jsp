@@ -32,11 +32,11 @@
 				
 				<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
-			    		<tr>
+			    		<tr class="click">
 			    			<td>${ ad.eventNo }</td>
-			    			<td style="border-left: 1px solid black">${ ad.eventTitle }</td>
-			    			<td style="border-left: 1px solid black">${ ad.eventContent}</td>
-			    			<td style="border-left: 1px solid black"><input type="checkbox" name="event_select" onclick="selectone();"></td>
+			    			<td style="border-left: 1px solid black" onclick="eventInfo('${ ad.eventNo }')">${ ad.eventTitle }</td>
+			    			<td style="border-left: 1px solid black" onclick="eventInfo('${ ad.eventNo }')">${ ad.eventContent}</td>
+			    			<td style="border-left: 1px solid black"><input type="checkbox" name="event_select" onclick="selectOne();" value="${ ad.eventNo }"></td>
 			    		</tr>
 				
 	    			
@@ -57,20 +57,71 @@
 	    			
 	    		</table>
 	    	<br><hr><br>
+	    	
+	    	<div id="searchArea" style="float: left">
+				<label>검색 조건</label>
+				<select id="searchCondition" name="searchCondition">
+					<option>-------</option>
+					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
+					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
+				</select>
+		
+				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
+				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+			</div>
+			
 	    	<div class="buttonArea">
 				<button id="delete_ev">이벤트 삭제</button>
 	    	</div>
     	</div>
     	
-    	<!-- 페이징 -->
-			<div class="pagingArea">
-			<button>&lt;</button>
-                <!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
-			</div>
+		<div align="center">
+    		<!-- 페이징 -->
+				<table id="pagingArea">	
+			<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
+					
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="adminEvent.ad">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a>
+						</c:if>
+						
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<button><font color="red" size="4"><b>${ p }</b></font></button>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="adminEvent.ad">
+									<button><c:param name="page" value="${ p }"/></button>
+								</c:url>
+								<a href="${ pagination }"><button>${ p }</button></a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="adminEvent.ad">
+								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 	<script>
@@ -103,6 +154,55 @@
 			} else {
 				all.checked = true;
 			}
+		}
+		
+		function eventInfo(eventNo){
+			var url ='<%=request.getContextPath()%>/edetail.ev?eventNo=' + eventNo;
+			window.open(url, 'eventInfo', 'width=1200px, height=820px');
+		}
+		
+		$('.click').on('mouseover',function(){
+			$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
+		}).on('mouseout',function(){
+			$(this).closest('tr').css({"background":"","color":"","cursor":""});
+		});
+		
+		$('#delete_ev').on('click', function(){
+			var checkArr = [];
+			$('input[name="event_select"]:checked').each(function() {
+				checkArr.push($(this).val());
+			});
+			if (confirm('해당 공지사항을 삭제하시겠습니까?')) {
+				$.ajax({
+					type: 'post',
+					url:'evdelete.ad',
+					data:{
+						check:checkArr
+						
+					},
+					success:function(data){
+						window.location.reload();
+					}		
+				});
+			}
+		});
+		
+		function searchBoard(){
+			var searchCondition = $("#searchCondition").val();
+			var searchValue = $("#searchValue").val();
+			if(searchCondition == "-------" || searchValue == ""){
+				alert("똑바로 검색 해주세요.");
+				window.location.reload();
+			} else {
+				location.href="searchAdminEvent.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			}
+		}
+		
+		function searchEnterKey(){
+			if (window.event.keyCode == 13) {
+				 
+	        	$('#searchBtn').click();
+	        }
 		}
 	</script>
 </body>

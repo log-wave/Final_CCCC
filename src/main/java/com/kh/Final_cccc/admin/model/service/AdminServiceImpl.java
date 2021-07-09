@@ -30,11 +30,6 @@ public class AdminServiceImpl implements AdminService{
 //	}
 
 	@Override
-	public ArrayList<Event> selectEventList() {
-		return adDAO.getSelectEventList(sqlSession);
-	}
-
-	@Override
 	public ArrayList<MemberVO> selectMemberList(PageInfo pi) {
 		return adDAO.getSelectMemberList(sqlSession, pi);
 	}
@@ -97,6 +92,21 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ArrayList<MemberVO> selectSearchQAResultList(Board b, PageInfo pi) {
 		return adDAO.selectSearchQAResultList(sqlSession, b, pi);
+	}
+
+	@Override
+	public int searchEventListCount(Event e) {
+		return adDAO.selectSearchEventListCount(sqlSession, e);
+	}
+
+	@Override
+	public ArrayList<Event> selectSearchEventResultList(Event e, PageInfo pi) {
+		return adDAO.selectSearchEventResultList(sqlSession, e, pi);
+	}
+
+	@Override
+	public int deleteEvent(String check) {
+		return adDAO.deleteEvent(sqlSession, check);
 	}
 
 }

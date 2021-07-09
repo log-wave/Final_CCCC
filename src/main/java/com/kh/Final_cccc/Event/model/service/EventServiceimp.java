@@ -43,6 +43,11 @@ public class EventServiceimp implements EventService{
 		return edao.selectEventList(sqlSession, pi);
 	}
 
+	@Override
+	public ArrayList<Event> selectAdminEventList(com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		return edao.selectAdminEventList(sqlSession, pi);
+	}
+
 	
 
 	

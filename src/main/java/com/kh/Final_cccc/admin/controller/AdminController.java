@@ -15,7 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
+import com.kh.Final_cccc.Event.exception.EventException;
+import com.kh.Final_cccc.Event.model.service.EventService;
 import com.kh.Final_cccc.Event.model.vo.Event;
+import com.kh.Final_cccc.Files.service.FilesService;
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.board.model.vo.Board;
@@ -38,10 +42,16 @@ public class AdminController {
 	private BoardService bService;
 	
 	@Autowired
+	private EventService eService;
+	
+	@Autowired
 	private MaterialService maService;
 
 	@Autowired
 	private SpecialityService speService;
+	
+	@Autowired
+	private FilesService fService;
 	
 	@RequestMapping("adminMember.ad")
 	public ModelAndView adminMemberList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
@@ -360,15 +370,73 @@ public class AdminController {
 		return mv;
 	}
 	
-	
 	@RequestMapping("adminEvent.ad")
-	public String adminEventList(Model model) {
-		ArrayList<Event> list = adService.selectEventList();
-		if(list != null) {
-			model.addAttribute("list", list);
-			return "../admin/admin_event/admin_Event";
+	public ModelAndView adminEventList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = eService.getListCount();
+		
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+		
+		ArrayList<Event> elist = eService.selectAdminEventList(pi);
+		
+		if(elist != null) {
+			mv.addObject("list", elist).addObject("pi", pi).setViewName("admin_event/admin_Event");
+		} else { 
+			throw new EventException("이벤트 전체 조회에 실패하였습니다.");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("searchAdminEvent.ad")
+	public ModelAndView eventSearch(@RequestParam(value="page", required=false) Integer page, @RequestParam("searchValue") String value, 
+			@RequestParam("searchCondition") String condition, Event e, ModelAndView mv) {
+		
+		if(condition.equals("no")) {
+			e.setEventNo(Integer.parseInt(value));
+		}
+		else if(condition.equals("title")) {
+			e.setEventTitle(value);
+		}
+		else if(condition.equals("content")) {
+			e.setEventContent(value);
+		}
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			int listCount = adService.searchEventListCount(e);
+			
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<Event> list = adService.selectSearchEventResultList(e, pi);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue" , value).addObject("searchCondition", condition).setViewName("admin_event/admin_Event");
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping("evdelete.ad")
+	public String deleteEvent(@RequestParam(value="check[]", required=false) String[] check){
+		int result = 0;
+		
+		for(int i = 0; i <= check.length - 1; i++ ) {
+			result = adService.deleteEvent(check[i]);
+		}
+		
+		if(result > 0) {
+			return "redirect:adminEvent.ad";
 		} else {
-			return "../admin/admin_event/admin_Event";
+			System.out.println("안됨");
+			return null;
 		}
 	}
 	

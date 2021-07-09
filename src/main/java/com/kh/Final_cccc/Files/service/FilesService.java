@@ -13,4 +13,6 @@ public interface FilesService {
 
 	ArrayList<Files> selectFileList(PageInfo pi);
 
+	ArrayList<Files> selectAdminFileList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
+
 }
