@@ -1,6 +1,11 @@
 package com.kh.Final_cccc.speciality.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.admin.model.service.AdminService;
 import com.kh.Final_cccc.common.PagenationAdmin;
 import com.kh.Final_cccc.material.model.vo.Material;
@@ -42,6 +49,36 @@ public class SpecialityController {
 	@RequestMapping("insertSpeForm.ad")
 	public String specialityinsert() {
 		return "admin_speciality/insertSpeForm/insertSpeForm";
+	}
+	
+	@RequestMapping("mList.ad") 
+	public void MateList(@RequestParam("mNo") int mNo, HttpServletResponse response) throws JsonIOException, IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		ArrayList<Material> mList = speService.selectmaterialList(mNo);
+		
+		System.out.println(mList);
+		
+		new GsonBuilder().create().toJson(mList, response.getWriter());
+	}
+	
+	@RequestMapping("insertSpe.ad")
+	public void insertSpeciality(@ModelAttribute Speciality speciality, HttpServletResponse response) {
+		System.out.println("speciality" + speciality);
+		
+		int result = speService.insertSpeciality(speciality);
+		
+		try {
+			PrintWriter out = response.getWriter();
+			if(result > 0) {
+				out.print("ok");
+			}else {
+				out.print("fail");
+			}
+			out.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping("searchSpeciality.ad") 

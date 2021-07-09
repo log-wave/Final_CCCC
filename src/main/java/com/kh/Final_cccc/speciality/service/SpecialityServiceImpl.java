@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.Final_cccc.admin.model.vo.PageInfo;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.speciality.model.dao.SpecialityDAO;
 import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
@@ -47,5 +48,15 @@ public class SpecialityServiceImpl implements SpecialityService {
 	@Override
 	public int getdeleteSpeStatus(Speciality spe) {
 		return speDAO.deleteSpeStatus(sqlSession, spe);
+	}
+	
+	@Override
+	public ArrayList<Material> selectmaterialList(int mNo) {
+		return speDAO.selectmaterialList(sqlSession, mNo);
+	}
+
+	@Override
+	public int insertSpeciality(Speciality speciality) {
+		return speDAO.insertSpeciality(sqlSession, speciality);
 	}
 }
