@@ -185,7 +185,7 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
-			if(searchCondition == "" || searchValue == ""){
+			if(searchCondition == "-------" || searchValue == ""){
 				alert("똑바로 검색 해주세요.");
 				window.location.reload();
 			} else {
