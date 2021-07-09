@@ -52,13 +52,13 @@
 				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
 					<option>-------</option>
-					<option value="writer">작성자</option>
-					<option value="title">제목</option>
-					<option value="content">내용</option>
+					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
+					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
 				</select>
 		
-				<input id="searchValue" type="search">
-				<button onclick="searchBoard();">검색하기</button>
+				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
+				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
 	    	<div class="buttonArea">
 	    		<button id="insert_no">공지 작성</button>
@@ -185,8 +185,19 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
-	
-			location.href="search.bo?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			if(searchCondition == "" || searchValue == ""){
+				alert("똑바로 검색 해주세요.");
+				window.location.reload();
+			} else {
+				location.href="searchAdminNotice.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			}
+		}
+		
+		function searchEnterKey(){
+			if (window.event.keyCode == 13) {
+				 
+	        	$('#searchBtn').click();
+	        }
 		}
 	</script>
 </body>

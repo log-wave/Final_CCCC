@@ -142,4 +142,79 @@
 		where STATUS = 'Y'
 		order by MATERIAL_NO desc
 	</select>
+	
+	<select id="searchNoticeListCount" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultType="_int">
+		select count(*)
+		from board
+		where board_status='N' and board_flag=1
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchNoticeResultList" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultMap="boardResultSet">
+		select *
+		from board
+		where board_status='N' and board_flag=1
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+		order by board_no desc
+	</select>
+	
+	<select id="searchQAListCount" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultType="_int">
+		select count(*)
+		from board
+		where board_status='N' and board_flag=2
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchQAResultList" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultMap="boardResultSet">
+		select *
+		from board
+		where board_status='N' and board_flag=2
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+		order by board_no desc
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.board.model.vo.Board" id="boardResultSet">
+		<id column="BOARD_NO" property="bNo"/>
+		<result column="BOARD_TITLE" property="bTitle"/>
+		<result column="BOARD_CONTENT" property="bContent"/>
+		<result column="BOARD_CREATE_DATE" property="bCreateDate"/>
+		<result column="BOARD_MODIFY_DATE" property="bModifyDate"/>
+		<result column="BOARD_VIEW" property="bView"/>
+		<result column="BOARD_STATUS" property="bStatus"/>
+		<result column="BOARD_FLAG" property="bFlag"/>
+		<result column="USER_NO" property="bUserNo"/>
+		<result column="NICKNAME" property="nickName"/>
+	</resultMap>
 </mapper>
