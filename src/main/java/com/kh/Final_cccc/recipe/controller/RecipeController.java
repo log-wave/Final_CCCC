@@ -3,6 +3,7 @@ package com.kh.Final_cccc.recipe.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,25 @@ public class RecipeController {
 		System.out.println(mList);
 		
 		new GsonBuilder().create().toJson(mList, response.getWriter());
+	}
+	
+	@RequestMapping("insertRecipe.rp")
+	public void insertRecipe(HttpServletRequest request) {
+		
+		//추가된 재료 배열과 재료에 맞는 조리시간
+		String[] mNoArr = request.getParameterValues("rp_mate");
+		String[] mAmArr = request.getParameterValues("mate_amount");
+		for(int i = 0; i < mNoArr.length; i++) {
+//			System.out.println("번호 : "+mNoArr[i] + "/ 조리시간 : " + mAmArr[i]);
+			
+			//한번씩 메소드를 호출해서 보내줘야
+		}
+		
+		//조리과정
+		String[] pr_Content = request.getParameterValues("rp_content");
+		for(int i = 0; i < pr_Content.length; i++) {
+			System.out.println("텍스트 에어리어 : " + pr_Content[i]);
+		}
 	}
 }
 
