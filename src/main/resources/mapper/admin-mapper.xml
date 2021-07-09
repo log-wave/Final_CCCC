@@ -92,12 +92,42 @@
 		<result column="PASS_CNT" property="pass_cnt"/>
 	</resultMap>
 	
-	<select id="selectEventList" resultMap="eventResultSet">
-		SELECT *
-		FROM EVENT
-		WHERE EVENT_STATUS='Y'
-		ORDER BY EVENT_NO ASC
+	<select id="searchEventListCount" parameterType="com.kh.Final_cccc.Event.model.vo.Event" resultType="_int">
+		select count(*)
+		from event
+		where event_status='Y'
+		<if test="eventNo != 0">
+			and event_no like '%' || #{eventNo} || '%'
+		</if>
+		<if test="eventTitle != null">
+			and evnet_title like '%' || #{eventTitle} || '%'
+		</if>
+		<if test="eventContent != null">
+			and event_content like '%' || #{eventContent} || '%'
+		</if>
 	</select>
+	
+	<select id="selectSearchEventResultList" parameterType="com.kh.Final_cccc.Event.model.vo.Event" resultMap="eventResultSet">
+		select *
+		from event
+		where event_status='Y'
+		<if test="eventNo != 0">
+			and event_no like '%' || #{eventNo} || '%'
+		</if>
+		<if test="eventTitle != null">
+			and evnet_title like '%' || #{eventTitle} || '%'
+		</if>
+		<if test="eventContent != null">
+			and event_content like '%' || #{eventContent} || '%'
+		</if>
+		order by event_no desc
+	</select>
+	
+	<update id="deleteEvent">
+		update event
+		set event_status='N'
+		where event_no = #{eNo}
+	</update>
 	
 	<resultMap type="com.kh.Final_cccc.Event.model.vo.Event" id="eventResultSet">
 	<id property="eventNo" column="EVENT_NO"/>

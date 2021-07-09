@@ -16,8 +16,6 @@ public interface AdminService {
 
 //	ArrayList<Recipe> selectRecipeList();
 
-	ArrayList<Event> selectEventList();
-
 	int getMemberListCount();
 
 	MemberVO getMemberDetail(String id);
@@ -41,5 +39,11 @@ public interface AdminService {
 	int searchQAListCount(Board b);
 
 	ArrayList<MemberVO> selectSearchQAResultList(Board b, PageInfo pi);
+
+	int searchEventListCount(Event e);
+
+	ArrayList<Event> selectSearchEventResultList(Event e, PageInfo pi);
+
+	int deleteEvent(String check);
 
 }

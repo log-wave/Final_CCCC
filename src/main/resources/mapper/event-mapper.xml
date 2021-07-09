@@ -8,6 +8,13 @@
 		ORDER BY EVENT_NO DESC
 	</select>
 	
+	<select id="selectAdminEventList" resultMap="eventResultSet">
+		SELECT *
+		FROM EVENT
+		WHERE EVENT_STATUS='Y'
+		ORDER BY EVENT_NO DESC
+	</select>
+	
 	
 	<resultMap type="com.kh.Final_cccc.Event.model.vo.Event" id="eventResultSet">
 	<id property="eventNo" column="EVENT_NO"/>

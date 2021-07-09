@@ -19,6 +19,8 @@ public interface EventService {
 
 	int getListCount();
 
+	ArrayList<Event> selectAdminEventList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
+
 
 	
 	

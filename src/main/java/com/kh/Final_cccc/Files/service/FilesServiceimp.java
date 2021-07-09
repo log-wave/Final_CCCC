@@ -33,4 +33,9 @@ public class FilesServiceimp implements FilesService {
 	public ArrayList<Files> selectFileList(PageInfo pi) {
 		return fdao.selectFileList(sqlSession, pi);
 	}
+
+	@Override
+	public ArrayList<Files> selectAdminFileList(com.kh.Final_cccc.admin.model.vo.PageInfo pi) {
+		return fdao.selectAdminFileList(sqlSession, pi);
+	}
 }

@@ -26,10 +26,6 @@ public class AdminDAO {
 //		return (ArrayList)sqlSession.selectList("adminMapper.selectRecipeList");
 //	}
 
-	public ArrayList<Event> getSelectEventList(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("adminMapper.selectEventList");
-	}
-
 	public int getMemberListCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("adminMapper.getMemberListCount");
 	}
@@ -84,6 +80,22 @@ public class AdminDAO {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchQAResultList" , b, rowBounds);
+	}
+
+	public int selectSearchEventListCount(SqlSessionTemplate sqlSession, Event e) {
+		return sqlSession.selectOne("adminMapper.searchEventListCount", e);
+	}
+
+	public ArrayList<Event> selectSearchEventResultList(SqlSessionTemplate sqlSession, Event e, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchEventResultList", e, rowBounds);
+	}
+
+	public int deleteEvent(SqlSessionTemplate sqlSession, String check) {
+		int eNo = Integer.parseInt(check);
+		
+		return sqlSession.update("adminMapper.deleteEvent", eNo);
 	}
 
 }

@@ -65,7 +65,6 @@
 	    	</div>
     	</div>
     	
-    	</div>
     	<div align="center">
     		<!-- 페이징 -->
 				<table id="pagingArea">	
@@ -180,6 +179,7 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
+	
 			if(searchCondition == "-------" || searchValue == ""){
 				alert("똑바로 검색 해주세요.");
 				window.location.reload();

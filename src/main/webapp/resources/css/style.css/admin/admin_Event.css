@@ -19,7 +19,7 @@
     
     .event_list{
     	width : 950px;
-    	height : 400px;
+    	height : 500px;
 		margin: auto;
 		margin-top: 20px;
     }
@@ -53,14 +53,8 @@
      	border: 0px;
      	height: 30px;
      }    
-     	
-    .pagingArea{
-		padding-top: 20px;
-		padding-bottom: 100px;
-		text-align: center;
-	}
 
-	.pagingArea button{
+	#pagingArea button{
 		width: 35px;
 		height: 35px;
 		border-radius: 5px;
