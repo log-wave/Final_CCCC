@@ -86,8 +86,8 @@
 			console.log("값 : " + rContent + refBno);
 			$.ajax({
 				url: 'addAnswer.qa',
-				data: {rContent:rContent, refBno:refBno},
-				success: function(data){
+				data				: {rContent:rContent, refBno:refBno},
+				success: function(da								ta){
 					
 					if(data == 'success'){
 						$('#rContent').val('');

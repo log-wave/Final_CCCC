@@ -14,7 +14,7 @@
 	
 	<insert id="insertSurvey">
 		insert into survey
-		values(seq_survey_no.nextval, #{survey_one}, #{survey_two}, #{survey_three}, #{survey_four}, #{survey_five}, #{user_no}, default)   
+		values(seq_survey_no.nextval, #{survey_one}, #{survey_two}, #{survey_three}, #{survey_four}, #{survey_five}, #{user_no})   
 	</insert>
 	
 	<update id="updateSurvey">

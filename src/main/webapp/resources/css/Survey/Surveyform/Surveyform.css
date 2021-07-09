@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.surveyall{
+	background-color: white;
+	width: 1100px;
+	height: 900px;
+	margin-left: 20%;
+	text-align: center;
+}
+.spans{
+	height: 500px;
+}
+
+.topservey{
+	margin-top: 6%;
+	margin-bottom: 6%;
+}
+
+#main_logosurvey{
+	margin-bottom: 8%;
+	width: 300px;
+	height: 100px;
+	text-align: center;
+	margin: auto;
+	cursor: pointer;
+}
+#exit{
+	margin-right: 5%;
+	width: 130px;
+	height: 40px;
+	background-color: lightgray;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+#submit{
+	width: 130px;
+	height: 40px;
+	background-color: #F2B705;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+#SurveyTable{
+	margin-bottom: 5%;
+}
