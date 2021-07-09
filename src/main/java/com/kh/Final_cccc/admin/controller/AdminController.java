@@ -256,6 +256,38 @@ public class AdminController {
 		new Gson().toJson(msg, response.getWriter());
 	}
 	
+	@RequestMapping("searchAdminQA.ad")
+	public ModelAndView QASearch(@RequestParam(value="page", required=false) Integer page, @RequestParam("searchValue") String value, 
+			@RequestParam("searchCondition") String condition, Board b, ModelAndView mv) {
+		
+		if(condition.equals("no")) {
+			b.setbNo(Integer.parseInt(value));
+		}
+		else if(condition.equals("title")) {
+			b.setbTitle(value);
+		}
+		else if(condition.equals("content")) {
+			b.setbContent(value);
+		}
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			int listCount = adService.searchQAListCount(b);
+			
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<MemberVO> list = adService.selectSearchQAResultList(b, pi);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue" , value).addObject("searchCondition", condition).setViewName("admin_QA/admin_QA");
+		}
+		
+		return mv;
+	}
+	
 	@RequestMapping("adminBoard.ad")
 	public ModelAndView adminBoardList(@RequestParam(value="page", required=false) Integer page, ModelAndView mv) {
 		int currentPage = 1;
@@ -294,6 +326,38 @@ public class AdminController {
 	@RequestMapping("binsertView.ad")
 	public String boardInsertForm() {
 		return "../Notice/insertNotice/insertNotice";
+	}
+	
+	@RequestMapping("searchAdminNotice.ad")
+	public ModelAndView noticeSearch(@RequestParam(value="page", required=false) Integer page, @RequestParam("searchValue") String value, 
+			@RequestParam("searchCondition") String condition, Board b, ModelAndView mv) {
+		
+		if(condition.equals("no")) {
+			b.setbNo(Integer.parseInt(value));
+		}
+		else if(condition.equals("title")) {
+			b.setbTitle(value);
+		}
+		else if(condition.equals("content")) {
+			b.setbContent(value);
+		}
+		
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		if(!value.isEmpty()) {
+			int listCount = adService.searchNoticeListCount(b);
+			
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+			
+			ArrayList<MemberVO> list = adService.selectSearchNoticeResultList(b, pi);
+			
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue" , value).addObject("searchCondition", condition).setViewName("admin_notice/admin_Notice");
+		}
+		
+		return mv;
 	}
 	
 	

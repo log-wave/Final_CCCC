@@ -66,4 +66,24 @@ public class AdminDAO {
 		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchMemberResultList" , m, rowBounds);
 	}
 
+	public int selectSearchNoticeListCount(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.selectOne("adminMapper.searchNoticeListCount", b);
+	}
+
+	public ArrayList<MemberVO> selectSearchNoticeResultList(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchNoticeResultList" , b, rowBounds);
+	}
+
+	public int selectSearchQAListCount(SqlSessionTemplate sqlSession, Board b) {
+		return sqlSession.selectOne("adminMapper.searchQAListCount", b);
+	}
+
+	public ArrayList<MemberVO> selectSearchQAResultList(SqlSessionTemplate sqlSession, Board b, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchQAResultList" , b, rowBounds);
+	}
+
 }

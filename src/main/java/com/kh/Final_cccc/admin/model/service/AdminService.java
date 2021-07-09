@@ -34,4 +34,12 @@ public interface AdminService {
 
 	ArrayList<MemberVO> selectSearchMemberResultList(MemberVO m, PageInfo pi);
 
+	int searchNoticeListCount(Board b);
+
+	ArrayList<MemberVO> selectSearchNoticeResultList(Board b, PageInfo pi);
+
+	int searchQAListCount(Board b);
+
+	ArrayList<MemberVO> selectSearchQAResultList(Board b, PageInfo pi);
+
 }

@@ -107,7 +107,7 @@ public class MemberController {
 		System.out.println("관리자 페이지로 이동");
 		
 		
-		return "../admin/admin_member/admin_Member"; 	
+		return "redirect:adminMember.ad"; 	
 	}
 	
 	
