@@ -101,6 +101,15 @@ public class MemberController {
 		return "index";
 	}
 	
+	@RequestMapping(value="adminPage.me", method=RequestMethod.GET)
+	public String adminPage(HttpServletRequest reques) {
+		
+		System.out.println("관리자 페이지로 이동");
+		
+		
+		return "../admin/admin_member/admin_Member"; 	
+	}
+	
 	
 	@RequestMapping(value="logoutPage.me")
 	public String logoutPage(HttpSession session,SessionStatus status) {
@@ -112,39 +121,41 @@ public class MemberController {
 		System.out.println("setComplete가 실행된 후의 세션값 유무 확인");
 		
 		
-		return "redirect:backIndex.do"; 
+		return "../../../index"; 
 	}
 	
 	
-	@RequestMapping(value="login.me", method=RequestMethod.POST)
-	public String login(MemberVO m, Model model){
-
-		System.out.println("로그인 아이디 :" + m.getUser_id());
-		MemberVO loginUser = mService.memberLogin(m);
+	
+	@RequestMapping(value="loginCheck.me", method=RequestMethod.POST)
+	@ResponseBody
+	public int loginCheck(MemberVO m, Model model) {
+		
+		System.out.println(m);
+		
+		MemberVO loginUser = mService.loginCheck(m);
+		
+		
 		if(loginUser != null) {
+			
 			if(loginUser.getAuthority().equals("Y")) {
 				model.addAttribute("loginUser", loginUser);
-				
-				
-				
-				return "../admin/admin_member/admin_Member"; 		
-				
-			}else if(loginUser.getAuthority().equals("N")){
+				return 1; //관리자 
+			}else {
 				model.addAttribute("loginUser", loginUser);
-				return "redirect:backIndex.do"; 	
+				return 0; //사용자 
 			}
-		}else if(loginUser == null){
-			model.addAttribute("loginErrorMessage", "아이디 혹은 비밀번호를 정확히 입력해주세요");
 			
 			
-			 return "login/login"; 
-			
+		}else {
+			return -1; // 로그인 /비밀번호 실패
 		}
 		
-		return null;
+		
+		
 	}
 	
 	
+
 	
 	@RequestMapping(value="insertMemberTerms.me", method=RequestMethod.GET)
 	public String insertMemberTermsPage(HttpServletRequest request) {
@@ -248,6 +259,14 @@ public class MemberController {
 		
 		return "findUserPassword/findUserPassword";
 	}	
+	
+	
+	// pass_cnt 초기화 
+	@RequestMapping(value ="reset_pass_cnt.me", method = RequestMethod.GET)
+	public void reset_pass_cnt(@RequestParam("user_id")String user_id) {
+		logger.info("reset_pass_cnt 컨트롤러 진입!!!!!!!!!!");
+		mService.reset_pass_cnt(user_id);
+	}
 
 		
 		

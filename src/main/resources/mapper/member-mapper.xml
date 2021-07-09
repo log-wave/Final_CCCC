@@ -2,7 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="memberMapper">
 
-	<select id="login" resultMap="memberResultSet">
+<!-- 	<select id="login" resultMap="memberResultSet">
+		select * 
+		from MEMBER
+		where member_id=#{id} and member_pwd=#{pwd} and status='Y'
+		where user_id=#{user_id} and user_pass=#{user_password} and status='Y'
+	</select>
+	<resultMap type="Member" id="memberResultSet">
+		<id column="user_NO" property="user_no"/>
+		<result column="USER_ID" property="user_id"/>
+		<result column="USER_PASS" property="user_password"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="EMAIL" property="email"/>
+		<result column="GENDER" property="gender"/>
+		<result column="AGR" property="age"/>
+		<result column="AUTHORITY" property="authority"/>
+		<result column="STATUS" property="status"/>
+		<result column="SURVEY_YN" property="survey_yn"/>
+		<result column="USER_NAME" property="user_name"/>
+		<result column="U_CRE_DATE" property="u_cre_date"/>
+		<result column="U_MOD_DATE" property="u_mod_date"/>
+		<result column="U_DEL_DATE" property="u_del_date"/>
+		<result column="PASS_CNT" property="pass_cnt"/>
+			
+	</resultMap> -->
+	
+	
+	
+		<select id="loginCheck" resultMap="memberResultSet">
 		select * 
 		from MEMBER
 <!-- 		where member_id=#{id} and member_pwd=#{pwd} and status='Y' -->
@@ -88,6 +115,15 @@
 
 	</update>
 	
+	
+	<!--pass_cnt 초기화 쿠리  -->
+	<update id="reset_pass_cnt"  parameterType="String">
+		
+		UPDATE MEMBER
+		SET PASS_CNT = 0
+		WHERE USER_ID = #{user_id} 
+
+	</update>
 
 	<!-- 회원탈퇴 카운트 검사 쿼리-->
 	<select id="count_DeleteMemberCheck_Num" resultType="int" parameterType="Member">
@@ -98,6 +134,12 @@
 	
 	
 	</select>
+	
+	
+
+	
+	
+	
 	
 	
 	

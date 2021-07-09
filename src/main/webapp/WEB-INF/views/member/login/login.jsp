@@ -15,7 +15,7 @@
 <body>
 	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	
-	<form action="login.me" method="post">
+	<form>
 	<div class="login_box">
 		<div class="limiter">
 		<div class="container-login100">
@@ -40,13 +40,13 @@
 					
 					<div class="loginErrorMessage_box">
 					
-						<p class="loginErrorMessage">${loginErrorMessage}</p>
-					
+						<input type="hidden" name="login_chec_hidden" id="login_chec_hidden" value=""/>
+						
 					
 					</div>
 					
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" type="submit" id="login_btn" onclick="return loginCheck();">
+						<button class="login100-form-btn"  id="login_btn" type="button">
 							로그인
 						</button>
 					</div>
@@ -82,18 +82,103 @@
 	
 	
 	<script type="text/javascript">
+	
+	
+	function reset_pass_cnt(){
+			
+		var user_id = $('#user_id').val();
+		location.href = '<%=request.getContextPath()%>/reset_pass_cnt.me?user_id='+user_id; 
 
-		/* 처음시작하는 if 에 정확히 입력했을때 로직작성하고 
-		else{
-			
-			틀렸을때 카운트 누적되는데 
-			
-			if(5회이상 )
-			
-		}}
-		 */
 		
+	}
+	
+	
+	
+	
+	
+	
+	$('#login_btn').click(function(){
+		
+		var user_id = $('#user_id').val();
+   		var user_password= $('#user_password').val();
+   		
+   		
+   		$.ajax({
+   			
+   			url:"count_DeleteMemberCheck_Num.me",
+  			data: {"user_id":user_id, "user_password":user_password},
+   			type:"post",
+   			async: false,
+   			success:function(data){
+   				
+				if(data == 1){
+  					
+  					alert("5회이상 틀렸습니다.비밀번호 찾기 페이지로 이동합니다!");
+  					location.href = '<%=request.getContextPath()%>/find_user_password.me'; 
+  					
+  				}else{
+  					$.ajax({
+  				   		
+  			   			url:"loginCheck.me",
+  			   			data: {"user_id":user_id, "user_password":user_password},
+  			   			type:"post",
+  			   			dataType:'json',
+  			   			async: false,	
+  			   			success:function(data){
+  			   				
+  			   				if(data == 1){
+  			   					reset_pass_cnt();
+  			   					location.href = '<%=request.getContextPath()%>/adminPage.me';
+  			   					
+  			   				}
+  			   				
+  			   				if(data == 0){
+  			   				 	reset_pass_cnt();
+  			   					location.href = '<%=request.getContextPath()%>/backIndex.do';
+  			   				}	
+  			   		   		
+  			   				if(data == -1){
+  			   		   			
+  			   		   			$.ajax({
+  			   		   				
+  			  						url:"pass_cnt.me",
+  			  						data: {"user_id":user_id, "user_password":user_password},
+  			  						type:"post",
+  			  						async: false,
+  			  						success:function(data){
+  			  							
+  			  							if(data == 1){
+  			  								alert("회원탈퇴 카운트 누적완료 제발 되자!");
+  			  							}
+  			  							
+  			  						}
+  			   		   				
+  			   		   			});
+  			   		   
+  			   		   		}
+  			   			
+  			   			}
+  		
+  			   		});
+	
+  				}
+   			
+   			}
+   			
+   		});
+   		
+   		
+   		
+   		
+   		
+   		
+		
+	}); 
 	</script>
+	
+	
+	
+	
 	
 	
 	

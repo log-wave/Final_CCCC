@@ -73,6 +73,19 @@ public class MemberDAO {
 	
 	}
 
+	public MemberVO loginCheck(SqlSessionTemplate sqlSession, MemberVO m) {
+		loggger.info("loginCheck dao 진입 성공");
+		
+		return sqlSession.selectOne("memberMapper.loginCheck", m);
+		
+	}
+
+	public int reset_pass_cnt(SqlSessionTemplate sqlSession, String user_id) {
+		loggger.info("reset_pass_cnt dao 진입 성공");
+		return sqlSession.update("memberMapper.reset_pass_cnt", user_id);
+		
+	}
+
 
 	
 
