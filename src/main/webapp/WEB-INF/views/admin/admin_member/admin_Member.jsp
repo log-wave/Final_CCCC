@@ -29,8 +29,7 @@
     <div class="page">
 	    <h2 id="title"> 회원 목록 </h2>
 	    <br>
-	    	<div class="member_list">
-	    	<hr>
+	    	<div class="member_list" align="center">
 			<br>
 	    		<table class="member_table">
 		    		<tr>
@@ -70,7 +69,7 @@
 				</c:if>
 
 	    		</table>
-	    	<br><hr><br>
+	    	<br><br>
 	    	<c:if test="${ searchValue eq null and searchCondition eq null}">
 		    	<div id="searchArea" style="float: left">
 					<label>검색 조건</label>

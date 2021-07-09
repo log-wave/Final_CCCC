@@ -39,6 +39,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		border-bottom: 1px solid black;
 		padding: 5px;
 	}
 	
@@ -52,7 +53,18 @@
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
-     }    
+     }   
+     
+    #searchArea{
+		width : 1070px;
+		height: 30px;
+		text-align: center;
+	}
+	
+	#pagingArea{
+	 	margin-top: 60px;
+		text-align: center;
+	}
 
 	#pagingArea button{
 		width: 35px;
@@ -60,5 +72,18 @@
 		border-radius: 5px;
 		font-size: 15px;
 		border-style: none;
+		
 	}
+	
+	#searchCondition, #searchValue{
+    	height: 30px;
+    }
+    
+    #searchBtn{
+     	color:black;
+     	border-radius: 2px;
+     	border: 0px;
+     	height: 30px;
+     	cursor: pointer;
+    }
     
