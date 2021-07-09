@@ -113,6 +113,10 @@
 						<input id="searchValue" type="search" value="정지" onkeyup="searchEnterKey();">
 						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 					</c:if>
+					<c:if test="${ searchValue ne 'S' and searchValue ne 'N' and searchValue ne 'Y' and searchCondition eq 'state'}">
+						<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
+						<button id="searchBtn" onclick="searchBoard();">검색하기</button>
+					</c:if>
 				</div>
 			</c:if>
 			
