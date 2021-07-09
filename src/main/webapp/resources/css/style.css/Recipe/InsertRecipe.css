@@ -13,7 +13,7 @@
 
 .insertRecipe_main{
 	width:1100px;
-	height: 1200px;
+	min-height: 1200px;
 	border: 1px solid black;
 	margin:auto;
 }
@@ -120,6 +120,7 @@
 	border: 1px solid aqua;
 	margin: auto;
 	text-align: center;
+	margin-bottom: 5px;
 }
 
 .rp_addProcess_btn{
@@ -129,4 +130,19 @@
 	background-repeat: no-repeat;
 	background-image: url("../../../../resources/images/recipe/조리과정추가.png");
 	
+}
+
+.added_process{
+	width:1000px;
+	min-height:80px;
+	margin:auto;
+	border: 1px dashed black;
+}
+
+.rp_img_area{
+	width:600px;
+	min-height:100px;
+	border: 1px dashed black;
+	margin: auto;
+	z-index: 3;
 }

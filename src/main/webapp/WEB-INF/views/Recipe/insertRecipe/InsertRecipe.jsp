@@ -14,7 +14,7 @@
 	<c:import url="../../common/header.jsp"/>
 	
 	<div class="insertRecipe_pageTitle">레시피 등록하기</div>
-	<form>
+	<form action="insertRecipe.rp" method="post" enctype="multipart/form-data">
 	
 		<div class="insertRecipe_main">
 			<div class="rp_insert_area">
@@ -43,13 +43,13 @@
 					<option value="6">감자/고구마류</option>
 					<option value="7">묵/두부</option>
 					<option value="8">콩/견과류</option>
-					<option value="9">채쇼류</option>
+					<option value="9">채소류</option>
 					<option value="10">과일류</option>
 					<option value="11">고기류</option>
 					<option value="12">햄/소시지</option>
 					<option value="13">계란류</option>
 					<option value="14">어패류</option>
-					<option value="15">해죠류</option>
+					<option value="15">해조류</option>
 					<option value="16">유제품/치즈류</option>
 					<option value="17">양념류</option>
 					<option value="18">초콜렛/사탕</option>
@@ -75,34 +75,53 @@
 							<th>분량</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody align="center">
 					</tbody>
 				</table>
 			</div>
 			
 			<div class="rp_insert_area">
-				<div class="insertRecipe_subTitile">한줄설명 입력하기</div>
+				<div class="insertRecipe_subTitile">조리과정 추가</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="text" class="rp_insert_inputbox_min" name="" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
+					조리시간 <input type="text" class="rp_insert_inputbox_min" name="" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
 				</div>
 				
 			</div>
 			
 			<div class="recipe_process_area">
-					<button type="button" class="rp_addProcess_btn" id="add_process"></button>
+				<div class="added_process">
+					<p>영역을 클릭하면 이미지를 업로드 할 수 있습니다.</p>
+				</div>
+				<button type="button" class="rp_addProcess_btn" id="add_process"></button>
 			</div>
+			<button type="submit">저장</button>
 		</div>
 	
-		<button type="submit">저장</button>
+	<div id="fileArea">
+	
+	</div>
+	
 	</form>
-		
+	
 	
 	<c:import url="../../common/footer.jsp"/>
 
 </body>
 
 <script>
+
+var file_flag = 1;
 	$(function(){
+		$("#fileArea").hide();
+		//재료추가 클릭시
+		
+		$(document).on("click",".rp_img_area",function(){
+			var num = file_flag-1;
+			var files = '#fileNo' + num;
+			console.log(files);
+			$(files).click();
+		})
+		
 		$('#add_Mate').click(function(){
 			var area = $('.rp_Mate_area');
 			
@@ -123,17 +142,24 @@
 		});
 		
 		
-		$('add_process').click(function(){
-			var Child_w = window.open("about:blank", "_blank");
+		//조리과정 추가 클릭시
+		$('#add_process').click(function(){
+			var area = $('.added_process');
 			
-			$area = $('.recipe_process_area');
+			area.append('<div class="rp_img_area">'+
+							'<img id="rp_img'+file_flag+'" name="rp_img" width="600px" height="255px"></img>'+
+						'</div>'+
+						'<textarea style="width:600px; height:100px; resize:none;" name="rp_content" id="rp_content">');
 			
-			$.ajax({
-				
-			});
+			var farea = $('#fileArea');
+			
+			farea.append('<input type="file" multiple="multiple" name="RecipeImg" id="fileNo'+file_flag+'" onchange="LoadImg(this,'+(file_flag++)+')">');
+			
+			
 		});
 	});
-	
+
+	//1차 카테고리 선택시
 	function setArea2(f){
 		var target =$("select[name='secCate']");
 		
@@ -152,5 +178,26 @@
 			
 		}); 
 	}
+	
+	function LoadImg(value, num){
+		if(value.files && value.files[0]){
+			
+			var reader = new FileReader(); 
+			console.log(file_flag);
+			reader.onload = function(e){
+				for(var i = 1; i < file_flag; i++){
+					if(i == num){
+						var files = '#rp_img' + i;
+						console.log(files);
+						$(files).attr("src", e.target.result);						
+					}
+				}
+			}
+			
+			reader.readAsDataURL(value.files[0]); 
+		}
+	}
+	
+	
 </script>
 </html>
