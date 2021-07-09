@@ -13,4 +13,10 @@ public interface SpecialityService {
 
 	Speciality specialityDetail(int specialityNo);
 
+	int searchSpeListCount(Speciality spe);
+
+	ArrayList<Speciality> searchSpeResultList(Speciality spe, PageInfo pi);
+
+	int getdeleteSpeStatus(Speciality spe);
+
 }

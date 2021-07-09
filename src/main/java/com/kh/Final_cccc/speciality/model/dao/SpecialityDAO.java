@@ -26,4 +26,16 @@ public class SpecialityDAO {
 		return sqlSession.selectOne("specialityMapper.selectSpeDetail", specialityNo);
 	}
 
+	public int searchSpeListCount(SqlSessionTemplate sqlSession, Speciality spe) {
+		return sqlSession.selectOne("specialityMapper.selectSpeListCount" , spe);
+	}
+
+	public ArrayList<Speciality> searchSpeResultList(SqlSessionTemplate sqlSession, Speciality spe) {
+		return (ArrayList)sqlSession.selectList("specialityMapper.selectSpeResultList", spe);
+	}
+
+	public int deleteSpeStatus(SqlSessionTemplate sqlSession, Speciality spe) {
+		return sqlSession.update("specialityMapper.deleteSpeStatus", spe);
+	}
+
 }
