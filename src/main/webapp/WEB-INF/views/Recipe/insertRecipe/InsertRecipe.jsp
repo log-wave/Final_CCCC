@@ -59,7 +59,7 @@
 					<option value="22">버섯류</option>
 					<option value="23">향신료</option>
 				</select>
-				<select name="secCate">
+				<select name="secCate" class="secCate">
 					<option>1차 카테고리를 선택해주세요</option>
 				</select>
 					<button type="button" class="rp_addMate_btn" id="add_Mate">재료 추가</button>
@@ -79,6 +79,18 @@
 					</tbody>
 				</table>
 			</div>
+			
+			<div class="rp_insert_area">
+				<div class="insertRecipe_subTitile">한줄설명 입력하기</div>
+				<div class="insertRecipe_inputBox">			
+					<input type="text" class="rp_insert_inputbox_min" name="" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
+				</div>
+				
+			</div>
+			
+			<div class="recipe_process_area">
+					<button type="button" class="rp_addProcess_btn" id="add_process"></button>
+			</div>
 		</div>
 	
 		<button type="submit">저장</button>
@@ -94,21 +106,32 @@
 		$('#add_Mate').click(function(){
 			var area = $('.rp_Mate_area');
 			
-			/* console.log(area);
-			var addedMate_name = $('#addedMate').text();
-			var addedMate_val = $('#addedMate').val();
-			area.append(addedMate_name + ' 입니다/입니다 ' + addedMate_val);
-			console.log(addedMate_name); */
+			var addedMate_name = $('#addedMate').text();	//재료이름
+			var addedMate_val = $('#addedMate').val();		//재료의 DB번호
 			
-			// 이름을 받아올 곳
-			// 수량을 적어줄 input type text
-			// value로 Mateno를 받아줄 input hidden
-			
+			//버튼 클릭시 추가로 들어갈 내용들
 			$tableBody = $('#tb tbody');
 			var $tr =   $('<tr>');
-			var $addedMate_name = 
+			var $addedMate_name = $('<td>').text($('#addedMate').text());
+			var $inputarea = $('<td>').html('<input type="text" name="mate_amount">');
+			
+			$tr.append($addedMate_name);
+			$tr.append($inputarea);
+			$tableBody.append($tr);
+			
+			area.append('<input type="hidden" value="'+addedMate_val+'" name="rp_mate">');
 		});
 		
+		
+		$('add_process').click(function(){
+			var Child_w = window.open("about:blank", "_blank");
+			
+			$area = $('.recipe_process_area');
+			
+			$.ajax({
+				
+			});
+		});
 	});
 	
 	function setArea2(f){
@@ -121,8 +144,6 @@
 			url:'MList.rp',
 			data:{mNo:f},
 			success:function(data){
-				
-				console.log(data);
 				
 				for(var i in data){
 					target.append('<option value="' + data[i].materialNo + '" id="addedMate">' + data[i].materialName +'</option>' );

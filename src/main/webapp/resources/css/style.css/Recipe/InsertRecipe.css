@@ -13,7 +13,7 @@
 
 .insertRecipe_main{
 	width:1100px;
-	min-height: 1200px;
+	height: 1200px;
 	border: 1px solid black;
 	margin:auto;
 }
@@ -21,8 +21,8 @@
 	오른쪽의 margin-right: 25px; */
 .rp_insert_area{
 	width: 1100px;
+	min-height: 90px;
 	display: flex;
-	height: 90px;
 	border: 1px solid red;
 }
 
@@ -69,6 +69,7 @@
 	min-height: 100px;
 	margin: auto;
 	border:1px solid green;
+	vertical-align: middle;
 }
 
 
@@ -76,4 +77,56 @@
 	width:300px;
 	height:200px;
 	border: 1px solid blue; 
+}
+.select_Mate{
+	width:200px;
+	height: 40px;
+}
+
+.secCate{
+	width:200px;
+	height: 40px;
+}
+
+#tb{
+	width:600px;
+	min-height: 8	0px;
+	margin: auto;
+	vertical-align: middle;
+}
+
+#tb th{
+	vertical-align: middle;
+}
+
+
+#tb td{
+	margin:auto;
+}
+
+.rp_insert_inputbox_min{
+	width:150px;
+	min-height:30px;
+	border: 0.5px solid #787878;
+	border-radius: 5px;
+	background-color: #ECECEC;
+	margin-top: 20px;
+	font-size: 17px;
+}
+
+.recipe_process_area{
+	width: 1000px;
+	min-height: 100px;
+	border: 1px solid aqua;
+	margin: auto;
+	text-align: center;
+}
+
+.rp_addProcess_btn{
+	width:190px;
+	height:50px;
+	border-style: none;
+	background-repeat: no-repeat;
+	background-image: url("../../../../resources/images/recipe/조리과정추가.png");
+	
 }
