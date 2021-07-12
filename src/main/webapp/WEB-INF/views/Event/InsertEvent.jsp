@@ -11,8 +11,7 @@
  <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Event/InsertEvent.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:import url="../../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
-	<form action="insertEvent.ev" method="post" enctype="multipart/form-data">
+<form action="insertEvent.ev" method="post" enctype="multipart/form-data">
 		<div class="mainArea">
 			<p class="title">이벤트 등록</p>
 			
@@ -73,14 +72,8 @@
 				<input type="submit" class="subtn" value="저장">
 			</div>
 		</div>
-
-	</form>
-	<br><br><br>
-	
-			
-	<c:import url="../../common/footer.jsp" charEncoding="UTF-8"></c:import>
-	
-	
+</form>
+	<br><br><br>	
 	<script>
 	<!-- 파일 선택 후 화면에 보여지도록 -->
 	$(function(){
@@ -95,23 +88,25 @@
 	});
 	
 	function LoadImg(value, num){
-			if(value.files && value.files[0]){
-				var reader = new FileReader(); 
-				
-				reader.onload = function(e){
-					switch(num) {
-					case 1:
-						$("#titleImg").attr("src", e.target.result);
-						break;
-					case 2:
-						$("#contentImg").attr("src", e.target.result);
-						break;
-					}
+		if(value.files && value.files[0]){
+			var reader = new FileReader(); 
+			
+			reader.onload = function(e){
+				switch(num) {
+				case 1:
+					$("#titleImg").attr("src", e.target.result);
+					break;
+				case 2:
+					$("#contentImg").attr("src", e.target.result);
+					break;
 				}
-				
-				reader.readAsDataURL(value.files[0]); 
 			}
+			
+			reader.readAsDataURL(value.files[0]); 
+		}
 	}
+	
+	
 	
 	</script>
 </body>

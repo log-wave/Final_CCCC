@@ -3,11 +3,13 @@ package com.kh.Final_cccc.Event.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.Event.exception.EventException;
 import com.kh.Final_cccc.Event.model.service.EventService;
 import com.kh.Final_cccc.Event.model.vo.Event;
@@ -80,70 +86,70 @@ public class EventController {
 	}
 	
 	@RequestMapping(value="insertEventView.ev", method=RequestMethod.GET) 
-		public String insertEventView() {
-		return "admin/InsertEvent";
+	public String insertEventView() {
+	return "InsertEvent";
+}
+
+@RequestMapping(value="insertEvent.ev", method=RequestMethod.POST)
+public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
+									MultipartHttpServletRequest request, Model model, HttpServletResponse response) throws IOException{
+
+	
+	// 이미지 저장할 경로 지정
+	String root = request.getSession().getServletContext().getRealPath("resources");
+	String savePath = root + "/uploadFiles";
+
+	//디렉토리가 없다면 디렉토리 생성
+	File folder = new File(savePath);
+	if(!folder.exists()) {
+		folder.mkdirs();
+	}
+	//날짜를 원하는 형태로 출력 
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
+	
+	ArrayList<String> originFileName = new ArrayList<String>(); 
+	ArrayList<String> renameFileName = new ArrayList<String>();
+	ArrayList<String > renamePath = new ArrayList<String>();
+	
+	for(int i = 0; i < eventImg.length; i++) {
+		 originFileName.add(eventImg[i].getOriginalFilename());
+		 renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))+ originFileName.get(i).substring(originFileName.lastIndexOf(".") + 1));
+		 renamePath.add(folder +"/"+ renameFileName.get(i));
+		 
+		 try {
+			 // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
+			eventImg[i].transferTo(new File(renamePath.get(i)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
-	@RequestMapping(value="insertEvent.ev", method=RequestMethod.POST)
-	public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
-										MultipartHttpServletRequest request, Model model) {
+	System.out.println("originFileName : " + originFileName.get(0));
+	System.out.println("originFileName2 : " + originFileName.get(1));
+
+	System.out.println("renameFileName : " + renameFileName.get(0));
+	System.out.println("renameFileName2 : " + renameFileName.get(1));
+	System.out.println(originFileName.size());
 	
-		
-		// 이미지 저장할 경로 지정
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		String savePath = root + "/uploadFiles";
+	int eresult = eService.insertEvent(event);
+	
+	Event ev = new Event();
+	ev.setEventTitle(event.getEventTitle());
+	ev.setEventContent(event.getEventContent());
+	ev.setEventStart(event.getEventStart());
+	ev.setEventEnd(event.getEventEnd());
+	
+	
+	ArrayList<Files> fileList = new ArrayList<Files>();
+	 
+	String msg = null;
+	//for(int i = originFileName.size() - 1; i >=0; i--) {
+	for(int i = 0; i <= originFileName.size()-1; i++) {
+	Files f = new Files();
+	f.setFilePath(savePath);
 
-		//디렉토리가 없다면 디렉토리 생성
-		File folder = new File(savePath);
-		if(!folder.exists()) {
-			folder.mkdirs();
-		}
-		//날짜를 원하는 형태로 출력 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
-		
-		ArrayList<String> originFileName = new ArrayList<String>(); 
-		ArrayList<String> renameFileName = new ArrayList<String>();
-		ArrayList<String > renamePath = new ArrayList<String>();
-		
-		for(int i = 0; i < eventImg.length; i++) {
-			 originFileName.add(eventImg[i].getOriginalFilename());
-			 renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))+ originFileName.get(i).substring(originFileName.lastIndexOf(".") + 1));
-			 renamePath.add(folder +"/"+ renameFileName.get(i));
-			 
-			 try {
-				 // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
-				eventImg[i].transferTo(new File(renamePath.get(i)));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		System.out.println("originFileName : " + originFileName.get(0));
-		System.out.println("originFileName2 : " + originFileName.get(1));
-
-		System.out.println("renameFileName : " + renameFileName.get(0));
-		System.out.println("renameFileName2 : " + renameFileName.get(1));
-		System.out.println(originFileName.size());
-		
-		int eresult = eService.insertEvent(event);
-		
-		Event ev = new Event();
-		ev.setEventTitle(event.getEventTitle());
-		ev.setEventContent(event.getEventContent());
-		ev.setEventStart(event.getEventStart());
-		ev.setEventEnd(event.getEventEnd());
-		
-		
-		ArrayList<Files> fileList = new ArrayList<Files>();
-		 
-		
-		//for(int i = originFileName.size() - 1; i >=0; i--) {
-		for(int i = 0; i <= originFileName.size()-1; i++) {
-		Files f = new Files();
-		f.setFilePath(savePath);
-
-		f.setFileName(originFileName.get(i));
-		f.setChangeName(renameFileName.get(i));
+	f.setFileName(originFileName.get(i));
+	f.setChangeName(renameFileName.get(i));
 
 		if( i == originFileName.size() - 1) {
 					f.setFileYn("N");
@@ -158,11 +164,12 @@ public class EventController {
 				System.out.println("이벤트이미지 에러남");
 				throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 			}
-		
+	
 		}
-
-		return  "redirect:eventList.ev";
+		PrintWriter writer = response.getWriter(); 
+		writer.println("<script>alert('요청이 처리되었습니다.');</script>");
 		
+		return  "redirect:eventList.ev";
 	}
 	
-}
+}	
