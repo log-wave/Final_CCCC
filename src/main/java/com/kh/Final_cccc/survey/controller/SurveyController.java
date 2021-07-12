@@ -2,6 +2,9 @@ package com.kh.Final_cccc.survey.controller;
 
 // 다시
 import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kh.Final_cccc.member.controller.MemberController;
 import com.kh.Final_cccc.survey.exception.SurveyException;
 import com.kh.Final_cccc.survey.model.vo.Survey;
 import com.kh.Final_cccc.survey.service.SurveyService;
 
 @Controller
 public class SurveyController {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Autowired
 	private SurveyService sService;
 	
@@ -42,5 +48,14 @@ public class SurveyController {
 		System.out.println("값이 잘 나옴? : " + result);
 			return result;
 		}
-	}
+	
+	
+	// member_yn 체크
+		@RequestMapping(value ="member_survey_yn_change.sv", method = RequestMethod.GET)
+		public void member_yn_chk(@RequestParam("user_no")int user_no) {
+			System.out.println("유저가 들어왔나 : " + user_no);
+			logger.info("member_yn_chk 컨트롤러 진입했음.");
+			sService.member_yn_chk(user_no);
+		}	
+}
 

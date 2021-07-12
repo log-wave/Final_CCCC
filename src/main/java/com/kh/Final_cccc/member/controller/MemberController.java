@@ -267,8 +267,11 @@ public class MemberController {
 		logger.info("reset_pass_cnt 컨트롤러 진입!!!!!!!!!!");
 		mService.reset_pass_cnt(user_id);
 	}
+	
+	// 승재 mypage 내정보수정 페이지이동
+    @RequestMapping(value="edit_my_inform.me", method=RequestMethod.GET)
+    public String move_edit_my_inform(HttpServletRequest request) {
 
-		
-		
-		
+        return "myPage/Edit_Information";
+    }	
 }

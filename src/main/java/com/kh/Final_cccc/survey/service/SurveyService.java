@@ -6,4 +6,6 @@ public interface SurveyService {
 
 	int insertSurvey(Survey sv);
 
+	int member_yn_chk(int user_no);
+
 }

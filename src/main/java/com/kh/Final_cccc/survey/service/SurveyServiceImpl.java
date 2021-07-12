@@ -22,4 +22,9 @@ public class SurveyServiceImpl implements SurveyService{
 		return sDAO.insertSurvey(sqlSession, sv);
 	}
 
+	@Override
+	public int member_yn_chk(int user_no) {
+		return sDAO.member_yn_chk(sqlSession, user_no);
+	}
+
 }

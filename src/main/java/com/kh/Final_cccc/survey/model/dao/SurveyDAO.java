@@ -10,4 +10,9 @@ public class SurveyDAO {
 	public int insertSurvey(SqlSessionTemplate sqlSession, Survey sv) {
 		return sqlSession.insert("surveyMapper.insertSurvey", sv);
 	}
+
+	public int member_yn_chk(SqlSessionTemplate sqlSession, int user_no) {
+		return sqlSession.insert("surveyMapper.member_yn_chk", user_no);
+	}
+
 }

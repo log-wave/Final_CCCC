@@ -108,7 +108,8 @@
 		*/	
 		
 		function survey_yn_change(){
-			location.href='member_survey_yn_change.me';
+			var user_no = $('#user_no').val();
+			location.href = 'member_survey_yn_change.sv?user_no=' + user_no;
 		}
 			$("#SurveyRadioChk").click(function(){
 				var user_no = $('#user_no').val();
