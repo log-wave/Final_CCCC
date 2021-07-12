@@ -47,8 +47,17 @@
 }
 
 .clicked {
-	font-weight :bold;
-	color: #f29f05;
+	
+	background : #FFCC66 ;
+}
+
+.select_Mate{
+	height: 30px;
+	width: 125px;
+}
+.secCate{
+	height: 30px;
+	width: 125px;
 }
 
 .input_spName{

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.Final_cccc.admin.model.vo.PageInfo;
+import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
 @Repository("speDAO")
@@ -36,6 +37,14 @@ public class SpecialityDAO {
 
 	public int deleteSpeStatus(SqlSessionTemplate sqlSession, Speciality spe) {
 		return sqlSession.update("specialityMapper.deleteSpeStatus", spe);
+	}
+	
+	public ArrayList<Material> selectmaterialList(SqlSessionTemplate sqlSession, int mNo) {
+		return (ArrayList)sqlSession.selectList("specialityMapper.selectmaterialList", mNo);
+	}
+
+	public int insertSpeciality(SqlSessionTemplate sqlSession, Speciality speciality) {
+		return sqlSession.insert("specialityMapper.insertSpeciality" , speciality);
 	}
 
 }
