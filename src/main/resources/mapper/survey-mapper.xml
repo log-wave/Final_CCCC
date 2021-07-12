@@ -17,9 +17,21 @@
 		values(seq_survey_no.nextval, #{survey_one}, #{survey_two}, #{survey_three}, #{survey_four}, #{survey_five}, #{user_no})   
 	</insert>
 	
-	<update id="updateSurvey">
-		UPDATE member m
-    	SET m.survey_yn = 'Y'
-    	where user_no = #{ user_no };
+	<!-- 설문조사 유무 체크 쿼리  -->
+	<update id="member_yn_chk"  parameterType="Member">
+		
+		UPDATE MEMBER
+		SET SURVEY_YN = 'Y'
+		WHERE USER_NO = #{user_no} 
+
 	</update>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
+	
+	

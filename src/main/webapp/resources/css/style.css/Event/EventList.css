@@ -70,3 +70,7 @@
 	font-size: 15px;
 	border-style: none;
 }
+#survey1{
+	pointer-events: none; 
+	cursor: default;
+}
