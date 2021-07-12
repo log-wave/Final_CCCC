@@ -66,6 +66,7 @@
                     <input type="text" name="specialityName" id="specialityName"  >
                 </div>
             </div>
+            <div id="checkSpeName" disabled></div>
             <br><br>
             <div>
             	<div class="spe_label">특산물 정보</div>
@@ -76,13 +77,28 @@
             
                 <button class="cnbtn">취소</button>
                 
-                <input type="submit" id="saveBtn" class="subtn" value="저장">
+                <input type="submit" id="saveBtn"  value="저장">
             </div>
             </div>
     </form>
     </div>
 </body>
 <script>
+
+	<!--재료 저장 버튼 비활성화 -->
+		$(function(){
+			
+			$("#saveBtn").prop("disabled", true);
+			$("#saveBtn").css("background-color", "#D1CBC2");
+		});
+		
+		function disabeldSignUpBtn(){
+			
+			$("#saveBtn").prop("disabled", true);
+			$("#saveBtn").css("background-color", "#D1CBC2");
+			
+		}
+
 	<!-- 지역 선택 시 버튼색상 바꾸기-->
 		var townBtn = document.getElementsByClassName("townBtn");
 
@@ -141,10 +157,7 @@
          
          <!-- 재료 추가  -->
          $('#saveBtn').on('click' , function() {
-     		var region = $('#specialityRegion').val();
-     		var name = $('#specialityName').val();
-     		var sInfo = $('#specialityInfo').val();
-     		var mNo = $('#materialNo').val();
+     		
      		
      		var speciality = {
      		specialityRegion : $('#specialityRegion').val(),
@@ -154,16 +167,16 @@
 
 	     		
      		};
-	     	if( region == "" ){
+	     	if( speciality.region == "" ){
 	     		alert("지역을 선택해주세요.");
 	     		return false;
-	     	}else if(mNo == ""){
+	     	}else if(speciality.mNo == ""){
 	     		alert("재료 카테고리를 선택해주세요");
 	     		return false;
-	     	}else if(name == ""){ 
+	     	}else if(speciality.name == ""){ 
 	     		alert("특산물명을 입력해주세요");
 	     		return false;
-	     	}else if(sInfo=""){
+	     	}else if(speciality.sInfo=""){
 	     		alert("특산물정보를 입력해주세요");
 	     		return false;
 	     	}
@@ -188,6 +201,38 @@
      		
      		
      	});
+         
+         <!-- 특산물명 중복 체크-->
+    	 $("#specialityName").blur(function(){
+    		var mate = $("#specialityName").val();
+    		$.ajax({
+    			url :'checkSpeName.ad',
+    			data : {"specialityName" : $("#specialityName").val()},
+    			success : function(data) {
+    				console.log(data)
+    					if(data == "no") {
+    						$("#checkSpeName").text("이미 등록된 특산물입니다.");
+    						$("#checkSpeName").css("color" , "red" );
+    						$("#specialityName").focus(function(){
+    							$("#specialityName").val('');
+    							$("#checkSpeName").text('');
+    						});
+    						disabeldSignUpBtn();
+    						return false;
+    					} else if(data =='yes') {
+    							$("#checkSpeName").text("등록 가능한 특산물입니다.");
+    							$("#checkSpeName").css("color", "green");
+    							$("#saveBtn").css("background-color", "#F29F05");
+    							$("#saveBtn").prop("disabled",false);
+    							$("#specialityName").focus(function(){
+    								$("#specialityName").val('');
+    								$("#checkSpeName").text('');
+    							});
+    					}
+    			}
+    		})
+    	}); 
+    	
    
 </script>
 </html>

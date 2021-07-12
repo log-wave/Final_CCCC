@@ -47,4 +47,8 @@ public class SpecialityDAO {
 		return sqlSession.insert("specialityMapper.insertSpeciality" , speciality);
 	}
 
+	public int checkSpeName(SqlSessionTemplate sqlSession, String specialitName) {
+		return sqlSession.selectOne("specialityMapper.checkSpeName" , specialitName);
+	}
+
 }

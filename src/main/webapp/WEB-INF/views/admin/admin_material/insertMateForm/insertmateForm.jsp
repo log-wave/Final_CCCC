@@ -13,7 +13,7 @@
 <body>
 	<br><br>
     <div class="page">
-    <form>
+    <form autocomplete="off">
     <div class="mate_main">
         <div class="mate_title">재료추가</div>
 		<br>  <br>  <br>
@@ -23,10 +23,11 @@
             <input type="text" name="materialName" id="materialName">
             </div>
         </div>
+            <div id="checkMateName" disabled></div>
         <div class="input_mateName">
             <div class="mate_label">기준 : </div>
             <div class="input_blank">
-            <input type="text" name="standard" id="standard">
+            <input type="text" name="standard" id="standard" >
             </div>
         </div>
         
@@ -102,7 +103,7 @@
 		<br>
         <div class="btn_area">
             <button class="cnbtn" onclick="window.close()">취소</button>
-            <input type="button" class="subtn" value="저장" id="saveBtn">
+            <input type="button"  value="저장" id="saveBtn">
         </div>
     </div>
     </form>
@@ -110,7 +111,21 @@
 </body>
 
 <script>
-
+	
+	<!--재료 저장 버튼 비활성화 -->
+	$(function(){
+		
+		$("#saveBtn").prop("disabled", true);
+		$("#saveBtn").css("background-color", "#D1CBC2");
+	});
+	
+	function disabeldSignUpBtn(){
+		
+		$("#saveBtn").prop("disabled", true);
+		$("#saveBtn").css("background-color", "#D1CBC2");
+		
+	}
+	<!-- 재료추가 -->
 
 	$('#saveBtn').on('click' , function() {
 		
@@ -125,7 +140,16 @@
 		 sugar : $('#sugar').val()
 
 		};
-	
+		if( material.materialName == "" ){
+     		alert("재료명을 입력해주세요.");
+     		return false;
+     	}else if(material.standard == ""){
+     		alert("기준을 입력해주세요");
+     		return false;
+     	}else if(material.kcal=="" || material.protein =="" ||  material.fat =="" ||  material.carbo =="" ||  material.sugar =="" ){
+     		alert("모든 영양성분을 입력해주세요 ");
+     		return false;
+     	}
 		
 		console.log(material);
 		
@@ -145,7 +169,42 @@
  			}
 		});
 		
-		
 	});
+	
+	
+	
+	<!-- 재료명 중복 체크-->
+	 $("#materialName").blur(function(){
+		var mate = $("#materialName").val();
+		$.ajax({
+			url :'checkMateName.ad',
+			data : {"materialName" : $("#materialName").val()},
+			success : function(data) {
+				console.log(data)
+					if(data == "no") {
+						$("#checkMateName").text("이미 등록된 재료입니다.");
+						$("#checkMateName").css("color" , "red" );
+						$("#materialName").focus(function(){
+							$("#materialName").val('');
+							$("#checkMateName").text('');
+						});
+						disabeldSignUpBtn();
+						return false;
+					} else if(data =='yes') {
+							$("#checkMateName").text("등록 가능한 재료입니다.");
+							$("#checkMateName").css("color", "green");
+							$("#saveBtn").css("background-color", "#F29F05");
+							$("#saveBtn").prop("disabled",false);
+							$("#materialName").focus(function(){
+								$("#materialName").val('');
+								$("#checkMateName").text('');
+							});
+					}
+			}
+		})
+	}); 
+	
+	
+	
 </script>
 </html>

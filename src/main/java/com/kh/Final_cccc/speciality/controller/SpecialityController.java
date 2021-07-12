@@ -131,4 +131,24 @@ public class SpecialityController {
 		}
 		
 	}
+	
+	@RequestMapping("checkSpeName.ad")
+	public void checkSpeName(@RequestParam(value="specialityName", required= false) String specialitName, HttpServletResponse response) {
+		System.out.println("specialitName : " + specialitName);
+		int result = speService.checkSpeName(specialitName); 
+		try {
+			PrintWriter out = response.getWriter();
+			if(result > 0) {
+				out.print("no");
+			}else {
+				out.print("yes");
+			}
+			out.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
 }

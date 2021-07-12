@@ -59,4 +59,9 @@ public class SpecialityServiceImpl implements SpecialityService {
 	public int insertSpeciality(Speciality speciality) {
 		return speDAO.insertSpeciality(sqlSession, speciality);
 	}
+
+	@Override
+	public int checkSpeName(String specialitName) {
+		return speDAO.checkSpeName(sqlSession, specialitName);
+	}
 }
