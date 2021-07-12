@@ -80,7 +80,7 @@ public class MemberController {
 	public String moveWithdrawalGuide(HttpServletRequest request) {
 
 		return "myPage/withdrawalGuide";
-	}
+	}	
 	
 	
 	@RequestMapping(value="deleteMemberPage.me", method=RequestMethod.GET)
