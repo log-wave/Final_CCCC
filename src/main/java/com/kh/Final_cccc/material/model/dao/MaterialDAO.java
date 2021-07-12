@@ -34,4 +34,8 @@ public class MaterialDAO {
 		return (ArrayList)sqlSession.selectList("materialMapper.searchMateList" , value, rowBounds);
 	}
 
+	public int checkMateName(SqlSessionTemplate sqlSession, String materialName) {
+		return sqlSession.selectOne("materialMapper.checkMateName" , materialName);
+	}
+
 }

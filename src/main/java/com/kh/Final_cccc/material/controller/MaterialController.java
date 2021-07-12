@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,12 +91,24 @@ public class MaterialController {
 		return mv;
 	}
 	
+	@RequestMapping(value="checkMateName.ad") 
+	public void checkMateName(@RequestParam (value= "materialName", required=false) String materialName , HttpServletResponse response) {
+		System.out.println("materialName : " + materialName);
+		int result = maService.checkMateName(materialName); 
+		try {
+			PrintWriter out = response.getWriter();
+			if(result > 0) {
+				out.print("no");
+			}else {
+				out.print("yes");
+			}
+			out.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	
-	
-	
-	
-	
-	
+	}
 	
 	
 	

@@ -24,4 +24,6 @@ public interface SpecialityService {
 
 	int insertSpeciality(Speciality speciality);
 
+	int checkSpeName(String specialitName);
+
 }

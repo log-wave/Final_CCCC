@@ -17,4 +17,6 @@ public interface MaterialService {
 
 	ArrayList<Material> searchMateList(String value, PageInfo pi);
 
+	int checkMateName(String materialName);
+
 }

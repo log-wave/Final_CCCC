@@ -51,4 +51,10 @@
 			and material_name like  '%' || #{value} || '%'
 		</if>
 	</select>
+	
+	<select id="checkMateName" resultType="_int">
+		select count(*)
+		from material
+		where status = 'Y' and material_Name = #{materialName}
+	</select>
 </mapper>

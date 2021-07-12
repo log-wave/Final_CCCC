@@ -43,4 +43,9 @@ public class MaterialServiceimp implements MaterialService{
 	public ArrayList<Material> searchMateList(String value, PageInfo pi) {
 		return maDAO.searchMateList(sqlSession, value, pi);
 	}
+
+	@Override
+	public int checkMateName(String materialName) {
+		return maDAO.checkMateName(sqlSession, materialName);
+	}
 }

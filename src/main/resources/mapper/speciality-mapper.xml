@@ -86,7 +86,12 @@
 	
 	<insert id="insertSpeciality">
 		INSERT INTO SPECIALITY VALUES (SEQ_SPECIALITY_NO.NEXTVAL ,#{specialityRegion}, #{specialityName}, #{specialityInfo}, #{materialNo} , 'Y') 
-	
-	
 	</insert>
+	
+	<select id="checkSpeName" resultType="_int">
+	select count(*)
+	from SPECIALITY
+	where status ='Y' and SPECIALITY_NAME = #{specialityName}
+	</select>
+	
 </mapper>
