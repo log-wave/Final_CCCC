@@ -92,7 +92,7 @@ public class EventController {
 
 @RequestMapping(value="insertEvent.ev", method=RequestMethod.POST)
 public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
-									MultipartHttpServletRequest request, Model model, HttpServletResponse response) throws IOException{
+									MultipartHttpServletRequest request, Model model){
 
 	
 	// 이미지 저장할 경로 지정
@@ -141,8 +141,7 @@ public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg")
 	
 	
 	ArrayList<Files> fileList = new ArrayList<Files>();
-	 
-	String msg = null;
+	
 	//for(int i = originFileName.size() - 1; i >=0; i--) {
 	for(int i = 0; i <= originFileName.size()-1; i++) {
 	Files f = new Files();
@@ -166,10 +165,8 @@ public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg")
 			}
 	
 		}
-		PrintWriter writer = response.getWriter(); 
-		writer.println("<script>alert('요청이 처리되었습니다.');</script>");
 		
-		return  "redirect:eventList.ev";
+		return  "../admin/lol";
 	}
 	
 }	
