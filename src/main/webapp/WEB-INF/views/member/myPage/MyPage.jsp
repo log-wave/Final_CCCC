@@ -40,10 +40,10 @@
 			</div>
 			<div class="myPage_profile_changeBox" style="display:flex; justify-content: space-between;">
 				<div>
-					<button class="profile_setting_Btn"><i class="fas fa-user-cog fa-2x"></i><span style="margin-left: 7px;">프로필 설정</span></button>
+					<button class="profile_Edit_Btn"  style="cursor:pointer;" onclick="location.href='edit_my_inform.me'"><i class="fas fa-user-cog fa-2x"></i><span style="margin-left: 7px;">내정보 수정</span></button>
 				</div>
 				<div>
-					<button class="profile_setting_Btn" style="cursor:pointer;"  onclick="location.href='withdrawalGuide.me'"><span>회원 탈퇴</span></button>
+					<button class="profile_setting_Btn" style="cursor:pointer;" onclick="location.href='withdrawalGuide.me'"><span>회원 탈퇴</span></button>
 				</div>
 			</div>
 		
@@ -52,7 +52,7 @@
 	</div>
 	
 	<div class="myPage_content_title">
-		<div class="myPage_content_title_myRecipe ">마이 레이시피<span class="title_common_number">89</span></div>
+		<div class="myPage_content_title_myRecipe ">마이 레시피<span class="title_common_number">89</span></div>
 		<div class="myPage_content_title_scrap ">스크랩<span class="title_common_number">55</span></div>
 		<div class="myPage_content_title_following ">팔로잉<span class="title_common_number">121</span></div>
 	</div>
@@ -63,4 +63,9 @@
 	
 	
 </body>
+<script>
+		
+	</script>
+
+
 </html>
