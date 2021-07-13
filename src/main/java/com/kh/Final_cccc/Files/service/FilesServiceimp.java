@@ -43,4 +43,10 @@ public class FilesServiceimp implements FilesService {
 	public int updateFiles(Files f) {
 		return fdao.updateFiles(sqlSession, f);
 	}
+
+	@Override
+	public int insertRFiles(Files f) {
+		// TODO Auto-generated method stub
+		return fdao.insertRFiles(sqlSession, f);
+	}
 }

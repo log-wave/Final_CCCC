@@ -15,19 +15,20 @@
 	
 	<div class="insertRecipe_pageTitle">레시피 등록하기</div>
 	<form action="insertRecipe.rp" method="post" enctype="multipart/form-data">
-	
+	<!-- user_no는 이후 수정해야함 -->
+	<input type="hidden" name ="user_no" value="1">
 		<div class="insertRecipe_main">
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">제목 입력하기</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="text" class="rp_insert_inputbox" name="" placeholder="레시피 제목을 입력해주세요">
+					<input type="text" class="rp_insert_inputbox" name="recipe_title" placeholder="레시피 제목을 입력해주세요">
 				</div>
 			</div>
 			
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">한줄설명 입력하기</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="text" class="rp_insert_inputbox" name="" placeholder="한줄설명을 입력해주세요">
+					<input type="text" class="rp_insert_inputbox" name="recipe_explain" placeholder="한줄설명을 입력해주세요">
 				</div>
 			</div>
 			
@@ -59,7 +60,7 @@
 					<option value="22">버섯류</option>
 					<option value="23">향신료</option>
 				</select>
-				<select name="secCate" class="secCate">
+				<select name="secCate" class="secCate" id="seccate">
 					<option>1차 카테고리를 선택해주세요</option>
 				</select>
 					<button type="button" class="rp_addMate_btn" id="add_Mate">재료 추가</button>
@@ -83,7 +84,7 @@
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">조리과정 추가</div>
 				<div class="insertRecipe_inputBox">			
-					조리시간 <input type="text" class="rp_insert_inputbox_min" name="" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
+					조리시간 <input type="text" class="rp_insert_inputbox_min" name="cooking_time" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
 				</div>
 				
 			</div>
@@ -94,12 +95,61 @@
 				</div>
 				<button type="button" class="rp_addProcess_btn" id="add_process"></button>
 			</div>
+			
+			<div id="fileArea">
+	
+			</div>	
+			<div class="rp_insert_area">
+				<div class="insertRecipe_subTitile_2">레시피 태그정보</div>
+				<div class="rp_tag_main">
+					<div class="rp_tag_top">
+						<div class="tag_title"><p>주제별요리</p></div>
+						<div class="tag_btn">
+							<button type="button"value="1" class="subj_btn">편의점 요리</button>
+							<button type="button"value="2" class="subj_btn">간식/야식</button>
+							<button type="button"value="3" class="subj_btn">술안주</button>
+							<button type="button"value="4" class="subj_btn">해장요리</button>
+							<button type="button"value="5" class="subj_btn">손님 접대 요리</button>
+							<button type="button"value="6" class="subj_btn">나들이 요리</button>
+							<button type="button"value="7" class="subj_btn">일반 요리</button>
+						</div>
+					</div>
+					<div class="rp_tag_mid">
+						<div class="tag_title"><p>재료별요리</p></div>
+						<div class="tag_btn">
+							<button type="button"value="1" class="mate_btn">과일류</button>
+							<button type="button"value="2" class="mate_btn">어패류</button>
+							<button type="button"value="3" class="mate_btn">고기류</button>
+							<button type="button"value="4" class="mate_btn">채소류</button>
+							<button type="button"value="5" class="mate_btn">유제품/치즈류</button>
+							<button type="button"value="6" class="mate_btn">감자/고구마류</button>
+							<button type="button"value="7" class="mate_btn">햄/소세지</button>
+							<button type="button"value="8" class="mate_btn">기타</button>
+						</div>
+					</div>
+					<div class="rp_tag_bot">
+						<div class="tag_title"><p>주제별요리</p></div>
+						<div class="tag_btn">
+							<button type="button"value="1" class="spec_btn">서울</button>
+							<button type="button"value="2" class="spec_btn">경기도</button>
+							<button type="button"value="3" class="spec_btn">강원도</button>
+							<button type="button"value="4" class="spec_btn">충청도</button>
+							<button type="button"value="5" class="spec_btn">전라도</button>
+							<button type="button"value="6" class="spec_btn">경상도</button>
+							<button type="button"value="7" class="spec_btn">제주도</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" class="sort_sub" value="1">
+			<input type="hidden" class="sort_mate" value="1">
+			<input type="hidden" class="sort_spec" value="0">
 			<button type="submit">저장</button>
 		</div>
 	
-	<div id="fileArea">
 	
-	</div>
+	
+	
 	
 	</form>
 	
@@ -120,18 +170,37 @@ var file_flag = 1;
 			var files = '#fileNo' + num;
 			console.log(files);
 			$(files).click();
-		})
+		});
+		
+		//주제별 클릭시
+		$('.subj_btn').on("click", function(){
+			
+			$('.sort_sub').val(this.value);
+			alert($('.sort_sub').val());
+		});
+		
+		//재료별 클릭시
+		$('.mate_btn').on("click", function(){
+			$('.sort_mate').val(this.value);
+			alert($('.sort_mate').val());
+		});
+		
+		//특산물 클릭시
+		$('.spec_btn').on("click", function(){
+			$('.sort_spec').val(this.value);
+			alert($('.sort_spec').val());
+		});
 		
 		$('#add_Mate').click(function(){
 			var area = $('.rp_Mate_area');
 			
-			var addedMate_name = $('#addedMate').text();	//재료이름
-			var addedMate_val = $('#addedMate').val();		//재료의 DB번호
+			var addedMate_name = $('#seccate option:selected').text();	//재료이름
+			var addedMate_val = $('#seccate option:selected').val();		//재료의 DB번호
 			
 			//버튼 클릭시 추가로 들어갈 내용들
 			$tableBody = $('#tb tbody');
 			var $tr =   $('<tr>');
-			var $addedMate_name = $('<td>').text($('#addedMate').text());
+			var $addedMate_name = $('<td>').text($('#seccate option:selected').text());
 			var $inputarea = $('<td>').html('<input type="text" name="mate_amount">');
 			
 			$tr.append($addedMate_name);
@@ -172,7 +241,7 @@ var file_flag = 1;
 			success:function(data){
 				
 				for(var i in data){
-					target.append('<option value="' + data[i].materialNo + '" id="addedMate">' + data[i].materialName +'</option>' );
+					target.append('<option value="' + data[i].materialNo + '" class="addedMate">' + data[i].materialName +'</option>' );
 				}
 			}
 			
@@ -187,9 +256,9 @@ var file_flag = 1;
 			reader.onload = function(e){
 				for(var i = 1; i < file_flag; i++){
 					if(i == num){
-						var files = '#rp_img' + i;
+						var files = '#rp_img' + num;
 						console.log(files);
-						$(files).attr("src", e.target.result);						
+						$(files).attr("src", e.target.result);
 					}
 				}
 			}

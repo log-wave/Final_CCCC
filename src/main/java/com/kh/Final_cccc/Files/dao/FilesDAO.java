@@ -32,4 +32,9 @@ public class FilesDAO {
 		return sqlSession.update("filesMapper.updateFiles", f);
 	}
 
+	public int insertRFiles(SqlSessionTemplate sqlSession, Files f) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("filesMapper.insertRFiles" , f);
+	}
+
 }

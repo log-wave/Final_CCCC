@@ -14,7 +14,7 @@
 .insertRecipe_main{
 	width:1100px;
 	min-height: 1200px;
-	border: 1px solid black;
+	
 	margin:auto;
 }
 /* 왼쪽의 padding-left:135px;
@@ -23,7 +23,7 @@
 	width: 1100px;
 	min-height: 90px;
 	display: flex;
-	border: 1px solid red;
+	
 }
 
 .insertRecipe_subTitile{
@@ -68,7 +68,7 @@
 	width:950px;
 	min-height: 100px;
 	margin: auto;
-	border:1px solid green;
+	
 	vertical-align: middle;
 }
 
@@ -76,7 +76,7 @@
 .rp_added_area{
 	width:300px;
 	height:200px;
-	border: 1px solid blue; 
+	
 }
 .select_Mate{
 	width:200px;
@@ -117,7 +117,7 @@
 .recipe_process_area{
 	width: 1000px;
 	min-height: 100px;
-	border: 1px solid aqua;
+	
 	margin: auto;
 	text-align: center;
 	margin-bottom: 5px;
@@ -136,7 +136,7 @@
 	width:1000px;
 	min-height:80px;
 	margin:auto;
-	border: 1px dashed black;
+	
 }
 
 .rp_img_area{
@@ -145,4 +145,51 @@
 	border: 1px dashed black;
 	margin: auto;
 	z-index: 3;
+}
+
+.rp_tag_main{
+	width:1000px;
+	min-height: 100px;
+	
+	background-color: #f4f4f4;
+}
+.rp_tag_main div{
+	margin:auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.insertRecipe_subTitile_2{
+	width: 300px;
+	padding-left: 135px;
+	margin:auto;
+	font-size: 25px;
+	vertical-align: top;
+}
+.tag_title{
+	width:680px;
+	height: 35px;
+	background-color: lightgray;
+	border-radius: 5px;
+}
+
+.tag_title p{
+	font-size: 17px;
+	padding-top: 10px;
+	padding-left: 7px;
+}
+
+.tag_btn{
+	width:690px;
+	min-height:60px;
+	margin:auto;
+}
+
+.tag_btn button{
+	width:110px;
+	height: 30px;
+	margin: 4px;
+	border-style: none;
+	border-radius: 5px;
+	border:1px solid #cfcfcf;
+	background-color: white;
 }

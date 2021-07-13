@@ -17,4 +17,6 @@ public interface FilesService {
 
 	int updateFiles(Files f);
 
+	int insertRFiles(Files f);
+
 }
