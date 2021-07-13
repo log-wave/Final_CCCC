@@ -3,7 +3,6 @@ package com.kh.Final_cccc.member.controller;
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.kh.Final_cccc.board.exception.BoardException;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.member.service.MemberService;
 
@@ -282,14 +280,13 @@ public class MemberController {
     
   //승재 Edit_my_inform 컨트롤러
     @RequestMapping(value = "Edit_MyInform.me", method = RequestMethod.POST)
-    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age  ) {
+    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age) {
         logger.info("내정보 수정 컨트롤러 진입");
         int year = Calendar.getInstance().get(Calendar.YEAR);
         m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
         System.out.println(m);
 
         mService.Edit_MyInform(m);
-
         return "myPage/MyPage";
     }
     
