@@ -24,4 +24,8 @@ public interface RecipeService {
 
 	ArrayList<Material> selectmaterialList(int mNo);
 
+	int insertRecipe(Recipe recipe);
+
+	int insertRecipemate(ReMaterial mate);
+
 }

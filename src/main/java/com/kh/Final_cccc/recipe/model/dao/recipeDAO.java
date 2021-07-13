@@ -48,4 +48,14 @@ public class recipeDAO {
 		return (ArrayList)sqlSession.selectList("recipeMapper.selectMaterialList", mNo);
 	}
 
+	public int insertRecipe(SqlSessionTemplate sqlSession, Recipe recipe) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("recipeMapper.insertRecipe", recipe);
+	}
+
+	public int insertRecipemate(SqlSessionTemplate sqlSession, ReMaterial mate) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("recipeMapper.insertRecipeMate", mate);
+	}
+
 }

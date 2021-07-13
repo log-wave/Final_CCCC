@@ -62,6 +62,18 @@ public class RecipeServiceImp implements RecipeService{
 		// 재료리스트 가져오기
 		return rDAO.selectmaterialList(sqlSession, mNo);
 	}
+
+	@Override
+	public int insertRecipe(Recipe recipe) {
+		// TODO Auto-generated method stub
+		return rDAO.insertRecipe(sqlSession, recipe);
+	}
+
+	@Override
+	public int insertRecipemate(ReMaterial mate) {
+		// TODO Auto-generated method stub
+		return rDAO.insertRecipemate(sqlSession, mate);
+	}
 	
 	
 }
