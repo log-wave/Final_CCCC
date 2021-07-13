@@ -4,6 +4,8 @@ package com.kh.Final_cccc.member.service;
 
 
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 public interface MemberService {
@@ -29,6 +31,14 @@ public interface MemberService {
 	MemberVO loginCheck(MemberVO m);
 
 	int reset_pass_cnt(String user_id);
+
+	int member_yn_chk(int user_no);
+
+	MemberVO findIdresult(String email);
+
+	int Edit_MyInform(MemberVO m);
+
+
 
 
 	

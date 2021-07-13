@@ -86,10 +86,23 @@ public class MemberDAO {
 		
 	}
 
+	public int member_yn_chk(SqlSessionTemplate sqlSession, int user_no) {
+		loggger.info("member_yn_chk dao 진입 성공");
+		return sqlSession.update("memberMapper.member_yn_chk", user_no);
+	}
+
+
+	public MemberVO findIdresult(SqlSessionTemplate sqlSession, String email) {
+		loggger.info("findIdresult dao 진입 성공");
+		System.out.println(email);
+		return sqlSession.selectOne("memberMapper.find_id_result", email);
+	}
 
 	
-
-	
-
+	public int Edit_MyInform(SqlSessionTemplate sqlSession, MemberVO m) {
+        loggger.info("Edit_MyInform dao 진입 성공");
+        System.out.println(m);
+        return sqlSession.update("memberMapper.edit_my_Inform", m);
+    }
 
 }
