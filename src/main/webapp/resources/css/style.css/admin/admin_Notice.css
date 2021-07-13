@@ -2,7 +2,7 @@
 
 
 	.page {
-		 width: 1000px;
+		 width: 1070px;
 		 height: 790px;
 		 display: inline-block;
 		 vertical-align: top;
@@ -18,11 +18,10 @@
     
     .notice_list{
     	width : 950px;
-    	height : 500px;
+    	min-height : 500px;
 		margin: auto;
-		margin-top: 20px;
-		display: inline-block;
     }
+    
 	.notice_Table{
 		text-align: center;
 		border-collapse: collapse;
@@ -42,6 +41,7 @@
 	}
 	.buttonArea{
 		text-align: right;
+		width: 1000px;
 	}
 	.buttonArea button {
 		background: rgba(242, 159, 5, 0.88);
@@ -49,6 +49,7 @@
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
+     	cursor: pointer;
      }
      
      #searchArea{
@@ -59,7 +60,7 @@
 	}
 	
 	#pagingArea{
-	 	margin-top: 60px;
+		padding-top: 30px;
 		text-align: center;
 	}	
 
@@ -69,6 +70,7 @@
 		border-radius: 5px;
 		font-size: 15px;
 		border-style: none;
+		
 	}   
 	
 	#searchCondition, #searchValue{

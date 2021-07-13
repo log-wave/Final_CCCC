@@ -20,13 +20,12 @@
 	    <h2 id="title"> Q&A 목록 </h2>
 	    <br>
 	    	<div class="QA_list" align="center">
-			<br>
 	    		<table class="QA_Table">
 	    			<tr>
-	    				<th  width="85px">번호</th>
-	    				<th  width="150px">제목</th>
+	    				<th  width="100px">번호</th>
+	    				<th  width="250px">제목</th>
 	    				<th  width="500px">내용</th>
-	    				<th  width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
+	    				<th  width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
 	    			<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
@@ -44,17 +43,15 @@
 						<td colspan="6">조회된 리스트가 없습니다.</td>
 					</tr>
 				</c:if>
-	    			
 	    		</table>
 	    	<br>
-	    	
+    	</div>
 	    	<div class="buttonArea">
 				<button id="delete_qa">Q&A 삭제</button>
 	    	</div>
 	    	
 	    	<div id="searchArea" style="float: left">
 				<select id="searchCondition" name="searchCondition">
-					<option>-------</option>
 					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
 					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
 					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
@@ -63,7 +60,6 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-    	</div>
     	
     	<div align="center">
     		<!-- 페이징 -->
@@ -86,7 +82,7 @@
 						<!-- 페이지 -->
 						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 							<c:if test="${ p eq pi.currentPage }">
-								<button><font color="red" size="4"><b>${ p }</b></font></button>
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
 							</c:if>
 							
 							<c:if test="${ p ne pi.currentPage }">
@@ -180,8 +176,8 @@
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
 	
-			if(searchCondition == "-------" || searchValue == ""){
-				alert("똑바로 검색 해주세요.");
+			if(searchValue == ""){
+				alert("검색할 내용을 입력하세요.");
 				window.location.reload();
 			} else {
 				location.href="searchAdminQA.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
