@@ -57,6 +57,7 @@
 	    		</table>
 	    		<br>
 	    	<div class="buttonArea">
+	    		<button id="insert_ev">이벤트 추가</button>
 				<button id="delete_ev">이벤트 삭제</button>
 	    	</div>
 	    	
@@ -74,7 +75,7 @@
 			</div>
     	</div>
     	
-		<div align="center">
+		<div align="center" style="margin-top: 110px;">
     		<!-- 페이징 -->
 				<table id="pagingArea">	
 			<!-- 페이징 처리 -->
@@ -165,12 +166,17 @@
 			$(this).closest('tr').css({"background":"","color":"","cursor":""});
 		});
 		
+		$('#insert_ev').on('click', function(){
+			var url ='<%=request.getContextPath()%>/insertEventView.ev';
+			window.open(url, 'eventInsert', 'width=1200px, height=820px');
+		});
+		
 		$('#delete_ev').on('click', function(){
 			var checkArr = [];
 			$('input[name="event_select"]:checked').each(function() {
 				checkArr.push($(this).val());
 			});
-			if (confirm('해당 공지사항을 삭제하시겠습니까?')) {
+			if (confirm('해당 이벤트를 삭제하시겠습니까?')) {
 				$.ajax({
 					type: 'post',
 					url:'evdelete.ad',
