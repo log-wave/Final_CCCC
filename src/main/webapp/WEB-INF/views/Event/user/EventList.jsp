@@ -16,9 +16,26 @@
 	
 		<!-- 제목 -->
 		<div class="title"><p>이벤트<p></div>
-		<a href="svinsertView.sv">임시 설문조사 링크</a>
+		<!--  <a href="svinsertView.sv">임시 설문조사 링크</a> -->
 		<!-- 아이템 하나당 한개씩 -->
-
+		
+			<div class="item" >
+					<c:url var="surveydetail" value="surveydetail.sv">
+						<c:param name="eventNo" value="${e.eventNo}"/>
+						<c:param name ="page" value="${pi.currentPage}"/>
+					</c:url>
+						<!-- 이벤트 썸네일 -->
+						<div class="left">
+							<img src="${pageContext.request.contextPath}/resources/uploadFiles/survey2.png" class="event_img">
+						</div>
+						<!-- 이벤트 제목, 기간 -->
+						
+						<div class="right">
+							<a class="event_Title"  href="${ surveydetail }" > [설문조사] 콕콕 쿡쿡 설문조사 참여</a>
+							<br><br>
+						</div>
+			</div>
+					
 			<c:forEach var="e" items="${ elist }" >
 					<div class="item" >
 					<c:url var="edetail" value="edetail.ev">
