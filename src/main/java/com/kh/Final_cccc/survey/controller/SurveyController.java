@@ -57,5 +57,11 @@ public class SurveyController {
 			logger.info("member_yn_chk 컨트롤러 진입했음.");
 			sService.member_yn_chk(user_no);
 		}	
+		
+		//설문조사 상세 페이지 이동
+		@RequestMapping("surveydetail.sv")
+		public String surveydetailForm () {
+			return "Surveydetailform";
+		}
 }
 
