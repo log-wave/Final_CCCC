@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
 </head>
 <body>
 
@@ -25,22 +26,34 @@
 			<button id="searchBtn">검색</button>
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG"
 			onclick="location.href='insertRecipeForm.rp'">
-			<c:if test="${empty loginUser}">
-			
-			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
-			<label  style="cursor: pointer" onclick="location.href='loginPage.me'">Login</label>
-			
-			</c:if>
 			
 			
-			<c:if test="${!empty loginUser }">
-			<div>
-				<p style="font-size: 16px;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
-			</div>
-			<div style="margin-left: 30px;">
-				<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
-			</div>
-			</c:if>
+			<c:choose>
+				<c:when test="${!empty loginUser }">
+					<div>
+						<p style="font-size: 16px;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
+					</div>
+					<div style="margin-left: 30px;">
+						<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
+					</div>
+				</c:when>
+				<c:when test="${!empty naverMember }">
+					<div>
+						<p style="font-size: 16px;" onclick="location.href='myPage.me'">${naverMember.getNickname()}</p>
+					</div>
+					<div style="margin-left: 30px;">
+						<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
+					<label  style="cursor: pointer" onclick="location.href='loginPage.me'">Login</label>
+				
+				</c:otherwise>
+	
+			</c:choose>
+	
+			
 		</div>
 		
 		<div id="container">

@@ -47,7 +47,7 @@
 				
 
 					<div class="container-login100-form-btn m-t-20">
-						<button class="login100-form-btn" id="find_userPassword_btn" type="button" disabled="disabled">
+						<button class="login100-form-btn" id="find_userPassword_confirmBtn" type="button" disabled="disabled">
 							인증번호 받기
 						</button>
 					</div>
@@ -81,10 +81,7 @@
 		
 		1.아이디와 이메일이 일치할경우 이메일 인증번호 발송한다. 
 		
-		
-			
-		
-	
+
 	​*/
 	
 
