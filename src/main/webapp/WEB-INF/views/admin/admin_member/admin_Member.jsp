@@ -69,10 +69,19 @@
 				</c:if>
 
 	    		</table>
-	    	<br><br>
+	    	<br>
+	    	
+	    	<div class="buttonArea" style="margin-top: -10px;">
+				<button id="changeStatus">활동 상태 변경</button>
+				<select id="status_select_box" name="status_select_box">
+					<option value="Y">정상</option>
+					<option value="N">탈퇴</option>
+					<option value="S">정지</option>
+				</select>
+	    	</div>
+	    	
 	    	<c:if test="${ searchValue eq null and searchCondition eq null}">
-		    	<div id="searchArea" style="float: left">
-					<label>검색 조건</label>
+		    	<div id="searchArea">
 					<select id="searchCondition" name="searchCondition">
 						<option value="">-------</option>
 						<option value="no">번호</option>
@@ -86,8 +95,7 @@
 				</div>
 			</c:if>
 			<c:if test="${ searchValue ne null and searchCondition ne null}">
-				<div id="searchArea" style="float: left">
-					<label>검색 조건</label>
+				<div id="searchArea">
 					<select id="searchCondition" name="searchCondition" >
 						<option value="">-------</option>
 						<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
@@ -118,18 +126,9 @@
 					</c:if>
 				</div>
 			</c:if>
-			
-	    	<div class="buttonArea" style="margin-top: -10px;">
-				<button id="changeStatus">활동 상태 변경</button>
-				<select id="status_select_box" name="status_select_box">
-					<option value="Y">정상</option>
-					<option value="N">탈퇴</option>
-					<option value="S">정지</option>
-				</select>
-	    	</div>
     	</div>
-    	
-    	<div align="center">
+    	<br>
+    	<div align="center" style="margin-top: 10px;">
 	    	<!-- 페이징 -->
 			<table id="pagingArea">	
 			<!-- 페이징 처리 -->
@@ -150,7 +149,7 @@
 						<!-- 페이지 -->
 						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 							<c:if test="${ p eq pi.currentPage }">
-								<button><font color="red" size="4"><b>${ p }</b></font></button>
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
 							</c:if>
 							
 							<c:if test="${ p ne pi.currentPage }">

@@ -62,9 +62,7 @@
 	    	</div>
 	    	
 	    	<div id="searchArea" style="float: left">
-				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
-					<option>-------</option>
 					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
 					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
 					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
@@ -96,7 +94,7 @@
 						<!-- 페이지 -->
 						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 							<c:if test="${ p eq pi.currentPage }">
-								<button><font color="red" size="4"><b>${ p }</b></font></button>
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
 							</c:if>
 							
 							<c:if test="${ p ne pi.currentPage }">

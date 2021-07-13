@@ -53,7 +53,6 @@
 	    	</div>
 	    	
 	    	<div id="searchArea" style="float: left">
-				<label>검색 조건</label>
 				<select id="searchCondition" name="searchCondition">
 					<option>-------</option>
 					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
