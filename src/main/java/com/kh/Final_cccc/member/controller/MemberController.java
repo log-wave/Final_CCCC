@@ -67,7 +67,7 @@ public class MemberController {
 	
 	@RequestMapping(value="loginPage.me", method=RequestMethod.GET)
 	public String login(HttpServletRequest request) {
-		System.out.println("헤더에서 로그인 요청 넘어옴 ");
+		
 		return "login/login";
 	}
 	
@@ -117,7 +117,7 @@ public class MemberController {
 	public String logoutPage(HttpSession session,SessionStatus status) {
 		
 	
-		
+		session.invalidate();
 		status.setComplete();
 		
 		System.out.println("setComplete가 실행된 후의 세션값 유무 확인");

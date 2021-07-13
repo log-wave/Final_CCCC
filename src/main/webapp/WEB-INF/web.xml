@@ -132,6 +132,20 @@
          <servlet-name>SurveyServlet</servlet-name>
          <url-pattern>*.sv</url-pattern>
       </servlet-mapping>
+      
+      <!-- sns 로그인 관련 -->
+	<servlet>
+      <servlet-name>snsLoginServlet</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/spring/appServlet/snsLogin-context.xml</param-value>
+         </init-param>
+      </servlet>
+      <servlet-mapping>
+         <servlet-name>snsLoginServlet</servlet-name>
+         <url-pattern>*.sns</url-pattern>
+      </servlet-mapping>
 		
 	
 	<!-- UTF-8 인코딩 설정 --> 

@@ -69,6 +69,12 @@
 							
 						</a>
 					</div>
+					
+					<!-- 네이버 로그인 창으로 이동 -->
+					<!-- 컨트롤러에서 받아온 url 이 실행되지 않음..  -->
+					<div id="naver_id_login" style="text-align:center; margin-top: 30px;"><a id="naver_login_url_aTag" href="">
+					<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+					
 				</form>
 			</div>
 		</div>
@@ -82,6 +88,41 @@
 	<script type="text/javascript">
 	
 	
+	/* 네이버 로그인 url을 받기 위한 함수 */
+	
+	$('#naver_id_login').click(function(){
+		
+		$.ajax({
+			
+			url:"naverLogin.sns",
+			type:"get",
+			dataType:'json',
+			success:function(data){
+				
+				//네이버 로그인 api 주소를 생짜로 넣으면 되긴 하나 보안상 매우 심각한 위험을 초래
+				
+				/* alert(JSON.stringify(data)); */
+				/* alert(JSON.stringify(data.url)); */
+				 var naver_login_url =  JSON.stringify(data.url);
+				
+				var url = naver_login_url.replace(/\"/gi, "");
+				
+				alert(url);
+				
+				location.href=url;
+			
+			}
+			
+			
+			
+		});
+		
+	});
+	
+	
+	
+	
+	
 	function reset_pass_cnt(){
 			
 		var user_id = $('#user_id').val();
@@ -89,12 +130,7 @@
 
 		
 	}
-	
-	
-	
-	
-	
-	
+
 	$('#login_btn').click(function(){
 		
 		var user_id = $('#user_id').val();
@@ -164,14 +200,11 @@
    			}
    			
    		});
-   		
-   		
-   		
-   		
-   		
-   		
-		
+  
 	}); 
+	
+
+
 	</script>
 	
 	
