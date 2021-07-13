@@ -87,86 +87,177 @@ public class EventController {
 	
 	@RequestMapping(value="insertEventView.ev", method=RequestMethod.GET) 
 	public String insertEventView() {
-	return "InsertEvent";
-}
-
-@RequestMapping(value="insertEvent.ev", method=RequestMethod.POST)
-public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
-									MultipartHttpServletRequest request, Model model){
-
-	
-	// 이미지 저장할 경로 지정
-	String root = request.getSession().getServletContext().getRealPath("resources");
-	String savePath = root + "/uploadFiles";
-
-	//디렉토리가 없다면 디렉토리 생성
-	File folder = new File(savePath);
-	if(!folder.exists()) {
-		folder.mkdirs();
+		return "../admin/admin_event/InsertEvent";
 	}
-	//날짜를 원하는 형태로 출력 
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
+
+	@RequestMapping(value="insertEvent.ev", method=RequestMethod.POST)
+	public String insertEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
+										MultipartHttpServletRequest request, Model model){
 	
-	ArrayList<String> originFileName = new ArrayList<String>(); 
-	ArrayList<String> renameFileName = new ArrayList<String>();
-	ArrayList<String > renamePath = new ArrayList<String>();
+		
+		// 이미지 저장할 경로 지정
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String savePath = root + "/uploadFiles";
 	
-	for(int i = 0; i < eventImg.length; i++) {
-		 originFileName.add(eventImg[i].getOriginalFilename());
-		 renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))+ originFileName.get(i).substring(originFileName.lastIndexOf(".") + 1));
-		 renamePath.add(folder +"/"+ renameFileName.get(i));
-		 
-		 try {
-			 // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
-			eventImg[i].transferTo(new File(renamePath.get(i)));
-		} catch (Exception e) {
-			e.printStackTrace();
+		//디렉토리가 없다면 디렉토리 생성
+		File folder = new File(savePath);
+		if(!folder.exists()) {
+			folder.mkdirs();
 		}
-	}
+		//날짜를 원하는 형태로 출력 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
+		
+		ArrayList<String> originFileName = new ArrayList<String>(); 
+		ArrayList<String> renameFileName = new ArrayList<String>();
+		ArrayList<String > renamePath = new ArrayList<String>();
+		
+		for(int i = 0; i < eventImg.length; i++) {
+			 originFileName.add(eventImg[i].getOriginalFilename());
+			 renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))+ originFileName.get(i).substring(originFileName.lastIndexOf(".") + 1));
+			 renamePath.add(folder +"/"+ renameFileName.get(i));
+			 
+			 try {
+				 // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
+				eventImg[i].transferTo(new File(renamePath.get(i)));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println("originFileName : " + originFileName.get(0));
+		System.out.println("originFileName2 : " + originFileName.get(1));
 	
-	System.out.println("originFileName : " + originFileName.get(0));
-	System.out.println("originFileName2 : " + originFileName.get(1));
-
-	System.out.println("renameFileName : " + renameFileName.get(0));
-	System.out.println("renameFileName2 : " + renameFileName.get(1));
-	System.out.println(originFileName.size());
+		System.out.println("renameFileName : " + renameFileName.get(0));
+		System.out.println("renameFileName2 : " + renameFileName.get(1));
+		System.out.println(originFileName.size());
+		
+		int eresult = eService.insertEvent(event);
+		
+		Event ev = new Event();
+		ev.setEventTitle(event.getEventTitle());
+		ev.setEventContent(event.getEventContent());
+		ev.setEventStart(event.getEventStart());
+		ev.setEventEnd(event.getEventEnd());
+		
+		
+		ArrayList<Files> fileList = new ArrayList<Files>();
+		
+		//for(int i = originFileName.size() - 1; i >=0; i--) {
+		for(int i = 0; i <= originFileName.size()-1; i++) {
+		Files f = new Files();
+		f.setFilePath(savePath);
 	
-	int eresult = eService.insertEvent(event);
+		f.setFileName(originFileName.get(i));
+		f.setChangeName(renameFileName.get(i));
 	
-	Event ev = new Event();
-	ev.setEventTitle(event.getEventTitle());
-	ev.setEventContent(event.getEventContent());
-	ev.setEventStart(event.getEventStart());
-	ev.setEventEnd(event.getEventEnd());
-	
-	
-	ArrayList<Files> fileList = new ArrayList<Files>();
-	
-	//for(int i = originFileName.size() - 1; i >=0; i--) {
-	for(int i = 0; i <= originFileName.size()-1; i++) {
-	Files f = new Files();
-	f.setFilePath(savePath);
-
-	f.setFileName(originFileName.get(i));
-	f.setChangeName(renameFileName.get(i));
-
-		if( i == originFileName.size() - 1) {
-					f.setFileYn("N");
-				} else {
-					f.setFileYn("Y");
+			if( i == originFileName.size() - 1) {
+						f.setFileYn("N");
+					} else {
+						f.setFileYn("Y");
+					}
+			
+			
+				System.out.println("f" + f);
+				int fresult = fService.insertFiles(f);
+				if(fresult == 0) {
+					System.out.println("이벤트이미지 에러남");
+					throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 				}
 		
+			}
+			
+		return  "../admin/blankPage";
+	}
+	@RequestMapping("updateEventView.ev")
+	public ModelAndView updateEventForm(@RequestParam(value="no") String eventNo, ModelAndView mv) {
+		int eNo = Integer.parseInt(eventNo);
+		Event event = eService.eventDetail(eNo);
 		
+		ArrayList<Files> files = fService.selectFiles(eNo);
+		
+		if(event != null) {
+			mv.addObject("event", event).addObject("files", files).setViewName("../admin/admin_event/admin_update");
+		}else {
+			throw new EventException("이벤트 수정 페이지 조회에 실패하였습니다.");
+		}
+		System.out.println(event);
+		return mv;
+	}
+	
+	@RequestMapping(value="updateEvent.ev", method=RequestMethod.POST)
+	public String updateEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
+										MultipartHttpServletRequest request, Model model){
+	
+		// 이미지 저장할 경로 지정
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String savePath = root + "/uploadFiles";
+	
+		//디렉토리가 없다면 디렉토리 생성
+		File folder = new File(savePath);
+		if(!folder.exists()) {
+			folder.mkdirs();
+		}
+		//날짜를 원하는 형태로 출력 
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMHHssSSS");
+		
+		ArrayList<String> originFileName = new ArrayList<String>(); 
+		ArrayList<String> renameFileName = new ArrayList<String>();
+		ArrayList<String > renamePath = new ArrayList<String>();
+		
+		for(int i = 0; i < eventImg.length; i++) {
+			 originFileName.add(eventImg[i].getOriginalFilename());
+			 renameFileName.add(sdf.format(new Date(System.currentTimeMillis()))+ originFileName.get(i).substring(originFileName.lastIndexOf(".") + 1));
+			 renamePath.add(folder +"/"+ renameFileName.get(i));
+			 
+			 try {
+				 // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
+				eventImg[i].transferTo(new File(renamePath.get(i)));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println("originFileName : " + originFileName.get(0));
+		System.out.println("originFileName2 : " + originFileName.get(1));
+	
+		System.out.println("renameFileName : " + renameFileName.get(0));
+		System.out.println("renameFileName2 : " + renameFileName.get(1));
+		System.out.println(originFileName.size());
+		
+		int eresult = eService.updateEvent(event);
+		
+		Event ev = new Event();
+		ev.setEventTitle(event.getEventTitle());
+		ev.setEventContent(event.getEventContent());
+		ev.setEventStart(event.getEventStart());
+		ev.setEventEnd(event.getEventEnd());
+		
+		
+		ArrayList<Files> fileList = new ArrayList<Files>();
+		
+		
+		//for(int i = originFileName.size() - 1; i >=0; i--) {
+		for(int i = 0; i <= originFileName.size()-1; i++) {
+		Files f = new Files();
+		f.setFilePath(savePath);
+		f.setRefNo(event.getEventNo());
+		f.setFileName(originFileName.get(i));
+		f.setChangeName(renameFileName.get(i));
+	
+			if( i == originFileName.size() - 1) {
+				f.setFileYn("N");
+			} else {
+				f.setFileYn("Y");
+			}
 			System.out.println("f" + f);
 			int fresult = fService.insertFiles(f);
 			if(fresult == 0) {
 				System.out.println("이벤트이미지 에러남");
 				throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 			}
-	
-		}
 		
-		return  "../admin/lol";
+		}
+			
+		return  "../admin/blankPage";
 	}
-	
 }	

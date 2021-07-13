@@ -43,4 +43,8 @@ public class EventDAO {
 		return(ArrayList)sqlSession.selectList("eventMapper.selectEventList" , null , rowBounds);
 	}
 
+	public int updateAdminEventUpdate(SqlSessionTemplate sqlSession, Event event) {
+		return sqlSession.update("eventMapper.updateEvent", event);
+	}
+
 }

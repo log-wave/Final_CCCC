@@ -21,6 +21,8 @@ public interface EventService {
 
 	ArrayList<Event> selectAdminEventList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
 
+	int updateEvent(Event event);
+
 
 	
 	

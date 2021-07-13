@@ -15,4 +15,6 @@ public interface FilesService {
 
 	ArrayList<Files> selectAdminFileList(com.kh.Final_cccc.admin.model.vo.PageInfo pi);
 
+	int updateFiles(Files f);
+
 }

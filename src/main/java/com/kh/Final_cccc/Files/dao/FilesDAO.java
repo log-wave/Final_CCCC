@@ -28,4 +28,8 @@ public class FilesDAO {
 		return (ArrayList)sqlSession.selectList("filesMapper.selectAdminFilesList", pi);
 	}
 
+	public int updateFiles(SqlSessionTemplate sqlSession, Files f) {
+		return sqlSession.update("filesMapper.updateFiles", f);
+	}
+
 }

@@ -48,6 +48,7 @@
 					<td>
 						<div class="image_upload">
 							<img id= "contentImg"name="image_upload" width="600px" height="900px">
+							
 						</div>
 						<input type="hidden">
 					</td>

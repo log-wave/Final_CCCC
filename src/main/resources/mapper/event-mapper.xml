@@ -46,6 +46,14 @@
 		WHERE EVENT_STATUS='Y'
 	</select>
 	
+	<update id="updateEvent">
+		update event
+		<set>
+		event_content = #{eventContent}, evnet_title = #{eventTitle}, event_modify_date = sysdate
+		</set>
+		where event_no = #{eventNo}
+	</update>
+	
 	
 	
 </mapper>
