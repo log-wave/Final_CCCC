@@ -135,20 +135,20 @@
 	
 	</select>
 	
-	
-
-	
-	
-	
-	
-	
-	
-	
-
+	<!-- id찾기 -->
+	<select id="find_id_result" parameterType="String" resultMap="memberResultSet">
+		select user_id, user_name
+		from member
+		where email = #{email}
+	</select>
 	
 	
+	<!-- 내정보 수정 -->
+    <update id="edit_my_Inform" parameterType="String">
+        UPDATE MEMBER
+        SET USER_NAME= #{user_name}, NICKNAME=#{nickname}, AGE=#{age}
+        WHERE USER_ID= #{user_id}
+    </update>
 	
-	
-
 
 </mapper>

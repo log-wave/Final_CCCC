@@ -2,6 +2,8 @@ package com.kh.Final_cccc.member.service;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -97,6 +99,28 @@ public class MemberServiceImpl implements MemberService{
 		loggger.info("reset_pass_cnt 서비스 Impl 진입 성공");
 		return mDAO.reset_pass_cnt(sqlSession,user_id);
 	}
+
+	@Override
+	public int member_yn_chk(int user_no) {
+		loggger.info("member_yn_chk 서비스 Impl 진입 성공");
+		return mDAO.member_yn_chk(sqlSession,user_no);
+	}
+
+	@Override
+	public MemberVO findIdresult(String email) {
+		
+		return mDAO.findIdresult(sqlSession, email);
+	}
+
+	@Override
+    public int Edit_MyInform(MemberVO m) {
+        loggger.info("Edit_MyInform 서비스 Impl 진입 성공");
+        System.out.println(m);
+        return mDAO.Edit_MyInform(sqlSession,m);
+    }
+	
+
+
 
 
 

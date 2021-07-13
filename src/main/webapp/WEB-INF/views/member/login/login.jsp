@@ -53,7 +53,7 @@
 					
 
 					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">아이디 찾기 </span><span class="txt1" onclick="location.href='find_user_password.me'" style="cursor: pointer;">비밀번호 찾기 </span>
+						<span class="txt1" onclick="location.href='find_id_view.me'" style="cursor: pointer;">아이디 찾기 </span><span class="txt1" onclick="location.href='find_user_password.me'" style="cursor: pointer;">비밀번호 찾기 </span>
 
 						<a href="#" class="txt2 hov1">
 							
