@@ -32,7 +32,7 @@
 					</div>
 
 					<div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-						<input class="input100" type="password" id="user_password" name="user_password" placeholder="비밀번호">
+						<input class="input100" type="password" id="user_password" name="user_password" placeholder="비밀번호" onkeyup="loginEnterKey();">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
 					</div>
@@ -119,7 +119,12 @@
 		
 	});
 	
-	
+	function loginEnterKey(){
+		if (window.event.keyCode == 13) {
+			 
+        	$('#login_btn').click();
+        }
+	}
 	
 	
 	
