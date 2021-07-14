@@ -1,6 +1,7 @@
 package com.kh.Final_cccc.sns.naver;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpSession;
@@ -108,14 +109,15 @@ public class NaverController {
 		System.out.println(age);
 		
 		MemberVO m = new MemberVO();
-		
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+	    
 		m.setUser_id(user_id);
 		m.setUser_password(user_password);
 		m.setUser_name(user_name);
 		m.setEmail(email);
 		m.setNickname(nickname);
 		m.setGender(gender);
-		m.setAge(age);
+		m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
 		
 		MemberVO naverMember = mService.loginCheck(m);
 		
