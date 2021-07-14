@@ -8,8 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
 <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
+
 </head>
 <body>
 

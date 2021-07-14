@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>메인페이지 초안</title>
 
-<link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
+
 
 </head>
 <body>
