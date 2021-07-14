@@ -17,7 +17,7 @@
 	}%>
 <head>
 <meta charset="UTF-8">
-<title>재료 관리</title>
+<title>재료 관리&nbsp;</title>
 
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/material/admin_Material.css" rel="stylesheet" type="text/css">
