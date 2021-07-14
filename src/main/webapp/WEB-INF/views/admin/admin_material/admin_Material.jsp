@@ -5,9 +5,19 @@
 
 <!DOCTYPE html>
 <html>
+<% String strReferer = request.getHeader("referer"); %>
+	<% if(strReferer == null) { %>
+	
+	<script>
+		alert("정상적인 경로를 통해 다시 접근해 주십시오.");
+		document.location.href= 'index.jsp';
+	</script>
+
+	<% return;
+	}%>
 <head>
 <meta charset="UTF-8">
-<title>재료 관리</title>
+<title>재료 관리&nbsp;</title>
 
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/material/admin_Material.css" rel="stylesheet" type="text/css">
