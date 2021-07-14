@@ -186,7 +186,8 @@ public class EventController {
 	
 	@RequestMapping(value="updateEvent.ev", method=RequestMethod.POST)
 	public String updateEvent(@ModelAttribute Event event, @RequestParam("eventImg") MultipartFile[] eventImg,
-										MultipartHttpServletRequest request, Model model){
+										MultipartHttpServletRequest request, Model model, @RequestParam("file_no_0") int file_no_0, 
+										@RequestParam("file_no_1") int file_no_1){
 	
 		// 이미지 저장할 경로 지정
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -234,11 +235,12 @@ public class EventController {
 		
 		
 		ArrayList<Files> fileList = new ArrayList<Files>();
-		
+		int [] fileNoArr = {file_no_0, file_no_1}; 
 		
 		//for(int i = originFileName.size() - 1; i >=0; i--) {
 		for(int i = 0; i <= originFileName.size()-1; i++) {
 		Files f = new Files();
+		f.setFileNo(fileNoArr[i]);
 		f.setFilePath(savePath);
 		f.setRefNo(event.getEventNo());
 		f.setFileName(originFileName.get(i));
@@ -250,7 +252,7 @@ public class EventController {
 				f.setFileYn("Y");
 			}
 			System.out.println("f" + f);
-			int fresult = fService.insertFiles(f);
+			int fresult = fService.updateFiles(f);
 			if(fresult == 0) {
 				System.out.println("이벤트이미지 에러남");
 				throw new EventException("이벤트 상세 조회에 실패하였습니다.");

@@ -37,6 +37,7 @@
 					<td>
 						<div class="titleimage_upload">
 							<img id= "titleImg" src ="${pageContext.request.contextPath}/resources/uploadFiles/${files.get(0).changeName}"name= "titleImg" width="600px" height="225px">
+							<input type="hidden" name="file_no_0" value="${ files.get(0).fileNo }">
 						</div>
 						<input type="hidden">
 					</td>
@@ -46,6 +47,7 @@
 				<td>
 					<div class="image_upload">
 					<img id= "contentImg" src="${pageContext.request.contextPath}/resources/uploadFiles/${files.get(1).changeName}"name="image_upload" width="600px" height="900px">
+					<input type="hidden" name="file_no_1" value="${ files.get(1).fileNo }">
 					</div>
 					<input type="hidden" name="">
 				</td>
