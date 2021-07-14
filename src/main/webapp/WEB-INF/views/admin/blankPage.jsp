@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +11,7 @@
 </head>
 <body>
 	<script>
-		alert("이벤트 추가 완료하였습니다.");
+		alert("${msg}");
 		window.opener.location.reload();    //부모창 reload
 		window.close();    //현재 팝업창 Close
 	</script>
