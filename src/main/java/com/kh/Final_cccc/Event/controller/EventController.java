@@ -81,7 +81,6 @@ public class EventController {
 		}else {
 			throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 		}
-		System.out.println(event);
 		return mv;
 	}
 	
@@ -160,12 +159,13 @@ public class EventController {
 				System.out.println("f" + f);
 				int fresult = fService.insertFiles(f);
 				if(fresult == 0) {
-					System.out.println("이벤트이미지 에러남");
-					throw new EventException("이벤트 상세 조회에 실패하였습니다.");
+					throw new EventException("이벤트 추가에 실패하였습니다.");
 				}
 		
 			}
-			
+		
+		String msg = "이벤트 추가에 성공하였습니다.";
+		model.addAttribute("msg", msg);
 		return  "../admin/blankPage";
 	}
 	@RequestMapping("updateEventView.ev")
@@ -180,7 +180,6 @@ public class EventController {
 		}else {
 			throw new EventException("이벤트 수정 페이지 조회에 실패하였습니다.");
 		}
-		System.out.println(event);
 		return mv;
 	}
 	
@@ -254,12 +253,12 @@ public class EventController {
 			System.out.println("f" + f);
 			int fresult = fService.updateFiles(f);
 			if(fresult == 0) {
-				System.out.println("이벤트이미지 에러남");
-				throw new EventException("이벤트 상세 조회에 실패하였습니다.");
+				throw new EventException("이벤트 수정에 실패하였습니다.");
 			}
 		
 		}
-			
+		String msg = "이벤트 수정에 성공하였습니다.";
+		model.addAttribute("msg", msg);
 		return  "../admin/blankPage";
 	}
 }	
