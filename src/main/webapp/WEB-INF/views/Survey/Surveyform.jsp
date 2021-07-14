@@ -25,68 +25,53 @@
 				<table id="SurveyTable">
 					<tr>
 						<td><span class="spans">1. 하루에, 집에서 밥 먹는 횟수는?</span></td>
-					</tr>
-					<tr>
-						<th height="80px"></th>
-						<td colspan="3">
-							<input type="radio" name="chk_info1" class="chk_info1" value="자주 먹는다" checked><label for="chk_info1">자주 먹는다 &nbsp;</label>
-							<input type="radio" name="chk_info1" class="chk_info1" value="가끔 먹는다"><label for="chk_info1">가끔 먹는다 &nbsp;</label>
-							<input type="radio" name="chk_info1" class="chk_info1" value="거의 안먹는다"><label for="chk_info1">거의  안먹는다 &nbsp;</label>
-							<input type="radio" name="chk_info1" class="chk_info1" value="안먹는다"><label for="chk_info1">안먹는다 &nbsp;</label>
+						<td height="80px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info1" class="chk_info1" value="자주 먹는다" checked> 자주 먹는다  &nbsp;
+							<input type="radio" name="chk_info1" class="chk_info1" value="가끔 먹는다"> 가끔 먹는다  &nbsp;
+							<input type="radio" name="chk_info1" class="chk_info1" value="거의 안먹는다"> 거의  안먹는다  &nbsp;
+							<input type="radio" name="chk_info1" class="chk_info1" value="안먹는다"> 안먹는다  &nbsp;
 						</td>
 					</tr>
 					
 					
-					
 					<tr>
 						<td><span class="spans">2. 직접 요리해서 먹는 걸 좋아하시나요?</span></td>
-					</tr>
-					<tr>
-						<th height="80px"></th>
-						<td colspan="3">
-							<input type="radio" name="chk_info2" class="chk_info2" value="아주 좋아한다" checked> 아주 좋아한다 &nbsp;
-							<input type="radio" name="chk_info2" class="chk_info2" value="좋아한다"> 좋아한다 &nbsp;
-							<input type="radio" name="chk_info2" class="chk_info2" value="보통이다"> 보통이다 &nbsp;
-							<input type="radio" name="chk_info2" class="chk_info2" value="싫어한다"> 싫어한다 &nbsp;
+						<td height="80px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info2" class="chk_info2" value="아주 좋아한다" checked> 아주 좋아한다  &nbsp;
+							<input type="radio" name="chk_info2" class="chk_info2" value="좋아한다"> 좋아한다  &nbsp;
+							<input type="radio" name="chk_info2" class="chk_info2" value="보통이다"> 보통이다  &nbsp;
+							<input type="radio" name="chk_info2" class="chk_info2" value="싫어한다"> 싫어한다  &nbsp;
 						</td>
 					</tr>
 					
 					<tr>
 						<td><span class="spans">3. 하루에 집에서 요리하는 횟수는?</span></td>
-					</tr>
-					<tr>
-						<th height="80px"></th>
-						<td colspan="3">
-							<input type="radio" name="chk_info3" class="chk_info3" value="3회 이상" checked> 3회 이상 &nbsp;
-							<input type="radio" name="chk_info3" class="chk_info3" value="2회"> 2회 &nbsp;
-							<input type="radio" name="chk_info3" class="chk_info3" value="1회"> 1회 &nbsp;
-							<input type="radio" name="chk_info3" class="chk_info3" value="0회"> 0회 &nbsp;
+						<td height="80px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info3" class="chk_info3" value="3회 이상" checked> 3회 이상  &nbsp;
+							<input type="radio" name="chk_info3" class="chk_info3" value="2회"> 2회  &nbsp;
+							<input type="radio" name="chk_info3" class="chk_info3" value="1회"> 1회  &nbsp;
+							<input type="radio" name="chk_info3" class="chk_info3" value="0회"> 0회  &nbsp;
 						</td>
 					</tr>
 
 					<tr>
 						<td><span class="spans">4. 하루에 몇끼 드시나요?</span></td>
-					</tr>
-					<tr>
-						<th height="80px"> </th>
-						<td colspan="3">
-							<input type="radio" name="chk_info4" class="chk_info4" value="4끼 이상" checked> 4끼 이상 &nbsp;
-							<input type="radio" name="chk_info4" class="chk_info4" value="3끼"> 3끼 &nbsp;
-							<input type="radio" name="chk_info4" class="chk_info4" value="2끼"> 2끼 &nbsp;	
-							<input type="radio" name="chk_info4" class="chk_info4" value="1끼"> 1끼 &nbsp;
+						<td height="80px">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info4" class="chk_info4" value="4끼 이상" checked> 4끼 이상  &nbsp;
+							<input type="radio" name="chk_info4" class="chk_info4" value="3끼"> 3끼  &nbsp;
+							<input type="radio" name="chk_info4" class="chk_info4" value="2끼"> 2끼  &nbsp;	
+							<input type="radio" name="chk_info4" class="chk_info4" value="1끼"> 1끼  &nbsp;
 						</td>
 						
 					</tr>
 					
 					<tr>
 					<td><span class="spans">5. 콕콕 쿡쿡 사이트 이용 후 도움이 되셨나요? </span></td>
-					<tr>
-						<th height="80px"></th>
-						<td colspan="3">
-							<input type="radio" name="chk_info5" class="chk_info5" value="매우 도움됨" checked> 매우 도움됨 &nbsp;
-							<input type="radio" name="chk_info5" class="chk_info5" value="도움이 됨"> 도움이 됨 &nbsp;
-							<input type="radio" name="chk_info5" class="chk_info5" value="보통"> 보통 &nbsp;	
-							<input type="radio" name="chk_info5" class="chk_info5" value="도움이 안됨"> 도움이 안됨 &nbsp;
+						<td height="80px" colspan="4">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info5" class="chk_info5" value="매우 도움됨" checked> 매우 도움됨  &nbsp;
+							<input type="radio" name="chk_info5" class="chk_info5" value="도움이 됨"> 도움이 됨  &nbsp;
+							<input type="radio" name="chk_info5" class="chk_info5" value="보통"> 보통  &nbsp;
+							<input type="radio" name="chk_info5" class="chk_info5" value="도움이 안됨"> 도움이 안됨  &nbsp;
 						</td>
 						
 					</tr>
@@ -106,7 +91,7 @@
 		/* survey를 y로 하는 컨트롤러 경로를 호출한다. 
 		   
 		*/	
-		
+			
 		function survey_yn_change(){
 			var user_no = $('#user_no').val();
 			location.href = 'member_survey_yn_change.sv?user_no=' + user_no;
@@ -130,14 +115,13 @@
 							     "chk_info4":chk_info4,
 							     "chk_info5":chk_info5,},
 					   	  success: function(data){
-					   		if(data ==1 ) {
+					   		if(data == 1) {
+					   			console.log(data);
 					   			survey_yn_change();
-					   			location.href='eventList.ev';
 					   		}
 					   	  }
 					   
 					   });
-				
 			});
 			
 	</script>

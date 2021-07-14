@@ -52,10 +52,11 @@ public class SurveyController {
 	
 	// member_yn 체크
 		@RequestMapping(value ="member_survey_yn_change.sv", method = RequestMethod.GET)
-		public void member_yn_chk(@RequestParam("user_no")int user_no) {
+		public String member_yn_chk(@RequestParam("user_no")int user_no) {
 			System.out.println("유저가 들어왔나 : " + user_no);
 			logger.info("member_yn_chk 컨트롤러 진입했음.");
 			sService.member_yn_chk(user_no);
+			return "redirect: eventList.ev";
 		}	
 		
 		//설문조사 상세 페이지 이동

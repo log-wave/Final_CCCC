@@ -9,12 +9,12 @@
 <title>이벤트 상세보기</title>
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
- <link rel="stylesheet" href="<c:url value='/resources/css/Survey/Surveyform/Surveydetailform.css?ver=1.0'/>">
- 
+<link rel="stylesheet" href="<c:url value='/resources/css/Survey/Surveyform/Surveydetailform.css?ver=1.0'/>">
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script> 
 </head>
 <body>
 	<c:import url="../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
-	
+	<input type="hidden" name="survey_yn" id="survey_yn" value="${ loginUser.survey_yn }">
 	
 
 	<!-- 이용자용 -->
@@ -41,12 +41,25 @@
 				</div>
 			</div>
 			<div class="btn_area">
-				<button class="cnbtn" onclick="location.href='eventList.ev'">목록</button>
-				<button class="surbtn" onclick="location.href='svinsertView.sv'">설문조사 참여하기</button>
+				<button class="cnbtn" style="cursor: pointer;" onclick="location.href='eventList.ev'">목록</button>
+				<button class="surbtn" style="cursor: pointer;" onclick="joinsv()">설문조사 참여하기</button>
 			</div>
 			
 		</div>
 	</div>
+	<script>
+	var count = 0;
+	function joinsv() {
+		var survey_yn = $('#survey_yn').val();		
+		if(survey_yn == "Y") {
+			alert("이미 설문조사에 참여하셨습니다.");
+			location.reload();
+		} else {
+			location.href='svinsertView.sv';
+		}
+	}
+	
+	</script>
 	<c:import url="../common/footer.jsp" charEncoding="UTF-8"></c:import>
 </body>
 </html>
