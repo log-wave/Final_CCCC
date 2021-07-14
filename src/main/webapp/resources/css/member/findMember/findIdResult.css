@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+body{
+	height: 300px;
+}
+#wrapper {
+	margin-top: 100px;
+    position: relative;
+    height: 100%;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 600px;
+}
+
+h1{
+	font-size: 30px;
+	margin-bottom: 5px;
+}
+#namerst{
+	color: blue;
+	font-size: 20px;
+}
+#idrst{
+	color: red;
+	font-size: 20px;
+}
+
+#logbtn{
+	background-color: #f29f05; 
+	border-style: none; 
+	color:white; 
+	height: 35px; 
+	width: 100px; 
+	font-weight: 400;
+}
+
+#findpwd{
+	background-color: #f29f05; 
+	border-style: none; 
+	color:white; 
+	height: 35px; 
+	width: 100px; 
+	font-weight: 400;
+}
+
+
+
+
+
+

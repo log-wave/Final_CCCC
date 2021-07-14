@@ -2,7 +2,7 @@
 
 
 	.page {
-		 width: 1000px;
+		 width: 1070px;
 		 height: 790px;
 		 display: inline-block;
 		 vertical-align: top;
@@ -18,10 +18,9 @@
     }
     
     .member_list{
-    	width : 950px;
-    	height : 400px;
+    	width : 1070px;
+    	min-height: 530px;
 		margin: auto;
-		margin-top: 20px;
 		display: inline-block;
     }
     
@@ -45,7 +44,8 @@
 	}
 	
 	.buttonArea{
-		text-align: right;
+	text-align: right;
+    width: 950px;
 	}
 	
 	.buttonArea button {
@@ -54,8 +54,11 @@
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
+     	ursor: pointer;
      }    
-
+	#pageing{
+		 margin-top: 30px;
+	}
 	#pagingArea button{
 		width: 35px;
 		height: 35px;
@@ -63,4 +66,23 @@
 		font-size: 15px;
 		border-style: none;
 	}
+	
+	#searchCondition, #searchValue{
+    	height: 30px;
+    }
     
+    #searchBtn{
+     	color:black;
+     	border-radius: 2px;
+     	border: 0px;
+     	height: 30px;
+     	cursor: pointer;
+    }
+    #searchArea{
+    	width: 1070px;
+	    height: 30px;
+	    text-align: center;
+    }
+    #status_select_box{
+    	height: 30px;
+    }

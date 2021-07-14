@@ -96,7 +96,15 @@
 	
 
 }
-
+.profile_Edit_Btn{
+	width: 130px;
+	height: 50px;
+	box-shadow:none;
+	border-radius:5px;
+	border:1px solid rgba(242, 159, 5, 0.88);
+	background-color: #fff;
+	color: rgba(242, 159, 5, 0.88);
+}
 
 
 

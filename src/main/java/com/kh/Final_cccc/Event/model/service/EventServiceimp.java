@@ -48,6 +48,11 @@ public class EventServiceimp implements EventService{
 		return edao.selectAdminEventList(sqlSession, pi);
 	}
 
+	@Override
+	public int updateEvent(Event event) {
+		return edao.updateAdminEventUpdate(sqlSession, event);
+	}
+
 	
 
 	

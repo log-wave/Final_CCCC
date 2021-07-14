@@ -2,7 +2,7 @@
 
 
 	.page {
-		 width: 1000px;
+		 width: 1070px;
 		 height: 790px;
 		 display: inline-block;
 		 vertical-align: top;
@@ -19,9 +19,8 @@
     
     .event_list{
     	width : 950px;
-    	height : 500px;
+    	min-height : 530px;
 		margin: auto;
-		margin-top: 20px;
     }
     
     .event_table{
@@ -45,6 +44,7 @@
 	
 	.buttonArea{
 		text-align: right;
+		width: 950px;
 	}
 	
 	.buttonArea button {
@@ -53,6 +53,7 @@
      	border-radius: 7px;
      	border: 0px;
      	height: 30px;
+     	cursor: pointer;
      }   
      
     #searchArea{
@@ -62,7 +63,7 @@
 	}
 	
 	#pagingArea{
-	 	margin-top: 60px;
+	 	padding-top: 30px;
 		text-align: center;
 	}
 
@@ -72,6 +73,7 @@
 		border-radius: 5px;
 		font-size: 15px;
 		border-style: none;
+		cursor: pointer;
 		
 	}
 	

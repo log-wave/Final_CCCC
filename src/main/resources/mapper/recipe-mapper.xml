@@ -93,4 +93,13 @@
 		<result column="CLASSFI" property="classFi"/>
 		<result column="STATUS" property="status"/>
 	</resultMap>
+	
+	
+	<insert id="insertRecipe" >
+		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y')
+	</insert>
+	
+	<insert id="insertRecipeMate">
+		INSERT INTO RECIPE_MATE VALUES(SEQ_RM_NO.NEXTVAL, #{material_no}, SEQ_RECIPE_NO.CURRVAL, #{per_qnt})
+	</insert>
 </mapper>

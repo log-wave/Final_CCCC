@@ -87,7 +87,7 @@
 			$.ajax({
 				url: 'addAnswer.qa',
 				data				: {rContent:rContent, refBno:refBno},
-				success: function(da								ta){
+				success: function(data){
 					
 					if(data == 'success'){
 						$('#rContent').val('');

@@ -8,6 +8,15 @@
 		
 	</insert>
 	
+	<update id="updateFiles">
+		update TABLE_FILE
+		<set>
+			file_name = #{fileName}, change_name = #{changeName}, file_path = #{filePath}, upload_date = sysdate, file_yn = #{fileYn},
+			ref_flag = 2
+		</set>
+		where file_no = #{fileNo}
+	</update>
+	
 	<select id="selectFiles" resultMap="filesResultSet">
 		SELECT *
 		FROM TABLE_FILE
@@ -39,4 +48,10 @@
 		ORDER BY FILE_NO DESC
 	</select>
 	
+	
+	<insert id="insertRFiles" >
+		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
+		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RECIPE_NO.CURRVAL ,1)
+		
+	</insert>
 </mapper>

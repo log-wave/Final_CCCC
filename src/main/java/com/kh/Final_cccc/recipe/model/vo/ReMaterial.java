@@ -5,6 +5,7 @@ public class ReMaterial {
 	private int RM_no;
 	private int material_no;
 	private int recipe_no;
+	private int per_qnt;
 	private String material_name;
 	private String standard;
 	private int protein;
@@ -14,7 +15,7 @@ public class ReMaterial {
 	private int sugar;
 	
 	public ReMaterial() {}
-
+	
 	public ReMaterial(int rM_no, int material_no, int recipe_no, String material_name, String standard, int protein,
 			int kcal, int fat, int carbo, int sugar) {
 		super();
@@ -28,6 +29,12 @@ public class ReMaterial {
 		this.fat = fat;
 		this.carbo = carbo;
 		this.sugar = sugar;
+	}
+
+	public ReMaterial(int material_no, int per_qnt) {
+		super();
+		this.material_no = material_no;
+		this.per_qnt = per_qnt;
 	}
 
 	public int getRM_no() {
@@ -52,6 +59,14 @@ public class ReMaterial {
 
 	public void setRecipe_no(int recipe_no) {
 		this.recipe_no = recipe_no;
+	}
+
+	public int getPer_qnt() {
+		return per_qnt;
+	}
+
+	public void setPer_qnt(int per_qnt) {
+		this.per_qnt = per_qnt;
 	}
 
 	public String getMaterial_name() {
@@ -112,10 +127,12 @@ public class ReMaterial {
 
 	@Override
 	public String toString() {
-		return "ReMaterial [RM_no=" + RM_no + ", material_no=" + material_no + ", recipe_no=" + recipe_no
-				+ ", material_name=" + material_name + ", standard=" + standard + ", protein=" + protein + ", kcal="
-				+ kcal + ", fat=" + fat + ", carbo=" + carbo + ", sugar=" + sugar + "]";
+		return "ReMaterial [RM_no=" + RM_no + ", material_no=" + material_no + ", recipe_no=" + recipe_no + ", per_qnt="
+				+ per_qnt + ", material_name=" + material_name + ", standard=" + standard + ", protein=" + protein
+				+ ", kcal=" + kcal + ", fat=" + fat + ", carbo=" + carbo + ", sugar=" + sugar + "]";
 	}
+
+	
 
 	
 }

@@ -9,7 +9,6 @@ public class Recipe {
 	private String recipe_explain;
 	private int cooking_time;
 	private int user_no;
-	private int material_no;
 	private int sort_sub;
 	private int sort_mate;
 	private int sort_spec;
@@ -20,7 +19,7 @@ public class Recipe {
 	public Recipe() {}
 
 	public Recipe(int recipe_no, String recipe_title, String recipe_explain, int cooking_time, int user_no,
-			int material_no, int sort_sub, int sort_mate, int sort_spec, Date recipe_create_date,
+			int sort_sub, int sort_mate, int sort_spec, Date recipe_create_date,
 			Date recipe_modify_date, String r_status) {
 		super();
 		this.recipe_no = recipe_no;
@@ -28,7 +27,7 @@ public class Recipe {
 		this.recipe_explain = recipe_explain;
 		this.cooking_time = cooking_time;
 		this.user_no = user_no;
-		this.material_no = material_no;
+		
 		this.sort_sub = sort_sub;
 		this.sort_mate = sort_mate;
 		this.sort_spec = sort_spec;
@@ -77,13 +76,6 @@ public class Recipe {
 		this.user_no = user_no;
 	}
 
-	public int getMaterial_no() {
-		return material_no;
-	}
-
-	public void setMaterial_no(int material_no) {
-		this.material_no = material_no;
-	}
 
 	public int getSort_sub() {
 		return sort_sub;
@@ -136,8 +128,8 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [recipe_no=" + recipe_no + ", recipe_title=" + recipe_title + ", recipe_explain="
-				+ recipe_explain + ", cooking_time=" + cooking_time + ", user_no=" + user_no + ", material_no="
-				+ material_no + ", sort_sub=" + sort_sub + ", sort_mate=" + sort_mate + ", sort_spec=" + sort_spec
+				+ recipe_explain + ", cooking_time=" + cooking_time + ", user_no=" + user_no 
+				+ ", sort_sub=" + sort_sub + ", sort_mate=" + sort_mate + ", sort_spec=" + sort_spec
 				+ ", recipe_create_date=" + recipe_create_date + ", recipe_modify_date=" + recipe_modify_date
 				+ ", r_status=" + r_status + "]";
 	}

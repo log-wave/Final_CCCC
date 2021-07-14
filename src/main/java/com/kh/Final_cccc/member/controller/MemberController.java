@@ -1,5 +1,7 @@
 package com.kh.Final_cccc.member.controller;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -65,7 +67,7 @@ public class MemberController {
 	
 	@RequestMapping(value="loginPage.me", method=RequestMethod.GET)
 	public String login(HttpServletRequest request) {
-		System.out.println("헤더에서 로그인 요청 넘어옴 ");
+		
 		return "login/login";
 	}
 	
@@ -115,13 +117,13 @@ public class MemberController {
 	public String logoutPage(HttpSession session,SessionStatus status) {
 		
 	
-		
+		session.invalidate();
 		status.setComplete();
 		
 		System.out.println("setComplete가 실행된 후의 세션값 유무 확인");
 		
 		
-		return "../../../index"; 
+		return "redirect:backIndex.do"; 
 	}
 	
 	
@@ -187,21 +189,22 @@ public class MemberController {
 	
 	
 	//회원가입 컨트롤러 
-	@RequestMapping(value = "insertUser.me", method = RequestMethod.POST)
-	public String insertMember(@ModelAttribute MemberVO m ,@RequestParam("yy")String age  ) {
-		
-		logger.info("회원가입 컨트롤러 진입");
-		m.setAge(age);
-		
-		System.out.println(m);
-		
-		mService.insertMember(m);
-		
-		
-		return "redirect:backIndex.do";
+    @RequestMapping(value = "insertUser.me", method = RequestMethod.POST)
+    public String insertMember(@ModelAttribute MemberVO m ,@RequestParam("yy")String age  ) {
 
-		
-	}
+        logger.info("회원가입 컨트롤러 진입");
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
+
+        System.out.println(m);
+
+        mService.insertMember(m);
+
+
+        return "redirect:backIndex.do";
+
+
+    }
 	
 	//회원탈퇴 체크 컨트롤러 
 	
@@ -273,5 +276,38 @@ public class MemberController {
     public String move_edit_my_inform(HttpServletRequest request) {
 
         return "myPage/Edit_Information";
-    }	
+    }
+    
+  //승재 Edit_my_inform 컨트롤러
+    @RequestMapping(value = "Edit_MyInform.me", method = RequestMethod.POST)
+    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age) {
+        logger.info("내정보 수정 컨트롤러 진입");
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
+        System.out.println(m);
+
+        mService.Edit_MyInform(m);
+        return "myPage/MyPage";
+    }
+    
+    // 종훈 아이디 찾기 페이지 이동 컨트롤러
+    @RequestMapping("find_id_view.me")
+	public String findIdview() {
+		return "findMember/findId";
+	}
+    
+    // 종훈 아이디 찾기 결과 컨트롤러
+    @RequestMapping(value = "find_id_result.me", method = RequestMethod.POST)
+    public String findIdresult(@RequestParam("email") String email, Model m) {
+		
+    	MemberVO membervo = mService.findIdresult(email);
+    	System.out.println("결과는~~~" + membervo);
+    	if(membervo != null) {
+    		m.addAttribute("membervo", membervo);
+			return "findMember/findIdResult";
+		} else {
+			System.out.println("안됨");
+			return null;
+		}
+	}
 }

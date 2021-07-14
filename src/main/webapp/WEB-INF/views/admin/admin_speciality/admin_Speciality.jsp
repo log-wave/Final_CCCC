@@ -18,16 +18,14 @@
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 특산물 목록 </h2>
-			
 	    	<div class="sepciality_list">
 			<br>
 	    		<table  class="sepciality_table">
-	    	
 	    			<tr>
 						<th width="100px">번호</th>
 						<th width="100px">지역명</th>
 						<th width="220px">특산물명</th>
-						<th width="450px">특산물정보</th>
+						<th width="430px">특산물정보</th>
 						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 	    			<c:if test="${ list != null }">
@@ -63,8 +61,6 @@
 				<button id="searchBtn" onclick="searchMate()">검색하기</button>
 		</div>
 		<br><br>
-			
-			
     	<!-- 페이징 -->
 		<div class="pagingArea">
 			<!-- 이전 -->
@@ -201,8 +197,12 @@
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
 			
-			location.href= "searchSpeciality.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
-		
+			if( searchValue == ""){
+				alert("검색할 내용을 입력하세요.");
+				window.location.reload();
+			} else {
+				location.href= "searchSpeciality.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+			}
 		}
 	</script>
 </body>

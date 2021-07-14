@@ -28,17 +28,16 @@
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 회원 목록 </h2>
-	    <br>
 	    	<div class="member_list" align="center">
 			<br>
 	    		<table class="member_table">
 		    		<tr>
-						<th width="85px">번호</th>
-						<th width="150px">아이디</th>
-						<th width="150px">닉네임</th>
-						<th width="200px">가입일</th>
+						<th width="100px">번호</th>
+						<th width="200px">아이디</th>
+						<th width="200px">닉네임</th>
+						<th width="150px">가입일</th>
 						<th width="60px">상태</th>
-						<th width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
+						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
 				<c:if test="${ list != null }">
@@ -48,7 +47,6 @@
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.user_id }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.nickname }</td>
 			    			<td style="border-left: 1px solid black" onclick="memberInfo('${ ad.user_id }')">${ ad.u_cre_date}</td>
-			    
 			    			<c:if test="${ ad.status eq 'Y'}">
 			    				<td style="border-left: 1px solid black">정상</td>
 			    			</c:if>
@@ -69,12 +67,21 @@
 				</c:if>
 
 	    		</table>
-	    	<br><br>
+	    	<br>
+	    	
+	    	<div class="buttonArea" >
+				<button id="changeStatus">활동 상태 변경</button>
+				<select id="status_select_box" name="status_select_box">
+					<option value="Y">정상</option>
+					<option value="N">탈퇴</option>
+					<option value="S">정지</option>
+				</select>
+	    	</div>
+	    	</div>
+	    	
 	    	<c:if test="${ searchValue eq null and searchCondition eq null}">
-		    	<div id="searchArea" style="float: left">
-					<label>검색 조건</label>
+		    	<div id="searchArea">
 					<select id="searchCondition" name="searchCondition">
-						<option value="">-------</option>
 						<option value="no">번호</option>
 						<option value="id">아이디</option>
 						<option value="nick">닉네임</option>
@@ -86,10 +93,8 @@
 				</div>
 			</c:if>
 			<c:if test="${ searchValue ne null and searchCondition ne null}">
-				<div id="searchArea" style="float: left">
-					<label>검색 조건</label>
+				<div id="searchArea">
 					<select id="searchCondition" name="searchCondition" >
-						<option value="">-------</option>
 						<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
 						<option value="id"<c:if test="${ searchCondition eq 'id' }">selected</c:if>>아이디</option>
 						<option value="nick"<c:if test="${ searchCondition eq 'nick' }">selected</c:if>>닉네임</option>
@@ -118,18 +123,8 @@
 					</c:if>
 				</div>
 			</c:if>
-			
-	    	<div class="buttonArea" style="margin-top: -10px;">
-				<button id="changeStatus">활동 상태 변경</button>
-				<select id="status_select_box" name="status_select_box">
-					<option value="Y">정상</option>
-					<option value="N">탈퇴</option>
-					<option value="S">정지</option>
-				</select>
-	    	</div>
-    	</div>
-    	
-    	<div align="center">
+    
+    	<div id="pageing" align="center">
 	    	<!-- 페이징 -->
 			<table id="pagingArea">	
 			<!-- 페이징 처리 -->
@@ -150,7 +145,7 @@
 						<!-- 페이지 -->
 						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 							<c:if test="${ p eq pi.currentPage }">
-								<button><font color="red" size="4"><b>${ p }</b></font></button>
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
 							</c:if>
 							
 							<c:if test="${ p ne pi.currentPage }">
@@ -247,7 +242,7 @@
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
 			if(searchCondition == "" || searchValue == ""){
-				alert("똑바로 검색 해주세요.");
+				alert("검색할 내용을 입력하세요.");
 				window.location.reload();
 			} else {
 				if(searchCondition == "state" && searchValue == "정상"){

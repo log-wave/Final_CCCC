@@ -5,17 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- 나중에 이벤트 제목으로 변경할것 -->
-<title>이벤트 상세보기</title>
+
+<title>${ event.eventTitle }</title>
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
  <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Event/EventDetail.css" rel="stylesheet" type="text/css">
  
 </head>
 <body>
-	<c:import url="../../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	<!-- 관리자용 -->
-	<form>
+	<c:if test="${ loginUser.authority eq 'Y' }">
 	<div class="mainArea">
 		<p class="title">이벤트 조회</p>
 			
@@ -23,8 +22,8 @@
 			<tr class="detail_title">
 				<th>제목</th>
 				<td class="detail_text">
-					${event.eventTitle }
-					<input type="hidden" name="">
+					${ event.eventTitle }
+					<input type="hidden" id="eventNo" name="eventNo" value="${ event.eventNo }">
 				</td>
 			</tr>
 			<tr class="detail_date">
@@ -63,20 +62,18 @@
 			
 			
 		</table>
-		<!-- 로그인유저가 admin이 아닐경우 등장하지 않음
-			또는 유저용 view를 하나 더 만들기 -->
 		<div class="btn_area">
-			<button  type="button" class="cnbtn" onclick="location.href='eventList.ev'">목록</button>
-			<input type="submit" class="subtn" value="저장">
+			<button type="button" class="cnbtn" onclick="window.close();">돌아가기</button>
+			<button type="button" class="cnbtn" onclick="location.href='<%=request.getContextPath()%>/updateEventView.ev?no=' + ${ event.eventNo }" style="background: #F29F05;">수정하기</button>
 		</div>
 	</div>
-	</form>
+	</c:if>
 	<br clear ="all">
 	
 	
-	
+	<c:if test="${ loginUser.authority ne 'Y' }">
 	<!-- 이용자용 -->
-	↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓이용자일때만 등장합니다↓↓↓↓↓↓↓↓↓↓↓↓↓
+	<c:import url="../../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	<div class="u_mainArea">
 		<p class="u_title">${event.eventTitle }</p>
 		
@@ -102,5 +99,6 @@
 		</div>
 	</div>
 	<c:import url="../../common/footer.jsp" charEncoding="UTF-8"></c:import>
+	</c:if>
 </body>
 </html>
