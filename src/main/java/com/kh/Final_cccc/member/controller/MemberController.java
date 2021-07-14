@@ -125,7 +125,7 @@ public class MemberController {
 		System.out.println("setComplete가 실행된 후의 세션값 유무 확인");
 		
 		
-		return "../../../index"; 
+		return "redirect:backIndex.do"; 
 	}
 	
 	
