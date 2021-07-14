@@ -18,7 +18,6 @@
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 재료 목록 </h2>
-			
 	    	<div class="material_list">
 			<br>
 	    		<table  class="material_table">
@@ -197,7 +196,13 @@
 		<!-- 검색 기능 -->
 		function searchMate(){
 			var searchValue = $("#searchValue").val();
-			location.href= "searchMate.ad?searchValue="+searchValue;
+			
+			if(searchValue == "") {
+				alert("검색할 내용을 입력하세요.");
+				window.location.reload();
+			}else {
+				location.href= "searchMate.ad?searchValue="+searchValue;
+			}
 		}
 	</script>
 </body>

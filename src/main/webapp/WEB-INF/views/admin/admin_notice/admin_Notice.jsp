@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>공지사항 관리</title>
 
-
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/admin_Notice.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin_index.css" rel="stylesheet" type="text/css">
 </head>
@@ -18,15 +17,14 @@
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 공지사항 목록 </h2>
-	    <br>
 	    	<div class="notice_list" align="center">
-			<br>
+	    <br>
 	    		<table class="notice_Table">
 	    			<tr>
-	    				<th  width="85px">번호</th>
-	    				<th  width="150px">제목</th>
+	    				<th  width="100px">번호</th>
+	    				<th  width="250px">제목</th>
 	    				<th  width="500px">내용</th>
-	    				<th  width="90px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
+	    				<th  width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
 	    			<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
@@ -36,7 +34,6 @@
 			    			<td style="border-left: 1px solid black" onclick="noticeInfo('${ ad.bNo }')">${ ad.bContent }</td>
 			    			<td width="90px" style="border-left: 1px solid black" ><input type="checkbox" name="notice_select" onclick="selectOne();" value="${ ad.bNo }"></td>
 			    		</tr>
-			
 	    			</c:forEach>
 	    		</c:if>
 	    		<c:if test="${ list == null }">
@@ -44,10 +41,9 @@
 						<td colspan="6">조회된 리스트가 없습니다.</td>
 					</tr>
 				</c:if>
-	    			
 	    		</table>
 	    	<br>
-	    	
+    	</div>
 	    	<div class="buttonArea">
 	    		<button id="insert_no">공지 작성</button>
 				<button id="delete_no">공지 삭제</button>
@@ -55,7 +51,6 @@
 	    	
 	    	<div id="searchArea" style="float: left">
 				<select id="searchCondition" name="searchCondition">
-					<option>-------</option>
 					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
 					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
 					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
@@ -64,7 +59,6 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-    	</div>
     	
     	<div align="center">
     		<!-- 페이징 -->
@@ -185,8 +179,8 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
-			if(searchCondition == "-------" || searchValue == ""){
-				alert("똑바로 검색 해주세요.");
+			if(searchValue == ""){
+				alert("검색할 내용을 입력하세요.");
 				window.location.reload();
 			} else {
 				location.href="searchAdminNotice.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;

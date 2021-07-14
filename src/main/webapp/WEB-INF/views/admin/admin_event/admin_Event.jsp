@@ -18,14 +18,13 @@
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
 	    <h2 id="title"> 이벤트 목록 </h2>
-	    <br>
 	    	<div class="event_list" align="center">
-			<br>
+		<br>
 	    		<table class="event_table">
 		    		<tr>
 						<th width="100px">번호</th>
 						<th width="150px">제목</th>
-						<th width="700px">내용</th>
+						<th width="600px">내용</th>
 						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
@@ -38,8 +37,6 @@
 			    			<td style="border-left: 1px solid black"><input type="checkbox" name="event_select" onclick="selectOne();" value="${ ad.eventNo }"></td>
 			    		</tr>
 				
-	    			
-	    		
 	    			<%-- <c:url var="bdetail" value="bdetail.bo"> --%>
 						<%-- <c:param name="bId" value="${  }"/>
 						<c:param name="page" value="${ pi.currentPage }"/> --%>
@@ -52,14 +49,13 @@
 						<td colspan="6">조회된 리스트가 없습니다.</td>
 					</tr>
 				</c:if>
-				
-	    			
 	    		</table>
 	    		<br>
 	    	<div class="buttonArea">
 	    		<button id="insert_ev">이벤트 추가</button>
 				<button id="delete_ev">이벤트 삭제</button>
 	    	</div>
+    	</div>
 	    	
 	    	<div id="searchArea" style="float: left">
 				<select id="searchCondition" name="searchCondition">
@@ -71,9 +67,8 @@
 				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
 				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
-    	</div>
     	
-		<div align="center" style="margin-top: 110px;">
+		<div align="center">
     		<!-- 페이징 -->
 				<table id="pagingArea">	
 			<!-- 페이징 처리 -->
@@ -192,8 +187,8 @@
 		function searchBoard(){
 			var searchCondition = $("#searchCondition").val();
 			var searchValue = $("#searchValue").val();
-			if(searchCondition == "-------" || searchValue == ""){
-				alert("똑바로 검색 해주세요.");
+			if(searchValue == ""){
+				alert("검색할 내용을 입력하세요.");
 				window.location.reload();
 			} else {
 				location.href="searchAdminEvent.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
