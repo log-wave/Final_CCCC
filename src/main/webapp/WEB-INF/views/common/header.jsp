@@ -55,16 +55,6 @@
 	
 			</c:choose>
 	
-			
-			
-			<c:if test="${!empty loginUser }">
-			<div>
-				<p style="font-size: 16px; cursor: pointer;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
-			</div>
-			<div style="margin-left: 30px;">
-				<p style="font-size: 16px; cursor: pointer;" onclick="location.href='logoutPage.me'">logout</p>
-			</div>
-			</c:if>
 		</div>
 		
 		<div id="container">
