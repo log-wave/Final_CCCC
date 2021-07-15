@@ -150,6 +150,6 @@
         WHERE USER_ID= #{user_id}
     </update>
 	
-	<!-- 주석 테스트 진행중 -->
+	
 
 </mapper>
