@@ -18,65 +18,74 @@
 			</div>
 		</div>
 		
-		<div class="countarea">
-			<div class="counttext">
-				<ul>
-					<li style="font-size: 40px;">누적 레시피 수</li><br>
-					<li style="font-size: 80px;">5 0 0 0 </li>
-					
-				</ul>
-			</div>
-		</div>
 		<div class="main_mapBox">
-			<div class="main_mapBox_title"><span><span class="green">지역 특산물</span>로 만들 수 있는 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
+			<div class="main_mapBox_title"><span style="font-weight: bold"><span class="orange">콕콕 쿡쿡 </span> 인기 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
+			<br><br><br>
 			<div class="main_mapBox_contentBox">
-				<div class="main_mapBox_leftBox">
-					<img class="main_image" class="map_image" src="resources/images/경기도.png"/>
-					
-				</div>
-				<div class="main_mapBox_rightBox">
-					<div class="main_mapBox_rightBox_localTable">
-						<table class="localTable">
-							<tr>
-								<th>서울</th>
-								<th>경기도</th>
-							</tr>
-							<tr>
-								<th>강원도</th>
-								<th>충청도</th>
-							</tr>
-							<tr>
-								<th>전라도</th>
-								<th>경상도</th>
-							</tr>
-							<tr>
-								<th>제주도</th>
-								<th>전국</th>
-							</tr>
-	
-						</table>
- 						
+					<div class="PopularFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div><br>
 					</div>
-					<div class="main_mapBox_rightBox_localFoodImage">
-						<img class="main_image" class="map_image" src="resources/images/돌솥밥.jpg"/>
+					<div class="PopularFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>
+					<div class="PopularFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>
+					<div class="PopularFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>
 					
-					</div>				
-				
-				
-				
-				</div>
-			</div>	
+								
+			</div>
+		</div>	
 		
-		</div>
-		<br>
+		<div class="main_mapBox">
+			<div class="main_mapBox_title"><span style="font-weight: bold"><span class="green">지역 특산물을</span> 이용한 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
+			<br><br><br>
+			<div class="main_mapBox_contentBox">
+					<div class="SpeFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div><br>
+					</div>
+					<div class="SpeFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>
+					<div class="SpeFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>
+					<div class="SpeFoodImageArea">
+						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
+						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
+						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
+						<div class="recipeWriter">쿠킹 마마</div>
+					</div>			
+			</div>
+		</div>	
+		<br><br><br>
 		
-		<div style="height:100px;">
-		
-		</div>
-		
-		<br clear ="all">
-		
-		<div class="main_mapBox_title"><span><span class="pink">집에 있는 재료</span>로 만들 수 있는 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
+		<div class="materialRecipe">
+		<br><br>
+		<div class="main_mapBox_title"><span style="font-weight: bold"><span class="pink">집에 있는 재료</span>로 만들 수 있는 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
 		<br>
 		<div class="main_myRecipe" >
 	      <div class="left_area">
@@ -141,17 +150,11 @@
 	         <div class="right_box_bottomTitle">
 				<button class="recomBtn">이재료로 추천받기</button>
 			</div>      
-	      
-	      
-	      
 	      </div>
-   
-   
-   
 		</div>
+		<br><br>
 		
-		<br clear ="all">
-		
+		</div>
 	</div>
 </body>
 </html>

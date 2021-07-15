@@ -8,36 +8,82 @@
 	clear: both;
 }
 
-.countarea{
-	 width:1280px; height:300px;  
-	margin:auto; position: relative;top: 20%; 
-}
-.counttext{
-	color:#313131;; text-align: center; position: relative;top: 20%;
-}
-
 .main_image{
 	width: 1280px;
 	height: 450px;
 }
 
+.main_mapBox{
+	height: 500px;
+	margin-top: 50px;
+}
+.main_mapBox_contentBox{
+	height: 380px;
+}
+
+.PopularFoodImageArea{
+	vertical-align: top;
+	width: 280px;
+	height: 370px;
+		border: 3px solid #f0f0f0;
+	background : #FFFAFA;
+	display: inline-block;
+	margin-left: 28px;
+	text-align: center;
+}
+
+.PopularFoodImage{
+	width: 280px;
+	height: 200px;
+	margin-bottom: 20px;
+}
+
+.SpeFoodImageArea{
+	vertical-align: top;
+	width: 280px;
+	height: 370px;
+	border: 3px solid #f0f0f0;
+	background : #FFFAFA;
+	display: inline-block;
+	margin-left: 28px;
+	text-align: center;
+	
+}
+.recipeTitle{
+	width: 250px;
+	height: 30px;
+	margin: auto;
+	font-size: 20px;
+}
+.recipeInfo{
+	width: 250px;
+	height: 30px;
+	margin: auto;
+	font-size: 17px;
+	padding: 5px;
+	
+}
+.recipeWriter{
+	width: 250px;
+	height: 30px;
+	margin: auto;
+	font-size: 17px;
+}
 #startBtn{
-	margin-left : 535px;
+	margin-left : 545px;
 	margin-top : 320px;
 	background: #F29F05;
 	color:white;
-	font-size : 22px;
+	font-size : 18px;
 	font-weight : bold;
-	width: 220px;
-	height: 60px;
+	width: 200px;
+	height: 50px;
 	border :0px ;
-	border-radius: 25px;
+	border-radius: 20px;
 	cursor: pointer;
 	}
 
-.main_mapBox{
-	height: 600px;
-}
+
 
 .main_mapBox_title{
 	height: 50px;
@@ -48,79 +94,19 @@
 }
 
 .bread_cap{
-	width:50px;
-	height: 50px;
+	width:30px;
+	height: 30px;
 	margin-left:20px; 
-}
-.main_mapBox_contentBox{
-	height: 550px;
-	display: flex;
-	flex-direction: row;
-	
-}
-
-
-.main_mapBox_leftBox{
-	width:640px;
-	height: 550px;
-	overflow: hidden;
-	margin: 0 auto;
-		
-}
-
-.main_mapBox_leftBox img{
-	
-	width: 100%;
-	height: 100%;
-	object-fit : contain;
-	
-}
-
-
-.main_mapBox_rightBox{
-	width: 640px;
-	height: 550px;
-	flex-direction: row;
-}
-
-.main_mapBox_rightBox_localTable{
-	height: 275px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.localTable{
-	width:420px;
-	height:200px;
-	justify-content: center;
-	align-items: center;
-	
-}
-
-.localTable tr,th {
-	border:1px solid black;
-	width: 300px;
-	height: 40px;	
-	
-}
-
-.main_mapBox_rightBox_localFoodImage{
-	height: 275px;
-	overflow: hidden;
-	margin : 0 auto;
-}
-
-.main_mapBox_rightBox_localFoodImage img{
-	width: 100%;
-	height: 100%;
-	object-fit : contain;
 }
 
 
 
 /* 냉장고레시피 */
-
+.materialRecipe{
+	width:1280px;
+    min-height: 500px;
+    background: #fffcf4;
+}
 
 .main_myRecipe{
    
@@ -141,16 +127,19 @@
 
 .right_area{
 	width:450px;
-	height: 500px;
-	border: 1px solid lightgray;
+	height: 472px;
+	border :1px solid #c4c4c4;
+	background: white;
 }
 
 .right_box_title{
-	height: 70px;
+	height: 55px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: rgba(239, 182, 176, 0.74);
+	background:rgb(255 154 146);
+	font-size: 15px;
+	margin-bottom: 5px;
 }
 
 .right_box_content{
@@ -159,7 +148,7 @@
 }
 
 .right_box_bottomTitle{
-	height: 100px;
+	height: 70px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -167,9 +156,11 @@
 
 .recomBtn{
 	width:300px;
-	height: 85px;
-	border: 1px solid pink;
+	height: 50px;
+	border: 1px solid rgb(248 141 130);
 	background: white;
+	font-size: 15px;
+	border-radius: 7px;
 }
 
 .left_box_find{
@@ -177,9 +168,10 @@
 }
 
 .srchIng{
-	height: 60px;
+	border :1px solid #c4c4c4;
+	height: 50px;
 	width: 630px;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .left_box_sort{
@@ -187,10 +179,11 @@
 	flex-direction: row;
 }
 .bigsort{
+	border :1px solid #c4c4c4;
 	width: 200px;
-	height:430px;
-	
+	height:402px;
 	overflow: auto;
+	background: white;
 }
 
 .bigsort ul>li{
@@ -210,29 +203,30 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: rgba(239, 182, 176, 0.74);
+	background: rgb(255 154 146);
 }
 .smallsort{
 	width: 450px;
-	height:430px;
+	height:404px;
 	
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 .sortcontent{
-	width:400px;
+	border :1px solid #c4c4c4;
+	width:415px;
 	height:400px;
 	margin:15px;
 	display: inline-block;
-	padding:auto;
 	overflow: auto;
+	background: white;
 }
 
 .selecteditems{
 	margin : 7px;
-	width:85px;
-	height: 85px;
+	width:77px;
+	height: 77px;
 	border-radius:50%; 
 	background:rgba(239, 182, 176, 0.74);
 	border-style: none;
@@ -240,18 +234,20 @@
 
 .items{
 	margin : 7px;
-	width:85px;
-	height: 85px;
+	width:77px;
+	height: 77px;
 	border-radius:50%; 
-	background:lightgray;
+	background: rgba(224, 224, 224, 0.67);
 	border-style: none;
 }
 
 
 .green{
-	color: rgb(169, 191, 4);
+	color:rgba(166, 188, 5, 0.99);
 }
 .pink{
 	color:rgb(231, 76, 60);
-	
+}
+.orange {
+	color : rgb(243, 156, 18);
 }

@@ -17,47 +17,43 @@
 
 	<div class="header">
 		<img id="main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/logo2.png" onclick = "location.href='${pageContext.servletContext.contextPath}'" >
-		<div class="header_topBox">
-			<select id="search_recipe" name="search_recipe">
-			    <option value="">레시피 명</option>
-			    <option value="recipe1">민트초코파인애플피자</option>
-			    <option value="recipe2">솔의눈박카스라면</option>
-			    <option value="recipe3">매운카레순대국</option>
-			</select>
-			<input type="text">
-			<button id="searchBtn">검색</button>
+			<div class= "header_topBox">
+				<select id="search_recipe" name="search_recipe">
+				    <option value="">레시피 명</option>
+				    <option value="recipe1">작성자</option>
+				    <option value="recipe2">솔의눈박카스라면</option>
+				    <option value="recipe3">매운카레순대국</option>
+				</select>
+				<input type="text">
+				<button id="searchBtn">검색</button>
+			
 			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG"
 			onclick="location.href='insertRecipeForm.rp'">
-			
-			
 			<c:choose>
 				<c:when test="${!empty loginUser }">
 					<div>
-						<p style="font-size: 16px;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
+						<p style="font-size: 16px; margin-left: 30px; cursor: pointer;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
 					</div>
-					<div style="margin-left: 30px;">
-						<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
+					<div >
+						<p style="font-size: 16px; margin-left: 15px; cursor: pointer;" onclick="location.href='logoutPage.me'">Logout</p>
 					</div>
 				</c:when>
 				<c:when test="${!empty naverMember }">
 					<div>
-						<p style="font-size: 16px;" onclick="location.href='myPage.me'">${naverMember.getNickname()}</p>
+						<p style="font-size: 16px; margin-left: 30px; cursor: pointer;" onclick="location.href='myPage.me'">${naverMember.getNickname()}</p>
 					</div>
-					<div style="margin-left: 30px;">
-						<p style="font-size: 16px" onclick="location.href='logoutPage.me'">logout</p>
+					<div >
+						<p style="font-size: 16px; margin-left: 15px; cursor: pointer;" onclick="location.href='logoutPage.me'">Logout</p>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
 					<label  style="cursor: pointer" onclick="location.href='loginPage.me'">Login</label>
-				
 				</c:otherwise>
-	
 			</c:choose>
+			</div>
 	
-		</div>
-		
-		<div id="container">
+	<div id="container">
 	<ul class="myMenu">
 		<li class="menu1">주제별 레시피
 			<ul class="submenu">
