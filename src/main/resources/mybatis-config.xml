@@ -21,6 +21,7 @@
       <mapper resource="mapper/material-mapper.xml"/>
       <mapper resource="mapper/speciality-mapper.xml"/>
       <mapper resource="mapper/survey-mapper.xml"/>
+
 		
    </mappers>
 </configuration>
