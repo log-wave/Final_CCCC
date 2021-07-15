@@ -10,7 +10,7 @@
       <typeAlias type="com.kh.Final_cccc.board.model.vo.Board" alias="Board"/>
       <typeAlias type="com.kh.Final_cccc.board.model.vo.QA_Answer" alias="QA_Answer"/>
    </typeAliases>
-   <!-- 다시 -->
+   <!-- 다시.ignore -->
    <mappers>
       <mapper resource="mapper/recipe-mapper.xml"/>
       <mapper resource="mapper/member-mapper.xml"/>
@@ -21,5 +21,7 @@
       <mapper resource="mapper/material-mapper.xml"/>
       <mapper resource="mapper/speciality-mapper.xml"/>
       <mapper resource="mapper/survey-mapper.xml"/>
+
+		
    </mappers>
 </configuration>
