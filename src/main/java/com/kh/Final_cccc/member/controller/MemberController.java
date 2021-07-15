@@ -23,7 +23,7 @@ import com.kh.Final_cccc.member.service.MemberService;
 
 
 /*
- 	@SessionAttributes 의 특징 
+ 	@SessionAttributes 의 특징
  	
  	-수정 작업을 처리할떄 유용하게 사용할 수 있다. 특히 데이터의 null 관리에 효율적이다. 만약 사용자가 회원 정보를 수정할 때  비밀번호만 변경할 시  나머지 수정할 수 있는 부분(닉네임 , 메일주소etc)
  	등은 null값으로 db에 저장이 된다. 이 때 sessionAttribute를 사용하게 되면 다음과 같은 효과가 있다. 
