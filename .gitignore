@@ -1,3 +1,4 @@
+
 # Created by https://www.toptal.com/developers/gitignore/api/windows,java,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,eclipse
 
@@ -13,6 +14,9 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+.classpath
+.class
+.xml
 
 # External tool builders
 .externalToolBuilders/
@@ -37,7 +41,6 @@ local.properties
 
 # sbteclipse plugin
 .target
-target/
 
 # Tern plugin
 .tern-project
@@ -90,16 +93,6 @@ target/
 *.tar.gz
 *.rar
 
-
-
-# Eclipse Core
-.project
-
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
-
-
-
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
@@ -128,3 +121,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# End of https://www.toptal.com/developers/gitignore/api/windows,java,eclipse

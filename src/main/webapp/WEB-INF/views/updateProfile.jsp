@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	</form>
-	<!-- 주석테스트 -->
+	
 	
 	<c:import url="common/footer.jsp" charEncoding="UTF-8"></c:import>
 </body>
