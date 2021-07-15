@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="adminMapper">
+	<select id="getMemberListCount" resultType="_int">
+		select count(*) 
+		from member 
+		where authority='N'
+	</select>
+
+	<select id="selectMemberList" resultMap="memberResultSet">
+		select * 
+		from MEMBER
+<!-- 		where member_id=#{id} and member_pwd=#{pwd} and status='Y' -->
+		where authority='N'
+		order by USER_NO desc
+	</select>
+	
+	<select id="memberDetail" resultMap="memberResultSet">
+		select * 
+		from MEMBER
+ 		where user_id=#{id} and authority='N'
+	</select>
+	
+	<select id="searchMemberListCount" parameterType="com.kh.Final_cccc.member.model.vo.MemberVO" resultType="_int">
+		select count(*)
+		from member
+		where authority='N'
+		<!-- <if test="user_no != null"> // user_no가 int여서 null이 아니고 0이 기본값으로 나오기 때문에 적용이 안되었었음
+			and user_no like '%' || #{user_no} || '%'
+		</if>
+		<if test="user_id != null">
+			and user_id like '%' || #{user_id} || '%'
+		</if>
+		<if test="nickname != null">
+			and nickname like '%' || #{nickname} || '%'
+		</if>
+		<if test="status != null">
+			and status like '%' || #{status} || '%'
+		</if> -->
+		<choose>
+			<when test="user_no != 0">
+				and user_no like '%' || #{user_no} || '%'
+			</when>
+			<when test="user_id != null">
+				and user_id like '%' || #{user_id} || '%'
+			</when>
+			<when test="nickname != null">
+				and nickname like '%' || #{nickname} || '%'
+			</when>
+			<when test="status != null">
+				and status like '%' || #{status} || '%'
+			</when>
+		</choose>
+	</select>
+	
+	<select id="selectSearchMemberResultList" parameterType="com.kh.Final_cccc.member.model.vo.MemberVO" resultMap="memberResultSet">
+		select *
+		from member
+		where authority='N'
+		<choose>
+			<when test="user_no != 0">
+				and user_no like '%' || #{user_no} || '%'
+			</when>
+			<when test="user_id != null">
+				and user_id like '%' || #{user_id} || '%'
+			</when>
+			<when test="nickname != null">
+				and nickname like '%' || #{nickname} || '%'
+			</when>
+			<when test="status != null">
+				and status like '%' || #{status} || '%'
+			</when>
+		</choose>
+		order by USER_NO desc
+	</select>
+	
+	<resultMap type="Member" id="memberResultSet">
+		<id column="user_NO" property="user_no"/>
+		<result column="USER_ID" property="user_id"/>
+		<result column="USER_PASS" property="user_password"/>
+		<result column="NICKNAME" property="nickname"/>
+		<result column="EMAIL" property="email"/>
+		<result column="GENDER" property="gender"/>
+		<result column="AGR" property="age"/>
+		<result column="AUTHORITY" property="authority"/>
+		<result column="STATUS" property="status"/>
+		<result column="SURVEY_YN" property="survey_yn"/>
+		<result column="USER_NAME" property="user_name"/>
+		<result column="U_CRE_DATE" property="u_cre_date"/>
+		<result column="U_MOD_DATE" property="u_mod_date"/>
+		<result column="U_DEL_DATE" property="u_del_date"/>
+		<result column="PASS_CNT" property="pass_cnt"/>
+	</resultMap>
+	
+	<select id="searchEventListCount" parameterType="com.kh.Final_cccc.Event.model.vo.Event" resultType="_int">
+		select count(*)
+		from event
+		where event_status='Y'
+		<if test="eventNo != 0">
+			and event_no like '%' || #{eventNo} || '%'
+		</if>
+		<if test="eventTitle != null">
+			and evnet_title like '%' || #{eventTitle} || '%'
+		</if>
+		<if test="eventContent != null">
+			and event_content like '%' || #{eventContent} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchEventResultList" parameterType="com.kh.Final_cccc.Event.model.vo.Event" resultMap="eventResultSet">
+		select *
+		from event
+		where event_status='Y'
+		<if test="eventNo != 0">
+			and event_no like '%' || #{eventNo} || '%'
+		</if>
+		<if test="eventTitle != null">
+			and evnet_title like '%' || #{eventTitle} || '%'
+		</if>
+		<if test="eventContent != null">
+			and event_content like '%' || #{eventContent} || '%'
+		</if>
+		order by event_no desc
+	</select>
+	
+	<update id="deleteEvent">
+		update event
+		set event_status='N'
+		where event_no = #{eNo}
+	</update>
+	
+	<resultMap type="com.kh.Final_cccc.Event.model.vo.Event" id="eventResultSet">
+	<id property="eventNo" column="EVENT_NO"/>
+		<result property="eventContent" column="EVENT_CONTENT"/>
+		<result property="eventStatus" column="EVENT_STATUS"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="eventTitle" column="EVNET_TITLE"/>
+		<result property="eventStart" column="EVENT_START"/>
+		<result property="eventEnd" column="EVENT_END"/>
+		<result property="eventCreateDate" column="EVENT_CREATE_DATE"/>
+		<result property="eventModifyDate" column="EVENT_MODIFY_DATE"/>
+	</resultMap>
+	
+	<update id="memberStatusUpdate">
+		update member
+		set status = #{status}
+		where user_id = #{user_id}
+	</update>
+	
+	<select id="getMateListCount"  resultType="_int"> 
+		select count(*) 
+		from  MATERIAL
+		where STATUS = 'Y'
+	</select>
+	
+	
+	<resultMap type="com.kh.Final_cccc.material.model.vo.Material" id="mateResultMap">
+	<id property="materialNo" column="MATERIAL_NO"/>
+		<result property="materialName" column="MATERIAL_NAME"/>
+		<result property="standard" column="STANDARD"/>
+		<result property="kcal" column="KCAL"/>
+		<result property="protein" column="PROTEIN"/>
+		<result property="fat" column="FAT"/>
+		<result property="carbo" column="CARBO"/>
+		<result property="sugar" column="SUGAR"/>
+		<result property="classFi" column="CLASSFI"/>
+	</resultMap>
+	
+	<select id="getSelectMateList" resultMap="mateResultMap"> 
+		select * 
+		from MATERIAL
+		where STATUS = 'Y'
+		order by MATERIAL_NO desc
+	</select>
+	
+	<select id="searchNoticeListCount" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultType="_int">
+		select count(*)
+		from board
+		where board_status='N' and board_flag=1
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchNoticeResultList" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultMap="boardResultSet">
+		select *
+		from board
+		where board_status='N' and board_flag=1
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+		order by board_no desc
+	</select>
+	
+	<select id="searchQAListCount" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultType="_int">
+		select count(*)
+		from board
+		where board_status='N' and board_flag=2
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchQAResultList" parameterType="com.kh.Final_cccc.board.model.vo.Board" resultMap="boardResultSet">
+		select *
+		from board
+		where board_status='N' and board_flag=2
+		<if test="bNo != 0">
+			and board_no like '%' || #{bNo} || '%'
+		</if>
+		<if test="bTitle != null">
+			and board_title like '%' || #{bTitle} || '%'
+		</if>
+		<if test="bContent != null">
+			and board_content like '%' || #{bContent} || '%'
+		</if>
+		order by board_no desc
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.board.model.vo.Board" id="boardResultSet">
+		<id column="BOARD_NO" property="bNo"/>
+		<result column="BOARD_TITLE" property="bTitle"/>
+		<result column="BOARD_CONTENT" property="bContent"/>
+		<result column="BOARD_CREATE_DATE" property="bCreateDate"/>
+		<result column="BOARD_MODIFY_DATE" property="bModifyDate"/>
+		<result column="BOARD_VIEW" property="bView"/>
+		<result column="BOARD_STATUS" property="bStatus"/>
+		<result column="BOARD_FLAG" property="bFlag"/>
+		<result column="USER_NO" property="bUserNo"/>
+		<result column="NICKNAME" property="nickName"/>
+	</resultMap>
+</mapper>
