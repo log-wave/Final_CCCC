@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>레시피 상세보기</title>
-
+<!-- 서민기 점검용 이슈 #245에서 작성된 점검용 주석 -->
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Recipe/RecipeDetail.css?ver=1.0" rel="stylesheet" type="text/css">
@@ -55,6 +55,7 @@
 				
 				<c:forEach var="p" items="${ r_process}">
 					<div class="rp_items">
+						<!-- if p.rp_no = file.refno -->
 						<img class="item_images" src="${ pageContext.servletContext.contextPath }/resources/images/event/event2.png"/>
 						<p>${p.rp_comment }</p>
 					</div>
