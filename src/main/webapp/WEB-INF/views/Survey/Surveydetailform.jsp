@@ -19,7 +19,7 @@
 
 	<!-- 이용자용 -->
 	<div class="u_mainArea">
-		<p class="u_title">설문조사 참여</p>
+		<p class="u_title">콕콕 쿡쿡 설문조사에 참여해주세요 ! </p>
 		
 		<div>
 			<div class="u_top">

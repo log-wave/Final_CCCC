@@ -6,7 +6,7 @@ public class PagenationEvent {
 	public static PageInfo getPageInfo(int currentPage, int listCount) {
 		
 		int pageLimit = 10; 
-		int boardLimit = 5; 
+		int boardLimit = 3; 
 		
 		int maxPage=(int)Math.ceil((double)listCount/boardLimit);
 		
