@@ -51,7 +51,6 @@
 	
 	<insert id="insertRFiles" >
 		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
-		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RECIPE_NO.CURRVAL ,1)
-		
+		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RP_NO.CURRVAL ,1)		
 	</insert>
 </mapper>

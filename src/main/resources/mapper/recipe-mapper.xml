@@ -99,6 +99,10 @@
 		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y')
 	</insert>
 	
+	<insert id="insertRecipeProcess">
+		INSERT INTO R_PROCESS VALUES(SEQ_RP_NO.NEXTVAL, #{rp_coment}, SEQ_RECIPE_NO.CURRVAL)
+	</insert>
+	
 	<insert id="insertRecipeMate">
 		INSERT INTO RECIPE_MATE VALUES(SEQ_RM_NO.NEXTVAL, #{material_no}, SEQ_RECIPE_NO.CURRVAL, #{per_qnt})
 	</insert>

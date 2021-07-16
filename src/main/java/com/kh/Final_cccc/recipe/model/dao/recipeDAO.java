@@ -58,4 +58,9 @@ public class recipeDAO {
 		return sqlSession.insert("recipeMapper.insertRecipeMate", mate);
 	}
 
+	public int insertRecipeProcess(SqlSessionTemplate sqlSession, String rp_coment) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("recipeMapper.insertRecipeProcess", rp_coment);
+	}
+
 }

@@ -74,6 +74,12 @@ public class RecipeServiceImp implements RecipeService{
 		// TODO Auto-generated method stub
 		return rDAO.insertRecipemate(sqlSession, mate);
 	}
+
+	@Override
+	public int insertRecipeProcess(String rp_coment) {
+		// TODO Auto-generated method stub
+		return rDAO.insertRecipeProcess(sqlSession, rp_coment);
+	}
 	
 	
 }

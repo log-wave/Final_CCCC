@@ -141,10 +141,12 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" class="sort_sub" value="1">
-			<input type="hidden" class="sort_mate" value="1">
-			<input type="hidden" class="sort_spec" value="0">
-			<button type="submit">저장</button>
+			<input type="hidden" class="sort_sub" value="1" name="sort_sub">
+			<input type="hidden" class="sort_mate" value="1" name="sort_mate">
+			<input type="hidden" class="sort_spec" value="0" name="sort_spec">
+			<div class="insert_rp_btnArea">
+				<button type="submit" class="subtn">저장</button>
+			</div>
 		</div>
 	
 	
@@ -174,21 +176,23 @@ var file_flag = 1;
 		
 		//주제별 클릭시
 		$('.subj_btn').on("click", function(){
-			
+			$('.subj_btn').css("background-color", 'white');
 			$('.sort_sub').val(this.value);
-			alert($('.sort_sub').val());
+			$(this).css("background-color", '#F29F05');
 		});
 		
 		//재료별 클릭시
 		$('.mate_btn').on("click", function(){
+			$('.mate_btn').css("background-color", 'white');
 			$('.sort_mate').val(this.value);
-			alert($('.sort_mate').val());
+			$(this).css("background-color", '#F29F05');
 		});
 		
 		//특산물 클릭시
 		$('.spec_btn').on("click", function(){
+			$('.spec_btn').css("background-color", 'white');
 			$('.sort_spec').val(this.value);
-			alert($('.sort_spec').val());
+			$(this).css("background-color", '#F29F05');
 		});
 		
 		$('#add_Mate').click(function(){
