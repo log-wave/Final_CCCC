@@ -48,14 +48,17 @@
 		</div>
 	</div>
 	<script>
-	var count = 0;
 	function joinsv() {
-		var survey_yn = $('#survey_yn').val();		
-		if(survey_yn == "Y") {
+		var survey_yn = $('#survey_yn').val();
+		if(survey_yn != "Y") {
+			if (confirm("이미 설문조사를 1회 하셨다면 취소를 눌러주세요.")) {
+				location.href='svinsertView.sv';
+	        }  else {
+	            return false;
+	        }
+		} else {
 			alert("이미 설문조사에 참여하셨습니다.");
 			location.reload();
-		} else {
-			location.href='svinsertView.sv';
 		}
 	}
 	
