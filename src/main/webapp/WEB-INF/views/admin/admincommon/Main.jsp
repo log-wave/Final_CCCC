@@ -21,8 +21,7 @@
 			<label class="admin_menu_nav" id="adminQAboard.ad">Q&A 게시판 관리</label><br><br><br>
 			<label class="admin_menu_nav" id="adminBoard.ad">공지사항 관리</label><br><br><br>
 			<label class="admin_menu_nav" id="adminEvent.ad">이벤트 관리</label><br><br><br>
-			<label class="admin_menu_nav" id="adminSurvey.ad">설문조사 관리</label><br><br><br>
-			<label class="admin_menu_nav" id="">통계 관리</label><br><br><br>
+			<label class="admin_menu_nav" id="adminummerical.ad">통계 관리</label><br><br><br>
 		</div>
 	</div>
 	

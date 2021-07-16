@@ -445,5 +445,9 @@ public class AdminController {
 		return "../admin/admin_member/admin_Member";
 	}
 	
+	@RequestMapping("adminummerical.ad") 
+	public String nummericalView() {
+		return  "../admin/admin_nummerical/member_nummerical";
+	}
 	
 }
