@@ -15,10 +15,9 @@
 	<div class="total_area">
 	
 		<!-- 제목 -->
-		<div class="title"><p>이벤트<p></div>
-		<!--  <a href="svinsertView.sv">임시 설문조사 링크</a> -->
+		<h2 class="title">이벤트</h2>
+		<br><br><br>
 		<!-- 아이템 하나당 한개씩 -->
-		
 			<div class="item" >
 					<c:url var="surveydetail" value="surveydetail.sv">
 						<c:param name="eventNo" value="${e.eventNo}"/>
@@ -31,7 +30,7 @@
 						<!-- 이벤트 제목, 기간 -->
 						
 						<div class="right">
-							<a class="event_Title"  href="${ surveydetail }" > [설문조사] 콕콕 쿡쿡 설문조사 참여</a>
+							<a class="event_Title"  href="${ surveydetail }" > [설문조사] 콕콕 쿡쿡 설문조사에 참여해주세요</a>
 							<br><br>
 						</div>
 			</div>
@@ -71,20 +70,20 @@
 					<c:url var="before" value="eventList.ev">
 						<c:param name="page" value="${ pi.currentPage - 1 }"/>
 					</c:url>
-					<a href="${ before }"><button>&lt;</button></a> &nbsp;
+					<a href="${ before }"><button>&lt;</button></a> 
 				</c:if>
 				
                	<!-- 페이지 -->
 				<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
 					<c:if test="${ p eq pi.currentPage }">
-						<font color="red" size="4"><b><button>${ p }</button></b></font>
+						<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
 					</c:if>  
 					
 					<c:if test="${ p ne pi.currentPage }">
 						<c:url var="pagenation" value="eventList.ev">
 							<c:param name="page" value="${ p }"/>
 						</c:url>
-						<a href="${ pagenation }">${ p }</a> &nbsp;
+						<a href="${ pagenation }"><button>${ p }</button></a>
 					</c:if>
 				</c:forEach>
 

@@ -3,15 +3,16 @@
 .total_area{
 	width: 1000px;
 	margin: auto;
+	padding-top: 100px;
+	text-align: center;
 }
 
 .title{
 	text-align:center;
-	padding-top: 70px;
-	width:100px;
+	display: inline;
 	margin: auto;
-	font-size: 40px;
-	border-bottom: 5px solid rgb(232,126,115);
+	font-size: 35px;
+	border-bottom: 4px solid rgb(232,126,115);
 }
 
 .item{
@@ -39,12 +40,13 @@
 }
 
 .event_Title{
+	height : 25px;
 	text-decoration:none;
 	color:black;
 	display : inline-block;
 	width:380px;
 	text-align: left;
-	font-size: 30px;
+	font-size: 20px;
 	white-space: nowrap;
   	overflow: hidden;
   	text-overflow: ellipsis;
@@ -69,6 +71,7 @@
 	border-radius: 5px;
 	font-size: 15px;
 	border-style: none;
+	cursor: pointer;
 }
 #survey1{
 	pointer-events: none; 
