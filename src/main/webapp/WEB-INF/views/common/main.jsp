@@ -164,12 +164,14 @@
 					target.children().closest('button').on('click', function(){
 						if($(this).attr('class') != 'items'){
 							$(this).attr('class', 'items');
+							if(selected.children().val() == $(this).val()){
+								selected.children().remove();
+							}
 						} else {
 							$(this).attr('class', 'selecteditems');
 							selected.append($(this).clone());
 							selected.children().closest('button').on('click', function(){
-								console.log($(this).val());
-								console.log(target.children().closest('button').val());
+								this.remove();
 							});
 						}
 					});
