@@ -63,7 +63,8 @@ public class RecipeController {
 	@RequestMapping("rDetail.rp")
 	public String RecipeList(@RequestParam("recipeNo") int recipeNo, Model model) {
 		
-
+		
+		//
 		
 		//레시피 개요
 		Recipe r_info = rService.selectRecipe(recipeNo);
@@ -71,6 +72,7 @@ public class RecipeController {
 		ArrayList<ReMaterial> r_mate = rService.selectrMate(recipeNo);
 		//조리과정
 		ArrayList<RecipeProcess> r_process = rService.selectProcess(recipeNo);
+		//파일정보 : 파일은 조리과정과 함께 가져와야함
 		
 		//회원정보 고민해볼것
 		
@@ -122,7 +124,7 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("insertRecipe.rp")
-	public void insertRecipe(HttpServletRequest request, @ModelAttribute Recipe recipe,
+	public String insertRecipe(HttpServletRequest request, @ModelAttribute Recipe recipe,
 			MultipartHttpServletRequest request2, @RequestParam("RecipeImg") MultipartFile[] recipeImg) {
 		
 		//파일 기본조건
@@ -198,7 +200,9 @@ public class RecipeController {
 			
 			
 				System.out.println("f" + f);
+				int result_3 = rService.insertRecipeProcess(pr_Content[i]);
 				int fresult = fService.insertRFiles(f);
+				
 				if(fresult == 0) {
 					System.out.println("이벤트이미지 에러남");
 					throw new EventException("이벤트 상세 조회에 실패하였습니다.");
@@ -206,8 +210,8 @@ public class RecipeController {
 			
 			}
 		
-		
-		
+		//result1,2,3이 null이면 에러페이지로 이동하는 메소드 작성해야함
+		return "redirect:index.jsp";
 	}
 }
 

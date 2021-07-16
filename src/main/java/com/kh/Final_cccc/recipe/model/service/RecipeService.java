@@ -28,4 +28,6 @@ public interface RecipeService {
 
 	int insertRecipemate(ReMaterial mate);
 
+	int insertRecipeProcess(String rp_coment);
+
 }
