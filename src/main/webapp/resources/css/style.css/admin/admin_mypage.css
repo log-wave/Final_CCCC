@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+.letter{
+	font-weight: 600;
+	background-color: #F2F2F2;
+}
+
+#info_id{
+	font-size: 20px;
+	font-weight: 700;
+	color: rgba(242, 159, 5, 0.88);
+}
+
+table {
+    border-collapse: collapse;
+  }
+th {
+    border-bottom: 1px solid lightgray;
+  }
+td{
+	height: 35px;
+	border-bottom: 1px solid lightgray;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
