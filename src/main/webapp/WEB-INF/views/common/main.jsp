@@ -94,48 +94,32 @@
 	         </div>
 	         <div class="left_box_sort">
 	            <div class="bigsort">
-	            	<ul>
-	            		<li class="selected_li">곡물류</li>
-	            		<li>어류</li>
-	            		<li>육류</li>
-	            		<li>채소류</li>
-	            		<li>유제품</li>
-	            		<li>감자/고구마</li>
-	            		<li>편의점</li>
-	            		<li>몰라</li>
-	            		<li>와따시</li>
-	            		<li>모오</li>
-	            		<li>시니타쿠</li>
+	            	<ul class="sortUl">
+	            		<li class="1">곡물류</li>
+	            		<li class="2">면/만두류</li>
+	            		<li class="3">빵류</li>
+	            		<li class="6">감자/고구마류</li>
+	            		<li class="7">묵/두부</li>
+	            		<li class="8">콩/견과류</li>
+	            		<li class="9">채소류</li>
+	            		<li class="10">과일류</li>
+	            		<li class="11">고기류</li>
+	            		<li class="12">햄/소시지</li>
+	            		<li class="13">계란류</li>
+	            		<li class="14">어패류</li>
+	            		<li class="15">해조류</li>
+	            		<li class="16">유제품/치즈</li>
+	            		<li class="17">양념류</li>
+	            		<li class="18">초콜렛/사탕</li>
+	            		<li class="19">음료/주류</li>
+	            		<li class="20">가공재료</li>
+	            		<li class="21">기타</li>
+	            		<li class="22">버섯류</li>
+	            		<li class="23">향신료</li>
 	            	</ul>
 	            </div>
 	            <div class="smallsort">
 					<div class="sortcontent">
-						<button class="selecteditems">1번</button>
-						<button class="items">2번</button>
-						<button class="items">3번</button>
-						<button class="items">4번</button>
-						<button class="items">5번</button>
-						<button class="items">6번</button>
-						<button class="items">7번</button>
-						<button class="items">8번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						<button class="items">9번</button>
-						
 					</div>
 				</div>
 	
@@ -145,7 +129,6 @@
 	      <div class="right_area">
 	         <div class="right_box_title">내가 선택한 재료</div>
 	         <div class="right_box_content">
-	         	<button class="selecteditems">1번</button>
 	         </div>
 	         <div class="right_box_bottomTitle">
 				<button class="recomBtn">이재료로 추천받기</button>
@@ -156,5 +139,47 @@
 		
 		</div>
 	</div>
+	
+	<script>
+		$('.sortUl > li').on('mouseover',function(){
+			$(this).closest('li').css({"background":"rgba(239, 182, 176, 0.74)","cursor":"pointer"});
+		}).on('mouseout',function(){
+			$(this).closest('li').css({"background":"","color":"","cursor":""});
+		}).on('click', function(){
+			var f = $(this).attr('class');
+			var target = $('.sortcontent');
+			var selected = $('.right_box_content');
+			
+			target.empty();
+			
+			$.ajax({
+				type:'POST',
+				url:'MList.rp',
+				data:{mNo:f},
+				success:function(data){
+					for(var i in data){
+						target.append('<button value="' + data[i].materialNo + '" class="items">' + data[i].materialName +'</button>' );
+					}
+					
+					target.children().closest('button').on('click', function(){
+						if($(this).attr('class') != 'items'){
+							$(this).attr('class', 'items');
+							if(selected.children().val() == $(this).val()){
+								selected.children().remove();
+							}
+						} else {
+							$(this).attr('class', 'selecteditems');
+							selected.append($(this).clone());
+							selected.children().closest('button').on('click', function(){
+								this.remove();
+							});
+						}
+					});
+				}
+			}); 
+		});
+		
+		
+	</script>
 </body>
 </html>
