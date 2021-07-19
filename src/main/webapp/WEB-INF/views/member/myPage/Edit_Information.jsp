@@ -27,7 +27,10 @@
 
             <!-- content-->
             <div id="content">
-
+				<!-- 프로필 사진 -->
+				<div align="center" style="margin-bottom: 60px;">
+					<img src="resources/images/profile.png" style="width:150px; height:150px;"/>
+				</div>
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
