@@ -1,45 +1,40 @@
 @charset "UTF-8";
 
 .searchRecipe_main{
-	margin-top: 40px;
-	margin-bottom: 150px;
+   margin-top: 40px;
+   margin-bottom: 150px;
 }
 
 .searchRecipe_option select{
-	width: 130px;
-	height: 35px;
-	margin-right: 100px;
+   width: 130px;
+   height: 35px;
+   margin-right: 100px;
 }
 
 .searchRecipe_thumnail h3{
-	font-size: 20px;
-	margin-left: 30px;
+   font-size: 20px;
+   margin-left: 30px;
 }
 
 
-.recipe_img img{
-	width: 320px;
-	height: 200px;
-	display: inline-block;
-	margin-top: 30px;
-	margin-right: 30px;
-	margin-left: 30px;
-}
 
 .recipeList{
-	display: inline-block;
-	width: 1200px;
-	display: flex;
-	height: 900px;
-	margin-bottom: 150px;
-}
-
+   width:1000px;
+   height: auto;
+   margin:auto;
+   }
 
 .recipe_items{
-	width: 350px;
-	height: 200px;
-	
-	text-align: center;
-	margin-bottom: 50px;
-	
+   display: inline-block;
+   margin-left:50px;
+   margin-right:50px;
+   margin-top:60px;
+   width: 200px;
+   height: 200px;
+}
+
+.recipe_img img{
+   width: 200px;
+   height: 160px;
+   border:1px solid black;
 }

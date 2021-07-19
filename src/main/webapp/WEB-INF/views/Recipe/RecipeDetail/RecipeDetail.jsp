@@ -8,7 +8,10 @@
 <meta charset="UTF-8">
 <title>레시피 상세보기</title>
 <!-- 서민기 점검용 이슈 #245에서 작성된 점검용 주석 -->
-
+<link rel="stylesheet" type="text/css" href="${ pageContext.servletContext.contextPath }/resources/css/style.css/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="${ pageContext.servletContext.contextPath }/resources/css/style.css/slick/slick-theme.css">
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/slick/slick.js" />"></script>
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Recipe/RecipeDetail.css?ver=1.0" rel="stylesheet" type="text/css">
@@ -25,21 +28,71 @@
 				</div>
 				<div class="popUp_contentBox_leftBox_recipeSubImg">
 					<div class="image_list">
-						<div class="left_btn">
-							<img src="../../../../resources/images/recipe/left_btn.png">
-						</div>
+						<!-- <div class="left_btn">
+							<button class="left_btn_2"></button>
+						</div> -->
 					<!-- 슬라이드 -->
-						<div class="rp_subitem_list">
+					<div class="item_wrapper">
+					
+						<div class="rp_subitem_list" data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
 						
+							<ul class="slick">
+							
 							<c:forEach var="image" items="${rp_files }">
-								<img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${image.changeName}">
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${image.changeName}"></li>
 							</c:forEach>
-								
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+							</ul>
 						</div>
-						
-						<div class="right_btn">
-							<img src="${ pageContext.servletContext.contextPath }/resources/images/recipe/right_btn.png">
-						</div>
+					</div>
+						<script>
+						$('.slick').slick({
+							dots: true,
+							arrows:true,
+							autoplay:true,
+							infinite: false,
+							speed: 300,
+							autoplaySpeed : 10000,
+							pauseOnHover : true,
+							vertical : false,
+							prevArrow : "<button type='button' class='slick-prev'>Previous</button>",
+							nextArrow : "<button type='button' class='slick-next'>Next</button>", //화살표 커스텀
+
+							slidesToShow: 4, //보여질 슬라이드 수
+							slidesToScroll: 4, //넘겨질 슬라이드 수
+
+							/* responsive: [
+								{
+									breakpoint: 1024,
+									settings: {
+										slidesToShow: 3,
+										slidesToScroll: 3,
+										infinite: true,
+										dots: true
+									}
+								},{
+									breakpoint: 600,// 반응형 ~ 600
+									settings:{
+										slidesToShow: 2,
+										slidesToScroll: 2
+									}
+								},{
+									breakpoint: 480,// 반응형 ~ 480
+									settings:{
+										 slidesToShow: 1,
+										 slidesToScroll: 1
+									}
+								}
+							] */
+						});
+						</script>
+						<!-- <div class="right_btn">
+							<button class="right_btn_2"></button>
+						</div> -->
 					</div>
 									
 				</div>
@@ -125,9 +178,9 @@
 									<div class="rp_mate_right">${m.per_qnt }</div>
 								</div>
 							</li>
-
 						</c:forEach>
-						
+							
+							
 						
 					</ul>
 				</div>
@@ -156,5 +209,8 @@
 	</div>
 
 </body>
+<script>
+
+</script>
 
 </html>
