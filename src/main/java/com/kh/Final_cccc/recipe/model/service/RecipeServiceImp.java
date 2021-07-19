@@ -80,6 +80,12 @@ public class RecipeServiceImp implements RecipeService{
 		// TODO Auto-generated method stub
 		return rDAO.insertRecipeProcess(sqlSession, rp_coment);
 	}
+
+	@Override
+	public String selectUserName(int userNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectUserName(sqlSession, userNo);
+	}
 	
 	
 }

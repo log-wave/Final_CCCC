@@ -19,4 +19,10 @@ public interface FilesService {
 
 	int insertRFiles(Files f);
 
+	int insertRTFiles(Files f_t);
+
+	Files selectRTFiles(int recipeNo);
+
+	ArrayList<Files> selectRFiles(int recipeNo);
+
 }

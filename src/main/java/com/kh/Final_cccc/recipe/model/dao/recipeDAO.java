@@ -63,4 +63,9 @@ public class recipeDAO {
 		return sqlSession.insert("recipeMapper.insertRecipeProcess", rp_coment);
 	}
 
+	public String selectUserName(SqlSessionTemplate sqlSession, int userNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("recipeMapper.selectUserName", userNo);
+	}
+
 }

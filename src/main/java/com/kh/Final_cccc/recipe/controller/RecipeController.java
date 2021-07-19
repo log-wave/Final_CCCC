@@ -72,11 +72,21 @@ public class RecipeController {
 		ArrayList<ReMaterial> r_mate = rService.selectrMate(recipeNo);
 		//조리과정
 		ArrayList<RecipeProcess> r_process = rService.selectProcess(recipeNo);
-		//파일정보 : 파일은 조리과정과 함께 가져와야함
-		
+		//파일정보 : 조리과정 파일은 조리과정과 함께 가져와야함
+		//1.썸네일
+		Files rp_thum = fService.selectRTFiles(recipeNo);
+		//2. 조리과정
+		ArrayList<Files> rp_files = fService.selectRFiles(recipeNo);
 		//회원정보 고민해볼것
+		//이름
+		String name = rService.selectUserName(r_info.getUser_no());
 		
-		//영양정보  계산하기
+		System.out.println("썸네일" + rp_thum.getFileName());
+		for(int i = 0; i < rp_files.size(); i++) {
+			System.out.println("조리과정" + i+1 + ": " + rp_files.get(i).getFileName());
+		}
+		
+		//영양정보  계산하기 + 재료의 수량만큼 늘어나는 로직 하나 더 짜야함
 		int kcal = 0, fat = 0, protein = 0, carbo = 0, sugar = 0;
 		
 		if(r_mate != null) {
@@ -101,7 +111,7 @@ public class RecipeController {
 		}
 		
 		
-		model.addAttribute("r_info", r_info).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist);
+		model.addAttribute("r_info", r_info).addAttribute("nickname", name).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum);
 		return "/RecipeDetail/RecipeDetail";
 	}
 	
@@ -125,7 +135,8 @@ public class RecipeController {
 	
 	@RequestMapping("insertRecipe.rp")
 	public String insertRecipe(HttpServletRequest request, @ModelAttribute Recipe recipe,
-			MultipartHttpServletRequest request2, @RequestParam("RecipeImg") MultipartFile[] recipeImg) {
+			MultipartHttpServletRequest request2, @RequestParam("RecipeImg") MultipartFile[] recipeImg,
+			@RequestParam("recipe_thum") MultipartFile recipe_thum) {
 		
 		//파일 기본조건
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -159,7 +170,26 @@ public class RecipeController {
 			//한번씩 메소드를 호출해서 보내줘야
 		}
 		
-
+		//썸네일 기능
+		String originalthumName = recipe_thum.getOriginalFilename();
+		String renamethumName = sdf.format(new Date(System.currentTimeMillis()))+ originalthumName.substring(originalthumName.lastIndexOf(".") + 1);
+		String renamethumPath = folder + "/" + renamethumName;
+		try {
+			recipe_thum.transferTo(new File(renamethumPath));
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		Files f_t = new Files();
+		f_t.setFilePath(savePath);
+		f_t.setFileName(originalthumName);
+		f_t.setChangeName(renamethumName);
+		f_t.setFileYn("Y");
+		int tresult = fService.insertRTFiles(f_t);
 		//조리과정		
 		for(int i = 0; i < recipeImg.length; i++) {
 			 originFileName.add(recipeImg[i].getOriginalFilename());
@@ -173,15 +203,9 @@ public class RecipeController {
 				e.printStackTrace();
 			}
 		}
+		
+		System.out.println(originFileName);
 		String[] pr_Content = request.getParameterValues("rp_content");
-		for(int i = 0; i < pr_Content.length; i++) {
-			//i번째에 한번씩 메소드를 불러와 DB에 저장해야함
-			System.out.println("텍스트 에어리어 : " + pr_Content[i]);
-			System.out.println("원본 이미지 : " + originFileName.get(i));
-			System.out.println("변형 이미지 : " + renameFileName.get(i));
-			
-			
-		}
 		
 		ArrayList<Files> fileList = new ArrayList<Files>();
 		
@@ -192,7 +216,7 @@ public class RecipeController {
 			f.setFileName(originFileName.get(i));
 			f.setChangeName(renameFileName.get(i));
 
-			if( i == originFileName.size() - 1) {
+			if(originFileName.get(i).equals("RecipeImg")) {
 						f.setFileYn("N");
 					} else {
 						f.setFileYn("Y");

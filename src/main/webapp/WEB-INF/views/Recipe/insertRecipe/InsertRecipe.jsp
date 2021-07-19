@@ -33,6 +33,13 @@
 			</div>
 			
 			<div class="rp_insert_area">
+				<div class="insertRecipe_subTitile">썸네일 업로드</div>
+				<div class="insertRecipe_inputBox">			
+					<input type="file" name="recipe_thum" multiple="multiple">
+				</div>
+			</div>
+			
+			<div class="rp_insert_area">
 				
 				<div class="insertRecipe_subTitile">재료 추가하기</div>
 				<div class="insertRecipe_inputBox">
@@ -165,7 +172,7 @@
 var file_flag = 1;
 	$(function(){
 		$("#fileArea").hide();
-		//재료추가 클릭시
+		
 		
 		$(document).on("click",".rp_img_area",function(){
 			var num = file_flag-1;
@@ -195,11 +202,12 @@ var file_flag = 1;
 			$(this).css("background-color", '#F29F05');
 		});
 		
+		//재료추가 클릭시
 		$('#add_Mate').click(function(){
 			var area = $('.rp_Mate_area');
 			
 			var addedMate_name = $('#seccate option:selected').text();	//재료이름
-			var addedMate_val = $('#seccate option:selected').val();		//재료의 DB번호
+			var addedMate_val = $('#seccate option:selected').val();	//재료의 DB번호
 			
 			//버튼 클릭시 추가로 들어갈 내용들
 			$tableBody = $('#tb tbody');

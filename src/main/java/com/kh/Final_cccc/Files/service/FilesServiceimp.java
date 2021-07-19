@@ -49,4 +49,22 @@ public class FilesServiceimp implements FilesService {
 		// TODO Auto-generated method stub
 		return fdao.insertRFiles(sqlSession, f);
 	}
+
+	@Override
+	public int insertRTFiles(Files f_t) {
+		// TODO Auto-generated method stub
+		return fdao.insertRTFiles(sqlSession, f_t);
+	}
+
+	@Override
+	public Files selectRTFiles(int recipeNo) {
+		// TODO Auto-generated method stub
+		return fdao.selectRTFiles(sqlSession, recipeNo);
+	}
+
+	@Override
+	public ArrayList<Files> selectRFiles(int recipeNo) {
+		// TODO Auto-generated method stub
+		return fdao.selectRFiles(sqlSession, recipeNo);
+	}
 }

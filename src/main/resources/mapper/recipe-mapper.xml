@@ -44,7 +44,7 @@
 	</select>
 	
 	<select id="selectrMate" resultMap="selectRMResult">
-		select rm.rm_no, rm.material_no, rm.recipe_no, ma.material_name, ma.standard, ma.kcal, ma.protein, ma.fat, ma.carbo, ma.sugar
+		select rm.rm_no, rm.material_no, rm.recipe_no, rm.per_qnt, ma.material_name, ma.standard, ma.kcal, ma.protein, ma.fat, ma.carbo, ma.sugar
 		from recipe_mate rm, material ma
 		where rm.material_no = ma.material_no
 		and RECIPE_NO = #{recipeNo}
@@ -54,6 +54,7 @@
 		<id property="RM_no" column="RM_NO"/>
 		<result property="material_no" column="MATERIAL_NO"/>
 		<result property="recipe_no" column="RECIPE_NO"/>
+		<result property ="per_qnt" column="PER_QNT"/>
 		<result property="material_name" column="MATERIAL_NAME"/>
 		<result property="standard" column="STANDARD"/>
 		<result property="protein" column="PROTEIN"/>
@@ -106,4 +107,8 @@
 	<insert id="insertRecipeMate">
 		INSERT INTO RECIPE_MATE VALUES(SEQ_RM_NO.NEXTVAL, #{material_no}, SEQ_RECIPE_NO.CURRVAL, #{per_qnt})
 	</insert>
+	
+	<select id="selectUserName" resultType="string">
+		select nickname from member where user_no = #{uesrNo}
+	</select>
 </mapper>
