@@ -2,7 +2,7 @@
 
 
 	.page {
-	 width: 1000px;
+	 width: 1070px;
 	 min-height: 790px;
 	 display: inline-block;
 	 vertical-align: top;
@@ -12,8 +12,31 @@
 	text-align: center;
 	}
 	
-    .buttonArea {
+	.labelArea{
+	height: 30px;
+    width: 950px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+	margin: auto;
+	
+	}
+	
+    .labelArea label{
 		text-align: center;
+		height: 30px;
+		width: 315px;
+		font-size: 15px;
+		font-weight: bold;
+    }
+    label:hover {
+    	color:#F29F05;
+    }
+    .nummericalArea{
+    	margin : auto;
+    	width : 1000px;
+    	min-height : 500px;
     }
     .member_nummerical{
  		width : 1000px;
@@ -27,8 +50,20 @@
 	    width :480px;
 	    height: 450px;
 	    text-align: center;
+	    
     }
     
+    #piechart {
+    margin-left: 50px;
+    width: 500px;
+    height: 400px;
+    }
+    
+    #donutchart{
+    margin-left: 50px;
+    width: 500px;
+    height: 400px;
+    }
    
 
     

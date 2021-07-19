@@ -4,6 +4,7 @@
 		width: 200px;
 		height: 790px;
 		background: rgba(242, 159, 5, 0.88);
+		display: inline-block;
 	}
 	.menu_label {
 		padding-top: 130px;
