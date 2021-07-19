@@ -15,22 +15,22 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border:1px solid aqua;
 	font-size: 30px;
 }
 
 
 .bread_cap{
-	width:50px;
+	width:30px;
 	height: 30px;
 	margin-left:20px; 
 }
 
 
+
+
 .popUp_contentBox{
 	width: 800px;
 	height: 800px;
-	border: 1px solid blue;
 	display: flex;
 	flex-direction: row;
 }
@@ -40,8 +40,6 @@
 .popUp_contentBox_leftBox{
 	width: 600px;
 	height: 800px;
-	
-	
 }
 
 
@@ -49,18 +47,58 @@
 .popUp_contentBox_leftBox_recipeImg{
 	width: 500px;
 	height: 400px;
-	background-color: pink;
 	text-align: center;
 
+}
+
+
+.rp_listImage{
+	width:100px;
+	height:100px;
+	margin-top: 15px;
 }
 
 .popUp_contentBox_leftBox_recipeSubImg{
 	margin-top:20px;
 	width: 500px;
 	height: 180px;
-	background-color: #A9D0F5;
 	text-align: center;
 }
+.left_btn{
+	width:20px;
+	height:100px;
+	border: 1px solid red;
+}
+
+.left_btn img{
+	width:15px;
+	height:50px;
+
+}
+
+.right_btn{
+	width:20px;
+	height:100px;
+	border: 1px solid red;
+}
+
+.right_btn button{
+	width:15px;
+	height:50px;
+}
+	
+
+.image_list{
+	width:500px;
+	border : 1px solid blue;
+	display:flex;
+	justify-content: center;
+}
+
+.rp_subitem_list{
+	width:400px;
+}
+
 
 .nutritionFacts_listTitle{
 	width: 500px;
@@ -84,7 +122,7 @@
 .popUp_contentBox_leftBox_tagList{
 	width: 500px;
 	height: 120px;
-	background-color: #F6D8CE;
+	
 	text-align: center;
 	
 }
@@ -107,7 +145,7 @@
 	margin-top: 30px;
 	width: 500px;
 	min-height: 900px;
-	background-color: #F5A9F2;
+	
 	text-align: center;
 }
 
@@ -130,7 +168,7 @@
 	margin-top:30px;
 	width: 500px;
 	height: 200px;
-	background-color: #F2E0F7;
+	
 }
 
 .popUp_contentBox_leftBox_list{
@@ -219,15 +257,15 @@
 	overflow: auto;	
 	margin: auto;
 	margin-top: 38px;
-	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-left: 40px;
 }
 
 .nutTable{
 	width:500px;
 	height:160px;
-	border: 1px solid black;
+	
 }
 
 .nut_items_top{
@@ -254,13 +292,42 @@
 }
 
 .rp_items{
-	
+	margin-bottom: 30px;	
+}
+
+.rp_items p{
+	margin-top : 10px;
 }
 
 .rp_items img{
 	width:400px;
 	height:400px;
-	background-color: blue;
+	
+}
+.rp_mate_guide{
+	width:130px;
+	display: flex;
 }
 
+.rp_mate_guide div{
+	width: 64px;
+}
+.mate_item{
+	display: flex;
+}
 
+.mate_item{
+	padding-top: 12px;
+}
+
+.rp_mate_left{
+	width:80px;
+	text-align: left;
+	margin-left: 7px;
+}
+
+.rp_mate_right{
+	width:45px;
+	text-align: right;
+	margin-right: 20px;
+}

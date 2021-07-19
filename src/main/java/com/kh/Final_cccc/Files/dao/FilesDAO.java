@@ -37,4 +37,19 @@ public class FilesDAO {
 		return sqlSession.insert("filesMapper.insertRFiles" , f);
 	}
 
+	public int insertRTFiles(SqlSessionTemplate sqlSession, Files f_t) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("filesMapper.insertRTFiles" , f_t);
+	}
+
+	public Files selectRTFiles(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("filesMapper.selectRTFiles",recipeNo);
+	}
+
+	public ArrayList<Files> selectRFiles(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("filesMapper.selectRFiles", recipeNo);
+	}
+
 }

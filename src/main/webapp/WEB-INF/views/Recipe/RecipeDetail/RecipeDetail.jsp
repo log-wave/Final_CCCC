@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,23 +9,39 @@
 <title>레시피 상세보기</title>
 <!-- 서민기 점검용 이슈 #245에서 작성된 점검용 주석 -->
 
+
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Recipe/RecipeDetail.css?ver=1.0" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 </head>
 <body>
 	<div class="popUp_box">
-		<div class="recipe_name"><span>${r_info.recipe_title } 레시피</span><img class="bread_cap" src="../../../images/빵모자.png"></div>
+		<div class="recipe_name"><span>${r_info.recipe_title } 레시피</span><img class="bread_cap" src="${ pageContext.servletContext.contextPath }/resources/images/breadCap.png"></div>
 		<div class="popUp_contentBox">
 			<div class="popUp_contentBox_leftBox">
 				<div class="popUp_contentBox_leftBox_recipeImg">
-					
-					 메인 사진 영역	
+					<img id= "rp_thum" src ="${pageContext.request.contextPath}/resources/uploadFiles/${rp_thum.changeName }"name= "titleImg" width="400px" height="400px">
+						
 				</div>
 				<div class="popUp_contentBox_leftBox_recipeSubImg">
-				
-					메인 사진 밑 서브 이미지 영역 
-				
+					<div class="image_list">
+						<div class="left_btn">
+							<img src="../../../../resources/images/recipe/left_btn.png">
+						</div>
+					<!-- 슬라이드 -->
+						<div class="rp_subitem_list">
+						
+							<c:forEach var="image" items="${rp_files }">
+								<img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${image.changeName}">
+							</c:forEach>
+								
+						</div>
+						
+						<div class="right_btn">
+							<img src="${ pageContext.servletContext.contextPath }/resources/images/recipe/right_btn.png">
+						</div>
+					</div>
+									
 				</div>
 				<div class="nutritionFacts_listTitle">영양정보</div>
 				<div class="popUp_contentBox_leftBox_list">
@@ -50,14 +67,13 @@
 				
 				<div class="popUp_contentBox_leftBox_recipeTitle">레시피</div>
 				<div class="popUp_contentBox_leftBox_recipeDetail">
-					
-					레시피 작성 순서 영역
 				
-				<c:forEach var="p" items="${ r_process}">
+				<c:forEach var="p" items="${ r_process}" begin="0" end="${fn:length(r_process) }" step="1" varStatus="i">
 					<div class="rp_items">
 						<!-- if p.rp_no = file.refno -->
-						<img class="item_images" src="${ pageContext.servletContext.contextPath }/resources/images/event/event2.png"/>
-						<p>${p.rp_comment }</p>
+						<c:if test="${p.rp_no eq rp_files.get(i.index).refNo} "></c:if>
+						<img class="item_images" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${rp_files.get(i.index).changeName}"/>
+						<p class="item_coment">${p.rp_comment }</p>
 					</div>
 				</c:forEach>
 				
@@ -81,7 +97,7 @@
 				<div class="popUp_contentBox_righttBox_profileBox">
 					 <div class="popUp_contentBox_righttBox_profileBox_innerBox">	
 						<div><i class="fas fa-user-circle fa-4x"></i></div>
-						<div class="popUp_usreName"><span>강건강</span></div>
+						<div class="popUp_usreName"><span>${nickname}</span></div>
 					</div>
 				</div>
 				<div class="popUp_contentBox_righttBox_title"><span>${r_info.recipe_explain }</span></div>
@@ -95,9 +111,21 @@
 				</div>
 				<div class="popUp_contentBox_righttBox_listTitle"><span>재료 리스트</span></div>
 				<div class="popUp_contentBox_righttBox_list">
+				<div class="rp_mate_guide">
+				
+					<div class="rp_mate_left">재료명</div>
+					<div class="rp_mate_right">수량</div>
+				</div>
 					<ul class="rp_mate_list">
+					
 						<c:forEach var="m" items="${r_mate }">
-							<li>${m.material_name }</li>
+							<li>
+								<div class="mate_item">
+									<div class="rp_mate_left">${m.material_name }</div>
+									<div class="rp_mate_right">${m.per_qnt }</div>
+								</div>
+							</li>
+
 						</c:forEach>
 						
 						
@@ -128,4 +156,5 @@
 	</div>
 
 </body>
+
 </html>

@@ -30,4 +30,6 @@ public interface RecipeService {
 
 	int insertRecipeProcess(String rp_coment);
 
+	String selectUserName(int userNo);
+
 }

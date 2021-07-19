@@ -23,6 +23,16 @@
 		WHERE REF_NO = #{eventNo} AND REF_FLAG = 2 
 	</select>
 	
+	<select id="selectRTFiles" resultMap="filesResultSet">
+		SELECT * FROM TABLE_FILE
+		WHERE REF_NO = #{recipeNo} AND REF_FLAG = 1
+	</select>
+	
+	<select id="selectRFiles" resultMap="filesResultSet">
+		SELECT * FROM R_PROCESS, TABLE_FILE
+		WHERE RP_NO = REF_NO AND RECIPE_NO = #{recipeNo} AND REF_FLAG = 4
+	</select>
+	
 	<resultMap type="com.kh.Final_cccc.Files.vo.Files" id="filesResultSet">
 		<id property="fileNo" column="FILE_NO"/>
 		<result property="fileName" column="FILE_NAME"/>
@@ -51,6 +61,11 @@
 	
 	<insert id="insertRFiles" >
 		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
-		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RP_NO.CURRVAL ,1)		
+		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RP_NO.CURRVAL ,4)		
+	</insert>
+	
+	<insert id="insertRTFiles" >
+		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
+		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RECIPE_NO.CURRVAL ,1)		
 	</insert>
 </mapper>
