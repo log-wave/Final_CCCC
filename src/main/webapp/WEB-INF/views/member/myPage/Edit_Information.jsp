@@ -28,8 +28,10 @@
             <!-- content-->
             <div id="content">
 				<!-- 프로필 사진 -->
-				<div align="center" style="margin-bottom: 60px;">
-					<img src="resources/images/profile.png" style="width:150px; height:150px;"/>
+				<div align="center">
+					<div class="profileimage_upload" align="center" style="margin-bottom: 60px; width: 200px; height: 200px; border-radius: 70%; overflow: hidden;">
+						<img src="resources/images/profile.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>
+					</div>
 				</div>
                 <!-- ID -->
                 <div>
@@ -136,7 +138,10 @@
 				<c:param name="page" value="${ page }"/>
 				</c:url>
          
-            
+            	<!-- 파일 업로드 -->
+				<div id="fileArea">
+					<input type="file" id="thumbnailImg1" multiple="multiple" name="editImg" onchange="LoadImg(this)">
+				</div>
                 <!-- JOIN BTN-->
                 <div class="btn_area">
                     <button type="submit" id="signUpBtn" style="background: #F29F05; cursor: pointer;">
@@ -160,13 +165,28 @@
 		
 		
 		$(function(){
-			
 			$("#signUpBtn").prop("disabled", true);
 			$("#signUpBtn").css("background-color", "#E2E2E2");
+			
+			$("#fileArea").hide();
+			
+			$(".profileimage_upload").click(function(){
+				$("#thumbnailImg1").click();
+			});
 		});
 		
 		
-		
+		function LoadImg(value){
+			if(value.files && value.files[0]){
+				var reader = new FileReader(); 
+				
+				reader.onload = function(e){
+						$("#profileImg").attr("src", e.target.result);
+				}
+				
+				reader.readAsDataURL(value.files[0]); 
+			}
+		}
 		
 		function disabeldSignUpBtn(){
 			
