@@ -60,7 +60,17 @@
 			alert("이미 설문조사에 참여하셨습니다.");
 			location.reload();
 		}
-	}
+	} 
+	
+	/* function joinsv() {
+		var survey_yn = $('#survey_yn').val();
+		if(survey_yn != "Y") {
+				location.href='svinsertView.sv';
+		} else {
+			alert("이미 설문조사에 참여하셨습니다.");
+			location.reload();
+		}
+	} */
 	
 	</script>
 	<c:import url="../common/footer.jsp" charEncoding="UTF-8"></c:import>

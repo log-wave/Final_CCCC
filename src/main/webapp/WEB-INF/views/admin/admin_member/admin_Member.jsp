@@ -207,7 +207,7 @@
 		
 		function memberInfo(member_id){
 			var url ='<%=request.getContextPath()%>/memberDetailForm.ad?id=' + member_id;
-			window.open(url, 'memberInfo', 'width=300px, height=320px');
+			window.open(url, 'memberInfo', 'width=500px, height=680px');
 		}
 		
 		$('.click').on('mouseover',function(){
