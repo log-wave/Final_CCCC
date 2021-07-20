@@ -109,4 +109,14 @@ public class AdminServiceImpl implements AdminService{
 		return adDAO.deleteEvent(sqlSession, check);
 	}
 
+	@Override
+	public int WomanCount() {
+		return adDAO.WomanCount(sqlSession);
+	}
+	
+	@Override
+	public int manCount() {
+		return adDAO.manCount(sqlSession);
+	}
+
 }

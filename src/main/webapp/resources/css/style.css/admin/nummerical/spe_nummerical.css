@@ -2,7 +2,7 @@
 
 
 	.page {
-	 width: 1000px;
+	 width: 1070px;
 	 min-height: 790px;
 	 display: inline-block;
 	 vertical-align: top;
@@ -12,27 +12,56 @@
 	text-align: center;
 	}
 	
-    .nummerical_list{
-    	width : 950px;
-    	height : 500px;
-		margin: auto;
-		margin-top: 20px;
-    }
-    .buttonArea {
-		text-align: center;
-    }
-    .spe_nummerical{
- 		width : 950px;
-    	min-height : 500px;
-    }
-    .spe_nummerical div{
-	    	margin-left: 200px;
-    }
-    .spe_list{
-    width : 600px;
-    height: 350px;
+	.labelArea{
+	height: 30px;
+    width: 950px;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+	margin: auto;
+	
+	}
+	
+    .labelArea label{
+		text-align: center;
+		height: 30px;
+		width: 315px;
+		font-size: 15px;
     }
-
+    label:hover {
+    	color:#F29F05;
+    }
+    .nummericalArea{
+    	margin : auto;
+    	width : 1000px;
+    	min-height : 900px;
+    	text-align: center;
+    }
+    .member_nummerical{
+ 		width : 1000px;
+    	height : 500px;
+    }
+    .member_nummerical div{
+	     display: inline-block;
+	     vertical-align: top;
+    }
+    .member_list{
+	    text-align: center;
+	    display: inline-block;
+    }
     
+    #piechart {
+    margin-left: 50px;
+    width: 500px;
+    height: 400px;
+    }
+    
+    #donutchart{
+    margin-left: 50px;
+    width: 500px;
+    height: 400px;
+    }
+   
+	
     

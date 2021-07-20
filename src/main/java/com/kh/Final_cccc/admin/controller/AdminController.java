@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -446,8 +447,36 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminummerical.ad") 
-	public String nummericalView() {
+	public String nummericalView(Model model) {
+		
+		int woman = adService.WomanCount();
+		String w = "여자";
+		String result = "['"+w+"',"+woman+"]";
+		model.addAttribute("result", result);
+		
+		int man = adService.manCount();
+		String m = "남자";
+		String result1 = "['"+m+"',"+man+"]";
+		model.addAttribute("result1", result1);
+		
 		return  "../admin/admin_nummerical/member_nummerical";
+	}
+	
+	@RequestMapping("spe_nummerical.ad")
+	public String spe_nummbericalView() {
+		return "../admin/admin_nummerical/spe_nummerical";
+	}
+	
+	@RequestMapping("survey_nummerical.ad")
+	public String survey_nummericalView() {
+		return "../admin/admin_nummerical/survey_nummerical";
+	}
+	
+	@RequestMapping("manCount.ad")
+	@ResponseBody
+	public void mamCount(HttpServletResponse response) {
+		response.setContentType("application/json; charset=UTF-8");
+		int woman = adService.WomanCount();
 	}
 	
 }

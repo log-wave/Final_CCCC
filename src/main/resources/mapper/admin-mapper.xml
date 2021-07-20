@@ -247,4 +247,17 @@
 		<result column="USER_NO" property="bUserNo"/>
 		<result column="NICKNAME" property="nickName"/>
 	</resultMap>
+	
+	
+	<select id= "womanCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE GENDER = 'F'
+	</select>
+	
+	<select id= "manCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE GENDER = 'M'
+	</select>
 </mapper>
