@@ -81,7 +81,7 @@
 		<result column="NICKNAME" property="nickname"/>
 		<result column="EMAIL" property="email"/>
 		<result column="GENDER" property="gender"/>
-		<result column="AGR" property="age"/>
+		<result column="AGE" property="age"/>
 		<result column="AUTHORITY" property="authority"/>
 		<result column="STATUS" property="status"/>
 		<result column="SURVEY_YN" property="survey_yn"/>

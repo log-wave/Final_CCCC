@@ -61,6 +61,9 @@
 						<c:if test="${ m.status eq 'Y'}">
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;정상</td>
 						</c:if>
+						<c:if test="${ m.status eq 'S'}">
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;정지</td>
+						</c:if>
 						<c:if test="${ m.status eq 'N'}">
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;탈퇴</td>
 						</c:if>
