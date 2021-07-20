@@ -46,4 +46,9 @@ public interface AdminService {
 
 	int deleteEvent(String check);
 
+
+	int WomanCount();
+
+	int manCount();
+
 }

@@ -20,9 +20,9 @@
 	    <h2 id="title"> 통계 관리 </h2>
 	    <br><br>
 		    	<div class="labelArea">
-					<label >사용자 통계</label>
-		    	   	<label>레시피&재료 관련 통계</label>
-					<label>설문조사 통계</label>
+					<label id="member" onclick="location.href='adminummerical.ad'">사용자 통계</label>
+		    	   	<label id="recipe" onclick="location.href='spe_nummerical.ad'">레시피&재료 관련 통계</label>
+					<label id="nummerical" onclick="location.href='survey_nummerical.ad'">설문조사 통계</label>
 	    		</div>
 	    	<div class="nummericalArea">
     		<br><br>
@@ -40,19 +40,21 @@
 	</div>
 	
 	<script type="text/javascript">
+    	  
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-
+		
       function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
+    	  
+    	  var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['남자',     11],
-          ['여자',    11]
+          ${result1},
+          ${result}
         ]);
 
         var options = {
           title: ' '
+          
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

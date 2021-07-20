@@ -24,10 +24,10 @@
         </div>
         <div class="input_speName">
             <div class="spe_label"> 특산물 정보  </div> <br>
-            <textarea id="speInfo" style= "width: 255px; height: 150px ; resize: none"> ${spe.specialityInfo} </textarea>
+            <textarea id="speInfo" style= "width: 255px; height: 150px ; resize: none " readonly> ${spe.specialityInfo} </textarea>
         </div>
-    </div>
     
+    </div>
     </form>
     	<div class="btn_area">
             <button class="cnbtn" onclick="window.close()">닫기</button>

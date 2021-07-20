@@ -98,4 +98,12 @@ public class AdminDAO {
 		return sqlSession.update("adminMapper.deleteEvent", eNo);
 	}
 
+	public int WomanCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.womanCount");
+	}
+
+	public int manCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.manCount");
+	}
+
 }
