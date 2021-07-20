@@ -98,12 +98,11 @@
 		}
 			$("#SurveyRadioChk").click(function(){
 				var user_no = $('#user_no').val();
-				var chk_info1 = $('.chk_info1').val();
-				var chk_info2 = $('.chk_info2').val();
-				var chk_info3 = $('.chk_info3').val();
-				var chk_info4 = $('.chk_info4').val();
-				var chk_info5 = $('.chk_info5').val();
-			 
+				var chk_info1 = $('input[name="chk_info1"]:checked').val();
+				var chk_info2 = $('input[name="chk_info2"]:checked').val();
+				var chk_info3 = $('input[name="chk_info3"]:checked').val();
+				var chk_info4 = $('input[name="chk_info4"]:checked').val();
+				var chk_info5 = $('input[name="chk_info5"]:checked').val();
 					   $.ajax({
 						  url: 'svSubmit.sv', 
 						  type: 'get',
