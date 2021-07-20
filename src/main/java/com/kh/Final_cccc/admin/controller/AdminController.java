@@ -78,7 +78,7 @@ public class AdminController {
 	@RequestMapping("memberDetailForm.ad")
 	public String myInfoView(@RequestParam(value="id") String id, Model model) {
 		MemberVO member = adService.getMemberDetail(id);
-		
+		System.out.println(member);
 		if(member != null) {
 			model.addAttribute("m", member);
 			return "admin_member/admin_mypage";
