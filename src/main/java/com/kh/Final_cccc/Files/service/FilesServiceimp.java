@@ -67,4 +67,22 @@ public class FilesServiceimp implements FilesService {
 		// TODO Auto-generated method stub
 		return fdao.selectRFiles(sqlSession, recipeNo);
 	}
+
+	@Override
+	public ArrayList<Files> selectsubfileList(int sort_no) {
+		// TODO Auto-generated method stub
+		return fdao.selectsubfileList(sqlSession, sort_no);
+	}
+
+	@Override
+	public ArrayList<Files> selectmatefileList(int sort_no) {
+		// TODO Auto-generated method stub
+		return fdao.selectmatefileList(sqlSession, sort_no);
+	}
+
+	@Override
+	public ArrayList<Files> selectspecfileList(int sort_no) {
+		// TODO Auto-generated method stub
+		return fdao.selectspecfileList(sqlSession, sort_no);
+	}
 }

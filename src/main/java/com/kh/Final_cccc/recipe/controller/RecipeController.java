@@ -46,16 +46,29 @@ public class RecipeController {
 
 		
 		ArrayList<Recipe> rList = null;
+		ArrayList<Files> fList = null;
 		switch(type) {
-		case 1: rList = rService.selectsubList(sort_no); break;
-		case 2: rList = rService.selectmateList(sort_no); break;
-		case 3: rList = rService.selectspecList(sort_no); break;
+		case 1: {
+			rList = rService.selectsubList(sort_no);
+			fList = fService.selectsubfileList(sort_no);
+			break;
+			}
+		case 2: {
+			rList = rService.selectmateList(sort_no);
+			fList = fService.selectmatefileList(sort_no);
+			break;
+			}
+		case 3: {
+			rList = rService.selectspecList(sort_no);
+			fList = fService.selectspecfileList(sort_no);
+			break;
+			}
 		}
 		
-		System.out.println(rList);
-		
+		System.out.println("r :" + rList);
+		System.out.println("f : "+fList);
 		if(rList != null) {
-			mv.addObject("rList", rList).setViewName("/searchRecipe/searchRecipe");
+			mv.addObject("rList", rList).addObject("fList",fList).setViewName("/searchRecipe/searchRecipe");
 		}
 		return mv;
 	}
@@ -216,23 +229,19 @@ public class RecipeController {
 			f.setFileName(originFileName.get(i));
 			f.setChangeName(renameFileName.get(i));
 
-			if(originFileName.get(i).equals("RecipeImg")) {
-						f.setFileYn("N");
-					} else {
-						f.setFileYn("Y");
-					}
 			
+			f.setFileYn("N");
 			
-				System.out.println("f" + f);
-				int result_3 = rService.insertRecipeProcess(pr_Content[i]);
-				int fresult = fService.insertRFiles(f);
-				
-				if(fresult == 0) {
-					System.out.println("이벤트이미지 에러남");
-					throw new EventException("이벤트 상세 조회에 실패하였습니다.");
-				}
+			System.out.println("f" + f);
+			int result_3 = rService.insertRecipeProcess(pr_Content[i]);
+			int fresult = fService.insertRFiles(f);
 			
+			if(fresult == 0) {
+				System.out.println("이벤트이미지 에러남");
+				throw new EventException("이벤트 상세 조회에 실패하였습니다.");
 			}
+		
+		}
 		
 		//result1,2,3이 null이면 에러페이지로 이동하는 메소드 작성해야함
 		return "redirect:index.jsp";

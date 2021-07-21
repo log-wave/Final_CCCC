@@ -23,6 +23,7 @@
 		WHERE REF_NO = #{eventNo} AND REF_FLAG = 2 
 	</select>
 	
+	<!-- 레시피 보기 -->
 	<select id="selectRTFiles" resultMap="filesResultSet">
 		SELECT * FROM TABLE_FILE
 		WHERE REF_NO = #{recipeNo} AND REF_FLAG = 1
@@ -31,6 +32,28 @@
 	<select id="selectRFiles" resultMap="filesResultSet">
 		SELECT * FROM R_PROCESS, TABLE_FILE
 		WHERE RP_NO = REF_NO AND RECIPE_NO = #{recipeNo} AND REF_FLAG = 4
+		ORDER BY REF_NO
+	</select>
+	
+	<select id="selectsubFiles" resultMap="filesResultSet">
+		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
+		FROM TABLE_FILE, RECIPE
+		WHERE RECIPE_NO = REF_NO AND SORT_SUB = #{sort_no} and FILE_YN='Y'
+		ORDER BY REF_NO
+	</select>
+	
+	<select id="selectmateFiles" resultMap="filesResultSet">
+		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
+		FROM TABLE_FILE, RECIPE
+		WHERE RECIPE_NO = REF_NO AND SORT_MATE = #{sort_no} and FILE_YN='Y'
+		ORDER BY REF_NO
+	</select>
+	
+	<select id="selectspecFiles" resultMap="filesResultSet">
+		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
+		FROM TABLE_FILE, RECIPE
+		WHERE RECIPE_NO = REF_NO AND SORT_SPEC = #{sort_no} and FILE_YN='Y'
+		
 	</select>
 	
 	<resultMap type="com.kh.Final_cccc.Files.vo.Files" id="filesResultSet">
@@ -58,7 +81,7 @@
 		ORDER BY FILE_NO DESC
 	</select>
 	
-	
+	<!-- 레시피 삽입 -->
 	<insert id="insertRFiles" >
 		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
 		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RP_NO.CURRVAL ,4)		

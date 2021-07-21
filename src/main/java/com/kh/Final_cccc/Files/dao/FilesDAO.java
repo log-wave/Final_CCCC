@@ -52,4 +52,19 @@ public class FilesDAO {
 		return (ArrayList)sqlSession.selectList("filesMapper.selectRFiles", recipeNo);
 	}
 
+	public ArrayList<Files> selectsubfileList(SqlSessionTemplate sqlSession, int sort_no) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("filesMapper.selectsubFiles", sort_no);
+	}
+
+	public ArrayList<Files> selectmatefileList(SqlSessionTemplate sqlSession, int sort_no) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("filesMapper.selectmateFiles", sort_no);
+	}
+
+	public ArrayList<Files> selectspecfileList(SqlSessionTemplate sqlSession, int sort_no) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("filesMapper.selectspecFiles", sort_no);
+	}
+
 }

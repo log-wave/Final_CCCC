@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,24 +25,27 @@
 		</div>
 		<br><br>
 		<div class="searchRecipe_thumnail">
-			<h3>조건에 맞는 레시피가 ?개 있습니다.</h3>
+			<h3>조건에 맞는 레시피가 ${rList.size() }개 있습니다.</h3>
 			<div class="recipeList">
 				
 				<!-- 반복문으로  레시피리스트 돌려버리기 -->
-					<c:forEach var="r" items="${rList }">
+					<c:forEach var="r" items="${rList }" begin="0" end="${ fn:length(rList)}" step="1" varStatus="i">
+					
+					
 						<c:url var="rDetail" value="rDetail.rp">
 							<c:param name="recipeNo" value="${r.recipe_no }"/>
 						</c:url>
 						<div class="recipe_items" onclick="window.open('${rDetail}')">
 						
 							<div class="recipe_img">
-								<img src="${ pageContext.servletContext.contextPath }/images/recipe_sample_1.PNG">
+								<img src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${fList.get(i.index).changeName}">
 							</div>
 							<div>
 								<div class="recipe_name" align="center">${r.recipe_title }</div>
 							</div>
 						
 						</div>
+					
 					</c:forEach>
 			</div>
 		</div>
