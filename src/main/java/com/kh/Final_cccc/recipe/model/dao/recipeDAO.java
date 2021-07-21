@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;

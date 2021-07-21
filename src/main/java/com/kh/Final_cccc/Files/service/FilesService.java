@@ -25,4 +25,10 @@ public interface FilesService {
 
 	ArrayList<Files> selectRFiles(int recipeNo);
 
+	ArrayList<Files> selectsubfileList(int sort_no);
+
+	ArrayList<Files> selectmatefileList(int sort_no);
+
+	ArrayList<Files> selectspecfileList(int sort_no);
+
 }

@@ -14,28 +14,28 @@
 	<c:import url="../../common/header.jsp"/>
 	
 	<div class="insertRecipe_pageTitle">레시피 등록하기</div>
-	<form action="insertRecipe.rp" method="post" enctype="multipart/form-data">
+	<form action="insertRecipe.rp" method="post" enctype="multipart/form-data" id="frm">
 	<!-- user_no는 이후 수정해야함 -->
 	<input type="hidden" name ="user_no" value="1">
 		<div class="insertRecipe_main">
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">제목 입력하기</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="text" class="rp_insert_inputbox" name="recipe_title" placeholder="레시피 제목을 입력해주세요">
+					<input type="text" class="rp_insert_inputbox" name="recipe_title" id = "recipe_title" placeholder="레시피 제목을 입력해주세요">
 				</div>
 			</div>
 			
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">한줄설명 입력하기</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="text" class="rp_insert_inputbox" name="recipe_explain" placeholder="한줄설명을 입력해주세요">
+					<input type="text" class="rp_insert_inputbox" name="recipe_explain" id="recipe_explain" placeholder="한줄설명을 입력해주세요">
 				</div>
 			</div>
 			
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">썸네일 업로드</div>
 				<div class="insertRecipe_inputBox">			
-					<input type="file" name="recipe_thum" multiple="multiple">
+					<input type="file" name="recipe_thum" multiple="multiple" id="reicpe_thum">
 				</div>
 			</div>
 			
@@ -91,7 +91,7 @@
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">조리과정 추가</div>
 				<div class="insertRecipe_inputBox">			
-					조리시간 <input type="text" class="rp_insert_inputbox_min" name="cooking_time" placeholder="00">&nbsp;분&nbsp;&nbsp;&nbsp;
+					조리시간 <input type="text" class="rp_insert_inputbox_min" name="cooking_time" placeholder="00" id="cooking_time">&nbsp;분&nbsp;&nbsp;&nbsp;
 				</div>
 				
 			</div>
@@ -148,11 +148,11 @@
 					</div>
 				</div>
 			</div>
-			<input type="hidden" class="sort_sub" value="1" name="sort_sub">
-			<input type="hidden" class="sort_mate" value="1" name="sort_mate">
+			<input type="hidden" class="sort_sub" value="0" name="sort_sub">
+			<input type="hidden" class="sort_mate" value="0" name="sort_mate">
 			<input type="hidden" class="sort_spec" value="0" name="sort_spec">
 			<div class="insert_rp_btnArea">
-				<button type="submit" class="subtn">저장</button>
+				<button type="button" class="subtn" onclick="subcheck()">저장</button>
 			</div>
 		</div>
 	
@@ -168,6 +168,87 @@
 </body>
 
 <script>
+var mate_flag = 0;
+var proc_flag = 0;
+function subcheck(){
+	var sub_flag = true;
+	var output_text=""
+	if($('#recipe_title').val()==""){
+			output_text += "제목";
+			sub_flag=false;
+	}
+	
+	if($('#recipe_explain').val()==""){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "한줄 설명";
+		sub_flag=false;
+	}
+	
+	if($('#reicpe_thum').val()==""){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "썸네일";
+		
+		sub_flag=false;
+	}
+	
+	if(mate_flag == 0){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "재료 추가";
+		
+		sub_flag=false;
+	}
+	
+	if($('#cooking_time').val()==""){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "요리시간";
+		
+		sub_flag=false;
+	}
+	
+	if(proc_flag == 0){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "조리 과정";
+		
+		sub_flag=false;
+	}
+	
+	if($('.sort_sub').val()=="0"){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "주제별 태그";
+		
+		sub_flag=false;
+	}
+	
+	if($('.sort_mate').val()=="0"){
+		if(!sub_flag){
+			output_text += ", ";
+		}
+		output_text += "재료별 태그";
+		
+		sub_flag=false;
+	}
+	
+	
+	if(!sub_flag){
+		alert(output_text + "이(가) 입력하지 않았습니다");
+	}
+	
+	if(sub_flag){
+		$('#frm').submit();
+	}
+}
 
 var file_flag = 1;
 	$(function(){
@@ -179,6 +260,7 @@ var file_flag = 1;
 			var files = '#fileNo' + num;
 			console.log(files);
 			$(files).click();
+			proc_flag += 1;
 		});
 		
 		//주제별 클릭시
@@ -220,6 +302,7 @@ var file_flag = 1;
 			$tableBody.append($tr);
 			
 			area.append('<input type="hidden" value="'+addedMate_val+'" name="rp_mate">');
+			mate_flag += 1;
 		});
 		
 		
@@ -275,7 +358,7 @@ var file_flag = 1;
 				}
 			}
 			
-			reader.readAsDataURL(value.files[0]); 
+			reader.readAsDataURL(value.files[0]);
 		}
 	}
 	
