@@ -13,7 +13,9 @@ import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.survey.model.vo.Survey;
 //import com.kh.Final_cccc.recipe.model.vo.Recipe;
+import com.sun.javafx.collections.MappingChange.Map;
 
 @Service("adService")
 public class AdminServiceImpl implements AdminService{
@@ -118,5 +120,18 @@ public class AdminServiceImpl implements AdminService{
 	public int manCount() {
 		return adDAO.manCount(sqlSession);
 	}
+
+	@Override
+	public ArrayList<MemberVO> getmemberList() {
+		return adDAO.getmemberList(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Survey> getSurveyList() {
+		return adDAO.getSurveyList(sqlSession);
+	}
+
+	
+
 
 }

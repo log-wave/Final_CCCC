@@ -53,8 +53,8 @@
         ]);
 
         var options = {
-          title: ' '
-          
+          title: ' ',
+      
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -66,14 +66,12 @@
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
+      
+     
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['10대',  11],
-          ['20대',  2],
-          ['30대',  20],
-          ['40대',  2],
-          ['50대 이상', 7]
+          ${result3}
         ]);
 
         var options = {
