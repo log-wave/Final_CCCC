@@ -124,7 +124,7 @@
 				</div>
 			</c:if>
     
-    	<div id="pageing" align="center">
+    	<div align="center">
 	    	<!-- 페이징 -->
 			<table id="pagingArea">	
 			<!-- 페이징 처리 -->
@@ -152,7 +152,7 @@
 								<c:url var="pagination" value="adminMember.ad">
 									<button><c:param name="page" value="${ p }"/></button>
 								</c:url>
-								<a href="${ pagination }"><button>${ p }</button></a> &nbsp;
+								<a href="${ pagination }"><button>${ p }</button></a>
 							</c:if>
 						</c:forEach>
 						
