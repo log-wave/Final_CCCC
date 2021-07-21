@@ -24,7 +24,7 @@
 				<input type="hidden" name="user_no" id="user_no" value="${ loginUser.user_no }">
 				<table id="SurveyTable">
 					<tr>
-						<td><span class="spans">1. 하루에, 집에서 밥 먹는 횟수는?</span></td>
+						<td><span class="spans">1. 얼마나 자주 집에서 식사하시나요?</span></td>
 						<td height="80px">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info1" class="chk_info1" value="자주 먹는다" checked> 자주 먹는다  &nbsp;
 							<input type="radio" name="chk_info1" class="chk_info1" value="가끔 먹는다"> 가끔 먹는다  &nbsp;
@@ -35,7 +35,7 @@
 					
 					
 					<tr>
-						<td><span class="spans">2. 직접 요리해서 먹는 걸 좋아하시나요?</span></td>
+						<td><span class="spans">2. 직접 요리하는 것을 좋아하시나요?</span></td>
 						<td height="80px">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info2" class="chk_info2" value="아주 좋아한다" checked> 아주 좋아한다  &nbsp;
 							<input type="radio" name="chk_info2" class="chk_info2" value="좋아한다"> 좋아한다  &nbsp;
@@ -55,12 +55,12 @@
 					</tr>
 
 					<tr>
-						<td><span class="spans">4. 하루에 몇끼 드시나요?</span></td>
+						<td><span class="spans">4. 하루에 몇끼를 드시나요?</span></td>
 						<td height="80px">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info4" class="chk_info4" value="4끼 이상" checked> 4끼 이상  &nbsp;
-							<input type="radio" name="chk_info4" class="chk_info4" value="3끼"> 3끼  &nbsp;
-							<input type="radio" name="chk_info4" class="chk_info4" value="2끼"> 2끼  &nbsp;	
-							<input type="radio" name="chk_info4" class="chk_info4" value="1끼"> 1끼  &nbsp;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="chk_info4" class="chk_info4" value="네 끼 이상" checked> 네 끼 이상  &nbsp;
+							<input type="radio" name="chk_info4" class="chk_info4" value="세 끼"> 세 끼  &nbsp;
+							<input type="radio" name="chk_info4" class="chk_info4" value="두 끼"> 두 끼  &nbsp;	
+							<input type="radio" name="chk_info4" class="chk_info4" value="한 끼"> 한 끼  &nbsp;
 						</td>
 						
 					</tr>

@@ -48,16 +48,13 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+         ${result}
         ]);
 
         var options = {
-          title: '하루에 집에서 밥 먹는 횟수는?',
+          title: '얼마나 자주 집에서 식사하시나요?',
           pieHole: 0.4,
+          sliceVisibilityThreshold:0
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
@@ -71,16 +68,13 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ${result2}
         ]);
 
         var options = {
-          title:'하루에 집에서 요리하는 횟수는?',
+          title:'직접 요리하는 것을 좋아하시나요?',
           pieHole: 0.4,
+          sliceVisibilityThreshold:0
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
@@ -94,44 +88,60 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ${result3}
         ]);
 
         var options = {
-          title: '집에서 직접 요리해 먹는 것을 좋아하시나요?',
+          title: '하루에 집에서 요리하는 횟수는?',
           pieHole: 0.4,
+          sliceVisibilityThreshold:0
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart3'));
         chart.draw(data, options);
       }
     </script>
+    
     <script type="text/javascript">
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ${result4}
         ]);
 
         var options = {
-          title: '콕콕 쿡쿡 사이트 이용 후 도움이 되셨나요?',
+          title: '하루에 몇끼를 드시나요?',
           pieHole: 0.4,
+          sliceVisibilityThreshold:0
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart4'));
         chart.draw(data, options);
       }
     </script>
+    
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ${result5}
+        ]);
+
+        var options = {
+          title: '콕콕 쿡쿡 사이트 이용 후 도움이 되셨나요?',
+          pieHole: 0.4,
+          sliceVisibilityThreshold:0
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart5'));
+        chart.draw(data, options);
+      }
+    </script>
+    
     
     
 </body>
