@@ -33,10 +33,10 @@
 	    		<table class="member_table">
 		    		<tr>
 						<th width="100px">번호</th>
-						<th width="200px">아이디</th>
-						<th width="200px">닉네임</th>
-						<th width="150px">가입일</th>
-						<th width="60px">상태</th>
+						<th width="225px">아이디</th>
+						<th width="225px">닉네임</th>
+						<th width="200px">가입일</th>
+						<th width="100px">상태</th>
 						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
