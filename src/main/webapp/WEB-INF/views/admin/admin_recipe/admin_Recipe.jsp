@@ -138,5 +138,13 @@
                 <button>&gt;</button>
 			</div>
 	</div>
+	
+	
+	<script>
+	window.onload = function () {
+		$("label[class*=admin_menu_nav]").eq(1).css({"color" : "white" , "font-weight" : "bold"}); 
+		}
+	
+	</script>
 </body>
 </html>

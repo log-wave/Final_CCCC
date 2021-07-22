@@ -201,5 +201,10 @@
 	        }
 		}
 	</script>
+	<script>
+	window.onload = function () {
+		$("label[class*=admin_menu_nav]").eq(4).css({"color" : "white" , "font-weight" : "bold"}); 
+		}
+	</script>
 </body>
 </html>

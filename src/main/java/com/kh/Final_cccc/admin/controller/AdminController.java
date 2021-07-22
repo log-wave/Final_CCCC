@@ -2,6 +2,8 @@ package com.kh.Final_cccc.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -20,18 +21,16 @@ import com.kh.Final_cccc.Event.exception.EventException;
 import com.kh.Final_cccc.Event.model.service.EventService;
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.Files.service.FilesService;
-import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.admin.model.service.AdminService;
-import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.board.service.BoardService;
 import com.kh.Final_cccc.common.PagenationAdmin;
-import com.kh.Final_cccc.common.Pagination;
 import com.kh.Final_cccc.material.model.service.MaterialService;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.speciality.model.vo.Speciality;
 import com.kh.Final_cccc.speciality.service.SpecialityService;
+import com.kh.Final_cccc.survey.model.vo.Survey;
 
 @Controller
 public class AdminController {
@@ -459,24 +458,344 @@ public class AdminController {
 		String result1 = "['"+m+"',"+man+"]";
 		model.addAttribute("result1", result1);
 		
+		
+		ArrayList<MemberVO> ag = adService.getmemberList();
+		System.out.println(ag);
+		
+		HashMap<String ,Integer> ageMap = new HashMap<String ,Integer>();
+		
+		ArrayList<Integer> age1 = new ArrayList<Integer>();
+		
+		for(int i= 0; i< ag.size(); i++) {
+			int age = Integer.parseInt((ag.get(i).getAge()));
+			age1.add(age);
+		}
+		
+		System.out.println(age1);
+		
+		int age10 = 0; int age20 = 0; int age30 = 0; int age40 = 0;  int age50 = 0;
+		
+		for(int i = 0; i < age1.size(); i++) {
+				if( 10 <= age1.get(i) && age1.get(i) <= 19  )  {
+					age10 += 1;
+					ageMap.put("10대", age10);
+				} 
+				 if( 20 <= age1.get(i) && age1.get(i) <= 29  )  {
+					age20 += 1;
+					ageMap.put("20대", age20);
+				}
+				 if( 30 <= age1.get(i) && age1.get(i) <= 39  )  {
+					age30 += 1;
+					ageMap.put("30대", age30);
+				}
+				 if( 40 <= age1.get(i) && age1.get(i) <= 49  )  {
+					age40 += 1;
+					ageMap.put("40대", age40);
+				}
+				 if( 50 <= age1.get(i))  {
+					age50 += 1;
+					ageMap.put("50대 이상", age50);
+				}
+		}
+		System.out.println(ageMap);
+		
+		String result3 ="";
+		for(String key :  ageMap.keySet()) {
+			if(result3!="") {
+				result3 += ","; 
+			} result3 += "['"+key+"', "+ageMap.get(key)+"]"; 
+			
+		}
+		model.addAttribute("result3", result3);
 		return  "../admin/admin_nummerical/member_nummerical";
 	}
 	
 	@RequestMapping("spe_nummerical.ad")
-	public String spe_nummbericalView() {
+	public String spe_nummbericalView(Model model) {
 		return "../admin/admin_nummerical/spe_nummerical";
 	}
 	
 	@RequestMapping("survey_nummerical.ad")
-	public String survey_nummericalView() {
+	public String survey_nummericalView(Model model) {
+		
+		ArrayList<Survey> survey = adService.getSurveyList();
+		System.out.println(survey);
+		
+		HashMap<String , Integer> svMap = new HashMap<String , Integer>();
+		
+		ArrayList<String> sv1 = new ArrayList<String>();
+		
+		for(int i= 0; i< survey.size(); i++) {
+			String svAn1 = survey.get(i).getSurvey_one();
+			sv1.add(svAn1);
+		}
+		
+		System.out.println(sv1);
+		
+		
+		int svA1 = 0; int svA2 = 0; int svA3 = 0; int svA4 = 0; 
+		
+		for(int i = 0; i < sv1.size(); i++) {
+				if( sv1.get(i).contains("자주 먹는다"))  {
+						svA1 += 1;
+						svMap.put("자주 먹는다", svA1);
+				}	else {
+						svA2 += 0;
+						svMap.put("거의 안먹는다", svA3);
+				} if( sv1.get(i).contains("가끔 먹는다"))  {
+						svA2 += 1;
+						svMap.put("가끔 먹는다", svA2);
+				} else {
+						svA2 += 0;
+						svMap.put("거의 안먹는다", svA3);
+				}
+				if( sv1.get(i).contains("거의 안먹는다"))  {
+						svA3 += 1;
+						svMap.put("거의 안먹는다", svA3);
+					} else {
+						svA3 += 0;
+						svMap.put("거의 안먹는다", svA3);
+					}
+				
+				if(  sv1.get(i).contains("안먹는다"))  {
+						svA4 += 1;
+						svMap.put("안먹는다", svA4);
+				}else {
+						svA4 += 0;
+						svMap.put("안먹는다", svA4);
+				}
+		}
+		System.out.println(svMap);
+		String result ="";
+		for(String key :  svMap.keySet()) {
+			if(result!="") {
+				result += ","; 
+			} result += "['"+key+"', "+svMap.get(key)+"]"; 
+			
+		}
+		
+		model.addAttribute("result", result);
+		
+		HashMap<String , Integer> svMap2 = new HashMap<String , Integer>();
+		
+		ArrayList<String> sv2 = new ArrayList<String>();
+				
+				for(int i= 0; i< survey.size(); i++) {
+					String svAn2 = survey.get(i).getSurvey_two();
+					sv2.add(svAn2);
+				}
+				
+				System.out.println(sv2);
+				
+				
+				int svA21 = 0; int svA22 = 0; int svA23 = 0; int svA24 = 0; 
+				
+				for(int i = 0; i < sv2.size(); i++) {
+						if( sv2.get(i).contains("아주 좋아한다"))  {
+								svA21 += 1;
+								svMap2.put("아주 좋아한다", svA21);
+						}	else {
+								svA21 += 0;
+								svMap2.put("아주 좋아한다", svA21);
+						} if( sv2.get(i).contains("좋아한다"))  {
+								svA22 += 1;
+								svMap2.put("좋아한다", svA22);
+						} else {
+								svA22 += 0;
+								svMap.put("좋아한다", svA22);
+						}
+						if( sv2.get(i).contains("보통이다"))  {
+								svA23 += 1;
+								svMap2.put("보통이다", svA23);
+							} else {
+								svA23 += 0;
+								svMap2.put("보통이다", svA23);
+							}
+						
+						if(  sv2.get(i).contains("싫어한다"))  {
+								svA24 += 1;
+								svMap2.put("싫어한다", svA24);
+						}else {
+								svA24 += 0;
+								svMap2.put("싫어한다", svA24);
+						}
+				}
+				System.out.println(svMap2);
+				String result2 ="";
+				for(String key :  svMap2.keySet()) {
+					if(result2!="") {
+						result2 += ","; 
+					} result2 += "['"+key+"', "+svMap2.get(key)+"]"; 
+					
+				}
+				model.addAttribute("result2", result2);
+				
+				
+				HashMap<String , Integer> svMap3 = new HashMap<String , Integer>();
+				
+				ArrayList<String> sv3 = new ArrayList<String>();
+						
+					for(int i= 0; i< survey.size(); i++) {
+						String svAn3 = survey.get(i).getSurvey_three();
+						sv3.add(svAn3);
+					}
+					
+					System.out.println(sv3);
+					
+					
+					int svA31 = 0; int svA32 = 0; int svA33 = 0; int svA34 = 0; 
+					
+					for(int i = 0; i < sv3.size(); i++) {
+							if( sv3.get(i).contains("3회 이상"))  {
+									svA31 += 1;
+									svMap3.put("3회 이상", svA31);
+							}	else {
+									svA31 += 0;
+									svMap3.put("3회 이상", svA31);
+							} if( sv3.get(i).contains("2회"))  {
+									svA32 += 1;
+									svMap3.put("2회", svA32);
+							} else {
+									svA32 += 0;
+									svMap3.put("2회", svA32);
+							}
+							if( sv3.get(i).contains("1회"))  {
+									svA33 += 1;
+									svMap3.put("1회", svA33);
+								} else {
+									svA33 += 0;
+									svMap3.put("1회", svA33);
+								}
+							
+							if(  sv3.get(i).contains("0회"))  {
+									svA34 += 1;
+									svMap3.put("0회", svA34);
+							}else {
+									svA34 += 0;
+									svMap3.put("0회", svA34);
+							}
+					}
+					System.out.println(svMap3);
+					String result3 ="";
+					for(String key :  svMap3.keySet()) {
+						if(result3!="") {
+							result3 += ","; 
+						} result3 += "['"+key+"', "+svMap3.get(key)+"]"; 
+						
+					}
+					model.addAttribute("result3", result3);
+					
+					
+					HashMap<String , Integer> svMap4 = new HashMap<String , Integer>();
+					
+					ArrayList<String> sv4 = new ArrayList<String>();
+							
+						for(int i= 0; i< survey.size(); i++) {
+							String svAn4 = survey.get(i).getSurvey_four();
+							sv4.add(svAn4);
+						}
+						
+						System.out.println(sv4);
+						
+						
+						int svA41 = 0; int svA42 = 0; int svA43 = 0; int svA44 = 0; 
+						
+						for(int i = 0; i < sv4.size(); i++) {
+								if( sv4.get(i).contains("네 끼 이상"))  {
+										svA41 += 1;
+										svMap4.put("네 끼 이상", svA41);
+								}	else {
+										svA41 += 0;
+										svMap4.put("네 끼 이상", svA41);
+								} if( sv4.get(i).contains("세 끼"))  {
+										svA42 += 1;
+										svMap4.put("세 끼", svA42);
+								} else {
+										svA42 += 0;
+										svMap4.put("세 끼", svA42);
+								}
+								if( sv4.get(i).contains("두 끼"))  {
+										svA43 += 1;
+										svMap4.put("두 끼", svA43);
+									} else {
+										svA43 += 0;
+										svMap4.put("두 끼", svA43);
+									}
+								
+								if(  sv4.get(i).contains("한 끼"))  {
+										svA44 += 1;
+										svMap4.put("한 끼", svA44);
+								}else {
+										svA44 += 0;
+										svMap4.put("한 끼", svA44);
+								}
+						}
+						System.out.println(svMap4);
+						String result4 ="";
+						for(String key :  svMap4.keySet()) {
+							if(result4!="") {
+								result4 += ","; 
+							} result4 += "['"+key+"', "+svMap4.get(key)+"]"; 
+							
+						}
+						model.addAttribute("result4", result4);
+						
+						
+						HashMap<String , Integer> svMap5 = new HashMap<String , Integer>();
+						
+						ArrayList<String> sv5 = new ArrayList<String>();
+								
+							for(int i= 0; i< survey.size(); i++) {
+								String svAn5 = survey.get(i).getSurvey_five();
+								sv5.add(svAn5);
+							}
+							
+							System.out.println(sv5);
+							
+							
+							int svA51 = 0; int svA52 = 0; int svA53 = 0; int svA54 = 0; 
+							
+							for(int i = 0; i < sv5.size(); i++) {
+									if( sv5.get(i).contains("매우 도움됨"))  {
+											svA51 += 1;
+											svMap5.put("매우 도움됨", svA51);
+									}	else {
+											svA51 += 0;
+											svMap5.put("매우 도움됨", svA51);
+									} if( sv5.get(i).contains("도움이 됨"))  {
+											svA52 += 1;
+											svMap5.put("도움이 됨", svA52);
+									} else {
+											svA52 += 0;
+											svMap5.put("도움이 됨", svA52);
+									}
+									if( sv5.get(i).contains("보통"))  {
+											svA53 += 1;
+											svMap5.put("보통", svA53);
+										} else {
+											svA53 += 0;
+											svMap5.put("보통 ", svA53);
+										}
+									if(  sv5.get(i).contains("도움이 안됨"))  {
+											svA54 += 1;
+											svMap5.put("도움이 안됨", svA54);
+									}else {
+											svA54 += 0;
+											svMap5.put("도움이 안됨", svA54);
+									}
+							}
+							System.out.println(svMap5);
+							String result5 ="";
+							for(String key :  svMap5.keySet()) {
+								if(result5!="") {
+									result5 += ","; 
+								} result5 += "['"+key+"', "+svMap5.get(key)+"]"; 
+								
+							}
+							model.addAttribute("result5", result5);
 		return "../admin/admin_nummerical/survey_nummerical";
 	}
 	
-	@RequestMapping("manCount.ad")
-	@ResponseBody
-	public void mamCount(HttpServletResponse response) {
-		response.setContentType("application/json; charset=UTF-8");
-		int woman = adService.WomanCount();
-	}
+	
 	
 }

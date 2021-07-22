@@ -260,4 +260,26 @@
 		FROM MEMBER
 		WHERE GENDER = 'M'
 	</select>
+	
+	<select id="getmemberList" resultMap="memberResultSet">
+		select *
+		from member
+		where status = 'Y'
+	</select>
+	
+	<select id="getSurveyList" resultMap="surveyResultSet">
+		select *
+		from survey
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.survey.model.vo.Survey" id="surveyResultSet">
+		<id column="SURVEY_NO" property="survey_no"/>
+		<result column="SURVEY_ONE" property="survey_one"/>
+		<result column="SURVEY_TWO" property="survey_two"/>
+		<result column="SURVEY_THREE" property="survey_three"/>
+		<result column="SURVEY_FOUR" property="survey_four"/>
+		<result column="SURVEY_FIVE" property="survey_five"/>
+		<result column="USER_NO" property="user_no"/>
+	
+	</resultMap>
 </mapper>

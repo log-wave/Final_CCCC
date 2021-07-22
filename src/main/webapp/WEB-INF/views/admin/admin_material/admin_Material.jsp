@@ -214,6 +214,11 @@
 				location.href= "searchMate.ad?searchValue="+searchValue;
 			}
 		}
+		
+		window.onload = function () {
+//			 $("label:nth-child(6)").css({"color" : "white" , "font-weight" : "bold"}); 
+			$("label[class*=admin_menu_nav]").eq(2).css({"color" : "white" , "font-weight" : "bold"}); 
+			}
 	</script>
 </body>
 </html>

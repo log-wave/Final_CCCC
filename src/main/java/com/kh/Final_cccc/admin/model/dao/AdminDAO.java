@@ -12,6 +12,8 @@ import com.kh.Final_cccc.admin.model.vo.PageInfo;
 import com.kh.Final_cccc.board.model.vo.Board;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.survey.model.vo.Survey;
+import com.sun.javafx.collections.MappingChange.Map;
 
 @Repository("adDAO")
 public class AdminDAO {
@@ -104,6 +106,14 @@ public class AdminDAO {
 
 	public int manCount(SqlSessionTemplate sqlSession) {
 		return sqlSession.selectOne("adminMapper.manCount");
+	}
+
+	public ArrayList<MemberVO> getmemberList(SqlSessionTemplate sqlSession) {
+		return  (ArrayList)sqlSession.selectList("adminMapper.getmemberList");
+	}
+
+	public ArrayList<Survey> getSurveyList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("adminMapper.getSurveyList");
 	}
 
 }
