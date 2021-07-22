@@ -29,7 +29,6 @@
 		$('.admin_menu_nav').click(function() {
 			location.href = $(this).attr('id');
 		});
-		
 	</script>
 	
 </body>
