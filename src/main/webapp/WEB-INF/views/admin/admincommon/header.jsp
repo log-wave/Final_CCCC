@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="header">
-<img id="admin_main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/cccc_logo_ad.png" width="200px" height="60px">
+<img id="admin_main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/logo3.png" onclick="location.href='adminMember.ad'" width="190px" height="55px">
 	<div class="header_middle">
 	</div>
 	<div class="header_admin">
