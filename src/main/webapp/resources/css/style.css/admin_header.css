@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 .header {
-  		width: 1280px;
-  		height: 70px;
-  		display: flex;
-  		justify-content: center;
-		align-items: center;
+  	    width: 1280px;
+	    height: 70px;
+	    display: flex;
+	    align-items: center;
+	    justify-content: space-around;
 	}
 	.header_middle{
 		width: 800px;
@@ -29,4 +29,6 @@
 		height: 2px;
 		background-color:rgb(224, 224, 224);
 	}
-	
+	#admin_main_logo{
+		cursor: pointer;
+	}
