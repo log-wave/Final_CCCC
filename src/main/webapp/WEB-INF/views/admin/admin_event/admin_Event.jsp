@@ -33,8 +33,8 @@
 	    		<table class="event_table">
 		    		<tr>
 						<th width="100px">번호</th>
-						<th width="150px">제목</th>
-						<th width="600px">내용</th>
+						<th width="250px">제목</th>
+						<th width="500px">내용</th>
 						<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 					</tr>
 				
