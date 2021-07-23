@@ -16,7 +16,7 @@
 	<div class="insertRecipe_pageTitle">레시피 등록하기</div>
 	<form action="insertRecipe.rp" method="post" enctype="multipart/form-data" id="frm">
 	<!-- user_no는 이후 수정해야함 -->
-	<input type="hidden" name ="user_no" value="1">
+	<input type="hidden" name="user_no" value="${ loginUser.user_no }">
 		<div class="insertRecipe_main">
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">제목 입력하기</div>

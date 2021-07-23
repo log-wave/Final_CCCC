@@ -8,7 +8,9 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +22,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.Event.exception.EventException;
 import com.kh.Final_cccc.Files.service.FilesService;
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.material.model.vo.Material;
+import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.recipe.model.service.RecipeService;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Reply;
 
 @Controller
 public class RecipeController {
@@ -93,7 +98,7 @@ public class RecipeController {
 		//회원정보 고민해볼것
 		//이름
 		String name = rService.selectUserName(r_info.getUser_no());
-		
+		System.out.println(name);
 		System.out.println("썸네일" + rp_thum.getFileName());
 		for(int i = 0; i < rp_files.size(); i++) {
 			System.out.println("조리과정" + i+1 + ": " + rp_files.get(i).getFileName());
@@ -245,6 +250,41 @@ public class RecipeController {
 		
 		//result1,2,3이 null이면 에러페이지로 이동하는 메소드 작성해야함
 		return "redirect:index.jsp";
+	}
+	
+	//댓글관련
+	@RequestMapping("addReply.rp")
+	@ResponseBody
+	public String insertReply(@RequestParam("rContent") String rContent, @RequestParam("refRid") int refRid,
+			HttpSession session) {
+		
+		int reply_writer = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+		
+		JSONObject jobj = new JSONObject();
+		
+		Reply reply = new Reply(rContent, reply_writer, refRid);
+		
+		int result = rService.insertReply(reply);
+		
+		if(result > 0) {
+			return "success";
+		}else {
+			return "error";
+		}
+	}
+	
+	@RequestMapping("repList.rp")
+	@ResponseBody
+	public void selectReply(@RequestParam("rId") int rId, HttpServletResponse response) throws JsonIOException, IOException {
+		ArrayList<Reply> RepList = rService.selectReplyList(rId);
+		
+		response.setContentType("application/json;charset=utf-8");
+//		Gson gson = new Gson();
+		GsonBuilder gb = new GsonBuilder();
+		GsonBuilder dateGb = gb.setDateFormat("yyyy-MM-dd");
+		Gson gson = dateGb.create();
+		
+		gson.toJson(RepList, response.getWriter());
 	}
 }
 

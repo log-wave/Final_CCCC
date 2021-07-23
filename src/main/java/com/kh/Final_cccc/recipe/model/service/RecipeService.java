@@ -7,6 +7,7 @@ import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Reply;
 
 public interface RecipeService {
 	
@@ -32,6 +33,10 @@ public interface RecipeService {
 	int insertRecipeProcess(String rp_coment);
 
 	String selectUserName(int userNo);
+
+	int insertReply(Reply reply);
+
+	ArrayList<Reply> selectReplyList(int recipeNo);
 
 	
 

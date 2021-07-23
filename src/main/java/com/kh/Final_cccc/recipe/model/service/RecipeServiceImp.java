@@ -12,6 +12,7 @@ import com.kh.Final_cccc.recipe.model.dao.recipeDAO;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Reply;
 
 @Service("rService")
 public class RecipeServiceImp implements RecipeService{
@@ -86,6 +87,18 @@ public class RecipeServiceImp implements RecipeService{
 	public String selectUserName(int userNo) {
 		// TODO Auto-generated method stub
 		return rDAO.selectUserName(sqlSession, userNo);
+	}
+
+	@Override
+	public int insertReply(Reply reply) {
+		// TODO Auto-generated method stub
+		return rDAO.insertReply(sqlSession, reply);
+	}
+
+	@Override
+	public ArrayList<Reply> selectReplyList(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectReplyList(sqlSession, recipeNo);
 	}
 
 	

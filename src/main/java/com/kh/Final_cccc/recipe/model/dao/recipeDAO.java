@@ -10,6 +10,7 @@ import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Reply;
 
 @Repository("rDAO")
 public class recipeDAO {
@@ -67,6 +68,16 @@ public class recipeDAO {
 	public String selectUserName(SqlSessionTemplate sqlSession, int userNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("recipeMapper.selectUserName", userNo);
+	}
+
+	public int insertReply(SqlSessionTemplate sqlSession, Reply reply) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("recipeMapper.insertReply", reply);
+	}
+
+	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectReplyList", recipeNo);
 	}
 
 }
