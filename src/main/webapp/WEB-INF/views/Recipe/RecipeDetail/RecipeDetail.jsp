@@ -133,14 +133,32 @@
 				
 				
 				</div>
-				<div class="popUp_contentBox_leftBox_reviewTitle">댓글 작성</div>	
-				<div class="popUp_contentBox_leftBox_writeReview">
+					<div class="popUp_contentBox_leftBox_writeReview">
+						<div class="popUp_contentBox_leftBox_reviewTitle">
+						댓글 작성
+						</div>
+						<br>
+						
+							<c:if test="${loginUser ne null }">
+									
+									<div class="reply_inputbox">
+										<div>
+											<textarea rows="4" cols="90" id="reply_area" name="reply_content"></textarea>
+										</div>
+										<div>
+											<button type="button" class="enter_reply">댓글 등록</button>
+										</div>
+									</div>
+									
+							</c:if>
+							
+							<div id="rCount"></div>
+						<table class="replyTable" id="rtb">
+							<tbody></tbody>
+						</table>
+						
+					</div>	
 				
-					댓글 작성
-				
-				
-				
-				</div>	
 				
 				
 			</div>
@@ -211,6 +229,89 @@
 </body>
 <script>
 
+		$(function(){
+			$('.scrapBtn').on('click', function(){
+				var refRid = ${r_info.recipe_no};
+				$.ajax({
+					url: 'enterScrap.rp',
+					data : {Rid : refRid},
+					success(data){
+						console.log(data);
+						//data의 값이 1이면 add 서비스 실행되었음
+						var recipe = ${r_info.recipe_title};
+						alert(recipe + '의 스크랩 등록에 성공 했습니다');
+						
+						//data의 값이 2면 delete 서비스 실행되었음
+						
+					}
+				});
+			});
+			
+			
+			$(function(){getReplyList();
+				setInterval(function(){
+					getReplyList();
+				}, 1000);
+			});
+			
+			$('.enter_reply').on('click', function(){
+				var rContent = $('#reply_area').val();
+				var refRid = ${r_info.recipe_no};
+				
+				$.ajax({
+					url: 'addReply.rp',
+					data : {rContent : rContent, refRid : refRid},
+					success:function(data){
+						console.log(data);
+						
+						if(data="success"){
+							$('#reply_area').val('');
+							getReplyList();	//댓글 리스트 불러오기
+						}
+					}
+				});
+			});
+			
+			function getReplyList(){
+				var rId = ${r_info.recipe_no};
+				$.ajax({
+					url: 'repList.rp',
+					data: {rId: rId },
+					dataType: 'json',
+					success: function(data){
+						console.log(data);
+						
+						var $tableBody = $('#rtb tbody');
+						$tableBody.html('');
+						$('#rCount').text('등록된 댓글 :  ' + data.length + '개');
+						if(data.length > 0){
+							
+							for(var i in data){
+								var $tr = $('<tr class="rtb_tr">');
+								var $rWriter = $('<td width=150>').text(data[i].reply_nick);
+								var $rContent = $('<td>').text(data[i].reply_content);
+								var $rCreateDate = $('<td width=150>').text(data[i].reply_create_date);
+								
+								$tr.append($rWriter);
+								$tr.append($rContent);
+								$tr.append($rCreateDate);
+								$tableBody.append($tr);
+							}
+						}else{
+							var $tr = $('<tr>');
+							var $rContent = $('<td colspan=3>').text('등록된 댓글이 없습니다');
+							
+							$tr.append($rContent);
+							$tableBody.append($tr);
+						}
+					}
+				});
+			}
+		});
+	
+		
+		
+	
 </script>
 
 </html>

@@ -111,4 +111,23 @@
 	<select id="selectUserName" resultType="string">
 		select nickname from member where user_no = #{uesrNo}
 	</select>
+	
+	<insert id="insertReply">
+		INSERT INTO REPLY VALUES(SEQ_REPLY_NO.NEXTVAL, #{reply_content}, SYSDATE, #{user_no}, #{recipe_no})
+	</insert>
+	
+	<select id="selectReplyList" resultMap="replyResult">
+		select reply_no,reply_content, reply_create_date, reply.user_no, recipe_no, nickname
+		from member, reply
+		where member.user_no = reply.user_no and recipe_no = #{recipe_no}
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Reply" id="replyResult">
+		<id column="REPLY_NO" property="reply_no"/>
+		<result column="REPLY_CONTENT" property="reply_content"/>
+		<result column="REPLY_CREATE_DATE" property="reply_create_date"/>
+		<result column="USER_NO" property="user_no"/>
+		<result column="RECIPE_NO" property="recipe_no"/>
+		<result column="NICKNAME" property="reply_nick"/>
+	</resultMap>
 </mapper>
