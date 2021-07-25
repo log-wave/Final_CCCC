@@ -39,6 +39,7 @@
 		<result property="recipe_create_date" column="RECIPE_CREATEDATE"/>
 		<result property="recipe_modify_date" column="RECIPE_MODIFYDATE"/>
 		<result property="r_status" column="R_STATUS"/>
+		<result property="view_count" column="VIEW_COUNT"/>
 	</resultMap>
 	
 	<select id="selectRecipe" resultMap="selectResult">
@@ -155,5 +156,11 @@
 		UPDATE RECIPE
 		SET R_STATUS='N'
 		WHERE RECIPE_NO = #{rId}
+	</update>
+	
+	<update id="increViewCount">
+		UPDATE RECIPE
+		SET VIEW_COUNT = VIEW_COUNT + 1
+		WHERE RECIPE_NO = #{recipeNo}
 	</update>
 </mapper>

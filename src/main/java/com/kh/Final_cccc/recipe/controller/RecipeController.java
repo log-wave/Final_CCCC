@@ -138,7 +138,7 @@ public class RecipeController {
 			nutlist.add(nutritionArr[i]);
 		}
 		
-		
+		int result = rService.increViewCount(recipeNo);
 		model.addAttribute("r_info", r_info).addAttribute("nickname", name).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum);
 		return "/RecipeDetail/RecipeDetail";
 	}

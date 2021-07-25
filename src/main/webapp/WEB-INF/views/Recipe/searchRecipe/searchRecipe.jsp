@@ -41,7 +41,7 @@
 								<img src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${fList.get(i.index).changeName}">
 							</div>
 							<div>
-								<div class="recipe_name" align="center">${r.recipe_title }</div>
+								<div class="recipe_name" align="center"><p>${r.recipe_title }</p><p>조회수 : ${ r.view_count}</p></div>
 							</div>
 						
 						</div>
