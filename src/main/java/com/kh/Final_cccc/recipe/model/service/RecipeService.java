@@ -50,6 +50,8 @@ public interface RecipeService {
 
 	int getListCount();
 
+	int increViewCount(int recipeNo);
+
 	
 
 	

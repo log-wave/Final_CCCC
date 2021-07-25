@@ -133,4 +133,10 @@ public class RecipeServiceImp implements RecipeService{
 		return rDAO.getListCount(sqlSession);
 	}
 
+	@Override
+	public int increViewCount(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.increViewCount(sqlSession, recipeNo);
+	}
+
 }

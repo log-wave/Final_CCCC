@@ -115,4 +115,9 @@ public class recipeDAO {
 		return sqlSession.selectOne("recipeMapper.getListCount");
 	}
 
+	public int increViewCount(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("recipeMapper.increViewCount", recipeNo);
+	}
+
 }

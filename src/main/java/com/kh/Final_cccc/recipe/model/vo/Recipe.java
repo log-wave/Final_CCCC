@@ -15,8 +15,29 @@ public class Recipe {
 	private Date recipe_create_date;
 	private Date recipe_modify_date;
 	private String r_status;
+	private int view_count;
 	
 	public Recipe() {}
+
+	
+	public Recipe(int recipe_no, String recipe_title, String recipe_explain, int cooking_time, int user_no,
+			int sort_sub, int sort_mate, int sort_spec, Date recipe_create_date, Date recipe_modify_date,
+			String r_status, int view_count) {
+		super();
+		this.recipe_no = recipe_no;
+		this.recipe_title = recipe_title;
+		this.recipe_explain = recipe_explain;
+		this.cooking_time = cooking_time;
+		this.user_no = user_no;
+		this.sort_sub = sort_sub;
+		this.sort_mate = sort_mate;
+		this.sort_spec = sort_spec;
+		this.recipe_create_date = recipe_create_date;
+		this.recipe_modify_date = recipe_modify_date;
+		this.r_status = r_status;
+		this.view_count = view_count;
+	}
+
 
 	public Recipe(int recipe_no, String recipe_title, String recipe_explain, int cooking_time, int user_no,
 			int sort_sub, int sort_mate, int sort_spec, Date recipe_create_date,
@@ -35,6 +56,16 @@ public class Recipe {
 		this.recipe_modify_date = recipe_modify_date;
 		this.r_status = r_status;
 	}
+	
+	public int getView_count() {
+		return view_count;
+	}
+
+
+	public void setView_count(int view_count) {
+		this.view_count = view_count;
+	}
+
 
 	public int getRecipe_no() {
 		return recipe_no;
