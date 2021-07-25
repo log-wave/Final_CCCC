@@ -26,8 +26,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.Event.exception.EventException;
+import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.Files.service.FilesService;
 import com.kh.Final_cccc.Files.vo.Files;
+import com.kh.Final_cccc.common.PagenationRecipe;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.recipe.model.service.RecipeService;
@@ -35,6 +37,7 @@ import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
+import com.kh.Final_cccc.recipe.model.vo.Scrap;
 
 @Controller
 public class RecipeController {
@@ -46,26 +49,33 @@ public class RecipeController {
 	private FilesService fService;
 	
 	@RequestMapping("RList.rp")
-	public ModelAndView RecipeList(@RequestParam("sort_no") int sort_no, @RequestParam("type") int type,
+	public ModelAndView RecipeList(@RequestParam(value="page" , required= false)Integer page,
+			@RequestParam("sort_no") int sort_no, @RequestParam("type") int type,
 			ModelAndView mv) {
 
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
 		
+		int listCount = rService.getListCount();
+		PageInfo pi = PagenationRecipe.getPageInfo(currentPage, listCount);
 		ArrayList<Recipe> rList = null;
 		ArrayList<Files> fList = null;
 		switch(type) {
 		case 1: {
-			rList = rService.selectsubList(sort_no);
-			fList = fService.selectsubfileList(sort_no);
+			rList = rService.selectsubList(sort_no, pi);
+			fList = fService.selectsubfileList(sort_no, pi);
 			break;
 			}
 		case 2: {
-			rList = rService.selectmateList(sort_no);
-			fList = fService.selectmatefileList(sort_no);
+			rList = rService.selectmateList(sort_no, pi);
+			fList = fService.selectmatefileList(sort_no, pi);
 			break;
 			}
 		case 3: {
-			rList = rService.selectspecList(sort_no);
-			fList = fService.selectspecfileList(sort_no);
+			rList = rService.selectspecList(sort_no, pi);
+			fList = fService.selectspecfileList(sort_no, pi);
 			break;
 			}
 		}
@@ -73,7 +83,7 @@ public class RecipeController {
 		System.out.println("r :" + rList);
 		System.out.println("f : "+fList);
 		if(rList != null) {
-			mv.addObject("rList", rList).addObject("fList",fList).setViewName("/searchRecipe/searchRecipe");
+			mv.addObject("rList", rList).addObject("type",type).addObject("sort_no", sort_no).addObject("fList",fList).addObject("pi", pi).setViewName("/searchRecipe/searchRecipe");
 		}
 		return mv;
 	}
@@ -285,6 +295,63 @@ public class RecipeController {
 		Gson gson = dateGb.create();
 		
 		gson.toJson(RepList, response.getWriter());
+	}
+	
+	@RequestMapping("setScrapbtn.rp")
+	@ResponseBody
+	public String setScrapbtn(@RequestParam("rId") int rId, HttpSession session) {
+		int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+		Scrap s = new Scrap(rId, user_no);
+		System.out.println(s);
+		int result = rService.selectScrapcheck(s);
+		String return_result = null;
+		if(result ==1) {
+			return_result= "1"; 
+		}else {
+			return_result= "0";
+		}
+		return return_result;
+	}
+	
+	@RequestMapping("enterScrap.rp")
+	@ResponseBody
+	public String enterScrap(@RequestParam("rId") int rId, HttpSession session) {
+		int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+		Scrap s = new Scrap(rId, user_no);
+		
+		int result = rService.insertScrap(s);
+		if(result == 1) {
+			return "success";
+		}else {
+			return "error";
+		}
+	}
+	
+	@RequestMapping("cancelScrap.rp")
+	@ResponseBody
+	public String cancelScrap(@RequestParam("rId") int rId, HttpSession session) {
+		int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+		Scrap s = new Scrap(rId, user_no);
+		
+		int result = rService.deleteScrap(s);
+		
+		if(result == 1) {
+			return "success";
+		}else {
+			return "error";
+		}
+	}
+	
+	@RequestMapping("Recipedelete.rp")
+	@ResponseBody
+	public String deleteRecipe(@RequestParam("rId") int rId) {
+		int result = rService.deleteRecipe(rId);
+		if(result == 1) {
+			return "success";
+		}else {
+			return "error";
+		}
+		
 	}
 }
 

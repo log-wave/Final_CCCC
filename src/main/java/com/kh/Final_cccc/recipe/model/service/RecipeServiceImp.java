@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.recipe.model.dao.recipeDAO;
+import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
+import com.kh.Final_cccc.recipe.model.vo.Scrap;
 
 @Service("rService")
 public class RecipeServiceImp implements RecipeService{
@@ -24,21 +26,21 @@ public class RecipeServiceImp implements RecipeService{
 	private recipeDAO rDAO;
 
 	@Override
-	public ArrayList<Recipe> selectsubList(int sort_no) {
+	public ArrayList<Recipe> selectsubList(int sort_no, PageInfo pi) {
 		// 주제별 목록 불러오기
-		return rDAO.selectsubList(sort_no, sqlSession);
+		return rDAO.selectsubList(sort_no, sqlSession, pi);
 	}
 
 	@Override
-	public ArrayList<Recipe> selectmateList(int sort_no) {
+	public ArrayList<Recipe> selectmateList(int sort_no, PageInfo pi) {
 		// 재료별 목록 불러오기
-		return rDAO.selectmateList(sort_no, sqlSession);
+		return rDAO.selectmateList(sort_no, sqlSession, pi);
 	}
 
 	@Override
-	public ArrayList<Recipe> selectspecList(int sort_no) {
+	public ArrayList<Recipe> selectspecList(int sort_no, PageInfo pi) {
 		// 특산물별 목록 불러오기
-		return rDAO.selectspecList(sort_no, sqlSession);
+		return rDAO.selectspecList(sort_no, sqlSession, pi);
 	}
 
 	@Override
@@ -101,6 +103,34 @@ public class RecipeServiceImp implements RecipeService{
 		return rDAO.selectReplyList(sqlSession, recipeNo);
 	}
 
-	
-	
+	@Override
+	public int selectScrapcheck(Scrap s) {
+		// TODO Auto-generated method stub
+		return rDAO.selectScrapcheck(sqlSession, s);
+	}
+
+	@Override
+	public int insertScrap(Scrap s) {
+		// TODO Auto-generated method stub
+		return rDAO.insertScrap(sqlSession, s);
+	}
+
+	@Override
+	public int deleteScrap(Scrap s) {
+		// TODO Auto-generated method stub
+		return rDAO.deleteScrap(sqlSession, s);
+	}
+
+	@Override
+	public int deleteRecipe(int rId) {
+		// TODO Auto-generated method stub
+		return rDAO.deleteRecipe(sqlSession, rId);
+	}
+
+	@Override
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		return rDAO.getListCount(sqlSession);
+	}
+
 }

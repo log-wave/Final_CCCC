@@ -69,20 +69,20 @@ public class FilesServiceimp implements FilesService {
 	}
 
 	@Override
-	public ArrayList<Files> selectsubfileList(int sort_no) {
+	public ArrayList<Files> selectsubfileList(int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return fdao.selectsubfileList(sqlSession, sort_no);
+		return fdao.selectsubfileList(sqlSession, sort_no, pi);
 	}
 
 	@Override
-	public ArrayList<Files> selectmatefileList(int sort_no) {
+	public ArrayList<Files> selectmatefileList(int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return fdao.selectmatefileList(sqlSession, sort_no);
+		return fdao.selectmatefileList(sqlSession, sort_no, pi);
 	}
 
 	@Override
-	public ArrayList<Files> selectspecfileList(int sort_no) {
+	public ArrayList<Files> selectspecfileList(int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return fdao.selectspecfileList(sqlSession, sort_no);
+		return fdao.selectspecfileList(sqlSession, sort_no, pi);
 	}
 }

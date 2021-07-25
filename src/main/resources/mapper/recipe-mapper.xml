@@ -21,7 +21,11 @@
 		where sort_spec = #{sort_no} and r_status ='Y'
 		order by recipe_no
 	</select>
-	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) 
+		FROM RECIPE
+		WHERE R_STATUS='Y'
+	</select>
 	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe" id="selectResult">
 		<id property="recipe_no" column="RECIPE_NO"/>
 		<result property="recipe_title" column="RECIPE_TITLE"/>
@@ -130,4 +134,26 @@
 		<result column="RECIPE_NO" property="recipe_no"/>
 		<result column="NICKNAME" property="reply_nick"/>
 	</resultMap>
+	
+	
+	<!-- 스크랩 관련 -->
+	<select id="selectScrapcheck" resultType="_int">
+		select count(*) from scrap 
+		where user_no = #{user_no} and recipe_no = #{recipe_no}
+	</select>
+	
+	<insert id="inesertScrap">
+		INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, #{recipe_no}, #{user_no})
+	</insert>
+	
+	<delete id="deleteScrap">
+		DELETE FROM SCRAP
+		WHERE RECIPE_NO = #{recipe_no} AND USER_NO =#{user_no}
+	</delete>
+	
+	<update id="deleteRecipe">
+		UPDATE RECIPE
+		SET R_STATUS='N'
+		WHERE RECIPE_NO = #{rId}
+	</update>
 </mapper>

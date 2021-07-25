@@ -27,8 +27,16 @@
 				<input type="text">
 				<button id="searchBtn">검색</button>
 			
-			<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG"
-			onclick="location.href='insertRecipeForm.rp'">
+			<c:set var="usercheck" value="${loginUser }"/>
+			<c:choose>
+				<c:when test="${!empty loginUser }">
+					<img class="add_recipe_btn"name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG" onclick="location.href='insertRecipeForm.rp'">
+				</c:when>
+				
+				<c:otherwise>
+					<img class="add_recipe_btn" id="unloginadd" src="${ pageContext.servletContext.contextPath }/resources/images/add.PNG">
+				</c:otherwise>
+			</c:choose>
 			<c:choose>
 				<c:when test="${!empty loginUser }">
 					<div>
@@ -105,4 +113,12 @@
 
 	</div>
 </body>
+<script>
+var text ="클릭해서 레시피 추가";
+	$('#unloginadd').on('click',function(){
+		alert('레시피 등록은 로그인 후 이용 가능합니다');
+	});
+	
+</script>
+
 </html>
