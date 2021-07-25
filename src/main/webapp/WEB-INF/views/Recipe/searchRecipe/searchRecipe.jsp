@@ -47,6 +47,51 @@
 						</div>
 					
 					</c:forEach>
+					
+					
+					<div class="pagingArea">
+						<!-- 이전  -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="RList.rp">
+								<c:param name="sort_no" value="${ sort_no}"/>
+								<c:param name="type" value="${ type}"/>
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a> 
+						</c:if>
+						
+		               	<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage}">
+							<c:if test="${ p eq pi.currentPage }">
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
+							</c:if>  
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagenation" value="RList.rp">
+									<c:param name="sort_no" value="${ sort_no}"/>
+									<c:param name="type" value="${ type}"/>
+									<c:param name="page" value="${ p }"/>
+								</c:url>
+								<a href="${ pagenation }"><button>${ p }</button></a>
+							</c:if>
+						</c:forEach>
+		
+		                <c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="RList.rp">
+								<c:param name="sort_no" value="${ sort_no}"/>
+								<c:param name="type" value="${ type}"/>
+								<c:param name="page" value="${ pi.currentPage + 1 }"/>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+		                
+					</div>
 			</div>
 		</div>
 		

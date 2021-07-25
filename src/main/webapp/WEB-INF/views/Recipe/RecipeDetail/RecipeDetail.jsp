@@ -38,14 +38,10 @@
 						
 							<ul class="slick">
 							
-							<c:forEach var="image" items="${rp_files }">
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${image.changeName}"></li>
-							</c:forEach>
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
-								<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/images/recipe/nut1.png"></li>
+								<c:forEach var="image" items="${rp_files }">
+									<li><img class="rp_listImage" src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${image.changeName}"></li>
+								</c:forEach>
+								
 							</ul>
 						</div>
 					</div>
@@ -129,8 +125,7 @@
 						<p class="item_coment">${p.rp_comment }</p>
 					</div>
 				</c:forEach>
-				
-				
+		
 				
 				</div>
 					<div class="popUp_contentBox_leftBox_writeReview">
@@ -140,7 +135,7 @@
 						<br>
 						
 							<c:if test="${loginUser ne null }">
-									
+									<input type="hidden" value="${loginUser.user_no }" class="user_no">
 									<div class="reply_inputbox">
 										<div>
 											<textarea rows="4" cols="90" id="reply_area" name="reply_content"></textarea>
@@ -151,16 +146,15 @@
 									</div>
 									
 							</c:if>
-							
+							<c:if test="${loginUser eq null }">
+								<input type="hidden" value="0" class="user_no">
+							</c:if>
 							<div id="rCount"></div>
 						<table class="replyTable" id="rtb">
 							<tbody></tbody>
 						</table>
 						
 					</div>	
-				
-				
-				
 			</div>
 			
 			
@@ -173,11 +167,15 @@
 				</div>
 				<div class="popUp_contentBox_righttBox_title"><span>${r_info.recipe_explain }</span></div>
 				<div class="popUp_contentBox_righttBox_cookTime"><i class="far fa-clock"></i><span>조리시간</span><span style="black">${r_info.cooking_time }분</span></div>
-				<div class="popUp_contentBox_righttBox_scrapBtnBox"><button class="scrapBtn"><i class="far fa-heart"></i><span>스크랩</span></button></div>
+				<div class="popUp_contentBox_righttBox_scrapBtnBox">
+					<!-- <button class="scrapBtn">
+						<i class="far fa-heart"></i><span>스크랩</span>
+					</button> -->
+				</div>
 				<div class="popUp_contentBox_righttBox_snsLogo">
-					<i class="fab fa-facebook-square fa-2x"></i>
-					<i class="fab fa-twitter-square fa-2x"></i>
-					<i class="fab fa-youtube-square fa-2x"></i>
+					<c:if test="${loginUser.user_no eq r_info.user_no }">
+						<button class="deleteRecipe">삭제</button>
+					</c:if>
 				
 				</div>
 				<div class="popUp_contentBox_righttBox_listTitle"><span>재료 리스트</span></div>
@@ -197,57 +195,85 @@
 								</div>
 							</li>
 						</c:forEach>
-							
-							
-						
 					</ul>
-				</div>
-					<!-- 재료 리스트 항목 영역의 경우 백엔드 기능구현 할때 폼형식으로 수정해야함  -->
-			
-			
-			
-			
-			
+				</div>		
 			</div>
-		
-		
-		
-		
-		
 		</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	</div>
 
 </body>
 <script>
 
 		$(function(){
-			$('.scrapBtn').on('click', function(){
-				var refRid = ${r_info.recipe_no};
-				$.ajax({
-					url: 'enterScrap.rp',
-					data : {Rid : refRid},
-					success(data){
-						console.log(data);
-						//data의 값이 1이면 add 서비스 실행되었음
-						var recipe = ${r_info.recipe_title};
-						alert(recipe + '의 스크랩 등록에 성공 했습니다');
-						
-						//data의 값이 2면 delete 서비스 실행되었음
-						
-					}
+			//처음에 스크랩 버튼의 상태를 가져와서 ajax를 통해 스크랩버튼을 정하는 메소드를 생성
+			$(function(){			
+				getScrapbtn();
+				
+				//스크랩 시도시 function
+				$(document).on('click','.scrapBtn', function(){
+					
+					var refRid = ${r_info.recipe_no};
+					$.ajax({
+						url: 'enterScrap.rp',
+						data : {rId : refRid},
+						success(data){
+							console.log(data);
+							if(data =='success'){
+								var recipe = '${r_info.recipe_title}';
+								alert(recipe + '의 스크랩 등록에 성공 했습니다');
+								getScrapbtn();
+							}
+							
+						}
+					});
+				});
+				
+				//스크랩 취소시 function
+				$(document).on('click','.unscrapBtn', function(){
+					
+					var refRid = ${r_info.recipe_no};
+					$.ajax({
+						url: 'cancelScrap.rp',
+						data : {rId : refRid},
+						success(data){
+							console.log(data);
+							if(data =='success'){
+								var recipe = '${r_info.recipe_title}';
+								alert(recipe + '의 스크랩 취소했습니다');
+								getScrapbtn();
+							}
+						}
+					});
 				});
 			});
 			
-			
+			//스크랩버튼의 상태를 가져오기
+			function getScrapbtn(){
+				$('.popUp_contentBox_righttBox_scrapBtnBox').html('');
+				var refRid = ${r_info.recipe_no};
+				var user = $('.user_no').val();
+				console.log(user);
+				if(user != "0"){
+					console.log('못들어옴');
+					$.ajax({
+						url:'setScrapbtn.rp',
+						data: {rId: refRid},
+						success(data){
+							console.log(data);
+							if(data == '1'){
+								
+								//unscrapBtn =취소 / scrapBtn = 입력
+								$btn = $('<button class="unscrapBtn">').text('스크랩 취소');
+								$('.popUp_contentBox_righttBox_scrapBtnBox').append($btn);
+							}else if(data == '0'){
+								$btn = $('<button class="scrapBtn">').text('스크랩');
+								$('.popUp_contentBox_righttBox_scrapBtnBox').append($btn);
+							}
+						}
+					});
+				}
+				
+			}
 			$(function(){getReplyList();
 				setInterval(function(){
 					getReplyList();
@@ -272,6 +298,7 @@
 				});
 			});
 			
+			//댓글 목록 불러오기
 			function getReplyList(){
 				var rId = ${r_info.recipe_no};
 				$.ajax({
@@ -309,7 +336,20 @@
 			}
 		});
 	
-		
+		$('.deleteRecipe').on('click',function(){
+			alert('삭제가클릭댐');
+			var rId = ${r_info.recipe_no};
+			$.ajax({
+				url: 'Recipedelete.rp',
+				data: {rId: rId },
+				success(data){
+					alert('성공적으로 삭제했습니다');
+					opener.document.location.reload();
+					self.close();
+				}
+			});
+			
+		});
 		
 	
 </script>

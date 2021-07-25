@@ -2,6 +2,7 @@ package com.kh.Final_cccc.Files.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -52,19 +53,25 @@ public class FilesDAO {
 		return (ArrayList)sqlSession.selectList("filesMapper.selectRFiles", recipeNo);
 	}
 
-	public ArrayList<Files> selectsubfileList(SqlSessionTemplate sqlSession, int sort_no) {
+	public ArrayList<Files> selectsubfileList(SqlSessionTemplate sqlSession, int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("filesMapper.selectsubFiles", sort_no);
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("filesMapper.selectsubFiles", sort_no, rowBounds);
 	}
 
-	public ArrayList<Files> selectmatefileList(SqlSessionTemplate sqlSession, int sort_no) {
+	public ArrayList<Files> selectmatefileList(SqlSessionTemplate sqlSession, int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("filesMapper.selectmateFiles", sort_no);
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("filesMapper.selectmateFiles", sort_no, rowBounds);
 	}
 
-	public ArrayList<Files> selectspecfileList(SqlSessionTemplate sqlSession, int sort_no) {
+	public ArrayList<Files> selectspecfileList(SqlSessionTemplate sqlSession, int sort_no, com.kh.Final_cccc.recipe.model.vo.PageInfo pi) {
 		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("filesMapper.selectspecFiles", sort_no);
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("filesMapper.selectspecFiles", sort_no, rowBounds);
 	}
 
 }

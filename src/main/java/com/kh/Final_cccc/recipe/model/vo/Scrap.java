@@ -13,6 +13,14 @@ public class Scrap {
 		this.recipe_no = recipe_no;
 		this.user_no = user_no;
 	}
+	
+	
+
+	public Scrap(int recipe_no, int user_no) {
+		super();
+		this.recipe_no = recipe_no;
+		this.user_no = user_no;
+	}
 
 	public int getScrap_no() {
 		return scrap_no;

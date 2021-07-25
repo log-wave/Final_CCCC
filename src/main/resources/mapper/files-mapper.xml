@@ -38,21 +38,21 @@
 	<select id="selectsubFiles" resultMap="filesResultSet">
 		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
 		FROM TABLE_FILE, RECIPE
-		WHERE RECIPE_NO = REF_NO AND SORT_SUB = #{sort_no} and FILE_YN='Y'
+		WHERE RECIPE_NO = REF_NO AND SORT_SUB = #{sort_no} and FILE_YN='Y' AND R_STATUS='Y'
 		ORDER BY REF_NO
 	</select>
 	
 	<select id="selectmateFiles" resultMap="filesResultSet">
 		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
 		FROM TABLE_FILE, RECIPE
-		WHERE RECIPE_NO = REF_NO AND SORT_MATE = #{sort_no} and FILE_YN='Y'
+		WHERE RECIPE_NO = REF_NO AND SORT_MATE = #{sort_no} and FILE_YN='Y' AND R_STATUS='Y'
 		ORDER BY REF_NO
 	</select>
 	
 	<select id="selectspecFiles" resultMap="filesResultSet">
 		SELECT FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG 
 		FROM TABLE_FILE, RECIPE
-		WHERE RECIPE_NO = REF_NO AND SORT_SPEC = #{sort_no} and FILE_YN='Y'
+		WHERE RECIPE_NO = REF_NO AND SORT_SPEC = #{sort_no} and FILE_YN='Y' AND R_STATUS='Y'
 		
 	</select>
 	

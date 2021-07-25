@@ -189,6 +189,8 @@
 	width: 200px;
 	height: 800px;
 	background-color: rgba(224, 224, 224, 0.54);
+	/* margin-left: 600px;
+	position: fixed; */
 }
 
 
@@ -241,6 +243,16 @@
 	height: 30px;
 	background-color:#fff;
 	color: rgba(242, 159, 5, 0.88);
+	border-style: none;
+	border-radius: 8px;
+	font-family: 'Do Hyeon', sans-serif;
+}
+
+.unscrapBtn{
+	width: 120px;
+	height: 30px;
+	color:#fff;
+	background-color: rgba(242, 159, 5, 0.88);
 	border-style: none;
 	border-radius: 8px;
 	font-family: 'Do Hyeon', sans-serif;

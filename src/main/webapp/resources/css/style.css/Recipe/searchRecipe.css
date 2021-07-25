@@ -38,3 +38,17 @@
    height: 160px;
    border:1px solid black;
 }
+
+.pagingArea{
+	width:1000px;
+	text-align: center;
+}
+
+.pagingArea button{
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 15px;
+	border-style: none;
+	cursor: pointer;
+}
