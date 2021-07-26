@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.member.service.MemberServiceImpl;
 
@@ -104,5 +105,24 @@ public class MemberDAO {
         System.out.println(m);
         return sqlSession.update("memberMapper.edit_my_Inform", m);
     }
+
+	
+
+	public int user_profile_change(SqlSessionTemplate sqlSession, Files files) {
+		 	
+			loggger.info("user_profile_dao 진입");
+	        
+	        return sqlSession.insert("memberMapper.user_profile_change", files);
+	}
+
+
+	public String select_user_profile_changeName(SqlSessionTemplate sqlSession, Files files) {
+
+		loggger.info("select_user_profile_changeName 진입");
+        
+		return sqlSession.selectOne("memberMapper.select_user_profile_changeName", files);
+	}
+
+	
 
 }

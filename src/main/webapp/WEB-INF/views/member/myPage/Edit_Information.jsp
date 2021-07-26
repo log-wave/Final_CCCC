@@ -21,14 +21,14 @@
            <img class="main_image" class="map_image" src="resources/images/cccc_logo.PNG	"/>
         </div>
 
-		<form name="frm" action="Edit_MyInform.me" method="post">
+		<form name="frm" action="Edit_MyInform.me" method="post"  enctype="multipart/form-data">
         <!-- wrapper -->
         <div id="wrapper">
 
             <!-- content-->
             <div id="content">
 				<!-- 프로필 사진 -->
-				<div align="center">
+				<div>
 					<div class="profileimage_upload" align="center" style="margin-bottom: 60px; width: 200px; height: 200px; border-radius: 70%; overflow: hidden;">
 						<img src="resources/images/profile.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>
 					</div>
@@ -138,10 +138,7 @@
 				<c:param name="page" value="${ page }"/>
 				</c:url>
          
-            	<!-- 파일 업로드 -->
-				<div id="fileArea">
-					<input type="file" id="thumbnailImg1" multiple="multiple" name="editImg" onchange="LoadImg(this)">
-				</div>
+  
                 <!-- JOIN BTN-->
                 <div class="btn_area">
                     <button type="submit" id="signUpBtn" style="background: #F29F05; cursor: pointer;">
@@ -162,7 +159,7 @@
     	</form>
 		<script type="text/javascript">
 		
-		
+		//프로필 수정 
 		
 		$(function(){
 			$("#signUpBtn").prop("disabled", true);
@@ -194,6 +191,8 @@
 			$("#signUpBtn").css("background-color", "#E2E2E2");
 			
 		}
+		
+		
 
 		//비밀번호 유효성 검사 
        	$("#pass01").blur(function(){

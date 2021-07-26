@@ -150,5 +150,29 @@
         WHERE USER_ID= #{user_id}
     </update>
 	
+	
+	<!--유저 프로필 db 저장 쿼리  -->
+	<insert id="user_profile_change">
+		INSERT INTO TABLE_FILE VALUES(SEQ_FILE_NO.NEXTVAL, #{fileName}, #{changeName}, #{filePath} , SYSDATE, #{fileYn}, #{refNo} ,#{refFlag})
+	
+	</insert>
+	
+	<!--유저번호에 해당하는 이미지 경로를 가져오는 쿼리  -->
+	<select id="select_user_profile_changeName" resultType="String">
+		
+		SELECT CHANGE_NAME
+		FROM TABLE_FILE
+		WHERE REF_NO = #{refNo}
+		
 
+		
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>

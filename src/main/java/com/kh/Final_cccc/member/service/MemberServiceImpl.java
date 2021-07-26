@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.dao.MemberDAO;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
@@ -118,7 +119,23 @@ public class MemberServiceImpl implements MemberService{
         System.out.println(m);
         return mDAO.Edit_MyInform(sqlSession,m);
     }
-	
+
+	@Override
+	public int user_profile_change(Files files) {
+		
+		loggger.info("user_profile_change");
+        System.out.println(files);
+        return mDAO.user_profile_change(sqlSession,files);
+	}
+
+	@Override
+	public String select_user_profile_changeName(Files files) {
+
+		loggger.info("select_user_profole_changeName 서비스 진입");
+        return mDAO.select_user_profile_changeName(sqlSession,files);
+
+	}
+
 
 
 
