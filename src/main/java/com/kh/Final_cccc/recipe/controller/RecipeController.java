@@ -353,5 +353,22 @@ public class RecipeController {
 		}
 		
 	}
+	
+	@RequestMapping("materialSelectRecipe.rp")
+	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr) {
+		int result = 0;
+		for(int i = 0; i < mateArr.length; i++) {
+			result = rService.mateSelectRecipe(mateArr[i]);
+			if(result == 0) {
+				return "error";
+			}
+		}
+		
+		if(result == 1) {
+			return "success";
+		}else {
+			return "error";
+		}
+	}
 }
 

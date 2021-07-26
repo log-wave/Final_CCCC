@@ -120,4 +120,8 @@ public class recipeDAO {
 		return sqlSession.update("recipeMapper.increViewCount", recipeNo);
 	}
 
+	public int mateSelectRecipe(SqlSessionTemplate sqlSession, String mateRecipe) {
+		return sqlSession.selectOne("recipeMapper.selectMateRecipe", mateRecipe);
+	}
+
 }

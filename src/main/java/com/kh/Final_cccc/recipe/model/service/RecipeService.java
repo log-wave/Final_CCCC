@@ -52,6 +52,7 @@ public interface RecipeService {
 
 	int increViewCount(int recipeNo);
 
+	int mateSelectRecipe(String mateRecipe);
 	
 
 	
