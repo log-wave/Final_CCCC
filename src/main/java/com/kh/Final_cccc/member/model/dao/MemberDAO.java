@@ -122,7 +122,40 @@ public class MemberDAO {
         
 		return sqlSession.selectOne("memberMapper.select_user_profile_changeName", files);
 	}
+	
+	
+	public String selectChangeName(SqlSessionTemplate sqlSession, int user_no) {
 
+        return sqlSession.selectOne("filesMapper.selectChangeName", user_no);
+    
+	}
+
+	public void delete_user_profile(SqlSessionTemplate sqlSession, int user_no) {
+		
+		sqlSession.delete("filesMapper.delete_user_profile", user_no);
+	    
+		
+		
+	}
+	
+	//승재씨 코드 
+	public int userIdemailCheck(SqlSessionTemplate sqlSession, MemberVO m) {
+	      loggger.info("userIdemailCheck dao 진입 성공");
+	        System.out.println(m);
+	        return sqlSession.selectOne("memberMapper.userIdemailCheck", m);
+	   }
+
+	   public int updatePwd(SqlSessionTemplate sqlSession, MemberVO m) {
+	      loggger.info("updatePwd 진입 성공");
+	        System.out.println(m);
+	        return sqlSession.update("memberMapper.updatePwd", m);
+	   }
+
+	   public MemberVO findPwdresult(SqlSessionTemplate sqlSession, String user_id) {
+	      loggger.info("findPwdresult dao 진입 성공");
+	      System.out.println(user_id);
+	      return sqlSession.selectOne("memberMapper.findPwdresult", user_id);
+	   }
 	
 
 }

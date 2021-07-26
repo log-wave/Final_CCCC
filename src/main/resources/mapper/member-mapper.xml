@@ -163,16 +163,39 @@
 		SELECT CHANGE_NAME
 		FROM TABLE_FILE
 		WHERE REF_NO = #{refNo}
-		
 
-		
-	
 	</select>
 	
+	<!-- 승재씨 코드 -->
+	      
+   <!-- 비밀번호 찾기 -->
+   <select id="findPwdresult" parameterType="String" resultMap="memberResultSet">
+      select user_id, user_name
+      from member
+      where user_id = #{user_id}
+   </select>
+   
+   
+   
+   <!-- 비밀번호찾기 아이디 이메일 일치확인 -->
+   <select id="userIdemailCheck" parameterType="Member" resultType="int">
+      SELECT count(*)
+      FROM MEMBER
+      WHERE USER_ID = #{user_id} AND EMAIL = #{email}
+   </select>
+
+
+   <!-- 비밀번호 변경 -->
+   <update id="updatePwd" parameterType="Member">
+        UPDATE MEMBER
+        SET USER_PASS = #{user_password}
+        WHERE USER_ID= #{user_id}
+    </update>
+    
 	
 	
 	
 	
 	
-	
+
 </mapper>

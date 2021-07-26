@@ -1,5 +1,6 @@
 package com.kh.Final_cccc.member.service;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -137,15 +138,43 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
+	@Override
+    public String selectChangeName(int user_no) {
+        // TODO Auto-generated method stub
+        return mDAO.selectChangeName(sqlSession, user_no);
+    }
 
+	@Override
+	public void delete_user_profile(int user_no) {
+	
+		  mDAO.delete_user_profile(sqlSession, user_no);
+	}
+	
+	
+	//승재씨 코드 
+	
 
+	   @Override
+	   public int userIdemailCheck(MemberVO m) {
+	      loggger.info("userIdemailCheck 서비스 Impl 진입 성공");
+	        System.out.println(m);
+	        return mDAO.userIdemailCheck(sqlSession,m);
+	   }
 
+	   @Override
+	   public int updatePwd(MemberVO m) {
+	      loggger.info("updatePwd 서비스 Impl 진입 성공");
+	        System.out.println(m);
+	        return mDAO.updatePwd(sqlSession,m);
+	   }
 
-
-
-
-
-
+	   @Override
+	   public MemberVO findPwdresult(String user_id) {
+	      loggger.info("findPwdresult 서비스 Impl 진입 성공");
+	        System.out.println(user_id);
+	      return mDAO.findPwdresult(sqlSession, user_id);
+	   }
+	   
 
 	
 }
