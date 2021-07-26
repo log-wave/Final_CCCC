@@ -140,7 +140,7 @@ public class RecipeServiceImp implements RecipeService{
 	}
 
 	@Override
-	public int mateSelectRecipe(String mateRecipe) {
+	public Recipe mateSelectRecipe(String mateRecipe) {
 		return rDAO.mateSelectRecipe(sqlSession, mateRecipe);
 	}
 
