@@ -163,4 +163,10 @@
 		SET VIEW_COUNT = VIEW_COUNT + 1
 		WHERE RECIPE_NO = #{recipeNo}
 	</update>
+	
+	<select id="selectMateRecipe" resultMap="selectResult">
+		select recipe_title, recipe.recipe_no
+		from recipe, material, recipe_mate
+		where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no and material_name = #{mateRecipe}
+	</select>
 </mapper>

@@ -141,6 +141,19 @@
 	</div>
 	
 	<script>
+		
+		$('.recomBtn').on('click', function(){
+			var mateArr = [];
+			var selectedRight = $('.right_box_content').children();
+			
+			for(var i = 0; i < selectedRight.length; i++){
+				mateArr.push(selectedRight.eq(i).text());
+				
+			}
+			console.log(mateArr);
+			location.href="materialSelectRecipe.rp?mateArr="+mateArr;
+		});
+		
 		$('.sortUl > li').on('mouseover',function(){
 			$(this).closest('li').css({"background":"rgba(239, 182, 176, 0.74)","cursor":"pointer"});
 		}).on('mouseout',function(){
