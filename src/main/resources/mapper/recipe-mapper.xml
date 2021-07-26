@@ -102,7 +102,7 @@
 	
 	
 	<insert id="insertRecipe" >
-		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y')
+		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y', default)
 	</insert>
 	
 	<insert id="insertRecipeProcess">
