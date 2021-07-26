@@ -356,16 +356,17 @@ public class RecipeController {
 	
 	@RequestMapping("materialSelectRecipe.rp")
 	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr) {
-		int result = 0;
+		Recipe recipe = null;
 		for(int i = 0; i < mateArr.length; i++) {
-			result = rService.mateSelectRecipe(mateArr[i]);
-			if(result == 0) {
+			recipe = rService.mateSelectRecipe(mateArr[i]);
+			if(recipe == null) {
 				return "error";
 			}
 		}
-		
-		if(result == 1) {
-			return "success";
+		System.out.println(recipe);
+		// recipeVO로 result 변경한다음 저거 받아주고 검색되도록 민기씨 한테 질문
+		if(!recipe.equals(null)) {
+			return "redirect:RList.rp";
 		}else {
 			return "error";
 		}
