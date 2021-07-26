@@ -414,7 +414,8 @@ public class MemberController {
           logger.debug("-------------- file end --------------\n");
           
   
-          
+         
+          mService.delete_user_profile(user_no);
           
          int result = mService.user_profile_change(files);
          
@@ -470,4 +471,82 @@ public class MemberController {
          return null;
       }
    }
+    
+    
+    
+    @RequestMapping("getprofile.me")
+    @ResponseBody
+    public String getprofile(HttpSession session) {
+
+        int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+
+        String changeName = mService.selectChangeName(user_no);
+
+        System.out.println("이름 : "+changeName);
+
+        return changeName;
+    }
+    
+    
+    
+    //승재씨 코드 
+ // id, email 일치확인 컨트롤러(비밀번호찾기)
+    @RequestMapping(value = "idEmailCheck.me", method = RequestMethod.GET)
+    @ResponseBody
+    public int idEmailCheck(MemberVO m, @RequestParam("user_id") String user_id, @RequestParam("email") String email) {
+       m.setUser_id(user_id);
+       m.setEmail(email);
+       logger.info("비밀번호 찾기 페이지 이메일 아이디 일치여부 controller 진입");
+       System.out.println("m의 값 :" + m);
+       int result = mService.userIdemailCheck(m);
+       
+       System.out.println("result 값 : " + result);
+       
+       if(result > 0) {
+          return result;
+       }else {
+          return 0;
+       }
+    }
+    
+    
+     // 승재 비밀번호 찾기 > 변경으로 이동 컨트롤러
+     @RequestMapping(value = "PwdupdatePage.me", method = RequestMethod.POST)
+     public String updatepwdpage(@RequestParam("user_id") String user_id, Model m) {
+       
+        MemberVO membervo = mService.findPwdresult(user_id);
+
+        if(membervo != null) {
+           m.addAttribute("membervo", membervo);
+          return "findUserPassword/findUserPwdResult";
+       } else {
+          return null;
+       }
+    }
+     
+     // 승재 비밀번호 재설정 기능
+    @RequestMapping(value = "updatepwdwwww.me", method = RequestMethod.POST)
+    public String updatePwd(MemberVO m,@RequestParam("user_id") String user_id, @RequestParam("updatepass2") String user_pwd) {
+        
+        
+       logger.info("비밀번호 재설정 controller 진입");
+       m.setUser_id(user_id);
+       m.setUser_password(user_pwd);
+       System.out.println("m의 값 :" + m);
+       int result = mService.updatePwd(m);
+       
+       if(result > 0) {
+          return "login/login";
+       }else {
+          return null;
+       }
+       
+    }
+     
+    
+    
+    
+    
+    
+    
 }

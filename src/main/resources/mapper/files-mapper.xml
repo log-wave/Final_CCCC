@@ -91,4 +91,23 @@
 		INSERT INTO TABLE_FILE (FILE_NO, FILE_NAME, CHANGE_NAME, FILE_PATH, UPLOAD_DATE, FILE_YN, REF_NO, REF_FLAG )
 		VALUES (SEQ_FILE_NO.NEXTVAL,#{fileName},#{changeName},#{filePath},SYSDATE,#{fileYn}, SEQ_RECIPE_NO.CURRVAL ,1)		
 	</insert>
+	
+	<select id="selectChangeName" resultType="String">
+        SELECT CHANGE_NAME
+        FROM TABLE_FILE
+        WHERE REF_NO = #{user_no} AND REF_FLAG=3
+    </select>
+    
+    
+    <delete id="delete_user_profile">
+    
+    	delete from table_file where ref_no=#{user_no} and ref_flag = 3
+    
+    </delete>
+    
+    
+    
+    
+    
+    
 </mapper>

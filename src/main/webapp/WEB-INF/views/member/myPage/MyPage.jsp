@@ -20,7 +20,7 @@
 	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	
 	<form id="uploadForm"  method="get" enctype="multipart/form-data">
-	
+	<input type="hidden" id="id_check" value="${loginUser.user_no }">
 	<div class="myPage_box">
 		<div class="myPage_profile_bigBox">
 			<div class="myPage_profile_box">
@@ -30,7 +30,7 @@
 					
 					<div>
 						<div class="profileimage_upload" align="center" style="width: 150px; height: 150px; border-radius: 70%; overflow: hidden;">
-							<img src="resources/images/profile.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>
+							
 							
 						</div>
 						<div align="center"><span style="font-size: 12px;">프로필 사진 변경</span></div>
@@ -75,7 +75,7 @@
 		<input type="file" id="thumbnailImg1" multiple="multiple" name="editImg" accept="image/gif,image/jpeg,image/png"/>
 	</div>
 	<input type="hidden" name="userNo" value="${loginUser}">
-	<div>"${loginUser}"</div>
+	
 	
 	  </form>
 	
@@ -91,16 +91,7 @@
 //프로필 수정 
 
 $(function(){
-	
-	function getContextPath(){
-		
-		var hostIndex = location.href.indexOf(location.host) + location.host.length;
-		var contextPath = location.href.substring(honstIndex,location.href.indexOf('/',hostIndex) + 1);
-		
-		console.log(contextPath);
-		return contextpath;
-		
-	}	
+
 		
 	
 	$("#fileArea").hide();
@@ -126,8 +117,10 @@ $(function(){
 				success: function(data){
 					
 					var profile_changeName = data;
-					alert(profile_changeName);
-					$("#profileImg").attr("src"," ../../../../resources/userProfile_uploadFile/" + profile_changeName); 
+					get_profileImg();
+					
+					
+					window.location.reload();
 							
 				}
 				
@@ -138,35 +131,28 @@ $(function(){
 		});
 		
 		
-		
-		
-		
-		
-		
-		
-
 			});
 
 		
 	});
 
 
-
+function get_profileImg(){
+	var user = $('#id_check').val();
 	
+	$.ajax({
+		url:'getprofile.me',
+		success(data){
+			console.log(data);
+			if(data == ''){
+				$('.profileimage_upload').append('<img src="resources/images/경기도.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
+			}else{
+				$('.profileimage_upload').append('<img src="${ pageContext.servletContext.contextPath }/resources/userProfile_uploadFile/'+data+'" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
+			}
+		}
+	});
+}
 	
-
-
-	
-
-
-
-	
-
-	
-
-
-
-
 </script>
 
 </html>
