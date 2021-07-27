@@ -58,16 +58,19 @@
 	
 }
 
-.myPage_profile_userFollowing{
+.myPage_profile_userRecipe{
 	margin-top: 13px;
 	text-align: center;
 }
 
-.userFollwing{
+.userRecipe{
 	color: rgb(127, 127, 127);
 }
 
-.userFollowing_number{
+.userRecipe_number1{
+	color: rgb(231, 76, 60);
+}
+.userRecipe_number2{
 	color: rgb(231, 76, 60);
 }
 
@@ -117,7 +120,7 @@
 
 
 .myPage_content_title_myRecipe{
-	width: 425px;
+	width: 640px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -129,7 +132,7 @@
 }
 
 .myPage_content_title_scrap{
-	width:430px;
+	width:640px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -140,21 +143,6 @@
 	cursor: pointer;
 }
 	
-
-.myPage_content_title_following{
-	width:425px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	
-}
-
-.myPage_content_title_following:hover{
-	border-bottom: 3px solid rgba(242, 159, 5, 0.88);
-	cursor: pointer;
-}
-
-
 .title_common_number{
 	margin-left: 10px;
 }
