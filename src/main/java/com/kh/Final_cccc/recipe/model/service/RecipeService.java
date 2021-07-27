@@ -2,6 +2,7 @@ package com.kh.Final_cccc.recipe.model.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.material.model.vo.Material;
@@ -80,6 +81,8 @@ public interface RecipeService {
 	Files selectprofile(int user_no);
 
 	String selectspecinfo(int recipeNo);
+
+	ArrayList<Recipe> selectSearchKeyword(HashMap sc, PageInfo pi);
 
 
 	

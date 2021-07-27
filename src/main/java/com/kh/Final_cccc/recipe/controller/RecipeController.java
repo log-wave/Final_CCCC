@@ -410,7 +410,7 @@ public class RecipeController {
 		
 		ArrayList<Recipe> rList = null;
 		ArrayList<Recipe> jspList = new ArrayList<>();
-		ArrayList<Files> fList = new ArrayList<>();;
+		ArrayList<Files> fList = new ArrayList<>();
 		
 		int listCount = rService.getListCount();
 		int currentPage = 1;
@@ -509,6 +509,44 @@ public class RecipeController {
 		response.setContentType("application/json;charset=utf-8");
 		Gson gson = new Gson();
 		gson.toJson(mList, response.getWriter());
+	}
+	
+	@RequestMapping("searchRecipeKey.rp")
+	public ModelAndView searchRecipeKey(@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam("searchValue") String value, @RequestParam("searchCondition") String condition,
+			ModelAndView mv) {
+		
+		HashMap sc = new HashMap();
+		ArrayList<Files> fList = new ArrayList<>();
+		
+		int listCount = rService.getListCount();
+		int currentPage = 1;
+		
+		if(page != null) {
+			currentPage = page;
+		}
+		PageInfo pi = PagenationRecipe.getPageInfo(currentPage, listCount);
+		
+		if (condition.equals("recipe1")) {
+			sc.put("condition", 1);
+		} else if (condition.equals("recipe2")) {
+			sc.put("condition", 2);
+		}
+		sc.put("svalue", value);
+		
+		ArrayList<Recipe> rList = rService.selectSearchKeyword(sc, pi);
+		
+		for(int i = 0; i < rList.size(); i++) {
+			fList.add(fService.selectRTFiles(rList.get(i).getRecipe_no()));
+		}
+		
+		if (!rList.isEmpty() && !fList.isEmpty()) {
+			mv.addObject("rList", rList).addObject("fList", fList).addObject("pi", pi).setViewName("/searchRecipe/mateSearchRecipe");
+		} else {
+			mv.addObject("rList", rList).addObject("fList", fList).addObject("pi", pi).setViewName("/searchRecipe/mateSearchRecipe");
+		}
+		
+		return mv;
 	}
 	
 	
