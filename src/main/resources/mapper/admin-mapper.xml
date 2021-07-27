@@ -308,6 +308,23 @@
 		where R_STATUS = 'Y'
 	</select>
 	
-
+	<select id="getspeList" resultMap="rankResultSet2">
+	select *
+	from(select spec_name, count_spec, row_number() over(order by count_spec desc) as ranking
+   	from ( select SPECIALITY.SPECIALITY_name  as spec_name, count(recipe_spec.SPECIALITY_no) as count_spec
+		from recipe_spec, SPECIALITY, recipe
+		where recipe.recipe_no = recipe_spec.recipe_no and SPECIALITY.SPECIALITY_no = recipe_spec.SPECIALITY_no
+		group by SPECIALITY_name )
+        )
+	where ranking BETWEEN 1 AND 5
+	</select>
 	
+	<resultMap type="com.kh.Final_cccc.admin.model.vo.Rank" id="rankResultSet2">
+		<id column="spec_NAME" property="Name"/>
+		<result column="COUNT_spec" property="count"/>
+		<result column="RANKING" property="Rank"/>
+	
+	</resultMap>
+	
+
 </mapper>
