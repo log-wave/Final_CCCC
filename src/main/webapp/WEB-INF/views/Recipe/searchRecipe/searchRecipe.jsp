@@ -48,6 +48,7 @@
 					
 					</c:forEach>
 					
+					</div>
 					
 					<div class="pagingArea">
 						<!-- 이전  -->
@@ -91,7 +92,6 @@
 							<a href="${ after }"><button>&gt;</button></a>
 						</c:if>
 		                
-					</div>
 			</div>
 		</div>
 		

@@ -204,4 +204,41 @@
 		from recipe, material, recipe_mate
 		where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no and material_name = #{mateRecipe}
 	</select>
+	
+	<select id="mainPopularRecipe" resultMap="selectResult">
+	select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count,  cooking_Time
+	from recipe
+	where r_status = 'Y'  AND <![CDATA[  ROWNUM <= 4 ]]> 
+	order by view_Count DESC
+	</select>	
+	
+	<select id="mainPopularRecipeFiles" resultMap="filesResultSet">
+	 	select *
+ 		from table_file
+ 		where ref_flag = 1 
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.Files.vo.Files" id="filesResultSet">
+		<id property="fileNo" column="FILE_NO"/>
+		<result property="fileName" column="FILE_NAME"/>
+		<result property="changeName" column="CHANGE_NAME"/>
+		<result property="filePath" column="FILE_PATH"/>
+		<result property="uploadDate" column="UPLOAD_DATE"/>
+		<result property="fileYn" column="FILE_YN"/>
+		<result property="refNo" column="REF_NO"/>
+		<result property="refFlag" column="REF_FLAG"/>
+	</resultMap>
+	
+	<select id="mainSpecialityRecipe" resultMap="selectResult">
+		 select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
+ 		 from recipe
+ 		 where r_status = 'Y' and sort_spec != 0
+	</select>
+	
+	<select id="mainSpecialityRecipeFiles" resultMap="filesResultSet">
+		select *
+ 		from table_file
+ 		where ref_flag = 1
+	</select>
+	
 </mapper>

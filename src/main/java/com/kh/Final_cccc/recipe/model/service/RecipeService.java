@@ -65,6 +65,15 @@ public interface RecipeService {
 	Recipe_spec selectSpec(int recipeNo);
 
 	String selectSpecname(int speciality_no);
+
+	ArrayList<Recipe> mainPopularRecipe();
+
+	ArrayList<Files> mainPopularRecipeFiles();
+
+	ArrayList<Recipe> mainSpecialityRecipe();
+
+	ArrayList<Files> mainSpecialityRecipeFiles();
+
 	
 
 	

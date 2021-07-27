@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -240,7 +241,7 @@ public class RecipeController {
 		
 		//썸네일 기능
 		String originalthumName = recipe_thum.getOriginalFilename();
-		String renamethumName = sdf.format(new Date(System.currentTimeMillis()))+ originalthumName.substring(originalthumName.lastIndexOf(".") + 1);
+		String renamethumName = sdf.format(new Date(System.currentTimeMillis()))+ originalthumName.substring(originalthumName.lastIndexOf("."));
 		String renamethumPath = folder + "/" + renamethumName;
 		try {
 			recipe_thum.transferTo(new File(renamethumPath));
@@ -437,6 +438,67 @@ public class RecipeController {
 //			mv.addObject("rList", rList).addObject("type",type).addObject("sort_no", sort_no).addObject("fList",fList).addObject("pi", pi).setViewName("/searchRecipe/searchRecipe");
 		}
 		return mv;
+	}
+	
+	
+	@RequestMapping("mainPopularRecipe.rp") 
+	@ResponseBody
+	public void mainPopularRecipe( HttpServletResponse response) throws JsonIOException, IOException {
+		ArrayList<Recipe> rlist = rService.mainPopularRecipe();
+		ArrayList<Files> flist = rService.mainPopularRecipeFiles();
+		
+		ArrayList<Integer> userNo = new ArrayList<Integer>();
+		JSONArray jArray = new JSONArray();
+		JSONObject jQbject = null;
+		
+		for(Recipe recipe : rlist  ) {
+			for(Files fileinfo : flist) {
+		         if(fileinfo.getRefNo() == recipe.getRecipe_no()) {
+		         userNo.add(recipe.getUser_no());
+		        jQbject = new JSONObject();
+				jQbject.put("rTitle", recipe.getRecipe_title());
+				jQbject.put("rexplain", recipe.getRecipe_explain());
+				jQbject.put("file", fileinfo.getChangeName());
+				jQbject.put("rNo", recipe.getRecipe_no());
+				jQbject.put("cookingtime", recipe.getCooking_time());
+				jArray.add(jQbject);
+		        }
+			}
+		}
+		System.out.println(userNo);
+		
+		response.setContentType("application/json;charset=utf-8");
+		Gson gson = new Gson();
+		gson.toJson(jArray, response.getWriter());
+	}
+	
+	@RequestMapping("mainSpecialityRecipe.rp") 
+	@ResponseBody
+	public void mainSpecialityRecipe( HttpServletResponse response) throws JsonIOException, IOException {
+		ArrayList<Recipe> rlist = rService.mainSpecialityRecipe();
+		ArrayList<Files> flist = rService.mainSpecialityRecipeFiles();
+		
+		JSONArray jArray = new JSONArray();
+		JSONObject jQbject = null;
+		
+		for(Recipe recipe : rlist  ) {
+			for(Files fileinfo : flist) {
+		         if(fileinfo.getRefNo() == recipe.getRecipe_no()) {
+		        jQbject = new JSONObject();
+				jQbject.put("rTitle", recipe.getRecipe_title());
+				jQbject.put("rexplain", recipe.getRecipe_explain());
+				jQbject.put("file", fileinfo.getChangeName());
+				jQbject.put("rNo", recipe.getRecipe_no());
+				jQbject.put("userNo", recipe.getUser_no());
+				jQbject.put("cookingtime", recipe.getCooking_time());
+				jArray.add(jQbject);
+		         }
+			}
+	}
+		
+		response.setContentType("application/json;charset=utf-8");
+		Gson gson = new Gson();
+		gson.toJson(jArray, response.getWriter());
 	}
 }
 
