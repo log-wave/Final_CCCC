@@ -524,32 +524,43 @@ public class AdminController {
 	public String spe_nummbericalView(Model model) {
 
 		ArrayList<Rank> mateList = adService.getmateList();
-
 		System.out.println(mateList);
-		ArrayList<String> name = new ArrayList<String>();
-		ArrayList<Integer> count = new ArrayList<Integer>();
-
-		for (int i = 0; i < mateList.size(); i++) {
-			name.add(mateList.get(i).getName());
-			count.add(mateList.get(i).getCount());
-		}
-		System.out.println("name" + name);
-		System.out.println("count" + count);
-
 		
-		  String result =""; 
-		  
+		LinkedHashMap<String, Integer> mateMap = new LinkedHashMap<String, Integer>();
+
 		for (int i = 0; i < mateList.size(); i++) {
+			mateMap.put(mateList.get(i).getName(), mateList.get(i).getCount());
+		}
+
+		 String result =""; 
+		  
+		 for (String key : mateMap.keySet()) {
 			  if(result!="") { 
 				  result+= ","; 
-			  } result += "['"+name.get(i)+"', "+count.get(i)+"]";
+			  } result += "['" + key + "', " + mateMap.get(key) + "]";
 		  }
 		  System.out.println(result);
 		  model.addAttribute("result", result);
 		 
 		  
-	//	ArrayList<Rank> speList = adService.getspeList();
+		ArrayList<Rank> speList = adService.getspeList();
 		
+		LinkedHashMap<String, Integer> speMap = new LinkedHashMap<String, Integer>();
+		
+		for (int i = 0; i < speList.size(); i++) {
+			speMap.put(speList.get(i).getName(), speList.get(i).getCount());
+		}
+		System.out.println(speMap);
+		
+		 String result2 =""; 
+		  
+		 for (String key : speMap.keySet()) {
+				  if(result2!="") { 
+					  result2+= ","; 
+				  } result2 += "['" + key + "', " + speMap.get(key) + "]";
+			  }
+			  System.out.println(result2);
+			  model.addAttribute("result2", result2);
 		  
 		ArrayList<Integer> createDate = adService.getDateCount();
 		System.out.println("createDate"  + createDate);
@@ -616,16 +627,16 @@ public class AdminController {
 	}
 		System.out.println(month);
 		
-		String result1 = "";
+		String result3 = "";
 		for (String key : month.keySet()) {
-			if (result1 != "") {
-				result1 += ",";
+			if (result3 != "") {
+				result3 += ",";
 			}
-			result1 += "['" + key + "', " + month.get(key) + "]";
+			result3 += "['" + key + "', " + month.get(key) + "]";
 	
 		}
 	
-		model.addAttribute("result1", result1);
+		model.addAttribute("result3", result3);
 		
 		return "../admin/admin_nummerical/spe_nummerical";
 	}
@@ -823,10 +834,7 @@ public class AdminController {
 
 		System.out.println(sv4);
 
-		int svA41 = 0;
-		int svA42 = 0;
-		int svA43 = 0;
-		int svA44 = 0;
+		int svA41 = 0; int svA42 = 0; int svA43 = 0; int svA44 = 0;
 
 		for (int i = 0; i < sv4.size(); i++) {
 			if (sv4.get(i).contains("네 끼 이상")) {

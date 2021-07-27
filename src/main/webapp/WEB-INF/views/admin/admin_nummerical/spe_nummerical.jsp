@@ -53,7 +53,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['month', '월별 게시글 등록 평균수'],
-          ${result1}
+          ${result3}
         ]);
 
         var options = {
@@ -87,13 +87,13 @@
 	
 		// 차트 데이터 설정
 		var data = google.visualization.arrayToDataTable([
-		   	['항목', '다리수'], // 항목 정의
+		   	['항목', '사용된 횟수'], // 항목 정의
 		    ${result}
 		]);
 	
 		// 그래프 옵션
 		var options = {
-			title : '가장 많이 사용된 재료 5개', // 제목
+			title : '가장 많이 사용된 재료 top5', // 제목
 			fontSize: 10,
 			bar : {
 				groupWidth : '80%' // 그래프 너비 설정 %
@@ -119,19 +119,13 @@
 	
 		// 차트 데이터 설정
 		var data = google.visualization.arrayToDataTable([
-			['항목', '다리수'], // 항목 정의
-			['고양이', 4], // 항목, 값 (값은 숫자로 입력하면 그래프로 생성됨)
-			['메뚜기', 6],
-			['문어', 8],
-			['오징어', 10],
-			['운영자', 2],
-			['달팽이', 0], // ?
-			['랜덤', Math.round(Math.random() * 10)],
+			['항목', '사용된 횟수'], // 항목 정의
+			${result2}
 		]);
 	
 		// 그래프 옵션
 		var options = {
-			title : '가장 많이 사용된 특산물 ', // 제목
+			title : '가장 많이 사용된 특산물 top5', // 제목
 			fontSize: 10,
 			bar : {
 				groupWidth : '80%' // 그래프 너비 설정 %

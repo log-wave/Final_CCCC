@@ -37,4 +37,11 @@ public class Rank {
     public void setRank(int rank) {
         Rank = rank;
     }
+
+	@Override
+	public String toString() {
+		return "Rank [Name=" + Name + ", count=" + count + ", Rank=" + Rank + "]";
+	}
+    
+    
 }
