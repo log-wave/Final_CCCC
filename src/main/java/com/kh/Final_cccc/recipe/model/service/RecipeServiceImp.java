@@ -173,8 +173,28 @@ public class RecipeServiceImp implements RecipeService{
 
 	@Override
 	public String selectSpecname(int speciality_no) {
-		// TODO Auto-generated method stub
 		return rDAO.selectSpecname(sqlSession, speciality_no);
 	}
+
+	@Override
+	public ArrayList<Recipe> mainPopularRecipe() {
+		return rDAO.mainPopularRecipe(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Files> mainPopularRecipeFiles() {
+		return rDAO.mainPopularRecipeFiles(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Recipe> mainSpecialityRecipe() {
+		return rDAO.mainSpecialityRecipe(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Files> mainSpecialityRecipeFiles() {
+		return  rDAO.mainSpecialityRecipeFiles(sqlSession);
+	}
+
 
 }

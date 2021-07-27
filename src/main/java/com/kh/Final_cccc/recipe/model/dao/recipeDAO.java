@@ -151,4 +151,21 @@ public class recipeDAO {
 		return sqlSession.selectOne("recipeMapper.selectSpecname", speciality_no);
 	}
 
+	public ArrayList<Recipe> mainPopularRecipe(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipe");
+	}
+
+	public ArrayList<Files> mainPopularRecipeFiles(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipeFiles");
+	}
+
+	public ArrayList<Recipe> mainSpecialityRecipe(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipe");
+	}
+
+	public ArrayList<Files> mainSpecialityRecipeFiles(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipeFiles");
+	}
+
+
 }

@@ -22,63 +22,16 @@
 			<div class="main_mapBox_title"><span style="font-weight: bold"><span class="orange">콕콕 쿡쿡 </span> 인기 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
 			<br><br><br>
 			<div class="main_mapBox_contentBox">
-					<div class="PopularFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div><br>
-					</div>
-					<div class="PopularFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>
-					<div class="PopularFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>
-					<div class="PopularFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>
-					
-								
+				
 			</div>
 		</div>	
 		
 		<div class="main_mapBox">
 			<div class="main_mapBox_title"><span style="font-weight: bold"><span class="green">지역 특산물을</span> 이용한 레시피</span><img class="bread_cap"  src="resources/images/breadCap.png"></div>	
 			<br><br><br>
-			<div class="main_mapBox_contentBox">
-					<div class="SpeFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div><br>
-					</div>
-					<div class="SpeFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>
-					<div class="SpeFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>
-					<div class="SpeFoodImageArea">
-						<img class="PopularFoodImage" src="resources/images/돌솥밥.jpg"/>
-						<div class="recipeTitle">이천 쌀을 이용한 돌솥밥</div><br>
-						<div class="recipeInfo">이천 쌀의 특산물 경복궁 쌀로 만든 돌솥밥이에요</div><br><br>
-						<div class="recipeWriter">쿠킹 마마</div>
-					</div>			
+			<div class="main_mapBox_contentBox2">
+					
+					
 			</div>
 		</div>	
 		<br><br><br>
@@ -204,7 +157,97 @@
 	        }
 		}
 		
+		//메인 인기 레시피
+		$(function() {
+			$.ajax({
+				url : "mainPopularRecipe.rp",
+				success : function(data) {
+					  console.log("통신성공");
+					  console.log(data);
+					  
+					  $main_mapBox_contentBox = $('.main_mapBox_contentBox');   
+		               $main_mapBox_contentBox.html('');
+		                
 		
+		                for(var key in data){
+			                var $div = $('<div class="PopularFoodImageArea">');
+			                var $img =   $('<img class="PopularFoodImage">').attr("src" , "resources/uploadFiles/"+data[key].file);
+			                var $title = $('<div class= "recipeTitle">').text(data[key].rTitle);
+			       			var $explan = $('<div class= "recipeInfo">').text(data[key].rexplain);
+			       			var $time = $('<div class= "recipeTime">').text("소요시간 : " + data[key].cookingtime +"분");
+			                var $br = $('<br>');
+			       			$div.append($img);
+			                $div.append($title);
+			                $div.append($br);
+			                $div.append($explan);
+			                $div.append($br);
+			                $div.append($time);
+			                $main_mapBox_contentBox.append($div);
+			                
+			                $('.PopularFoodImageArea img').eq(0).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[0].rNo;
+		                     });
+			                $('.PopularFoodImageArea img').eq(1).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[1].rNo;
+		                     });
+			                
+			                $('.PopularFoodImageArea img').eq(2).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[2].rNo;
+		                     });
+			                
+			                $('.PopularFoodImageArea img').eq(3).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[3].rNo;
+		                     });
+		             }
+				}
+			});
+		});
+		
+		//지역 특산물을 이용한 레시피
+		$(function() {
+			$.ajax({
+				url : "mainSpecialityRecipe.rp",
+				success : function(data) {
+					  console.log("통신성공");
+					  console.log(data);
+					  
+					  $main_mapBox_contentBox2 = $('.main_mapBox_contentBox2');   
+		               $main_mapBox_contentBox2.html('');
+		                
+		
+		                for(var key in data){
+			                var $div = $('<div class="SpeFoodImageArea">');
+			                var $img =   $('<img class="SpeFoodImage">').attr("src" , "resources/uploadFiles/"+data[key].file);
+			                var $title = $('<div class= "sperecipeTitle">').text(data[key].rTitle);
+			       			var $explan = $('<div class= "sperecipeInfo">').text(data[key].rexplain);
+			       			var $time = $('<div class= "speTime">').text("소요시간 : " + data[key].cookingtime +"분");
+			       			var $br = $('<br>');
+			       			$div.append($img);
+			                $div.append($title);
+			                $div.append($br);
+			                $div.append($explan);
+			                $div.append($br);
+			                $div.append($time);
+			                $main_mapBox_contentBox2.append($div);
+			                
+			                $('.SpeFoodImageArea img').eq(0).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[0].rNo;
+		                     });
+			                $('.SpeFoodImageArea img').eq(1).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[1].rNo;
+		                     });
+			                
+			                $('.SpeFoodImageArea img').eq(2).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[2].rNo;
+		                     });
+			                
+			                $('.SpeFoodImageArea img').eq(3).on('click', function(){
+		                        location.href='<%=request.getContextPath()%>/rDetail.rp?recipeNo='+ data[3].rNo;
+		                     });
+		             }
+				}
+			});
+		});
 	</script>
 </body>
 </html>

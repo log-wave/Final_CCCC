@@ -37,7 +37,11 @@
 	height: 200px;
 	margin-bottom: 20px;
 }
-
+.SpeFoodImage{
+	width: 280px;
+	height: 200px;
+	margin-bottom: 20px;
+}
 .SpeFoodImageArea{
 	vertical-align: top;
 	width: 280px;
@@ -49,25 +53,36 @@
 	text-align: center;
 	
 }
-.recipeTitle{
+.recipeTitle , .sperecipeTitle{
 	width: 250px;
 	height: 30px;
 	margin: auto;
 	font-size: 20px;
+	text-overflow : ellipsis;
+	white-space : nowrap; 
+	overflow : hidden;
+	font-weight: bold;
 }
-.recipeInfo{
+.recipeInfo, .sperecipeInfo{
 	width: 250px;
 	height: 30px;
 	margin: auto;
 	font-size: 17px;
 	padding: 5px;
-	
+	text-overflow : ellipsis;
+	overflow : hidden;
+	display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
-.recipeWriter{
+.recipeTime, .speTime{
 	width: 250px;
 	height: 30px;
 	margin: auto;
 	font-size: 17px;
+	text-overflow : ellipsis;
+	white-space : nowrap;
+	overflow : hidden;
 }
 #startBtn{
 	margin-left : 545px;
