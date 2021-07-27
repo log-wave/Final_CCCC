@@ -131,4 +131,12 @@ public class AdminDAO {
 		
 	}
 
+	public int getRecipeListCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectOne("adminMapper.getRecipeListCount");
+	}
+
+	public ArrayList<Recipe> selectRecipeList(SqlSessionTemplate sqlSession) {
+		return (ArrayList)sqlSession.selectList("adminMapper.selectRecipeList");
+	}
+
 }

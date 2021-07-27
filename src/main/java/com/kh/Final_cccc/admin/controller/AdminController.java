@@ -144,15 +144,25 @@ public class AdminController {
 	}
 
 	@RequestMapping("adminRecipe.ad")
-	public String adminRecipeList(Model model) {
-//		ArrayList<Recipe> list = adService.selectRecipeList();
-//		if(list != null) {
-//			model.addAttribute("list", list);
-		return "../admin/admin_recipe/admin_Recipe";
-//		} else {
-//			return "../admin/admin_recipe/admin_Recipe";
-//		}
+	public ModelAndView adminRecipeList(@RequestParam(value = "page", required = false) Integer page, ModelAndView mv) {
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = page;
+		}
 
+		int listCount = adService.getRecipeListCount();
+
+		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+
+		ArrayList<Recipe> list = adService.selectRecipeList(pi);
+
+		if (list != null) {
+			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_recipe/admin_Recipe");
+		} else {
+			return null;
+		}
+
+		return mv;
 	}
 
 	@RequestMapping("adminMaterial.ad")
@@ -935,6 +945,6 @@ public class AdminController {
 		}
 		model.addAttribute("result5", result5);
 		return "../admin/admin_nummerical/survey_nummerical";
-	}
+	}	
 
 }
