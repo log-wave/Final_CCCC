@@ -143,8 +143,8 @@ public class RecipeServiceImp implements RecipeService{
 	}
 
 	@Override
-	public Recipe mateSelectRecipe(String mateRecipe) {
-		return rDAO.mateSelectRecipe(sqlSession, mateRecipe);
+	public ArrayList<Recipe> mateSelectRecipeList(String mateRecipe) {
+		return rDAO.mateSelectRecipeList(sqlSession, mateRecipe);
 	}
 
 	@Override

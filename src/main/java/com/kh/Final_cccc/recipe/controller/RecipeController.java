@@ -395,10 +395,10 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("materialSelectRecipe.rp")
-	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr) {
-		Recipe recipe = null;
+	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr, Model model) {
+		ArrayList<Recipe> recipe = null;
 		for(int i = 0; i < mateArr.length; i++) {
-			recipe = rService.mateSelectRecipe(mateArr[i]);
+			recipe = rService.mateSelectRecipeList(mateArr[i]);
 			if(recipe == null) {
 				return "error";
 			}
@@ -406,10 +406,37 @@ public class RecipeController {
 		System.out.println(recipe);
 		// recipeVO로 result 변경한다음 저거 받아주고 검색되도록 민기씨 한테 질문
 		if(!recipe.equals(null)) {
-			return "redirect:RList.rp";
+			model.addAttribute("recipe", recipe);
+			return "redirect:meteSearchRList.rp";
 		}else {
 			return "error";
 		}
+	}
+	
+	@RequestMapping("meteSearchRList.rp")
+	public ModelAndView RecipeList(@RequestParam(value="page" , required= false)Integer page,
+			@RequestParam("mateArr") String[] mateArr, ModelAndView mv) {
+
+		int currentPage = 1;
+		if(page != null) {
+			currentPage = page;
+		}
+		
+		int listCount = rService.getListCount();
+		PageInfo pi = PagenationRecipe.getPageInfo(currentPage, listCount);
+		ArrayList<Recipe> rList = null;
+		ArrayList<Files> fList = null;
+		
+//		rList = rService.selectspecList(sort_no, pi);
+//		fList = fService.selectspecfileList(sort_no, pi);
+		
+		
+		System.out.println("r :" + rList);
+		System.out.println("f : "+fList);
+		if(rList != null) {
+//			mv.addObject("rList", rList).addObject("type",type).addObject("sort_no", sort_no).addObject("fList",fList).addObject("pi", pi).setViewName("/searchRecipe/searchRecipe");
+		}
+		return mv;
 	}
 }
 
