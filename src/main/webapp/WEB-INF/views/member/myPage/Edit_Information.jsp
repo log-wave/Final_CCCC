@@ -27,12 +27,6 @@
 
             <!-- content-->
             <div id="content">
-				<!-- 프로필 사진 -->
-				<div>
-					<div class="profileimage_upload" align="center" style="margin-bottom: 60px; width: 200px; height: 200px; border-radius: 70%; overflow: hidden;">
-						<img src="resources/images/profile.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>
-					</div>
-				</div>
                 <!-- ID -->
                 <div>
                     <h3 class="join_title">
