@@ -1,7 +1,9 @@
 package com.kh.Final_cccc.member.model.dao;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.member.model.vo.PageInfo;
 import com.kh.Final_cccc.member.service.MemberServiceImpl;
+import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 @Repository("mDAO")
 public class MemberDAO {
@@ -156,6 +160,32 @@ public class MemberDAO {
 	      System.out.println(user_id);
 	      return sqlSession.selectOne("memberMapper.findPwdresult", user_id);
 	   }
+
+	public String select_userPw(SqlSessionTemplate sqlSession, MemberVO m) {
+			loggger.info("select_userPw dao 진입 성공");
+			return sqlSession.selectOne("memberMapper.select_userPw", m);
+	}
+	
+	
+	public int getListCount(SqlSessionTemplate sqlSession) {
+	      // TODO Auto-generated method stub
+	      return sqlSession.selectOne("memberMapper.getListCount");
+	   }
+
+	   public ArrayList<Recipe> selectmrList(int user_no, SqlSessionTemplate sqlSession, PageInfo pi) {
+	      // TODO Auto-generated method stub
+	      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+	      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+	      return (ArrayList)sqlSession.selectList("memberMapper.selectmrList", user_no, rowBounds);
+	   }
+
+	   public ArrayList<Files> selectmrfileList(SqlSessionTemplate sqlSession, int user_no, PageInfo pi) {
+	      // TODO Auto-generated method stub
+	      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+	      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+	      return (ArrayList)sqlSession.selectList("memberMapper.selectmrfileList", user_no, rowBounds);
+	   }
+	
 	
 
 }

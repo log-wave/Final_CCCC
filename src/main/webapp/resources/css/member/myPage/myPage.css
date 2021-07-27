@@ -123,7 +123,7 @@
 	align-items: center;
 }
 
-.myPage_content_title_myRecipe:hover{
+.myPage_content_title_myRecipe{
 	border-bottom: 3px solid rgba(242, 159, 5, 0.88);
 }
 
@@ -156,10 +156,39 @@
 	margin-left: 10px;
 }
 
+.MyrecipeList{
+   width:1000px;
+   height: auto;
+   margin:auto;
+   }
+.Myrecipe_items{
+   display: inline-block;
+   margin-left:50px;
+   margin-right:50px;
+   margin-top:60px;
+   width: 200px;
+   height: 200px;
+}
 
+.Myrecipe_img img{
+   width: 200px;
+   height: 160px;
+   border:1px solid black;
+}
 
+.pagingArea{
+	width:1000px;
+	margin-top: 50px;
+	text-align: center;
+	margin-bottom: 30px;
+}
 
-
-
-
+.pagingArea button{
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	font-size: 15px;
+	border-style: none;
+	cursor: pointer;
+}
 

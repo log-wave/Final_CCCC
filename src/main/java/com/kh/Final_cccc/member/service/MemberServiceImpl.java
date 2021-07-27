@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.dao.MemberDAO;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.member.model.vo.PageInfo;
+import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 @Service("mService") // Service성질을 갖는 객체 생성
 public class MemberServiceImpl implements MemberService{
@@ -173,6 +175,32 @@ public class MemberServiceImpl implements MemberService{
 	      loggger.info("findPwdresult 서비스 Impl 진입 성공");
 	        System.out.println(user_id);
 	      return mDAO.findPwdresult(sqlSession, user_id);
+	   }
+
+	@Override
+	public String select_userPw(MemberVO m) {
+		
+		 loggger.info("select_userPw 서비스 Impl 진입 성공");
+	        System.out.println(m);
+	      return mDAO.select_userPw(sqlSession, m);
+	}
+	
+	@Override
+	   public int getListCount() {
+	      // TODO Auto-generated method stub
+	      return mDAO.getListCount(sqlSession);
+	   }
+
+	   @Override
+	   public ArrayList<Recipe> selectmrList(PageInfo pi, int user_no) {
+	      // TODO Auto-generated method stub
+	      return mDAO.selectmrList(user_no, sqlSession, pi);
+	   }
+
+	   @Override
+	   public ArrayList<Files> selectmrfileList(PageInfo pi, int user_no) {
+	      // TODO Auto-generated method stub
+	      return mDAO.selectmrfileList(sqlSession, user_no, pi);
 	   }
 	   
 

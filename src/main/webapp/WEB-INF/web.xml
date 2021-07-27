@@ -4,10 +4,22 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 <!-- 다시 -->
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<context-param>
+	<!-- <context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
-	</context-param>
+	</context-param> -->
+	
+	<!--스프링 시큐리티 (팀장) -->
+	<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/root-context.xml
+            /WEB-INF/spring/appServlet/spring-security.xml
+        </param-value>
+    </context-param>
+	
+	
+	
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -44,6 +56,8 @@
 		<servlet-name>memberServlet</servlet-name>
 		<url-pattern>*.me</url-pattern>
 	</servlet-mapping>
+	
+
 		
 	<!-- 레시피 관련 (민기)-->
 		<servlet>
