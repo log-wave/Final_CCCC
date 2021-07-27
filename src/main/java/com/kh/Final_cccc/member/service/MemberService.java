@@ -59,6 +59,16 @@ public interface MemberService {
     ArrayList<Recipe> selectmrList(PageInfo pi, int user_no);
 
     ArrayList<Files> selectmrfileList(PageInfo pi, int user_no);
+
+	int getListCountt();
+
+	ArrayList<Recipe> selectmrListt(PageInfo pi, int user_no);
+
+	ArrayList<Files> selectmrfileListt(PageInfo pi, int user_no);
+
+	int selectScrapcount(int user_no);
+
+	int selectMyRecipecount(int user_no);
     
     
 	

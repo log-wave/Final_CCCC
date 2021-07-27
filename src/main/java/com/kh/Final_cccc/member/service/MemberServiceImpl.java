@@ -202,6 +202,36 @@ public class MemberServiceImpl implements MemberService{
 	      // TODO Auto-generated method stub
 	      return mDAO.selectmrfileList(sqlSession, user_no, pi);
 	   }
+
+	@Override
+	public int getListCountt() {
+		// TODO Auto-generated method stub
+		 return mDAO.getListCountt(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Recipe> selectmrListt(PageInfo pi, int user_no) {
+		// TODO Auto-generated method stub
+		return mDAO.selectmrListt(user_no, sqlSession, pi);
+	}
+
+	@Override
+	public ArrayList<Files> selectmrfileListt(PageInfo pi, int user_no) {
+		// TODO Auto-generated method stub
+		return mDAO.selectmrfileListt(sqlSession, user_no, pi);
+	}
+
+	@Override
+	public int selectScrapcount(int user_no) {
+		// TODO Auto-generated method stub
+		return mDAO.selectScrapcount(sqlSession, user_no);
+	}
+
+	@Override
+	public int selectMyRecipecount(int user_no) {
+		// TODO Auto-generated method stub
+		return mDAO.selectMyRecipecount(sqlSession, user_no);
+	}
 	   
 
 	

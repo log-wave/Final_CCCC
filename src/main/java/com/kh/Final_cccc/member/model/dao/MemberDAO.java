@@ -185,6 +185,35 @@ public class MemberDAO {
 	      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 	      return (ArrayList)sqlSession.selectList("memberMapper.selectmrfileList", user_no, rowBounds);
 	   }
+
+	public int getListCountt(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.getListCountt");
+	}
+
+	public ArrayList<Recipe> selectmrListt(int user_no, SqlSessionTemplate sqlSession, PageInfo pi) {
+		// TODO Auto-generated method stub
+		  int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+	      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+	      return (ArrayList)sqlSession.selectList("memberMapper.selectmrListt", user_no, rowBounds);
+	}
+
+	public ArrayList<Files> selectmrfileListt(SqlSessionTemplate sqlSession, int user_no, PageInfo pi) {
+		// TODO Auto-generated method stub
+		  int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+	      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+	      return (ArrayList)sqlSession.selectList("memberMapper.selectmrfileListt", user_no, rowBounds);
+	}
+
+	public int selectScrapcount(SqlSessionTemplate sqlSession, int user_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.selectScrapcount", user_no);
+	}
+
+	public int selectMyRecipecount(SqlSessionTemplate sqlSession, int user_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.selectMyRecipecount", user_no);
+	}
 	
 	
 

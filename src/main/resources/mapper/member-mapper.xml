@@ -246,7 +246,40 @@
       <result property="refFlag" column="REF_FLAG"/>
    </resultMap>
 	
+	<select id="getListCountt" resultType="_int">
+      SELECT COUNT(*) 
+      FROM RECIPE
+      WHERE R_STATUS='Y'
+   </select>
 	
-	
-
+	<select id="selectmrListt" resultMap="selectResult">
+      select *
+	  from RECIPE r
+	  join SCRAP s on (r.RECIPE_NO = s.RECIPE_NO)
+	  where s.user_no = #{user_no} and r_status='Y'
+	  order by r.recipe_no
+   </select>
+   
+    <select id="selectmrfileListt" resultMap="filesResultSet">
+      select *
+      from table_file, recipe r
+      join SCRAP s on (r.RECIPE_NO = s.RECIPE_NO)
+      where  r.recipe_no = ref_no and ref_flag=1 and s.user_no = #{user_no} and r_status='Y'
+      order by ref_no
+   </select>
+   
+   <select id="selectScrapcount" resultType="_int">
+      SELECT COUNT(*) 
+      from RECIPE r
+	  join SCRAP s on (r.RECIPE_NO = s.RECIPE_NO)
+	  where s.user_no = #{user_no} and r_status='Y'
+	  order by r.recipe_no
+   </select>
+   
+   <select id="selectMyRecipecount" resultType="_int">
+      select COUNT(*) 
+      from RECIPE
+      where user_no = #{user_no} and r_status='Y'
+      order by recipe_no
+   </select>
 </mapper>
