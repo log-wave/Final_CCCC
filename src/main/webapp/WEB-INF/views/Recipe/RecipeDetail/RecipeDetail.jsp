@@ -165,7 +165,7 @@
 			<div class="popUp_contentBox_righttBox">
 				<div class="popUp_contentBox_righttBox_profileBox">
 					 <div class="popUp_contentBox_righttBox_profileBox_innerBox">	
-						<div><i class="fas fa-user-circle fa-4x"></i></div>
+						<div class="profile_image" ><img src="${ pageContext.servletContext.contextPath }/resources/userProfile_uploadFile/${profile.changeName}"/></div>
 						<div class="popUp_usreName"><span>${nickname}</span></div>
 					</div>
 				</div>
@@ -217,12 +217,10 @@
 									<td>수량 :</td>
 									<td>${rs.per_qnt }인분</td>
 								</tr>
-								
-								<tr>
-									<td colspan="2" id="tooltip"title="컨트롤러에서 불러와야할 값"><br>어떤<br>특산물인가요?</td>
-								</tr>
-								
+
 							</table>
+							<br><br><br>
+							<div id="tooltip"title="${spec_info }"><p>어떤</p><p>특산물인가요?</p></div>
 					</c:if>
 				</div>		
 			</div>
@@ -236,9 +234,9 @@
 			
 			
 			
-			$('#tooltip').hover(function(){
+			$('#tooltip').on('click',function(){
 				console.log('툴팁실험');
-				$(this).tooltip();
+				$('#tooltip').tooltip();
 			});
 			
 			//처음에 스크랩 버튼의 상태를 가져와서 ajax를 통해 스크랩버튼을 정하는 메소드를 생성

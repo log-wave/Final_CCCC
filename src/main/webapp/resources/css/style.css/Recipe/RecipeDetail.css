@@ -24,7 +24,11 @@
 	margin-left:20px; 
 }
 
-
+.profile_image img{
+	width:100px;
+	height:100px;
+	border-radius: 50%;
+}
 
 
 .popUp_contentBox{
@@ -352,7 +356,9 @@
 
 
 #tooltip{
-	font-size: 20px;
+	display: block;
+	font-size: 18px;
+	height:60px;
 }
 .mate_item{
 	width: 150px;
