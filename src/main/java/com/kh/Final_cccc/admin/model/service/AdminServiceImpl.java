@@ -29,11 +29,6 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDAO adDAO;
 
-//	@Override
-//	public ArrayList<Recipe> selectRecipeList() {
-//		return adDAO.getSelectRecipeList(sqlSession);
-//	}
-
 	@Override
 	public ArrayList<MemberVO> selectMemberList(PageInfo pi) {
 		return adDAO.getSelectMemberList(sqlSession, pi);
@@ -147,6 +142,16 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ArrayList<Integer> getDateCount() {
 		return adDAO.getDateCount(sqlSession);
+	}
+
+	@Override
+	public int getRecipeListCount() {
+		return adDAO.getRecipeListCount(sqlSession);
+	}
+
+	@Override
+	public ArrayList<Recipe> selectRecipeList(PageInfo pi) {
+		return adDAO.selectRecipeList(sqlSession);
 	}
 
 	

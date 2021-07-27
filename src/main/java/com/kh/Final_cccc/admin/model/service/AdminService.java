@@ -67,6 +67,10 @@ public interface AdminService {
 
 	ArrayList<Integer> getDateCount();
 
+	int getRecipeListCount();
+
+	ArrayList<Recipe> selectRecipeList(PageInfo pi);
+
 	
 
 }

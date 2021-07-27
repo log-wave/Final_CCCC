@@ -27,124 +27,187 @@
 	<c:import url="/WEB-INF/views/admin/admincommon/header.jsp" charEncoding="UTF-8"></c:import>
     <c:import url="/WEB-INF/views/admin/admincommon/Main.jsp" charEncoding="UTF-8"></c:import>
     <div class="page">
-	    <h2 id="title"> 레시피 목록 </h2>
-	    <br>
-			<div class="menu">
-					<label id="recipe_num">번호</label>
-					<label id="recipe_name">레시피 명</label>
-					<label id="recipe_cate">카테고리</label>
-					<label id="recipe_cate2">하위 카테고리</label>
-					<label id="recipe_menu">레시피</label>
-					<label><input type="checkbox">전체선택</label>
-			</div>
-	    	<div class="recipe_list">
-	    	<hr>
-			<br>
-	    		<table class="recipe_Table">
-	    		
+	    <h2 id="title"> 레시피 목록  </h2>
+	    	<div class="recipe_list" align="center">
+		<br>
+	    		<table class="recipe_table">
 	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
+	    				<th  width="70px">번호</th>
+	    				<th  width="150px">레시피 명</th>
+	    				<th  width="130px">카테고리</th>
+	    				<th  width="160px">닉네임</th>
+	    				<th  width="500px">레시피내용</th>
+	    				<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
-	    			<tr>
-	    				<td  width="70px">1</td>
-	    				<td  width="150px">부대라면</td>
-	    				<td  width="130px">주제별</td>
-	    				<td  width="160px">편의점요리</td>
-	    				<td  width="500px">1.컵라면에 일정량보다 더 물을 받아놓습니다.</td>
-	    				<td  width="100px"><input type="checkbox"></td>
-	    			</tr>
+	    		<c:if test="${ list != null }">
+					<c:forEach var="ad" items="${ list }">
+			    		<tr class="click">
+			    			<td>${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
+			    			<td style="border-left: 1px solid black"><input type="checkbox" name="recipe_select" onclick="selectOne();" value="${ ad.recipeNo }"></td>
+			    		</tr>
+	    			</c:forEach>
+	    		</c:if>
+	    		<c:if test="${ list == null }">
+					<tr>
+						<td colspan="6">조회된 리스트가 없습니다.</td>
+					</tr>
+				</c:if>
 	    		</table>
-	    	<br><hr><br>
+	    		<br>
 	    	<div class="buttonArea">
-				<button id="insert_re">레시피 추가</button>
+				<button id="delete_rp">레시피 삭제</button>
 	    	</div>
     	</div>
-    	<!-- 페이징 -->
-			<div class="pagingArea">
-			<button>&lt;</button>
-                <!-- 버튼이 클릭되었을때 기능도 넣어줘야함  -->
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>&gt;</button>
+    		
+    		<div id="searchArea" style="float: left">
+				<select id="searchCondition" name="searchCondition">
+					<option value="no"<c:if test="${ searchCondition eq 'no' }">selected</c:if>>번호</option>
+					<option value="title"<c:if test="${ searchCondition eq 'title' }">selected</c:if>>제목</option>
+					<option value="content"<c:if test="${ searchCondition eq 'content' }">selected</c:if>>내용</option>
+				</select>
+		
+				<input id="searchValue" type="search" value="${ searchValue }" onkeyup="searchEnterKey();">
+				<button id="searchBtn" onclick="searchBoard();">검색하기</button>
 			</div>
+			
+		<div align="center">
+			<!-- 페이징 -->
+				<table id="pagingArea">	
+			<!-- 페이징 처리 -->
+				<tr align="center" height="20" id="buttonTab">
+					<td colspan="6">
+					
+						<!-- [이전] -->
+						<c:if test="${ pi.currentPage <= 1 }">
+							<button>&lt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage > 1 }">
+							<c:url var="before" value="adminEvent.ad">
+								<c:param name="page" value="${ pi.currentPage - 1 }"/>
+							</c:url>
+							<a href="${ before }"><button>&lt;</button></a>
+						</c:if>
+						
+						<!-- 페이지 -->
+						<c:forEach var="p" begin="${ pi.startPage }" end="${ pi.endPage }">
+							<c:if test="${ p eq pi.currentPage }">
+								<button style = "background: rgba(242, 159, 5, 0.88); color: white" ><b>${ p }</b></button>
+							</c:if>
+							
+							<c:if test="${ p ne pi.currentPage }">
+								<c:url var="pagination" value="adminEvent.ad">
+									<button><c:param name="page" value="${ p }"/></button>
+								</c:url>
+								<a href="${ pagination }"><button>${ p }</button></a>
+							</c:if>
+						</c:forEach>
+						
+						<!-- [다음] -->
+						<c:if test="${ pi.currentPage >= pi.maxPage }">
+							<button>&gt;</button>
+						</c:if>
+						<c:if test="${ pi.currentPage < pi.maxPage }">
+							<c:url var="after" value="adminEvent.ad">
+								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
+							</c:url> 
+							<a href="${ after }"><button>&gt;</button></a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
 	
-	<script>
+<script>
+	var all = document.getElementById("all");
+	var category = document.getElementsByName("recipe_select");
+	
+	function selectAll(){
+		if(all.checked){
+			for(var i = 0; i < category.length; i++){
+				category[i].checked = true;
+			}
+		} else {
+			for(var i = 0; i < category.length; i++){
+				category[i].checked = false;
+			}
+		}
+	}
+	
+	function selectOne(){
+		var count = 0;
+		
+		for(var i = 0; i < category.length; i++){
+			if(category[i].checked){
+				count++;
+			}
+		}
+		
+		if(count != 12){
+			all.checked = false;
+		} else {
+			all.checked = true;
+		}
+	}
+	
+	function recipeInfo(recipeNo){
+		var url ='<%=request.getContextPath()%>/adminRecipeDetail.ad?recipeNo=' + recipeNo;
+		window.open(url, 'recipeInfo', 'width=1200px, height=820px');
+	}
+	
+	$('.click').on('mouseover',function(){
+		$(this).closest('tr').css({"background":"#efefef85","cursor":"pointer"});
+	}).on('mouseout',function(){
+		$(this).closest('tr').css({"background":"","color":"","cursor":""});
+	});
+	
+	$('#delete_rp').on('click', function(){
+		var checkArr = [];
+		$('input[name="recipe_select"]:checked').each(function() {
+			checkArr.push($(this).val());
+		});
+		if (confirm('해당 레시피를 삭제하시겠습니까?')) {
+			$.ajax({
+				type: 'post',
+				url:'rpdelete.ad',
+				data:{
+					check:checkArr
+					
+				},
+				success:function(data){
+					window.location.reload();
+				}		
+			});
+		}
+	});
+	
+	function searchBoard(){
+		var searchCondition = $("#searchCondition").val();
+		var searchValue = $("#searchValue").val();
+		if(searchValue == ""){
+			alert("검색할 내용을 입력하세요.");
+			window.location.reload();
+		} else {
+			location.href="searchAdminRecipe.ad?searchCondition="+searchCondition+"&searchValue="+searchValue;
+		}
+	}
+	
+	function searchEnterKey(){
+		if (window.event.keyCode == 13) {
+			 
+        	$('#searchBtn').click();
+        }
+	}
 	window.onload = function () {
 		$("label[class*=admin_menu_nav]").eq(1).css({"color" : "white" , "font-weight" : "bold"}); 
 		}
 	
-	</script>
+</script>
 </body>
 </html>
