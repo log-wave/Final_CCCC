@@ -64,19 +64,56 @@
 	color: white;
 	margin-top: 27px;	
 }
+
+#reicpe_thum{
+	margin-top:27px;
+	width:200px;
+	height:50px;
+	
+}
 .rp_Mate_area{
 	width:950px;
 	min-height: 100px;
-	margin: auto;
-	
+	margin-left: 200px;
 	vertical-align: middle;
 }
 
 
+#tb{
+	width:600px;
+	min-height: 8	0px;
+	margin-left: 90px;
+	vertical-align: middle;
+}
+
+#tb th{
+	vertical-align: middle;
+	width:300px;
+	margin: auto;
+}
+.expl{
+	width:100px;
+	margin-top: 5px;
+}
+
+#tb thead{
+	width: 600px;
+	height: 30px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #D8D8D8;
+}
+#tb tbody{
+	width:600px;
+	margin-top: 15px;
+}
+
+#tb tbody>tr{
+	width:600px;
+	height:30px;
+}
 .rp_added_area{
 	width:300px;
 	height:200px;
-	
 }
 .select_Mate{
 	width:200px;
@@ -109,21 +146,7 @@
 	height:35px;
 	
 }
-#tb{
-	width:600px;
-	min-height: 8	0px;
-	margin: auto;
-	vertical-align: middle;
-}
 
-#tb th{
-	vertical-align: middle;
-}
-
-
-#tb td{
-	margin:auto;
-}
 
 .rp_insert_inputbox_min{
 	width:150px;
@@ -228,4 +251,8 @@
 	color: white;
 	margin-top:100px;
 	margin-left: 43%;
+}
+
+.expl p{
+	color:black;
 }
