@@ -93,7 +93,7 @@
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">특산물추가하기</div>
 				<div class="insertRecipe_inputBox">
-				특산물은 추가 하지 않으셔도 됩니다!<br>
+				<p>*특산물은 추가 하지 않으셔도 됩니다!</p>
 					<select name="spec_first"class="select_Mate" onchange="setspecArea(this.value)">
 						<option>지역을 선택해주세요</option>
 						<option value="서울">서울</option>
@@ -108,7 +108,7 @@
 						<option value="0">지역 카테고리를 선택해주세요</option>
 					</select>
 					<input type="text" name="spec_qnt" class="spec_qnt" value="0">
-					<br><br>특산물 설명!<br>
+					<div class="expl"><p class="explfont">특산물 설명!</p></div>
 				</div>
 				
 			</div>

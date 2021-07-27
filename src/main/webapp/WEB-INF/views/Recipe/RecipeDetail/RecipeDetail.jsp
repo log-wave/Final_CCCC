@@ -13,6 +13,10 @@
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/slick/slick.js" />"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Recipe/RecipeDetail.css?ver=1.0" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
@@ -197,21 +201,29 @@
 							
 						</c:forEach>
 						
-						<c:if test="${ not empty rs }">
 						
-							<div class="rp_mate_guide">
-				
-								<div class="rp_mate_left">특산물</div>
-								<div class="rp_mate_right">수량</div>
-							</div>
-							<li>
-								<div class="mate_item">
-									<div class="rp_mate_left">${rs.spec_name }</div>
-									<div class="rp_mate_right">${rs.per_qnt }</div>
-								</div>
-							</li>
-						</c:if>
 					</ul>
+					
+					<c:if test="${ not empty rs }">
+						
+						
+						<table class="spec_tb">
+						
+								<tr>
+									<td>특산물 :</td>
+									<td>${rs.spec_name }</td>
+								</tr>
+								<tr class="spec_tr_2">
+									<td>수량 :</td>
+									<td>${rs.per_qnt }인분</td>
+								</tr>
+								
+								<tr>
+									<td colspan="2" id="tooltip"title="컨트롤러에서 불러와야할 값"><br>어떤<br>특산물인가요?</td>
+								</tr>
+								
+							</table>
+					</c:if>
 				</div>		
 			</div>
 		</div>
@@ -221,6 +233,14 @@
 <script>
 
 		$(function(){
+			
+			
+			
+			$('#tooltip').hover(function(){
+				console.log('툴팁실험');
+				$(this).tooltip();
+			});
+			
 			//처음에 스크랩 버튼의 상태를 가져와서 ajax를 통해 스크랩버튼을 정하는 메소드를 생성
 			$(function(){			
 				getScrapbtn();
@@ -353,7 +373,7 @@
 		});
 	
 		$('.deleteRecipe').on('click',function(){
-			alert('삭제가클릭댐');
+			
 			var rId = ${r_info.recipe_no};
 			$.ajax({
 				url: 'Recipedelete.rp',
