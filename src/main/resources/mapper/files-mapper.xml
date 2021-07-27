@@ -107,7 +107,10 @@
     
     
     
-    
+    <select id="selectprofile" resultMap="filesResultSet">
+    	SELECT * FROM TABLE_FILE
+    	WHERE REF_NO = #{user_no} AND REF_FLAG = 3
+    </select>
     
     
 </mapper>

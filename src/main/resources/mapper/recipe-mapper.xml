@@ -248,4 +248,11 @@
 		and material_name like '%' || #{sv} || '%'
 	</select>
 	
+	<select id="selectspecinfo" resultType="String">
+		SELECT SPECIALITY_INFO
+		FROM RECIPE, SPECIALITY, RECIPE_SPEC
+		WHERE RECIPE.RECIPE_NO = RECIPE_SPEC.RECIPE_NO AND SPECIALITY.SPECIALITY_NO = RECIPE_SPEC.SPECIALITY_NO
+			AND RECIPE_SPEC.RECIPE_NO = #{recipeNo} 
+	</select>
+	
 </mapper>

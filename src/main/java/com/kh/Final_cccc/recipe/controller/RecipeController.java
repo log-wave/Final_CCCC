@@ -113,10 +113,15 @@ public class RecipeController {
 		//이름
 		String name = rService.selectUserName(r_info.getUser_no());
 		System.out.println(name);
+		//프로필 사진
+		Files profile = rService.selectprofile(r_info.getUser_no());
+		
 		System.out.println("썸네일" + rp_thum.getFileName());
 		for(int i = 0; i < rp_files.size(); i++) {
 			System.out.println("조리과정" + i+1 + ": " + rp_files.get(i).getFileName());
 		}
+		
+		String spec_info = rService.selectspecinfo(recipeNo);
 		
 		//
 		Recipe_spec rs_original=  rService.selectSpec(recipeNo);
@@ -150,7 +155,11 @@ public class RecipeController {
 		}
 		
 		int result = rService.increViewCount(recipeNo);
-		model.addAttribute("rs", rs).addAttribute("r_info", r_info).addAttribute("nickname", name).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum);
+		model.addAttribute("rs", rs).addAttribute("r_info", r_info).
+			addAttribute("nickname", name).addAttribute("r_mate",r_mate).
+			addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).
+			addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum).
+			addAttribute("spec_info", spec_info).addAttribute("profile",profile);
 		return "/RecipeDetail/RecipeDetail";
 	}
 	

@@ -1,5 +1,6 @@
 package com.kh.Final_cccc.recipe.model.service;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.SqlSessionManager;
@@ -199,6 +200,18 @@ public class RecipeServiceImp implements RecipeService{
 	@Override
 	public ArrayList<Material> selectSearchMaterialList(String sv) {
 		return rDAO.selectSearchMaterialList(sqlSession, sv);
+	}
+
+	@Override
+	public Files selectprofile(int user_no) {
+		// TODO Auto-generated method stub
+		return rDAO.selectprofile(sqlSession, user_no);
+	}
+
+	@Override
+	public String selectspecinfo(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectspecinfo(sqlSession, recipeNo);
 	}
 
 

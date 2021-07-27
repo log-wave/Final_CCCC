@@ -1,5 +1,6 @@
 package com.kh.Final_cccc.recipe.model.dao;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -171,6 +172,16 @@ public class recipeDAO {
 
 	public ArrayList<Material> selectSearchMaterialList(SqlSessionTemplate sqlSession, String sv) {
 		return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchMate", sv);
+	}
+
+	public Files selectprofile(SqlSessionTemplate sqlSession, int user_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("filesMapper.selectprofile", user_no);
+	}
+
+	public String selectspecinfo(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("recipeMapper.selectspecinfo", recipeNo);
 	}
 
 
