@@ -72,9 +72,10 @@ public class MemberController {
 // 마이페이지 넘어가면서 마이레시피 불러오기
    @RequestMapping(value="myPage.me", method=RequestMethod.GET)
    public ModelAndView moveMyPage(@RequestParam(value="page" , required= false)Integer page, ModelAndView mv, HttpSession session) {
-
+	     
          int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
          System.out.println("유저 번호~~~" + user_no);
+         int size = mService.selectScrapcount(user_no);
          int currentPage = 1;
       if(page != null) {
          currentPage = page;
@@ -91,7 +92,36 @@ public class MemberController {
       System.out.println("알리스트~~~~~~~~~~~~~~~~~~" + rList);
       System.out.println("에프리스트~~~~~~~~~~~~~~~~~" + fList);
       if(rList != null) {
-         mv.addObject("rList", rList).addObject("fList",fList).addObject("pi", pi).setViewName("/myPage/MyPage");
+         mv.addObject("rList", rList).addObject("fList",fList).addObject("pi", pi).addObject("size", size).setViewName("/myPage/MyPage");
+      }
+      return mv;
+   }
+   
+   // 마이페이지 스크랩 불러오기
+   
+   @RequestMapping(value="Scrap.me", method=RequestMethod.GET)
+   public ModelAndView moveScrap(@RequestParam(value="page" , required= false)Integer page, ModelAndView mv, HttpSession session) {
+	   	  	 
+         int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+         System.out.println("유저 번호~~~" + user_no);
+         int size = mService.selectMyRecipecount(user_no);
+         int currentPage = 1;
+      if(page != null) {
+         currentPage = page;
+      }
+      
+      int listCount = mService.getListCountt();
+      PageInfo pi = PaginationMember.getPageInfo(currentPage, listCount);
+      ArrayList<Recipe> rListt = null;
+      ArrayList<Files> fListt = null;
+      
+      rListt = mService.selectmrListt(pi, user_no);
+      fListt = mService.selectmrfileListt(pi, user_no);
+      
+      System.out.println("스크랩~~~~~~~~알리스트~~~~~~~" + rListt);
+      System.out.println("스크랩~~~~~~~~에프리스트~~~~~~" + fListt);
+      if(rListt != null) {
+         mv.addObject("rListt", rListt).addObject("fListt",fListt).addObject("pi", pi).addObject("size", size).setViewName("/myPage/Scrap");
       }
       return mv;
    }

@@ -10,7 +10,7 @@
 <script src="https://kit.fontawesome.com/307ff02242.js" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="<c:url value='/resources/css/style.css/index.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/member/myPage/myPage.css?ver=1.0'/>">
+<link rel="stylesheet" href="<c:url value='/resources/css/member/myPage/Scrap.css?ver=1.0'/>">
 
 
 
@@ -66,25 +66,24 @@
 	</div>
 	
 	<div class="myPage_content_title">
-		<div class="myPage_content_title_myRecipe " onclick="location.href='myPage.me'">마이 레시피<span class="title_common_number">${ rList.size() }</span></div>
-		<div class="myPage_content_title_scrap " onclick="location.href='Scrap.me'">스크랩<span class="title_common_number">${ size }</span></div>
+		<div class="myPage_content_title_myRecipe " onclick="location.href='myPage.me'">마이 레시피<span class="title_common_number">${ size }</span></div>
+		<div class="myPage_content_title_scrap " onclick="location.href='Scrap.me'">스크랩<span class="title_common_number">${ rListt.size() }</span></div>
 		<div class="myPage_content_title_following ">팔로잉<span class="title_common_number">121</span></div>
 	</div>
-	
-			<c:if test="${ rList.size() > 0 }">
-					<div class="MyrecipeList">
+				<c:if test="${ rListt.size() > 0 }">
+					<div class="ScrapList">
 					
 					<!-- 반복문으로  레시피리스트 돌려버리기 -->
-						<c:forEach var="r" items="${rList }" begin="0" end="${ fn:length(rList)}" step="1" varStatus="i">
+						<c:forEach var="r" items="${ rListt }" begin="0" end="${ fn:length(rListt)}" step="1" varStatus="i">
 						
 						
 							<c:url var="rDetail" value="rDetail.rp">
 								<c:param name="recipeNo" value="${r.recipe_no }"/>
 							</c:url>
-							<div class="Myrecipe_items" onclick="window.open('${rDetail}')">
+							<div class="Scrap_items" onclick="window.open('${rDetail}')">
 							
-								<div class="Myrecipe_img">
-									<img src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${fList.get(i.index).changeName}">
+								<div class="Scrap_img">
+									<img src="${ pageContext.servletContext.contextPath }/resources/uploadFiles/${fListt.get(i.index).changeName}">
 								</div>
 								<div>
 									<div class="recipe_name" align="center"><p>${r.recipe_title }</p><p>조회수 : ${ r.view_count}</p></div>
@@ -141,12 +140,12 @@
 				</div>
 			</c:if>
 			
-			<c:if test="${ rList.size() == 0 }">
+			<c:if test="${ rListt.size() == 0 }">
 				
 				<div class="emptyList" align="center">
-					<label class="emptyfont">등록된 레시피가 없습니다.</label><br><br>
-					<label class="emptyfont">레시피를 등록해주세요.</label><br>
-					<input type="button" id="insertRecipe" onclick="location.href='insertRecipeForm.rp'" value="레시피 등록"/>
+					<br><br><label class="emptyfont">스크랩 한 레시피가 없습니다.</label><br><br>
+					<label class="emptyfont">레시피를 스크랩 해보세요.</label><br>
+					<!-- <input type="button" id="insertRecipe" onclick="location.href='insertRecipeForm.rp'" value="레시피 등록"/> -->
 				</div>
 				
 			</c:if>
@@ -165,6 +164,7 @@
 	
 </body>
 <script type="text/javascript">
+	
 	
 
 //프로필 수정 
