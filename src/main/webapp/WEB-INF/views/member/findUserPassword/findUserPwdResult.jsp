@@ -35,6 +35,7 @@
                     <span class="box int_updatepass2_check">
                         <input type="password" id="updatepass" class="int"  maxlength="20">
                     </span>
+                     <div id="pass_change"></div>   
                     <div style="margin-top: 20px"></div>
                 </div>
                  <div id="pass01_check">
@@ -48,9 +49,8 @@
                     <span class="box int_updatepass2_check">
                         <input type="password" id="updatepass2" class="int" name="updatepass2"  maxlength="20">
                     </span>
+                    <div id="pass_change_confirm"></div>   
                     <div style="margin-top: 20px"></div>
-                </div>
-                 <div id="updatepass2_check">
                 </div>
                <div class="container-login100-form-btn m-t-20">
                <button class="login100-form-btn"  id="find_userPassword_btn" type="submit">
@@ -68,4 +68,82 @@
       
    
 </body>
+
+<script>
+
+	function disabledSubmitBtn(){
+    
+    $("#find_userPassword_btn").prop("disabled", true);
+    $("#find_userPassword_btn").css("background-color", "#E2E2E2");
+    
+ 		}
+ 
+
+
+	//비밀번호 유효성 검사 
+	$("#updatepass").blur(function(){
+		
+		var pass01 = $('#updatepass').val();
+		
+		 var num = pass01.search(/[0-9]/g);
+		 var eng = pass01.search(/[a-z]/ig);
+		 var spe = pass01.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+		 
+		 if(pass01.length<8 || pass01.length >20){
+			 
+			 
+			 $("#pass_change").text("8~20 자리 이내로 입력해주세요. ");
+			 $("#pass_change").css("color", "red");
+			 disabledSubmitBtn();
+			
+			 
+		 }else if(pass01.search(/\s/) !=-1){
+			 
+			 
+			 $("#pass_change").text("비밀번호는 공백 없이 입력해주세요. ");
+			$("#pass_change").css("color", "red");
+			disabledSubmitBtn();
+		 
+		 }else if(num <0 || eng<0 || spe <0){
+			 
+			 
+			 $("#pass_change").text("영문 , 숫자 , 특수문자를 혼합하여 입력해주세요. ");
+			$("#pass_change").css("color", "red");
+			disabledSubmitBtn();
+		 
+		 }else{
+			 $("#pass_change").text("사용 가능한 비밀번호 입니다. ");
+			 $("#pass_change").css("color", "green");
+			
+		 }
+		
+	});
+	
+	
+	//비밀번호 재확인 유효성 검사 
+	
+	$("#updatepass2").blur(function(){
+		var pass01 = $('#updatepass').val();
+		var pass02 = $('#updatepass2').val();
+		
+		if(pass01 != pass02){
+			
+	
+			$("#pass_change_confirm").text("비밀번호가 일치하지 않습니다. ");
+			$("#pass_change_confirm").css("color", "red");
+			disabledSubmitBtn();
+		
+		}else{
+			$("#pass_change_confirm").text("비밀번호가 일치합니다. ");
+			$("#pass_change_confirm").css("color", "green");
+			$("#find_userPassword_btn").prop("disabled", false);
+			$("#find_userPassword_btn").css("background-color", "rgb(242, 159, 5)");
+		}
+
+	});
+	
+</script>
+
+
+
 </html>
