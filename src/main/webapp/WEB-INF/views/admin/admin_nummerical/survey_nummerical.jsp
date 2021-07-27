@@ -54,7 +54,10 @@
         var options = {
           title: '얼마나 자주 집에서 식사하시나요?',
           pieHole: 0.4,
-          sliceVisibilityThreshold:0
+          sliceVisibilityThreshold:0,
+          titleTextStyle: {
+              fontSize: 15
+              }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart1'));
@@ -74,7 +77,10 @@
         var options = {
           title:'직접 요리하는 것을 좋아하시나요?',
           pieHole: 0.4,
-          sliceVisibilityThreshold:0
+          sliceVisibilityThreshold:0,
+          titleTextStyle: {
+              fontSize: 15
+              }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart2'));
@@ -94,7 +100,10 @@
         var options = {
           title: '하루에 집에서 요리하는 횟수는?',
           pieHole: 0.4,
-          sliceVisibilityThreshold:0
+          sliceVisibilityThreshold:0,
+          titleTextStyle: {
+              fontSize: 15
+              }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart3'));
@@ -114,7 +123,10 @@
         var options = {
           title: '하루에 몇끼를 드시나요?',
           pieHole: 0.4,
-          sliceVisibilityThreshold:0
+          sliceVisibilityThreshold:0,
+          titleTextStyle: {
+              fontSize: 15
+              }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart4'));
@@ -132,9 +144,12 @@
         ]);
 
         var options = {
-          title: '콕콕 쿡쿡 사이트 이용 후 도움이 되셨나요?',
+          title: '사이트 이용 후 도움이 되셨나요?',
           pieHole: 0.4,
-          sliceVisibilityThreshold:0
+          sliceVisibilityThreshold:0,
+          titleTextStyle: {
+              fontSize: 15
+              }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart5'));
