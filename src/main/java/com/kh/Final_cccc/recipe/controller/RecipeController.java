@@ -396,46 +396,37 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("materialSelectRecipe.rp")
-	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr, Model model) {
-		ArrayList<Recipe> recipe = null;
-		for(int i = 0; i < mateArr.length; i++) {
-			recipe = rService.mateSelectRecipeList(mateArr[i]);
-			if(recipe == null) {
-				return "error";
-			}
-		}
-		System.out.println(recipe);
-		// recipeVO로 result 변경한다음 저거 받아주고 검색되도록 민기씨 한테 질문
-		if(!recipe.equals(null)) {
-			model.addAttribute("recipe", recipe);
-			return "redirect:meteSearchRList.rp";
-		}else {
-			return "error";
-		}
-	}
-	
-	@RequestMapping("meteSearchRList.rp")
-	public ModelAndView RecipeList(@RequestParam(value="page" , required= false)Integer page,
-			@RequestParam("mateArr") String[] mateArr, ModelAndView mv) {
-
+	public ModelAndView mateSelectRecipe(@RequestParam("mateArr") String[] mateArr, @RequestParam(value="page", required= false) Integer page, 
+			ModelAndView mv) {
+		
+		ArrayList<Recipe> rList = null;
+		ArrayList<Recipe> jspList = new ArrayList<>();
+		ArrayList<Files> fList = new ArrayList<>();;
+		
+		int listCount = rService.getListCount();
 		int currentPage = 1;
+		
 		if(page != null) {
 			currentPage = page;
 		}
-		
-		int listCount = rService.getListCount();
 		PageInfo pi = PagenationRecipe.getPageInfo(currentPage, listCount);
-		ArrayList<Recipe> rList = null;
-		ArrayList<Files> fList = null;
+			
+		for(int i = 0; i < mateArr.length; i++) {
+			rList = rService.mateSelectRecipeList(mateArr[i], pi);
+			for(int j = 0; j < rList.size(); j++) {
+				jspList.add(rList.get(j));
+			}
+			if(rList.isEmpty()) {
+			}
+		}
 		
-//		rList = rService.selectspecList(sort_no, pi);
-//		fList = fService.selectspecfileList(sort_no, pi);
-		
-		
-		System.out.println("r :" + rList);
-		System.out.println("f : "+fList);
-		if(rList != null) {
-//			mv.addObject("rList", rList).addObject("type",type).addObject("sort_no", sort_no).addObject("fList",fList).addObject("pi", pi).setViewName("/searchRecipe/searchRecipe");
+		for(int i = 0; i < jspList.size(); i++) {
+			fList.add(fService.selectRTFiles(jspList.get(i).getRecipe_no()));
+		}
+				
+		if(!rList.equals(null)) {
+			mv.addObject("rList", jspList).addObject("fList", fList).addObject("pi", pi).setViewName("/searchRecipe/mateSearchRecipe");
+		}else {
 		}
 		return mv;
 	}
@@ -484,14 +475,14 @@ public class RecipeController {
 		for(Recipe recipe : rlist  ) {
 			for(Files fileinfo : flist) {
 		         if(fileinfo.getRefNo() == recipe.getRecipe_no()) {
-		        jQbject = new JSONObject();
-				jQbject.put("rTitle", recipe.getRecipe_title());
-				jQbject.put("rexplain", recipe.getRecipe_explain());
-				jQbject.put("file", fileinfo.getChangeName());
-				jQbject.put("rNo", recipe.getRecipe_no());
-				jQbject.put("userNo", recipe.getUser_no());
-				jQbject.put("cookingtime", recipe.getCooking_time());
-				jArray.add(jQbject);
+			        jQbject = new JSONObject();
+					jQbject.put("rTitle", recipe.getRecipe_title());
+					jQbject.put("rexplain", recipe.getRecipe_explain());
+					jQbject.put("file", fileinfo.getChangeName());
+					jQbject.put("rNo", recipe.getRecipe_no());
+					jQbject.put("userNo", recipe.getUser_no());
+					jQbject.put("cookingtime", recipe.getCooking_time());
+					jArray.add(jQbject);
 		         }
 			}
 	}
@@ -500,5 +491,17 @@ public class RecipeController {
 		Gson gson = new Gson();
 		gson.toJson(jArray, response.getWriter());
 	}
+	
+	@RequestMapping("searchMate.rp") 
+	@ResponseBody
+	public void searchMaterial(HttpServletResponse response, @RequestParam("sv") String sv) throws JsonIOException, IOException {
+		
+		ArrayList<Material> mList = rService.selectSearchMaterialList(sv);
+		response.setContentType("application/json;charset=utf-8");
+		Gson gson = new Gson();
+		gson.toJson(mList, response.getWriter());
+	}
+	
+	
 }
 

@@ -143,8 +143,8 @@ public class RecipeServiceImp implements RecipeService{
 	}
 
 	@Override
-	public ArrayList<Recipe> mateSelectRecipeList(String mateRecipe) {
-		return rDAO.mateSelectRecipeList(sqlSession, mateRecipe);
+	public ArrayList<Recipe> mateSelectRecipeList(String mateRecipe, PageInfo pi) {
+		return rDAO.mateSelectRecipeList(sqlSession, mateRecipe, pi);
 	}
 
 	@Override
@@ -193,8 +193,14 @@ public class RecipeServiceImp implements RecipeService{
 
 	@Override
 	public ArrayList<Files> mainSpecialityRecipeFiles() {
-		return  rDAO.mainSpecialityRecipeFiles(sqlSession);
+		return rDAO.mainSpecialityRecipeFiles(sqlSession);
 	}
+
+	@Override
+	public ArrayList<Material> selectSearchMaterialList(String sv) {
+		return rDAO.selectSearchMaterialList(sqlSession, sv);
+	}
+
 
 
 }

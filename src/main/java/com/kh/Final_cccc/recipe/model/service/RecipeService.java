@@ -54,7 +54,7 @@ public interface RecipeService {
 
 	int increViewCount(int recipeNo);
 
-	ArrayList<Recipe> mateSelectRecipeList(String mateRecipe);
+	ArrayList<Recipe> mateSelectRecipeList(String mateRecipe, PageInfo pi);
 
 	ArrayList<Speciality> selectSpecialityList(String sNo);
 
@@ -74,7 +74,8 @@ public interface RecipeService {
 
 	ArrayList<Files> mainSpecialityRecipeFiles();
 
-	
+	ArrayList<Material> selectSearchMaterialList(String sv);
+
 
 	
 

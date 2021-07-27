@@ -206,10 +206,10 @@
 	</select>
 	
 	<select id="mainPopularRecipe" resultMap="selectResult">
-	select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count,  cooking_Time
-	from recipe
-	where r_status = 'Y'  AND <![CDATA[  ROWNUM <= 4 ]]> 
-	order by view_Count DESC
+		select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count,  cooking_Time
+		from recipe
+		where r_status = 'Y'  AND <![CDATA[  ROWNUM <= 4 ]]> 
+		order by view_Count DESC
 	</select>	
 	
 	<select id="mainPopularRecipeFiles" resultMap="filesResultSet">
@@ -239,6 +239,13 @@
 		select *
  		from table_file
  		where ref_flag = 1
+	</select>
+	
+	<select id="selectSearchMate" resultMap="selectMtResult">
+		select * 
+		from material
+		where Status = 'Y'
+		and material_name like '%' || #{sv} || '%'
 	</select>
 	
 </mapper>
