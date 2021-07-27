@@ -53,15 +53,16 @@
                   </button>
                </div>
                <div class="wrap-input100 validate-input" style="margin-top: 30px;">
-                  <input class="input100 email_confirm" type="text" name="email_confirm" placeholder="이메일 인증번호">
+                  <input class="input100 email_confirm" type="text" name="email_confirm" id="email_confirm" placeholder="이메일 인증번호">
                   <span class="focus-input100-1"></span>
                   <span class="focus-input100-2"></span>
                </div>
                <div id="email_confirmCheck"></div>   
+               <div id="email_confirm_success"></div>  
                <div class="container-login100-form-btn m-t-20">
                
                <button class="login100-form-btn"  id="find_userPassword_btn" type="submit">
-                  입력 완료
+               	   입력 완료
                </button>
                
                </div>
@@ -273,7 +274,7 @@
                $("#find_userPassword_btn").prop("disabled", false);
                
                console.log(data);
-                  console.log(data.checkNum);
+               console.log(data.checkNum);
                
                function trans(){
                   
@@ -282,14 +283,13 @@
                }
                
                trans();
-               console.log("전역변수:" + globalEmailCheckNum);      
                
-               $("#email_confirmCheck").blur(function(){
+               $("#email_confirm").blur(function(){
                   
-                  var email_confirm = $('#email_confirmCheck').val();
+                  var email_confirm = $('#email_confirm').val();
                    
                    if(email_confirm == globalEmailCheckNum){
-                       $("#email_confirmCheck").text("이메일 인증번호가 일치합니다.");
+                       $("#email_confirmCheck").text("입력완료 버튼을 클릭해주세요.");
                       $("#email_confirmCheck").css("color", "green");
                       $("#find_userPassword_btn ").prop("disabled", false);
                       $("#find_userPassword_btn").css("background-color", "rgb(242, 159, 5)");
