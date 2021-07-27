@@ -18,6 +18,7 @@ public class Files {
 	public Files(int fileNo, String fileName, String changeName, String filePath, Date uploadDate, String fileYn,
 			int refNo, int refFlag) {
 		super();
+		
 		this.fileNo = fileNo;
 		this.fileName = fileName;
 		this.changeName = changeName;
@@ -31,6 +32,7 @@ public class Files {
 	public int getFileNo() {
 		return fileNo;
 	}
+
 
 	public void setFileNo(int fileNo) {
 		this.fileNo = fileNo;

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.member.service.MemberServiceImpl;
 
@@ -104,5 +105,57 @@ public class MemberDAO {
         System.out.println(m);
         return sqlSession.update("memberMapper.edit_my_Inform", m);
     }
+
+	
+
+	public int user_profile_change(SqlSessionTemplate sqlSession, Files files) {
+		 	
+			loggger.info("user_profile_dao 진입");
+	        
+	        return sqlSession.insert("memberMapper.user_profile_change", files);
+	}
+
+
+	public String select_user_profile_changeName(SqlSessionTemplate sqlSession, Files files) {
+
+		loggger.info("select_user_profile_changeName 진입");
+        
+		return sqlSession.selectOne("memberMapper.select_user_profile_changeName", files);
+	}
+	
+	
+	public String selectChangeName(SqlSessionTemplate sqlSession, int user_no) {
+
+        return sqlSession.selectOne("filesMapper.selectChangeName", user_no);
+    
+	}
+
+	public void delete_user_profile(SqlSessionTemplate sqlSession, int user_no) {
+		
+		sqlSession.delete("filesMapper.delete_user_profile", user_no);
+	    
+		
+		
+	}
+	
+	//승재씨 코드 
+	public int userIdemailCheck(SqlSessionTemplate sqlSession, MemberVO m) {
+	      loggger.info("userIdemailCheck dao 진입 성공");
+	        System.out.println(m);
+	        return sqlSession.selectOne("memberMapper.userIdemailCheck", m);
+	   }
+
+	   public int updatePwd(SqlSessionTemplate sqlSession, MemberVO m) {
+	      loggger.info("updatePwd 진입 성공");
+	        System.out.println(m);
+	        return sqlSession.update("memberMapper.updatePwd", m);
+	   }
+
+	   public MemberVO findPwdresult(SqlSessionTemplate sqlSession, String user_id) {
+	      loggger.info("findPwdresult dao 진입 성공");
+	      System.out.println(user_id);
+	      return sqlSession.selectOne("memberMapper.findPwdresult", user_id);
+	   }
+	
 
 }

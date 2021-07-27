@@ -353,5 +353,23 @@ public class RecipeController {
 		}
 		
 	}
+	
+	@RequestMapping("materialSelectRecipe.rp")
+	public String mateSelectRecipe(@RequestParam("mateArr") String[] mateArr) {
+		Recipe recipe = null;
+		for(int i = 0; i < mateArr.length; i++) {
+			recipe = rService.mateSelectRecipe(mateArr[i]);
+			if(recipe == null) {
+				return "error";
+			}
+		}
+		System.out.println(recipe);
+		// recipeVO로 result 변경한다음 저거 받아주고 검색되도록 민기씨 한테 질문
+		if(!recipe.equals(null)) {
+			return "redirect:RList.rp";
+		}else {
+			return "error";
+		}
+	}
 }
 

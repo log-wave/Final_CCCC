@@ -139,4 +139,9 @@ public class RecipeServiceImp implements RecipeService{
 		return rDAO.increViewCount(sqlSession, recipeNo);
 	}
 
+	@Override
+	public Recipe mateSelectRecipe(String mateRecipe) {
+		return rDAO.mateSelectRecipe(sqlSession, mateRecipe);
+	}
+
 }

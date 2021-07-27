@@ -1,11 +1,7 @@
 package com.kh.Final_cccc.member.service;
 
 
-
-
-
-import javax.servlet.http.HttpServletResponse;
-
+import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 
 public interface MemberService {
@@ -38,13 +34,20 @@ public interface MemberService {
 
 	int Edit_MyInform(MemberVO m);
 
+	int user_profile_change(Files files);
 
-
-
+	String select_user_profile_changeName(Files files);
 	
+	String selectChangeName(int user_no);
 
+	void delete_user_profile(int user_no);
+	
+	//승재씨 코드 
+	
+	int userIdemailCheck(MemberVO m);
 
-	
-	
+   int updatePwd(MemberVO m);
+
+   MemberVO findPwdresult(String user_id);
 	
 }
