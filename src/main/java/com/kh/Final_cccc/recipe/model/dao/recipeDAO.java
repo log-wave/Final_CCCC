@@ -122,8 +122,8 @@ public class recipeDAO {
 		return sqlSession.update("recipeMapper.increViewCount", recipeNo);
 	}
 
-	public Recipe mateSelectRecipe(SqlSessionTemplate sqlSession, String mateRecipe) {
-		return sqlSession.selectOne("recipeMapper.selectMateRecipe", mateRecipe);
+	public ArrayList<Recipe> mateSelectRecipeList(SqlSessionTemplate sqlSession, String mateRecipe) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectMateRecipeList", mateRecipe);
 	}
 
 	public ArrayList<Speciality> selectSpecialityList(SqlSessionTemplate sqlSession, String sNo) {

@@ -199,8 +199,8 @@
 		WHERE RECIPE_NO = #{recipeNo}
 	</update>
 	
-	<select id="selectMateRecipe" resultMap="selectResult">
-		select recipe_title, recipe.recipe_no
+	<select id="selectMateRecipeList" resultMap="selectResult">
+		select recipe.recipe_no, recipe_title, view_count
 		from recipe, material, recipe_mate
 		where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no and material_name = #{mateRecipe}
 	</select>
