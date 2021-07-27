@@ -169,8 +169,26 @@
 
 //프로필 수정 
 
-$(function(){
 
+function get_profileImg(){
+	
+	
+	$.ajax({
+		url:'getprofile.me',
+		success:function(data){
+			console.log(data);
+			if(data == ''){
+				$('.profileimage_upload').append('<img src="resources/images/경기도.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
+			}else{
+				$('.profileimage_upload').append('<img src="${ pageContext.servletContext.contextPath }/resources/userProfile_uploadFile/'+data+'" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
+			}
+		}
+	});
+}
+
+$(function(){
+	
+	get_profileImg();
 		
 	
 	$("#fileArea").hide();
@@ -189,16 +207,16 @@ $(function(){
 				
 				enctype: 'multipart/form-data',	
 				data:formData,
+				async: false,
 				processData: false,
+				
 	            contentType: false,
 	            url : "user_profile_change.me",
 				type:'POST',
 				success: function(data){
 					
 					var profile_changeName = data;
-					get_profileImg();
-					
-					
+						
 					window.location.reload();
 							
 				}
@@ -216,21 +234,7 @@ $(function(){
 	});
 
 
-function get_profileImg(){
-	var user = $('#id_check').val();
-	
-	$.ajax({
-		url:'getprofile.me',
-		success(data){
-			console.log(data);
-			if(data == ''){
-				$('.profileimage_upload').append('<img src="resources/images/경기도.png" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
-			}else{
-				$('.profileimage_upload').append('<img src="${ pageContext.servletContext.contextPath }/resources/userProfile_uploadFile/'+data+'" id= "profileImg" name= "profileImg" style="width:100%; height:100%; object-fit: cover; cursor: pointer;"/>');
-			}
-		}
-	});
-}
+
 </script>
 
 </html>	
