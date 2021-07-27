@@ -1,8 +1,12 @@
 package com.kh.Final_cccc.member.service;
 
 
+import java.util.ArrayList;
+
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.member.model.vo.PageInfo;
+import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 public interface MemberService {
 
@@ -42,12 +46,20 @@ public interface MemberService {
 
 	void delete_user_profile(int user_no);
 	
-	//승재씨 코드 
-	
 	int userIdemailCheck(MemberVO m);
 
-   int updatePwd(MemberVO m);
+    int updatePwd(MemberVO m);
 
-   MemberVO findPwdresult(String user_id);
+    MemberVO findPwdresult(String user_id);
+
+    String select_userPw(MemberVO m);
+    
+    int getListCount();
+
+    ArrayList<Recipe> selectmrList(PageInfo pi, int user_no);
+
+    ArrayList<Files> selectmrfileList(PageInfo pi, int user_no);
+    
+    
 	
 }

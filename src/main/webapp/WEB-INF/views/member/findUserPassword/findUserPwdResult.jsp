@@ -63,20 +63,7 @@
    </div>
    </form>
    <c:import url="/WEB-INF/views/common/footer.jsp" charEncoding="UTF-8"></c:import>
-   <script type="text/javascript">
-   
-   /* $('#find_userPassword_btn').on('click', function(){
-      var user_pwd = $("#updatepass2").val();
-      var user_id = $("#user_id").val();
-      console.log(user_id);
-      console.log(user_pwd);
-      location.href="updatepwdwwww.me;
-   });
-    */
 
-    
-   </script>
-   
       
       
    

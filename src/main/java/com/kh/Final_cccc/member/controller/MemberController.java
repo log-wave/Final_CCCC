@@ -2,16 +2,19 @@ package com.kh.Final_cccc.member.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Enumeration;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,48 +26,30 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.Files.vo.Files;
+import com.kh.Final_cccc.member.common.PaginationMember;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
+import com.kh.Final_cccc.member.model.vo.PageInfo;
 import com.kh.Final_cccc.member.service.MemberService;
+import com.kh.Final_cccc.recipe.model.vo.Recipe;
 
 
 
-/*
-    @SessionAttributes 의 특징 
-    
-    -수정 작업을 처리할떄 유용하게 사용할 수 있다. 특히 데이터의 null 관리에 효율적이다. 만약 사용자가 회원 정보를 수정할 때  비밀번호만 변경할 시  나머지 수정할 수 있는 부분(닉네임 , 메일주소etc)
-    등은 null값으로 db에 저장이 된다. 이 때 sessionAttribute를 사용하게 되면 다음과 같은 효과가 있다. 
-    
-    먼저 사용자가 회원정보 수정 화면을 요청하면 해당 메서드는 검색 결과인 MemberVO를 loginUser라는 이름으로 Model에 저장하게 된다. Model 에 loginUser라는 이름으로 저장되는 데이터가 있다면 
-    그 데이터를 세션에도 자동으로 저장하라는 설정이다. 
-    
-    즉 일차적으로 회원정보 수정 메서드가 실행되어 해당 화면이 출력되면 일차적으로 Model에 loginUser라는 이름으로 MmeberVO 객체가 저장되고 , 세션에도  loginUser라는 MemberVO객체가 저장된다. 
-    
-    이 후 사용자가 회원정보 수정 버튼을 클릭하면 매개변수로 선언된 MemberVO 앞에 @ModelAttribute 가 추가된다. 스프링 컨테이너는 우선 @ModelAttribute("loginUser") 설정을 해석하여 세션에 
-    
-    loginUser라는 이름으로 저장된 데이터가 있는지 확인한다. 그리고 그 값이 있다면 해당 객체를 세션에서 꺼내서 매개변수로 선언된 vo변수에 할당한다. 그리고 사용자가 입력한 파라미터 값을 vo객체에 할당한다. 이때 사용자가 
-    입력한 수 정정보 값만 새롭게 할당되고 , 나머지는 상세 보기를 했을때 세션에 저장된 데이터가 유지된다. 
-    
-    
+/**
+ * MVC 패턴에서 사용자로부터의 입력에 대한 응답으로 Model / View 를 업데이트하는 로직으로 구성되어 있는 Member 전용 클래스 
+ *
+ * @author 임 종 부 
+ * @version 1.0
+ * @see "MemberVO"
+ * @see "MemberService"
+ * @see "MemberServiceImpl"
+ * @see "member-mapper.xml" 
  */
-   
-
-/* 
-   
-   @ModelAttribute 
-   
-   1 . 커멘드 객체의 이름을 변경 할 때 사용 
-   2. view(jsp)에서 사용 할 데이터를 설정하는 용도로도 사용 -> ModelAttribute 메서드 실행 결과로 리턴된 객체는 자동으로 Model에 저장된다. 따라서 @ModelAttribute 메서드의 실행 결과로 리턴된 
-   객체를를 view페이지에서 사용할 수 있다. 
-   
-   
- */
-
 
 @SessionAttributes("loginUser")
-
-@Controller // MemberController를 Controller의 성질을 갖는 객체로 등록하겠다.
+@Controller 
 public class MemberController {
    
    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -72,7 +57,11 @@ public class MemberController {
    @Autowired
    private MemberService mService;
    
+   @Inject
+   PasswordEncoder passwordEncoder;
    
+   
+   //로그인 패이지로 이동 
    @RequestMapping(value="loginPage.me", method=RequestMethod.GET)
    public String login(HttpServletRequest request) {
       
@@ -80,12 +69,34 @@ public class MemberController {
    }
    
    
+// 마이페이지 넘어가면서 마이레시피 불러오기
    @RequestMapping(value="myPage.me", method=RequestMethod.GET)
-   public String moveMyPage(HttpServletRequest request) {
-      System.out.println("헤더에서 마이페이지 요청 넘어옴 ");
-      return "myPage/MyPage";
+   public ModelAndView moveMyPage(@RequestParam(value="page" , required= false)Integer page, ModelAndView mv, HttpSession session) {
+
+         int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+         System.out.println("유저 번호~~~" + user_no);
+         int currentPage = 1;
+      if(page != null) {
+         currentPage = page;
+      }
+      
+      int listCount = mService.getListCount();
+      PageInfo pi = PaginationMember.getPageInfo(currentPage, listCount);
+      ArrayList<Recipe> rList = null;
+      ArrayList<Files> fList = null;
+      
+      rList = mService.selectmrList(pi, user_no);
+      fList = mService.selectmrfileList(pi, user_no);
+      
+      System.out.println("알리스트~~~~~~~~~~~~~~~~~~" + rList);
+      System.out.println("에프리스트~~~~~~~~~~~~~~~~~" + fList);
+      if(rList != null) {
+         mv.addObject("rList", rList).addObject("fList",fList).addObject("pi", pi).setViewName("/myPage/MyPage");
+      }
+      return mv;
    }
    
+   //회원탈퇴 약관 페이지로 이동 
    @RequestMapping(value="withdrawalGuide.me", method=RequestMethod.GET)
    public String moveWithdrawalGuide(HttpServletRequest request) {
 
@@ -93,6 +104,7 @@ public class MemberController {
    }   
    
    
+   //회원탈퇴 페이지로 이동 
    @RequestMapping(value="deleteMemberPage.me", method=RequestMethod.GET)
    public String movDeleteMemberPage(HttpServletRequest request) {
 
@@ -101,7 +113,7 @@ public class MemberController {
    
    
    
-   
+   //인덱스 페이지로 이동 
    @RequestMapping(value="backIndex.do", method=RequestMethod.GET)
    public String backIndex(HttpServletRequest reques) {
       
@@ -111,6 +123,7 @@ public class MemberController {
       return "index";
    }
    
+   //관리자 페이지로 이동 
    @RequestMapping(value="adminPage.me", method=RequestMethod.GET)
    public String adminPage(HttpServletRequest reques) {
       
@@ -121,6 +134,7 @@ public class MemberController {
    }
    
    
+   //로그아웃 페이지로 이동 
    @RequestMapping(value="logoutPage.me")
    public String logoutPage(HttpSession session,SessionStatus status) {
       
@@ -136,48 +150,53 @@ public class MemberController {
    
    
    
-   @RequestMapping(value="loginCheck.me", method=RequestMethod.POST)
-   @ResponseBody
-   public int loginCheck(MemberVO m, Model model) {
-      
-      System.out.println(m);
-      
-      MemberVO loginUser = mService.loginCheck(m);
-      
-      
-      if(loginUser != null) {
-         
-         if(loginUser.getAuthority().equals("Y")) {
-            model.addAttribute("loginUser", loginUser);
-            return 1; //관리자 
-         }else {
-            model.addAttribute("loginUser", loginUser);
-            return 0; //사용자 
-         }
-         
-         
-      }else {
-         return -1; // 로그인 /비밀번호 실패
-      }
-      
-      
-      
-   }
    
    
 
-   
+   //회원가입 약관 페이지로 이동 
    @RequestMapping(value="insertMemberTerms.me", method=RequestMethod.GET)
    public String insertMemberTermsPage(HttpServletRequest request) {
       
       return "insertMember/insertMemberTerms";
    }
    
+   //회원가입 페이지로 이동 
    @RequestMapping(value="insertMemberForm.me", method=RequestMethod.GET)
    public String insertMemberForm(HttpServletRequest request) {
       
       return "insertMember/InsertMember";
    }
+   
+ //종부 로그인 디코딩 비교 
+   @RequestMapping(value="loginCheck.me", method=RequestMethod.POST)
+   @ResponseBody
+   public int loginCheck(MemberVO m, Model model) {
+      
+	  String rawPw = m.getUser_password();
+	  System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + rawPw);
+	  String encPw = mService.select_userPw(m);
+	  System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +encPw);
+	  
+      
+	  
+	  if(passwordEncoder.matches(rawPw, encPw)) {
+		  
+		  MemberVO loginUser = mService.loginCheck(m);
+		  
+		  if(loginUser.getAuthority().equals("Y")) {
+	            model.addAttribute("loginUser", loginUser);
+	            return 1; //관리자 
+	         }else {
+	            model.addAttribute("loginUser", loginUser);
+	            return 0; //사용자 
+	         }
+	  }else {
+		  
+		  return -1; // 로그인 /비밀번호 실패
+		  
+	  }
+   }
+   
    
    // id 중복 체크 컨트롤러
    @RequestMapping(value = "idCheck.me", method = RequestMethod.GET)
@@ -198,12 +217,15 @@ public class MemberController {
    
    //회원가입 컨트롤러 
     @RequestMapping(value = "insertUser.me", method = RequestMethod.POST)
-    public String insertMember(@ModelAttribute MemberVO m ,@RequestParam("yy")String age  ) {
+    public String insertMember(@ModelAttribute MemberVO m ,@RequestParam("yy")String age,@RequestParam("user_password")String user_password ) {
 
         logger.info("회원가입 컨트롤러 진입");
         int year = Calendar.getInstance().get(Calendar.YEAR);
         m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
-
+        
+        String encPassword = passwordEncoder.encode(user_password);
+        m.setUser_password(encPassword);
+        
         System.out.println(m);
 
         mService.insertMember(m);
@@ -338,27 +360,13 @@ public class MemberController {
     }
     
     
-
+    //프로필 변경 메서드 
     @RequestMapping(value = "user_profile_change.me", method = RequestMethod.POST)
     @ResponseBody
     public String user_profile_change(@RequestParam("editImg") MultipartFile editImg, MultipartHttpServletRequest request,@ModelAttribute Files files) {
-        	logger.info("유저 프로필 수정 컨트롤러 진입 ");
-        	
-        	
-        	//세션에 저장되어 있는 값 확인
-			
-			/*
-			 * Enumeration se = session.getAttributeNames(); while (se.hasMoreElements()) {
-			 * 
-			 * String getse = se.nextElement() + "";
-			 * 
-			 * System.err.println("@@@@@@@ session : " + getse + " : " +
-			 * session.getAttribute(getse));
-			 * 
-			 * }
-			 */
-        	
-        	
+  
+    	logger.info("유저 프로필 수정 컨트롤러 진입 ");
+ 
 		  HttpSession session = request.getSession(); 
 		  MemberVO m = (MemberVO)session.getAttribute("loginUser");
 		  System.out.println(m);
