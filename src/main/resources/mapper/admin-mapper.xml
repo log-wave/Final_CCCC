@@ -282,4 +282,32 @@
 		<result column="USER_NO" property="user_no"/>
 	
 	</resultMap>
+	
+	<select id="getmateList" resultMap="rankResultSet">
+		select *
+		from(
+		select mate_name,count_mate, row_number() over(order by count_mate desc) as ranking
+		from (select material.material_name as mate_name, count(recipe_mate.material_no) as count_mate
+		from recipe_mate ,material, recipe
+		where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no
+		group by material_name)
+		)
+		where ranking BETWEEN 1 AND 5
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.admin.model.vo.Rank" id="rankResultSet">
+		<id column="MATE_NAME" property="Name"/>
+		<result column="COUNT_MATE" property="count"/>
+		<result column="RANKING" property="Rank"/>
+	
+	</resultMap>
+	
+	<select id="getDateCount" resultType="_int">
+		select  SUBSTR(recipe_createdate,4,2) as month
+		from recipe
+		where R_STATUS = 'Y'
+	</select>
+	
+
+	
 </mapper>

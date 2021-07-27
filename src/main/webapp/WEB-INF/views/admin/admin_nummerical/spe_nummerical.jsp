@@ -52,25 +52,17 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', '월별 게시글 등록 평균수'],
-          ['1',  10],
-          ['2',  10],
-          ['3',  6],
-          ['4',  10],
-          ['5',  13],
-          ['6',  14],
-          ['7',   9],
-          ['8',  4],
-          ['9',  6],
-          ['10',  10],
-          ['11',  13],
-          ['12',  15]
+          ['month', '월별 게시글 등록 평균수'],
+          ${result1}
         ]);
 
         var options = {
           title: '',
           curveType: 'none',
           legend: { position: 'bottom' },
+          titleTextStyle: {
+              fontSize: 17
+           }
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -96,24 +88,20 @@
 		// 차트 데이터 설정
 		var data = google.visualization.arrayToDataTable([
 		   	['항목', '다리수'], // 항목 정의
-			['고양이', 4], // 항목, 값 (값은 숫자로 입력하면 그래프로 생성됨)
-			['메뚜기', 6],
-			['문어', 8],
-			['오징어', 10],
-			['운영자', 2],
-			['달팽이', 0], // ?
-			['랜덤', Math.round(Math.random() * 10)],
+		    ${result}
 		]);
 	
 		// 그래프 옵션
 		var options = {
-			title : '가장 많이 사용된 재료', // 제목
+			title : '가장 많이 사용된 재료 5개', // 제목
 			fontSize: 10,
 			bar : {
 				groupWidth : '80%' // 그래프 너비 설정 %
 			},
 			legend : {
 				position : 'none' // 항목 표시 여부 (현재 설정은 안함)
+			}, titleTextStyle: {
+	              fontSize: 15
 			}
 		};
 	
@@ -150,6 +138,8 @@
 			},
 			legend : {
 				position : 'none' // 항목 표시 여부 (현재 설정은 안함)
+			}, titleTextStyle: {
+	              fontSize: 15
 			}
 		};
 	

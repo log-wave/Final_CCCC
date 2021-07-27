@@ -28,11 +28,9 @@
     		<br><br>
 	    		<div class="member_nummerical">
 	    			<div class="member_list">
-	    				<h3>사용자 성별 통계</h3>
 		    			 <div id="piechart" style="width: 500px; height: 400px;"></div>  
 	    			</div>
 	    			<div class="member_list">
-		    			<h3>사용자 나이 통계</h3>
 		    			 <div id="donutchart" style="width: 500px; height: 400px;"></div>
 	    			</div>
 				</div>
@@ -53,8 +51,11 @@
         ]);
 
         var options = {
-          title: ' ',
-      
+          title: '사용자 성별',
+          titleTextStyle: {
+              fontSize: 17
+           },
+       	 colors:['#4c9ad3','#e64c2c']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -75,8 +76,12 @@
         ]);
 
         var options = {
-          title: ' ',
+          title: '사용자 연령대',
+          titleTextStyle: {
+          fontSize: 17
+          },
           pieHole: 0.4,
+        
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
