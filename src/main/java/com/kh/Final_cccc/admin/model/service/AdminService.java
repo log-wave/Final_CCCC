@@ -71,6 +71,13 @@ public interface AdminService {
 
 	ArrayList<Recipe> selectRecipeList(PageInfo pi);
 
+	int getDeleteRecipe(Recipe recipe);
+	
+	int getSearchRecipeListCount(Recipe recipe);
+
+	ArrayList<Recipe> selectSearchRecipeResultList(Recipe recipe, PageInfo pi);
+
+	
 	
 
 }
