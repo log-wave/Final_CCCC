@@ -122,8 +122,10 @@ public class recipeDAO {
 		return sqlSession.update("recipeMapper.increViewCount", recipeNo);
 	}
 
-	public ArrayList<Recipe> mateSelectRecipeList(SqlSessionTemplate sqlSession, String mateRecipe) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectMateRecipeList", mateRecipe);
+	public ArrayList<Recipe> mateSelectRecipeList(SqlSessionTemplate sqlSession, String mateRecipe, PageInfo pi) {
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectMateRecipeList", mateRecipe, rowBounds);
 	}
 
 	public ArrayList<Speciality> selectSpecialityList(SqlSessionTemplate sqlSession, String sNo) {
@@ -165,6 +167,10 @@ public class recipeDAO {
 
 	public ArrayList<Files> mainSpecialityRecipeFiles(SqlSessionTemplate sqlSession) {
 		return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipeFiles");
+	}
+
+	public ArrayList<Material> selectSearchMaterialList(SqlSessionTemplate sqlSession, String sv) {
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchMate", sv);
 	}
 
 

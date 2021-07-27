@@ -103,7 +103,6 @@
 				mateArr.push(selectedRight.eq(i).text());
 				
 			}
-			console.log(mateArr);
 			location.href="materialSelectRecipe.rp?mateArr="+mateArr;
 		});
 		
@@ -146,13 +145,39 @@
 		});
 		
 		function searchEnterKey(){
+			var target = $('.sortcontent');
+			var selected = $('.right_box_content');
 			if (window.event.keyCode == 13) {
 				var searchValue = $("#searchValue").val();
 				if(searchValue == ""){
 					alert("검색할 내용을 입력하세요.");
 					window.location.reload();
 				} else {
-					console.log("검색할 어노테이션");
+					target.empty();
+					$.ajax({
+						url : 'searchMate.rp',
+						data:{sv:searchValue},
+						success : function(data) {
+							for(var i in data){
+								target.append('<button value="' + data[i].materialNo + '" class="items">' + data[i].materialName +'</button>' );
+							}
+							
+							target.children().closest('button').on('click', function(){
+								if($(this).attr('class') != 'items'){
+									$(this).attr('class', 'items');
+									if(selected.children().val() == $(this).val()){
+										selected.children().remove();
+									} 
+								} else {
+									$(this).attr('class', 'selecteditems');
+									selected.append($(this).clone());
+									selected.children().closest('button').on('click', function(){
+										this.remove();
+									});
+								}
+							});
+						}
+					});
 				}
 	        }
 		}
