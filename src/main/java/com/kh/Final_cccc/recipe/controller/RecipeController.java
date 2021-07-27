@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,18 +27,20 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.kh.Final_cccc.Event.exception.EventException;
-import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.Files.service.FilesService;
 import com.kh.Final_cccc.Files.vo.Files;
 import com.kh.Final_cccc.common.PagenationRecipe;
 import com.kh.Final_cccc.material.model.vo.Material;
 import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.recipe.model.service.RecipeService;
+import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Recipe_spec;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
 import com.kh.Final_cccc.recipe.model.vo.Scrap;
+import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
 @Controller
 public class RecipeController {
@@ -114,6 +117,13 @@ public class RecipeController {
 			System.out.println("조리과정" + i+1 + ": " + rp_files.get(i).getFileName());
 		}
 		
+		//
+		Recipe_spec rs_original=  rService.selectSpec(recipeNo);
+		HashMap rs = new HashMap();
+		if(rs_original != null) {
+			rs.put("spec_name", rService.selectSpecname(rs_original.getSpeciality_no()));
+			rs.put("per_qnt", rs_original.getPer_qnt());
+		}
 		//영양정보  계산하기 + 재료의 수량만큼 늘어나는 로직 하나 더 짜야함
 		int kcal = 0, fat = 0, protein = 0, carbo = 0, sugar = 0;
 		
@@ -139,7 +149,7 @@ public class RecipeController {
 		}
 		
 		int result = rService.increViewCount(recipeNo);
-		model.addAttribute("r_info", r_info).addAttribute("nickname", name).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum);
+		model.addAttribute("rs", rs).addAttribute("r_info", r_info).addAttribute("nickname", name).addAttribute("r_mate",r_mate).addAttribute("r_process", r_process).addAttribute("nutArr", nutlist).addAttribute("rp_files", rp_files).addAttribute("rp_thum", rp_thum);
 		return "/RecipeDetail/RecipeDetail";
 	}
 	
@@ -161,10 +171,32 @@ public class RecipeController {
 		new GsonBuilder().create().toJson(mList, response.getWriter());
 	}
 	
+	@RequestMapping("SList.rp")
+	@ResponseBody
+	public void SpecList(@RequestParam("sNo")String sNo, HttpServletResponse response) throws JsonIOException, IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		
+		ArrayList<Speciality> sList = rService.selectSpecialityList(sNo);
+		
+		new GsonBuilder().create().toJson(sList, response.getWriter());
+	}
+	
+	@RequestMapping("Sinfo.rp")
+	@ResponseBody
+	public void getSpecinfo(@RequestParam("sNo") int sNo, HttpServletResponse response) throws JsonIOException, IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		
+		String sInfo = rService.getSpecinfo(sNo);
+		
+		new GsonBuilder().create().toJson(sInfo, response.getWriter());
+	}
+	
 	@RequestMapping("insertRecipe.rp")
 	public String insertRecipe(HttpServletRequest request, @ModelAttribute Recipe recipe,
 			MultipartHttpServletRequest request2, @RequestParam("RecipeImg") MultipartFile[] recipeImg,
-			@RequestParam("recipe_thum") MultipartFile recipe_thum) {
+			@RequestParam("recipe_thum") MultipartFile recipe_thum,
+			@RequestParam(value="specsecCate" , required= false) int spec_no,
+			@RequestParam(value="spec_qnt" , required= false) int spec_qnt) {
 		
 		//파일 기본조건
 		String root = request.getSession().getServletContext().getRealPath("resources");
@@ -196,6 +228,14 @@ public class RecipeController {
 			ReMaterial mate = new ReMaterial(material_no, per_qnt);
 			int result_2 = rService.insertRecipemate(mate);
 			//한번씩 메소드를 호출해서 보내줘야
+		}
+		
+		
+		//특산물
+		
+		if(!(spec_no == 0 && spec_qnt == 0)) {
+			Recipe_spec rs = new Recipe_spec(spec_no, spec_qnt);
+			int result = rService.insertrecipeSpec(rs);
 		}
 		
 		//썸네일 기능

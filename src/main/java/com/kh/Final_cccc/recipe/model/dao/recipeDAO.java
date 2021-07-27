@@ -13,8 +13,10 @@ import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Recipe_spec;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
 import com.kh.Final_cccc.recipe.model.vo.Scrap;
+import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
 @Repository("rDAO")
 public class recipeDAO {
@@ -122,6 +124,31 @@ public class recipeDAO {
 
 	public Recipe mateSelectRecipe(SqlSessionTemplate sqlSession, String mateRecipe) {
 		return sqlSession.selectOne("recipeMapper.selectMateRecipe", mateRecipe);
+	}
+
+	public ArrayList<Speciality> selectSpecialityList(SqlSessionTemplate sqlSession, String sNo) {
+		// TODO Auto-generated method stub
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectSpecialityList", sNo);
+	}
+
+	public String getSpecinfo(SqlSessionTemplate sqlSession, int sNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("recipeMapper.selectSpecinfo", sNo);
+	}
+
+	public int insertRecipeSpec(SqlSessionTemplate sqlSession, Recipe_spec rs) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("recipeMapper.inesrtRecipeSpec", rs);
+	}
+
+	public Recipe_spec selectSpec(SqlSessionTemplate sqlSession, int recipeNo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("recipeMapper.selectSpec", recipeNo);
+	}
+
+	public String selectSpecname(SqlSessionTemplate sqlSession, int speciality_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("recipeMapper.selectSpecname", speciality_no);
 	}
 
 }

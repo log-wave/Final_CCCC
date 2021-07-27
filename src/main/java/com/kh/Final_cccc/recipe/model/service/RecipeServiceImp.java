@@ -2,6 +2,7 @@ package com.kh.Final_cccc.recipe.model.service;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.session.SqlSessionManager;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,10 @@ import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Recipe_spec;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
 import com.kh.Final_cccc.recipe.model.vo.Scrap;
+import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
 @Service("rService")
 public class RecipeServiceImp implements RecipeService{
@@ -142,6 +145,36 @@ public class RecipeServiceImp implements RecipeService{
 	@Override
 	public Recipe mateSelectRecipe(String mateRecipe) {
 		return rDAO.mateSelectRecipe(sqlSession, mateRecipe);
+	}
+
+	@Override
+	public ArrayList<Speciality> selectSpecialityList(String sNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectSpecialityList(sqlSession, sNo);
+	}
+
+	@Override
+	public String getSpecinfo(int sNo) {
+		// TODO Auto-generated method stub
+		return rDAO.getSpecinfo(sqlSession, sNo);
+	}
+
+	@Override
+	public int insertrecipeSpec(Recipe_spec rs) {
+		// TODO Auto-generated method stub
+		return rDAO.insertRecipeSpec(sqlSession, rs);
+	}
+
+	@Override
+	public Recipe_spec selectSpec(int recipeNo) {
+		// TODO Auto-generated method stub
+		return rDAO.selectSpec(sqlSession, recipeNo);
+	}
+
+	@Override
+	public String selectSpecname(int speciality_no) {
+		// TODO Auto-generated method stub
+		return rDAO.selectSpecname(sqlSession, speciality_no);
 	}
 
 }

@@ -75,6 +75,8 @@
 				</div>
 			</div>
 			
+			
+			
 			<div class="rp_Mate_area">
 				<table id ="tb">
 					<thead>
@@ -88,6 +90,33 @@
 				</table>
 			</div>
 			
+			<div class="rp_insert_area">
+				<div class="insertRecipe_subTitile">특산물추가하기</div>
+				<div class="insertRecipe_inputBox">
+				특산물은 추가 하지 않으셔도 됩니다!<br>
+					<select name="spec_first"class="select_Mate" onchange="setspecArea(this.value)">
+						<option>지역을 선택해주세요</option>
+						<option value="서울">서울</option>
+						<option value="경기도">경기도</option>
+						<option value="강원도">강원도</option>
+						<option value="충청도">충청도</option>
+						<option value="전라도">전라도</option>
+						<option value="경상도">경상도</option>
+						<option value="제주도">제주도</option>
+					</select>
+					<select name="specsecCate" class="specsecCate" id="specsecCate" onchange="setinfoArea(this.value)">
+						<option value="0">지역 카테고리를 선택해주세요</option>
+					</select>
+					<input type="text" name="spec_qnt" class="spec_qnt" value="0">
+					<br><br>특산물 설명!<br>
+				</div>
+				
+			</div>
+			
+			
+			<div class="spec_info">
+					
+			</div>
 			<div class="rp_insert_area">
 				<div class="insertRecipe_subTitile">조리과정 추가</div>
 				<div class="insertRecipe_inputBox">			
@@ -342,7 +371,39 @@ var file_flag = 1;
 			
 		}); 
 	}
+	//특산물
+	function setspecArea(f){
+		var target =$("select[name='specsecCate']");
+		
+		target.empty();
+		//에이젝스로 가져오기
+		 $.ajax({
+			 type:'POST',
+			url:'SList.rp',
+			data:{sNo:f},
+			success:function(data){
+				
+				for(var i in data){
+					target.append('<option value="' + data[i].specialityNo + '" class="addedSpce">' + data[i].specialityName +'</option>' );
+				}
+			}
+			
+		}); 
+	}
 	
+	function setinfoArea(f){
+		var target= $('.spec_info');
+		
+		target.empty();
+		$.ajax({
+			url:'Sinfo.rp',
+			data:{sNo : f},
+			success(data){
+				console.log(data);
+				target.append(data);
+			}
+		});
+	}
 	function LoadImg(value, num){
 		if(value.files && value.files[0]){
 			

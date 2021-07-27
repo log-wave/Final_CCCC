@@ -8,8 +8,10 @@ import com.kh.Final_cccc.recipe.model.vo.PageInfo;
 import com.kh.Final_cccc.recipe.model.vo.ReMaterial;
 import com.kh.Final_cccc.recipe.model.vo.Recipe;
 import com.kh.Final_cccc.recipe.model.vo.RecipeProcess;
+import com.kh.Final_cccc.recipe.model.vo.Recipe_spec;
 import com.kh.Final_cccc.recipe.model.vo.Reply;
 import com.kh.Final_cccc.recipe.model.vo.Scrap;
+import com.kh.Final_cccc.speciality.model.vo.Speciality;
 
 public interface RecipeService {
 	
@@ -53,6 +55,16 @@ public interface RecipeService {
 	int increViewCount(int recipeNo);
 
 	Recipe mateSelectRecipe(String mateRecipe);
+
+	ArrayList<Speciality> selectSpecialityList(String sNo);
+
+	String getSpecinfo(int sNo);
+
+	int insertrecipeSpec(Recipe_spec rs);
+
+	Recipe_spec selectSpec(int recipeNo);
+
+	String selectSpecname(int speciality_no);
 	
 
 	

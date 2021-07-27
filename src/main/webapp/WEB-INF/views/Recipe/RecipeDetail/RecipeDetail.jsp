@@ -194,7 +194,23 @@
 									<div class="rp_mate_right">${m.per_qnt }</div>
 								</div>
 							</li>
+							
 						</c:forEach>
+						
+						<c:if test="${ not empty rs }">
+						
+							<div class="rp_mate_guide">
+				
+								<div class="rp_mate_left">특산물</div>
+								<div class="rp_mate_right">수량</div>
+							</div>
+							<li>
+								<div class="mate_item">
+									<div class="rp_mate_left">${rs.spec_name }</div>
+									<div class="rp_mate_right">${rs.per_qnt }</div>
+								</div>
+							</li>
+						</c:if>
 					</ul>
 				</div>		
 			</div>

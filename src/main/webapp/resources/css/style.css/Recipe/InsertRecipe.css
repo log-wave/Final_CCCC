@@ -86,8 +86,29 @@
 .secCate{
 	width:200px;
 	height: 40px;
+	
 }
 
+.specsecCate{
+	width:200px;
+	height: 40px;
+	margin-top:20px;
+}
+.spec_info{
+	width:600px;
+	min-height: 100px;
+	border: 1px solid #D8D8D8;
+	margin-left: 410px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	line-height: 35px;
+}
+
+.spec_qnt{
+	width:100px;
+	height:35px;
+	
+}
 #tb{
 	width:600px;
 	min-height: 8	0px;

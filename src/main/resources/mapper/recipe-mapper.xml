@@ -100,7 +100,27 @@
 		<result column="STATUS" property="status"/>
 	</resultMap>
 	
+	<select id="selectSpecialityList" resultMap="selectSPResult">
+		SELECT *
+		FROM SPECIALITY
+		WHERE SPECIALITY_REGION = #{sNo}
+	</select>
+	<select id="selectSpecinfo" resultType="String">
+		SELECT SPECIALITY_INFO
+		FROM SPECIALITY
+		WHERE SPECIALITY_NO = #{sNo}
+	</select>
+	<insert id="inesrtRecipeSpec">
+		INSERT INTO RECIPE_SPEC VALUES(SEQ_RS_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, #{speciality_no}, #{per_qnt})
+	</insert>
 	
+	<resultMap type="com.kh.Final_cccc.speciality.model.vo.Speciality" id="selectSPResult">
+		<id column="SPECIALITY_NO" property="specialityNo"/>
+		<result column="SPECIALITY_REGION" property="specialityRegion"/>
+		<result column="SPECIALITY_NAME" property="specialityName"/>
+		<result column="SPECIALITY_INFO" property="specialityInfo"/>
+		<result column="MATERIAL_NO" property="materialNo"/>
+	</resultMap>
 	<insert id="insertRecipe" >
 		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y', default)
 	</insert>
@@ -143,9 +163,24 @@
 		where user_no = #{user_no} and recipe_no = #{recipe_no}
 	</select>
 	
+	<select id="selectSpec" resultMap="selectSpecResult">
+		SELECT * FROM RECIPE_SPEC WHERE RECIPE_NO = #{recipe_no}
+	</select>
+	
+	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe_spec" id="selectSpecResult">
+		<id column="RS_NO" property="rs_no"/>
+		<result column="RECIPE_NO" property="recipe_no"/>
+		<result column="SPECIALITY_NO" property="speciality_no"/>
+		<result column="PER_QNT" property="per_qnt"/>
+	</resultMap>
 	<insert id="inesertScrap">
 		INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, #{recipe_no}, #{user_no})
 	</insert>
+	
+	<select id="selectSpecname" resultType="String">
+		SELECT SPECIALITY_NAME FROM RECIPE_SPEC, SPECIALITY
+		WHERE RECIPE_SPEC.SPECIALITY_NO = SPECIALITY.SPECIALITY_NO AND  RECIPE_SPEC.SPECIALITY_NO = #{speciality_no}
+	</select>
 	
 	<delete id="deleteScrap">
 		DELETE FROM SCRAP
