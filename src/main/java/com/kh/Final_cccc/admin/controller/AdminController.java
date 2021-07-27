@@ -153,9 +153,10 @@ public class AdminController {
 		int listCount = adService.getRecipeListCount();
 
 		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
-
+		
 		ArrayList<Recipe> list = adService.selectRecipeList(pi);
-
+		
+		System.out.println(list);
 		if (list != null) {
 			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_recipe/admin_Recipe");
 		} else {
@@ -164,7 +165,57 @@ public class AdminController {
 
 		return mv;
 	}
+	
+	@RequestMapping("rpdelete.ad")
+	public String deleteRecipe(@RequestParam(value = "check[]", required = false) String[] check,
+			@RequestParam(value = "status", required = false) String status, @ModelAttribute Recipe recipe) {
+		int result = 0;
+		for (int i = 0; i <= check.length - 1; i++) {
+			recipe.setRecipe_no(Integer.parseInt(check[i]));
+			recipe.setR_status(status);
+			result = adService.getDeleteRecipe(recipe);
+		}
 
+		if (result > 0) {
+			return "redirect:adminRecipe.ad";
+		} else {
+			System.out.println("안됨");
+			return null;
+		}
+	}
+	
+	@RequestMapping("searchAdminRecipe.ad")
+	public ModelAndView recipeSearch(@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam("searchValue") String value, @RequestParam("searchCondition") String condition, Recipe recipe,
+			ModelAndView mv) {
+
+		if (condition.equals("no")) {
+			recipe.setRecipe_no((Integer.parseInt(value)));
+		} else if (condition.equals("title")) {
+			recipe.setRecipe_title(value);
+		} else if (condition.equals("content")) {
+			recipe.setRecipe_explain(value);
+		}
+
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = page;
+		}
+
+		if (!value.isEmpty()) {
+			int listCount = adService.getSearchRecipeListCount(recipe);
+
+			com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
+
+			ArrayList<Recipe> list = adService.selectSearchRecipeResultList(recipe, pi);
+
+			mv.addObject("list", list).addObject("pi", pi).addObject("searchValue", value)
+					.addObject("searchCondition", condition).setViewName("admin_recipe/admin_Recipe");
+		}
+
+		return mv;
+	}
+	
 	@RequestMapping("adminMaterial.ad")
 	public ModelAndView adminMaterialList(@RequestParam(value = "page", required = false) Integer page,
 			ModelAndView mv) {

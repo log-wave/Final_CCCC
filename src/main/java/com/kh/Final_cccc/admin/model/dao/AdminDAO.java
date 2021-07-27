@@ -135,8 +135,24 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.getRecipeListCount");
 	}
 
-	public ArrayList<Recipe> selectRecipeList(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("adminMapper.selectRecipeList");
+	public ArrayList<Recipe> selectRecipeList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectRecipeList", null, rowBounds);
+	}
+
+	public int getDeleteRecipe(SqlSessionTemplate sqlSession, Recipe recipe) {
+		return sqlSession.update("adminMapper.getDeleteRecipe", recipe);
+	}
+	
+	public int selectSearchRecipeListCount(SqlSessionTemplate sqlSession, Recipe recipe) {
+		return sqlSession.selectOne("adminMapper.searchRecipeListCount", recipe);
+	}
+
+	public ArrayList<Recipe> selectSearchRecipeResultList(SqlSessionTemplate sqlSession, Recipe recipe, PageInfo pi) {
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchRecipeResultList", recipe, rowBounds);
 	}
 
 }

@@ -334,9 +334,47 @@
 	</select>
 	
 	<select id="selectRecipeList" resultMap="selectRecipeResult">
-		select * 
+		select *
 		from RECIPE
-		where RECIPE_NO = #{recipeNo}
+		WHERE R_STATUS='Y'
+		order by RECIPE_NO desc
+	</select>
+	
+	<update id="getDeleteRecipe">
+		update recipe
+		set r_status='N'
+		where recipe_no = #{recipe_no}
+	</update>
+	
+	<select id="searchRecipeListCount" parameterType="com.kh.Final_cccc.recipe.model.vo.Recipe" resultType="_int">
+		select count(*)
+		from recipe
+		where r_status='Y'
+		<if test="recipe_no != 0">
+			and recipe_no = #{recipe_no}
+		</if>
+		<if test="recipe_title != null">
+			and recipe_title like '%' || #{recipe_title} || '%'
+		</if>
+		<if test="recipe_explain != null">
+			and recipe_explan like '%' || #{recipe_explain} || '%'
+		</if>
+	</select>
+	
+	<select id="selectSearchRecipeResultList" parameterType="com.kh.Final_cccc.recipe.model.vo.Recipe" resultMap="selectRecipeResult">
+		select *
+		from recipe
+		where r_status='Y'
+		<if test="recipe_no != 0">
+			and recipe_no = #{recipe_no}
+		</if>
+		<if test="recipe_title != null">
+			and recipe_title like '%' || #{recipe_title} || '%'
+		</if>
+		<if test="recipe_explain != null">
+			and recipe_explan like '%' || #{recipe_explain} || '%'
+		</if>
+		order by recipe_no desc
 	</select>
 	
 	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe" id="selectRecipeResult">

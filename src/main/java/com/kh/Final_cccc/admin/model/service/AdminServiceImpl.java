@@ -151,7 +151,22 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public ArrayList<Recipe> selectRecipeList(PageInfo pi) {
-		return adDAO.selectRecipeList(sqlSession);
+		return adDAO.selectRecipeList(sqlSession, pi);
+	}
+
+	@Override
+	public int getDeleteRecipe(Recipe recipe) {
+		return adDAO.getDeleteRecipe(sqlSession, recipe);
+	}
+	
+	@Override
+	public int getSearchRecipeListCount(Recipe recipe) {
+		return adDAO.selectSearchRecipeListCount(sqlSession, recipe);
+	}
+
+	@Override
+	public ArrayList<Recipe> selectSearchRecipeResultList(Recipe recipe, PageInfo pi) {
+		return adDAO.selectSearchRecipeResultList(sqlSession, recipe, pi);
 	}
 
 	

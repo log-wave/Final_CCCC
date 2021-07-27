@@ -42,13 +42,12 @@
 	    		<c:if test="${ list != null }">
 					<c:forEach var="ad" items="${ list }">
 			    		<tr class="click">
-			    			<td>${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipeNo }')">${ ad.recipeNo }</td>
-			    			<td style="border-left: 1px solid black"><input type="checkbox" name="recipe_select" onclick="selectOne();" value="${ ad.recipeNo }"></td>
+			    			<td>${ ad.recipe_no }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_title }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.sort_sub }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_no }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_explain }</td>
+			    			<td style="border-left: 1px solid black"><input type="checkbox" name="recipe_select" onclick="selectOne();" value="${ ad.recipe_no }"></td>
 			    		</tr>
 	    			</c:forEach>
 	    		</c:if>
@@ -157,7 +156,7 @@
 	}
 	
 	function recipeInfo(recipeNo){
-		var url ='<%=request.getContextPath()%>/adminRecipeDetail.ad?recipeNo=' + recipeNo;
+		var url ='<%=request.getContextPath()%>/rDetail.rp?recipeNo=' + recipeNo;
 		window.open(url, 'recipeInfo', 'width=1200px, height=820px');
 	}
 	
