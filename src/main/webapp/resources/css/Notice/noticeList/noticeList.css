@@ -49,8 +49,8 @@ button{
 }
 
 .pagingArea{
-	padding-top: 20px;
-	padding-bottom: 100px;
+	width:1280px;
+	margin-top: 50px;
 	text-align: center;
 }
 
@@ -60,12 +60,13 @@ button{
 	border-radius: 5px;
 	font-size: 15px;
 	border-style: none;
+	cursor: pointer;
 }
 .noticeList a{
 	text-decoration: none;
 	color: #787878;
 }
-.noticeList_main button{
+.noticeList button{
 	width:120px;
 	height:40px;
 	font-weight: bold;

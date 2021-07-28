@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/login.css?ver=1.0'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/member/login/loginUtil.css'/>">
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.6.0.min.js" />"></script>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">  
+<link href='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap' rel="stylesheet">
 </head>
 <body>
 	<c:import url="/WEB-INF/views/common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>

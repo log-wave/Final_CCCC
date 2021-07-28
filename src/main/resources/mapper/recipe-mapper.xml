@@ -233,8 +233,11 @@
 	
 	<select id="mainSpecialityRecipe" resultMap="selectResult">
 		 select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
+			from(select *
  		 from recipe
- 		 where r_status = 'Y' and sort_spec != 0
+ 		 where r_status = 'Y' and sort_spec != 0 
+         order by recipe_no DESC)
+		where <![CDATA[  ROWNUM <= 4 ]]> 
 	</select>
 	
 	<select id="mainSpecialityRecipeFiles" resultMap="filesResultSet">

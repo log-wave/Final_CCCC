@@ -106,9 +106,9 @@
 						<option value="제주도">제주도</option>
 					</select>
 					<select name="specsecCate" class="specsecCate" id="specsecCate" onchange="setinfoArea(this.value)">
-						<option value="0">지역 카테고리를 선택해주세요</option>
+						<option value="0" >지역 카테고리를 선택해주세요</option>
 					</select>
-					<input type="text" name="spec_qnt" class="spec_qnt" value="0">
+					<input type="text" name="spec_qnt" class="spec_qnt"  placeholder="분량">
 					<div class="expl"><p class="explfont">특산물 설명!</p></div>
 				</div>
 				
@@ -128,9 +128,11 @@
 			
 			<div class="recipe_process_area">
 				<div class="added_process">
-					<p>영역을 클릭하면 이미지를 업로드 할 수 있습니다.</p>
+					<p>영역을 클릭하면 이미지를 업로드 할 수 있습니다.</p><br>
 				</div>
+				<br>
 				<button type="button" class="rp_addProcess_btn" id="add_process"></button>
+				<br>
 			</div>
 			
 			<div id="fileArea">
@@ -142,13 +144,13 @@
 					<div class="rp_tag_top">
 						<div class="tag_title"><p>주제별요리</p></div>
 						<div class="tag_btn">
-							<button type="button"value="1" class="subj_btn">편의점 요리</button>
+							<button type="button"value="1" class="subj_btn">일반 요리</button>
 							<button type="button"value="2" class="subj_btn">간식/야식</button>
 							<button type="button"value="3" class="subj_btn">술안주</button>
 							<button type="button"value="4" class="subj_btn">해장요리</button>
 							<button type="button"value="5" class="subj_btn">손님 접대 요리</button>
 							<button type="button"value="6" class="subj_btn">나들이 요리</button>
-							<button type="button"value="7" class="subj_btn">일반 요리</button>
+							<button type="button"value="7" class="subj_btn">편의점 요리</button>
 						</div>
 					</div>
 					<div class="rp_tag_mid">
@@ -341,7 +343,7 @@ var file_flag = 1;
 			var area = $('.added_process');
 			
 			area.append('<div class="rp_img_area">'+
-							'<img id="rp_img'+file_flag+'" name="rp_img" width="600px" height="255px"></img>'+
+							'<img id="rp_img'+file_flag+'" name="rp_img" width="600px" height="350px"></img>'+
 						'</div>'+
 						'<textarea style="width:600px; height:100px; resize:none;" name="rp_content" id="rp_content">');
 			

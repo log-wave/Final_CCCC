@@ -33,11 +33,13 @@
 					개행구분문자를 array에 하나씩 받아서 arrayList의 길이만큼<p>를 반복하는 식
 					아무값도 없는 엔터나 arrayList에 들어가면 <br>을 추가
 				 -->
-					<textarea style="width: 600px; height: 150px" id="detail_ta"  name="eventContent" readonly="readonly" disabled>
+					<textarea style="width: 600px; height: 180px" id="detail_ta"  name="eventContent" readonly="readonly" disabled>
+
 본 조사는 콕콕 쿡쿡 사이트 이용자를대상으로 다양한 식생활과 사이트에 관련된 의견을 수렴하여 사이트 서비스 개선방안을 모색하는데 목적을 두고 있습니다.
 
-응답해 주신 여러분의 소중한 답변은 저희 콕콕 쿡쿡 사이트의 서비스 통계자료에 귀중하게 사용될 것이며 , 수집정보는 통계분석 이외의 타 목적으로 활용하거나 공개하지 않습니다.
-					</textarea>
+응답해 주신 여러분의 소중한 답변은 저희 콕콕 쿡쿡 사이트의 서비스 통계자료에 귀중하게 사용될 것이며 , 수집정보는 통계분석 이외의 타 목적으로 활용하거나 공개하지 않습니다. 
+
+설문조사 참여하실 분은 하단의 [설문조사 참여하기] 버튼을 눌러주세요.					</textarea>
 				</div>
 			</div>
 			<div class="btn_area">

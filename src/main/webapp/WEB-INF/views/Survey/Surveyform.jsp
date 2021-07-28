@@ -14,7 +14,7 @@
 <img id="main_logosurvey" src="${ pageContext.servletContext.contextPath }/resources/images/logo2.png" onclick = "location.href='${pageContext.servletContext.contextPath}'" >	
 	<h2 align="center">설문조사</h2>
 	<div class="topservey">
-	<textarea name="q1" rows="5" cols="120" style="resize:none;" placeholder="본 조사는 콕콕 쿡쿡 사이트 이용자를대상으로 다양한 식생활과 사이트에 관련된 의견을 수렴하여 사이트 서비스 개선방안을 모색하는데 목적을 두고 있습니다.>
+	<textarea name="q1" rows="5" cols="120" style="resize:none;" placeholder="본 조사는 콕콕 쿡쿡 사이트 이용자를대상으로 다양한 식생활과 사이트에 관련된 의견을 수렴하여 사이트 서비스 개선방안을 모색하는데 목적을 두고 있습니다.
 	
 응답해 주신 여러분의 소중한 답변은 저희 콕콕 쿡쿡 사이트의 서비스 통계자료에 귀중하게 사용될 것이며 , 수집정보는 통계분석 이외의 타 목적으로 활용하거나 공개하지 않습니다."></textarea>
 </div>

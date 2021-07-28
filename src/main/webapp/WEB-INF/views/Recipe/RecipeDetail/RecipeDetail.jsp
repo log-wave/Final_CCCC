@@ -23,11 +23,13 @@
 </head>
 <body>
 	<div class="popUp_box">
+	<br>
 		<div class="recipe_name"><span>${r_info.recipe_title } 레시피</span><img class="bread_cap" src="${ pageContext.servletContext.contextPath }/resources/images/breadCap.png"></div>
+	<br>
 		<div class="popUp_contentBox">
 			<div class="popUp_contentBox_leftBox">
 				<div class="popUp_contentBox_leftBox_recipeImg">
-					<img id= "rp_thum" src ="${pageContext.request.contextPath}/resources/uploadFiles/${rp_thum.changeName }"name= "titleImg" width="400px" height="400px">
+					<img id= "rp_thum" src ="${pageContext.request.contextPath}/resources/uploadFiles/${rp_thum.changeName }"name= "titleImg" width="550px" height="400px">
 						
 				</div>
 				<div class="popUp_contentBox_leftBox_recipeSubImg">
@@ -185,7 +187,6 @@
 				<div class="popUp_contentBox_righttBox_listTitle"><span>재료 리스트</span></div>
 				<div class="popUp_contentBox_righttBox_list">
 				<div class="rp_mate_guide">
-				
 					<div class="rp_mate_left">재료명</div>
 					<div class="rp_mate_right">수량</div>
 				</div>
@@ -206,21 +207,22 @@
 					
 					<c:if test="${ not empty rs }">
 						
-						
+						<br><br><br>
 						<table class="spec_tb">
 						
 								<tr>
 									<td>특산물 :</td>
 									<td>${rs.spec_name }</td>
+									<td></td>
 								</tr>
 								<tr class="spec_tr_2">
 									<td>수량 :</td>
-									<td>${rs.per_qnt }인분</td>
+									<td>${rs.per_qnt }g</td>
 								</tr>
 
 							</table>
 							<br><br><br>
-							<div id="tooltip"title="${spec_info }"><p>어떤</p><p>특산물인가요?</p></div>
+							<div id="tooltip"title="${spec_info }"><p>어떤 특산물인가요?</p></div>
 					</c:if>
 				</div>		
 			</div>

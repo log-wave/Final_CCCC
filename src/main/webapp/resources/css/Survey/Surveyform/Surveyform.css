@@ -25,7 +25,8 @@
 	cursor: pointer;
 }
 #exit{
-	margin-right: 5%;
+	margin-right: 10px;
+	border-radius :5px;
 	width: 130px;
 	height: 40px;
 	background-color: lightgray;
@@ -34,6 +35,7 @@
 	cursor: pointer;
 }
 #SurveyRadioChk{
+	border-radius :5px;
 	width: 130px;
 	height: 40px;
 	background-color: #F2B705;
@@ -41,6 +43,8 @@
 	border: none;
 	cursor: pointer;
 }
+
+
 #SurveyTable{
 	margin-bottom: 5%;
 }
