@@ -38,8 +38,8 @@
 			</c:choose>
 			<c:choose>
 				<c:when test="${!empty loginUser }">
-					<div>
-						<p style="font-size: 16px; margin-left: 30px; cursor: pointer;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
+					<div class="nickname">
+						<p style=" width : 100px; font-size: 15px; margin-left: 30px; cursor: pointer;" onclick="location.href='myPage.me'">${loginUser.getNickname()}</p>
 					</div>
 					<div >
 						<p style="font-size: 16px; margin-left: 15px; cursor: pointer;" onclick="location.href='logoutPage.me'">Logout</p>
@@ -64,14 +64,14 @@
 	<ul class="myMenu">
 		<li class="menu1">주제별 레시피
 			<ul class="submenu">
-				<li><a href="RList.rp?sort_no=1&&type=1">편의점 요리</a></li>
+				<li><a href="RList.rp?sort_no=1&&type=1">일반요리</a></li>
 				<li><a href="RList.rp?sort_no=2&&type=1">간식/야식</a></li>
 				<li><a href="RList.rp?sort_no=3&&type=1">술안주</a></li>
 				<li><a href="RList.rp?sort_no=4&&type=1">해장요리</a></li>
 				<li><a href="RList.rp?sort_no=5&&type=1">손님 접대 요리</a></li>
 				<li><a href="RList.rp?sort_no=6&&type=1">나들이 요리</a></li>
 				<li><a href="RList.rp?sort_no=7&&type=1">파티/명절요리</a></li>
-				<li><a href="RList.rp?sort_no=8&&type=1">일반요리</a></li>
+				<li><a href="RList.rp?sort_no=8&&type=1">편의점 요리</a></li>
 			</ul>
 		</li>
 		<li class="menu2">재료별 레시피

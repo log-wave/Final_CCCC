@@ -10,6 +10,7 @@
 
 
 .recipe_name{
+	font-weight : bold;
 	height:70px;
 	display: flex;
 	justify-content: center;
@@ -113,7 +114,7 @@
 
 
 .nutritionFacts_listTitle{
-	width: 500px;
+	width: 550px;
 	height: 40px;
 	background-color: #D8D8D8;
 	display:flex;
@@ -141,7 +142,7 @@
 
 .popUp_contentBox_leftBox_recipeTitle{
 	margin-top :30px;
-	width: 500px;
+	width: 550px;
 	height: 40px;
 	background-color: #D8D8D8;
 	display:flex;
@@ -228,6 +229,11 @@
 	align-items: center;
 	
 }
+.popUp_contentBox_righttBox_title span {
+	width: 150px;
+	font-size: 15px;
+	
+}
 
 .popUp_contentBox_righttBox_cookTime{
 	margin-top: 10px;
@@ -277,6 +283,7 @@
 .popUp_contentBox_righttBox_listTitle{
 	text-align: center;
 	margin-top: 30px;
+	font-size:15px;
 }
 
 .popUp_contentBox_righttBox_list{
@@ -291,7 +298,7 @@
 }
 
 .nutTable{
-	width:500px;
+	width:520px;
 	height:160px;
 	
 }
@@ -329,7 +336,7 @@
 }
 
 .rp_items img{
-	width:400px;
+	width:550px;
 	height:400px;
 	
 }
@@ -348,6 +355,7 @@
 .spec_tb{
 	width: 130px;
 	float: left;
+	font-size: 15px;
 }
 
 .spec_tr_2{
@@ -357,8 +365,11 @@
 
 #tooltip{
 	display: block;
-	font-size: 18px;
+	font-size: 15px;
 	height:60px;
+}
+#tooltip p {
+	font-size:15px;
 }
 .mate_item{
 	width: 150px;

@@ -18,7 +18,7 @@
 <body>
         <!-- header -->
         <div id="header">
-           <img class="main_image" class="map_image" src="resources/images/cccc_logo.PNG	"/>
+           <img class="main_image" class="map_image" src="resources/images/cccc_logo.PNG" width="460px" height="170px"/>
         </div>
 
 		<form name="frm" action="Edit_MyInform.me" method="post"  enctype="multipart/form-data">
