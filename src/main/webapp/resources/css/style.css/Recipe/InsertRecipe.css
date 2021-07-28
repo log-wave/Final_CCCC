@@ -74,6 +74,7 @@
 .rp_Mate_area{
 	width:950px;
 	min-height: 100px;
+	margin-top:50px;
 	margin-left: 200px;
 	vertical-align: middle;
 }
@@ -81,7 +82,7 @@
 
 #tb{
 	width:600px;
-	min-height: 8	0px;
+	min-height: 80px;
 	margin-left: 90px;
 	vertical-align: middle;
 }
