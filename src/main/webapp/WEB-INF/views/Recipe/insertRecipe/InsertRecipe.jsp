@@ -72,6 +72,7 @@
 				</select>
 					<button type="button" class="rp_addMate_btn" id="add_Mate">재료 추가</button>
 					<p>*재료추가를 클릭시 선택한 재료가 추가되며 수량을 정해주시면 됩니다.</p>
+					<p>*분량은 목표 n인분에 맞게 적어주시면 됩니다. ex)4인분 김치찜/ 돼지고기 4인분</p>
 				</div>
 			</div>
 			
