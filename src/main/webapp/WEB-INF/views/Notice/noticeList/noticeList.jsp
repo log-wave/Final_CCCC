@@ -21,16 +21,11 @@
 			<c:forEach var="b" items="${ list }">
 			<tr>
 				<td align="left">
-				<c:if test="${ !empty loginUser }">
 					<c:url var="bdetail" value="bdetail.bo">
 						<c:param name="bNo" value="${ b.bNo }"/>
 						<c:param name="page" value="${ pi.currentPage }"/>
 					</c:url>
 					<a href="${ bdetail }">${ b.bTitle }</a>
-				</c:if>
-				<c:if test="${ empty loginUser }">
-					${ b.bTitle }		
-				</c:if>
 			</td>
 			<td align="center">${ b.nickName }</td>
 			<td align="center">${ b.bCreateDate }</td>
