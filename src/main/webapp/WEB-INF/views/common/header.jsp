@@ -19,13 +19,12 @@
 		<img id="main_logo" src="${ pageContext.servletContext.contextPath }/resources/images/logo2.png" onclick = "location.href='${pageContext.servletContext.contextPath}'" >
 			<div class= "header_topBox">
 				<select id="search_recipe" name="search_recipe">
-				    <option value="">레시피 명</option>
-				    <option value="recipe1">작성자</option>
-				    <option value="recipe2">솔의눈박카스라면</option>
-				    <option value="recipe3">매운카레순대국</option>
+				    <option value="recipe1">레시피 명</option>
+				    <option value="recipe2">작성자</option>
+				    
 				</select>
-				<input type="text">
-				<button id="searchBtn">검색</button>
+				<input type="search" id="searchValue" onkeyup="searchEnterKey1();">
+				<button id="searchBtn" onclick="searchBoard();">검색</button>
 			
 			<c:set var="usercheck" value="${loginUser }"/>
 			<c:choose>
@@ -114,10 +113,28 @@
 	</div>
 </body>
 <script>
-var text ="클릭해서 레시피 추가";
+	var text ="클릭해서 레시피 추가";
 	$('#unloginadd').on('click',function(){
 		alert('레시피 등록은 로그인 후 이용 가능합니다');
 	});
+	
+	function searchBoard(){
+		var searchCondition = $("#search_recipe").val();
+		var searchValue = $("#searchValue").val();
+		if(searchValue == ""){
+			alert("검색할 내용을 입력하세요.");
+			window.location.reload();
+		} else {
+			location.href="searchRecipeKey.rp?searchCondition="+searchCondition+"&searchValue="+searchValue;
+		}
+	}
+	
+	function searchEnterKey1(){
+		if (window.event.keyCode == 13) {
+			 
+        	$('#searchBtn').click();
+        }
+	}
 	
 </script>
 

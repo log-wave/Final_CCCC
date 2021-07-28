@@ -15,14 +15,6 @@
 <body>
 	<c:import url="../../common/header.jsp"/>
 	<div class="searchRecipe_main">
-		<div class="searchRecipe_option" align="right">
-			<select id="search_option" name="search_option">
-			    <option value="option1">인기 순</option>
-			    <option value="option2">좋아요 순</option>
-			    <option value="option3">최신 순</option>
-			    <option value="option4">무 순</option>
-			</select>
-		</div>
 		<br><br>
 		<div class="searchRecipe_thumnail">
 			<h3>조건에 맞는 레시피가 ${rList.size() }개 있습니다.</h3>

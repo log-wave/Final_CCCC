@@ -255,4 +255,16 @@
 			AND RECIPE_SPEC.RECIPE_NO = #{recipeNo} 
 	</select>
 	
+	<select id="selectSearchKeyword" resultMap="selectResult">
+		select *
+		<if test="condition == 1">
+			from recipe
+			where recipe_title like '%' || #{ svalue } || '%'
+		</if>
+		<if test="condition == 2">
+			FROM RECIPE, MEMBER
+			WHERE RECIPE.USER_NO = MEMBER.USER_NO and nickname like '%' || #{ svalue } || '%'
+		</if>
+	</select>
+	
 </mapper>

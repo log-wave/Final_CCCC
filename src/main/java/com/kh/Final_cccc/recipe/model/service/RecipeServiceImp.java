@@ -2,6 +2,7 @@ package com.kh.Final_cccc.recipe.model.service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSessionManager;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -212,6 +213,11 @@ public class RecipeServiceImp implements RecipeService{
 	public String selectspecinfo(int recipeNo) {
 		// TODO Auto-generated method stub
 		return rDAO.selectspecinfo(sqlSession, recipeNo);
+	}
+
+	@Override
+	public ArrayList<Recipe> selectSearchKeyword(HashMap sc, PageInfo pi) {
+		return rDAO.selectSearchKeyword(sqlSession, sc, pi);
 	}
 
 

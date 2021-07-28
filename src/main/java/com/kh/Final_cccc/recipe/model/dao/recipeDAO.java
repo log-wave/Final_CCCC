@@ -184,5 +184,11 @@ public class recipeDAO {
 		return sqlSession.selectOne("recipeMapper.selectspecinfo", recipeNo);
 	}
 
+	public ArrayList<Recipe> selectSearchKeyword(SqlSessionTemplate sqlSession, HashMap sc, PageInfo pi) {
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchKeyword", sc, rowBounds);
+	}
+
 
 }
