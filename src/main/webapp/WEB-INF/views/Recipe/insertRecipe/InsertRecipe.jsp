@@ -148,7 +148,8 @@
 							<button type="button"value="4" class="subj_btn">해장요리</button>
 							<button type="button"value="5" class="subj_btn">손님 접대 요리</button>
 							<button type="button"value="6" class="subj_btn">나들이 요리</button>
-							<button type="button"value="7" class="subj_btn">일반 요리</button>
+							<button type="button"value="7" class="subj_btn">파티/명절요리</button>
+							<button type="button"value="8" class="subj_btn">파티/명절요리</button>
 						</div>
 					</div>
 					<div class="rp_tag_mid">
