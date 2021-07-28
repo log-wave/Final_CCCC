@@ -997,5 +997,19 @@ public class AdminController {
 		model.addAttribute("result5", result5);
 		return "../admin/admin_nummerical/survey_nummerical";
 	}	
-
+	
+	@RequestMapping("introduce_company.ad")
+	public String introduceCompanyView() {
+		return "introduce_company";
+	}
+	
+	@RequestMapping("termsOfService.ad")
+	public String termsOfServiceView() {
+		return "termsOfService";
+	}
+	
+	@RequestMapping("privacy.ad")
+	public String privacyView() {
+		return "privacy";
+	}
 }

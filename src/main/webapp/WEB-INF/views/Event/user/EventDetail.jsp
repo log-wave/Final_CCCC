@@ -9,7 +9,7 @@
 <title>${ event.eventTitle }</title>
 
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
- <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Event/EventDetail.css" rel="stylesheet" type="text/css">
+ <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/admin/termsOfService.css" rel="stylesheet" type="text/css">
  
 </head>
 <body>
