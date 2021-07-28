@@ -55,7 +55,7 @@
 				</c:when>
 				<c:otherwise>
 					<img name="main_header_img" src="${ pageContext.servletContext.contextPath }/resources/images/login.PNG">
-					<label  style="cursor: pointer" onclick="location.href='loginPage.me'">Login</label>
+					<label  style="cursor: pointer " onclick="location.href='loginPage.me'">Login</label>
 				</c:otherwise>
 			</c:choose>
 			</div>
@@ -70,8 +70,8 @@
 				<li><a href="RList.rp?sort_no=4&&type=1">해장요리</a></li>
 				<li><a href="RList.rp?sort_no=5&&type=1">손님 접대 요리</a></li>
 				<li><a href="RList.rp?sort_no=6&&type=1">나들이 요리</a></li>
-				<li><a href="RList.rp?sort_no=7&&type=1">파티/명절요리</a></li>
-				<li><a href="RList.rp?sort_no=8&&type=1">편의점 요리</a></li>
+				<li><a href="RList.rp?sort_no=7&&type=1">편의점 요리</a></li>
+				<li><a href="RList.rp?sort_no=8&&type=1">파티/명절요리</a></li>
 			</ul>
 		</li>
 		<li class="menu2">재료별 레시피
