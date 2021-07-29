@@ -201,30 +201,40 @@ public class MemberController {
  //종부 로그인 디코딩 비교 
    @RequestMapping(value="loginCheck.me", method=RequestMethod.POST)
    @ResponseBody
-   public int loginCheck(MemberVO m, Model model) {
+   public int loginCheck(MemberVO m, Model model, @RequestParam("user_id") String user_id) {
       
 	  String rawPw = m.getUser_password();
 	  System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + rawPw);
 	  String encPw = mService.select_userPw(m);
 	  System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" +encPw);
+
+	  String result = mService.checkstatus(user_id);
 	  
+	  System.out.println("status result : " + result);
+	  
+	  MemberVO loginUser = mService.loginCheck(m);
+	  
+	  if(result.equals("N")) {
       
-	  
-	  if(passwordEncoder.matches(rawPw, encPw)) {
-		  
-		  MemberVO loginUser = mService.loginCheck(m);
-		  
-		  if(loginUser.getAuthority().equals("Y")) {
-	            model.addAttribute("loginUser", loginUser);
-	            return 1; //관리자 
-	         }else {
-	            model.addAttribute("loginUser", loginUser);
-	            return 0; //사용자 
-	         }
+		  return -2;
+	
 	  }else {
-		  
-		  return -1; // 로그인 /비밀번호 실패
-		  
+		  if(passwordEncoder.matches(rawPw, encPw)) {
+			  
+				 
+			  
+			  if(loginUser.getAuthority().equals("Y")) {
+		            model.addAttribute("loginUser", loginUser);
+		            return 1; //관리자 
+		         }else {
+		            model.addAttribute("loginUser", loginUser);
+		            return 0; //사용자 
+		         }
+		  }else {
+			  
+			  return -1; // 로그인 /비밀번호 실패
+			  
+		  }
 	  }
    }
    
@@ -350,53 +360,20 @@ public class MemberController {
     
   //승재 Edit_my_inform 컨트롤러
     @RequestMapping(value = "Edit_MyInform.me", method = RequestMethod.POST)
-    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age, @RequestParam("editImg") MultipartFile editImg,
-         MultipartHttpServletRequest request, Model model) {
+    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age,@RequestParam("user_name")String user_name, @RequestParam("nickname")String nickname, Model model) {
         logger.info("내정보 수정 컨트롤러 진입");
         
-           // 이미지 저장할 경로 지정
-           String root = request.getSession().getServletContext().getRealPath("resources");
-           String savePath = root + "/userProfile_uploadFile";
-           
-           //디렉토리가 없다면 디렉토리 생성
-           File folder = new File(savePath);
-           if(!folder.exists()) {
-              folder.mkdirs();
-           }
-                                                     
-           //날짜를 원하는 형태로 출력 
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-           Date today = new Date();
-           
-           String originFileName = editImg.getOriginalFilename();           
-           String renameFileName = sdf.format(today) + originFileName.substring(originFileName.lastIndexOf(".")+1);
-           String renamePath = folder + "/" + renameFileName;
-           
-           
-          
-             
-             try {
-                // MultipartFile로 받은 파일을 transferTo( ) 함수를 통해 renamePath()경로에  저장
-               editImg.transferTo(new File(renamePath));
-            } catch (Exception e) {
-               e.printStackTrace();
-            }
-         
-       
-          logger.debug("------------- file start -------------"); 
-          logger.debug("originalFileName : " + originFileName); 
-          logger.debug("renameFileName : " + renameFileName); 
-          logger.debug("-------------- file end --------------\n");
-
-         
-          
-        /*--------------------------------------------------------------------------------------------------------------------------------*/
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
-        System.out.println(m);
-
+  	  int year = Calendar.getInstance().get(Calendar.YEAR);
+  	  m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
+  	  m.setUser_name(user_name);
+  	  m.setNickname(nickname);
+  	  
+  	  
+  	  System.out.println(m);
+  	  
         mService.Edit_MyInform(m);  
         return "myPage/MyPage";
+        
     }
     
     
@@ -579,15 +556,25 @@ public class MemberController {
         
        logger.info("비밀번호 재설정 controller 진입");
        m.setUser_id(user_id);
-       m.setUser_password(user_pwd);
-       System.out.println("m의 값 :" + m);
-       int result = mService.updatePwd(m);
+      
+      
+       String encPassword = passwordEncoder.encode(user_pwd);
+       m.setUser_password(encPassword);
        
-       if(result > 0) {
-          return "login/login";
-       }else {
-          return null;
-       }
+   	   int result = mService.updatePwd(m);
+   	   
+   	   if(result == 1) {
+    	   return "login/login";
+   	   }
+   	   else {
+   		   System.out.println("비밀번호 변경 실패");
+   		   return null;
+   	   }
+       
+       
+      
+       
+      
        
     }
      

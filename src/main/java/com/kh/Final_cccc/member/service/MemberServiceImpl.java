@@ -232,6 +232,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return mDAO.selectMyRecipecount(sqlSession, user_no);
 	}
+
+	@Override
+	public String checkstatus(String user_id) {
+		return mDAO.checkstatus(sqlSession, user_id);
+	}
 	   
 
 	

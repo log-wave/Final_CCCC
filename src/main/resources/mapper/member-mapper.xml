@@ -98,8 +98,8 @@
 	<update id="deleteMemberCheck"  parameterType="Member">
 		
 		UPDATE MEMBER
-		SET STATUS = 'N',PASS_CNT= 0
-		WHERE USER_ID = #{user_id} AND USER_PASS = #{user_password}
+		SET STATUS = 'N'
+		WHERE USER_ID = #{user_id}
 
 	
 	
@@ -281,5 +281,11 @@
       from RECIPE
       where user_no = #{user_no} and r_status='Y'
       order by recipe_no
+   </select>
+   
+   <select id="checkstatus" resultType="String">
+      select status
+      from member
+      where user_id = #{user_id}
    </select>
 </mapper>
