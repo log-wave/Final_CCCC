@@ -1,8 +1,7 @@
 package com.kh.Final_cccc.admin.model.service;
 
 import java.util.ArrayList;
-
-
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -167,6 +166,12 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public ArrayList<Recipe> selectSearchRecipeResultList(Recipe recipe, PageInfo pi) {
 		return adDAO.selectSearchRecipeResultList(sqlSession, recipe, pi);
+	}
+
+	@Override
+	public List<java.util.Map<String, String>> selectNickList(PageInfo pi) {
+		// TODO Auto-generated method stub
+		return adDAO.selectNickList(sqlSession,pi);
 	}
 
 	

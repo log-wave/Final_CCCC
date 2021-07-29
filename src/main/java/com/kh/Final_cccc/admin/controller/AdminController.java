@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -152,13 +154,28 @@ public class AdminController {
 
 		int listCount = adService.getRecipeListCount();
 
+		//닉네임 가져오기
 		com.kh.Final_cccc.admin.model.vo.PageInfo pi = PagenationAdmin.getPageInfo(currentPage, listCount);
-		
+		List<Map<String, String>> nickList = adService.selectNickList(pi);
 		ArrayList<Recipe> list = adService.selectRecipeList(pi);
 		
-		System.out.println(list);
+		//카테고리
+		ArrayList<String> cate = new ArrayList<String>();
+		for(int i =0; i < list.size(); i++) {
+			switch (list.get(i).getSort_sub()) {
+			case 1: cate.add("일반");break;
+			case 2: cate.add("간식/야식"); break;
+			case 3: cate.add("술안주") ; break;
+			case 4: cate.add("해장요리") ; break;
+			case 5: cate.add("손님 접대 요리") ; break;
+			case 6: cate.add("나들이 요리") ; break;
+			case 7: cate.add("편의점 요리") ; break;
+			case 8: cate.add("파티/명절요리") ; break;
+			}
+		}
+		System.out.println(cate);
 		if (list != null) {
-			mv.addObject("list", list).addObject("pi", pi).setViewName("admin_recipe/admin_Recipe");
+			mv.addObject("list", list).addObject("pi", pi).addObject("cate",cate).addObject("nickname", nickList).setViewName("admin_recipe/admin_Recipe");
 		} else {
 			return null;
 		}

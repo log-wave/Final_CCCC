@@ -1,7 +1,7 @@
 package com.kh.Final_cccc.admin.model.dao;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -153,6 +153,13 @@ public class AdminDAO {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
 		return (ArrayList)sqlSession.selectList("adminMapper.selectSearchRecipeResultList", recipe, rowBounds);
+	}
+
+	public List<java.util.Map<String, String>> selectNickList(SqlSessionTemplate sqlSession, PageInfo pi) {
+		
+		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
+		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+		return (ArrayList)sqlSession.selectList("adminMapper.selectNickList", rowBounds);
 	}
 
 }

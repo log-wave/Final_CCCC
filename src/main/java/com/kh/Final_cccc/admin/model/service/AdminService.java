@@ -1,8 +1,7 @@
 package com.kh.Final_cccc.admin.model.service;
 
 import java.util.ArrayList;
-
-
+import java.util.List;
 
 import com.kh.Final_cccc.Event.model.vo.Event;
 import com.kh.Final_cccc.admin.model.vo.PageInfo;
@@ -76,6 +75,8 @@ public interface AdminService {
 	int getSearchRecipeListCount(Recipe recipe);
 
 	ArrayList<Recipe> selectSearchRecipeResultList(Recipe recipe, PageInfo pi);
+
+	List<java.util.Map<String, String>> selectNickList(PageInfo pi);
 
 	
 	
