@@ -15,6 +15,7 @@
 <body>
 	<c:import url="../common/header.jsp?ver=1.0" charEncoding="UTF-8"></c:import>
 	<input type="hidden" name="survey_yn" id="survey_yn" value="${ loginUser.survey_yn }">
+	<input type="hidden" name="yn" id="yn" value="${result}">
 	
 
 	<!-- 이용자용 -->
@@ -50,7 +51,7 @@
 		</div>
 	</div>
 	<script>
-	function joinsv() {
+	/* function joinsv() {
 		var survey_yn = $('#survey_yn').val();
 		if(survey_yn != "Y") {
 			if (confirm("이미 설문조사를 1회 하셨다면 취소를 눌러주세요.")) {
@@ -62,19 +63,25 @@
 			alert("이미 설문조사에 참여하셨습니다.");
 			location.reload();
 		}
-	}  
+	}   */
 	
-	/* function joinsv() {
-		var survey_yn = $('#survey_yn').val();
-		if(survey_yn != "Y") {
+	 function joinsv() {
+			var yn = $('#yn').val();
+			if(yn == "Y") {
+				alert("이미 설문조사에 참여하셨습니다.");
+				 window.close();
+			} else if( yn == "N") {
 				location.href='svinsertView.sv';
-		} else {
-			alert("이미 설문조사에 참여하셨습니다.");
-			location.reload();
-		}
-	}  */
+			}
+	}
+
+		
 	
+		
 	</script>
+	
+	
+	
 	<c:import url="../common/footer.jsp" charEncoding="UTF-8"></c:import>
 </body>
 </html>

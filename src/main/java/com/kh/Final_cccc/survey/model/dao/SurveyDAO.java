@@ -15,4 +15,8 @@ public class SurveyDAO {
 		return sqlSession.insert("surveyMapper.member_yn_chk", user_no);
 	}
 
+	public String selectYn(SqlSessionTemplate sqlSession, int user) {
+		return sqlSession.selectOne("surveyMapper.selectYn", user);
+	}
+
 }
