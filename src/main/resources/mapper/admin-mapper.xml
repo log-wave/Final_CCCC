@@ -392,4 +392,16 @@
 		<result property="r_status" column="R_STATUS"/>
 		<result property="view_count" column="VIEW_COUNT"/>
 	</resultMap>
+	
+	<select id="selectNickList" resultMap="HashNick">
+		SELECT member.nickname, recipe.recipe_no
+		FROM RECIPE, member
+		WHERE RECIPE.USER_NO = MEMBER.USER_NO
+		order by recipe_no desc
+	</select>
+	
+	<resultMap type="HashMap" id="HashNick">
+		<id column="NICKNAME" property="nickname"/>
+		<result column="RECIPE_NO" property="no"/>
+	</resultMap>
 </mapper>

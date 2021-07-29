@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <% String strReferer = request.getHeader("referer"); %>
@@ -40,12 +40,12 @@
 	    				<th width="100px"><input type="checkbox" id="all" value="전체선택" onclick="selectAll();">전체선택</th>
 	    			</tr>
 	    		<c:if test="${ list != null }">
-					<c:forEach var="ad" items="${ list }">
+					<c:forEach var="ad" items="${ list }"  begin="0" end="${ fn:length(list)}" step="1" varStatus="i">
 			    		<tr class="click">
 			    			<td>${ ad.recipe_no }</td>
 			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_title }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.sort_sub }</td>
-			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_no }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ cate.get(i.index) }</td>
+			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ nickname.get(i.index).nickname }</td>
 			    			<td style="border-left: 1px solid black" onclick="recipeInfo('${ ad.recipe_no }')">${ ad.recipe_explain }</td>
 			    			<td style="border-left: 1px solid black"><input type="checkbox" name="recipe_select" onclick="selectOne();" value="${ ad.recipe_no }"></td>
 			    		</tr>
