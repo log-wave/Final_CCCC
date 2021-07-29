@@ -43,7 +43,7 @@
 		<div class="main_myRecipe" >
 	      <div class="left_area">
 	         <div class="left_box_find">
-	         	<input type="search" id="searchValue" class="srchIng" onkeyup="searchEnterKey();">
+	         	<input type="search" id="searchValue1" class="srchIng" onkeyup="searchEnterKey();">
 	         </div>
 	         <div class="left_box_sort">
 	            <div class="bigsort">
@@ -148,7 +148,7 @@
 			var target = $('.sortcontent');
 			var selected = $('.right_box_content');
 			if (window.event.keyCode == 13) {
-				var searchValue = $("#searchValue").val();
+				var searchValue = $("#searchValue1").val();
 				if(searchValue == ""){
 					alert("검색할 내용을 입력하세요.");
 					window.location.reload();

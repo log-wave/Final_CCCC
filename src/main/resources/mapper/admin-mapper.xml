@@ -39,7 +39,7 @@
 		</if> -->
 		<choose>
 			<when test="user_no != 0">
-				and user_no like '%' || #{user_no} || '%'
+				and user_no = #{user_no}
 			</when>
 			<when test="user_id != null">
 				and user_id like '%' || #{user_id} || '%'
@@ -59,7 +59,7 @@
 		where authority='N'
 		<choose>
 			<when test="user_no != 0">
-				and user_no like '%' || #{user_no} || '%'
+				and user_no = #{user_no}
 			</when>
 			<when test="user_id != null">
 				and user_id like '%' || #{user_id} || '%'
@@ -97,7 +97,7 @@
 		from event
 		where event_status='Y'
 		<if test="eventNo != 0">
-			and event_no like '%' || #{eventNo} || '%'
+			and event_no = #{eventNo}
 		</if>
 		<if test="eventTitle != null">
 			and evnet_title like '%' || #{eventTitle} || '%'
@@ -112,7 +112,7 @@
 		from event
 		where event_status='Y'
 		<if test="eventNo != 0">
-			and event_no like '%' || #{eventNo} || '%'
+			and event_no = #{eventNo}
 		</if>
 		<if test="eventTitle != null">
 			and evnet_title like '%' || #{eventTitle} || '%'

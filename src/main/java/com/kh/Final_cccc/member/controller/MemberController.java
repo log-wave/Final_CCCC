@@ -76,6 +76,7 @@ public class MemberController {
          int user_no = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
          System.out.println("유저 번호~~~" + user_no);
          int size = mService.selectScrapcount(user_no);
+         int size1 = mService.selectMyRecipecount(user_no);
          int currentPage = 1;
       if(page != null) {
          currentPage = page;
@@ -92,7 +93,7 @@ public class MemberController {
       System.out.println("알리스트~~~~~~~~~~~~~~~~~~" + rList);
       System.out.println("에프리스트~~~~~~~~~~~~~~~~~" + fList);
       if(rList != null) {
-         mv.addObject("rList", rList).addObject("fList",fList).addObject("pi", pi).addObject("size", size).setViewName("/myPage/MyPage");
+         mv.addObject("rList", rList).addObject("fList",fList).addObject("pi", pi).addObject("size", size).addObject("size1", size1).setViewName("/myPage/MyPage");
       }
       return mv;
    }
@@ -268,19 +269,28 @@ public class MemberController {
    
    //회원탈퇴 체크 컨트롤러 
    
-   @RequestMapping(value="deleteMemberCheck.me", method=RequestMethod.POST)
-   @ResponseBody
-   public int deleteMemberCheck(MemberVO m, Model model,SessionStatus status ){
-      
-      logger.info("회원 탈퇴 체크 컨트롤러 진입");
-      
-      System.out.println(m.getUser_id());
-      System.out.println(m.getUser_password());
-      status.setComplete();
-      int result = mService.deleteMemberCheck(m);
-      
-      return result;
-   }
+    @RequestMapping(value="deleteMemberCheck.me", method=RequestMethod.POST)
+    @ResponseBody
+    public int deleteMemberCheck(MemberVO m, Model model,SessionStatus status ){
+
+       logger.info("회원 탈퇴 체크 컨트롤러 진입");
+       String rawPw = m.getUser_password();
+       System.out.println(rawPw);
+
+       String encPw = mService.select_userPw(m);
+
+       if(passwordEncoder.matches(rawPw, encPw)) {
+
+           status.setComplete();
+           int result = mService.deleteMemberCheck(m);
+           System.out.println(result);
+           return 1;
+       }
+
+       return -1;
+
+
+    }
    
    //회원탈퇴 pass_cnt 카운트 검사 컨트롤러
    @RequestMapping(value="count_DeleteMemberCheck_Num.me", method=RequestMethod.POST)

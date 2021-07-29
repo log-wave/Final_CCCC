@@ -44,7 +44,7 @@
 						</div>
 						<div class="myPage_profile_userRecipe"> 
 							<span class="userRecipe">레시피</span>
-							<span class="userRecipe_number1">${ rList.size() }</span><span class="userRecipe_number2">개</span>
+							<span class="userRecipe_number1">${ size1 }</span><span class="userRecipe_number2">개</span>
 						</div>
 					
 					</div>
@@ -66,7 +66,7 @@
 	</div>
 	
 	<div class="myPage_content_title">
-		<div class="myPage_content_title_myRecipe " onclick="location.href='myPage.me'">마이 레시피<span class="title_common_number">${ rList.size() }</span></div>
+		<div class="myPage_content_title_myRecipe " onclick="location.href='myPage.me'">마이 레시피<span class="title_common_number">${ size1 }</span></div>
 		<div class="myPage_content_title_scrap " onclick="location.href='Scrap.me'">스크랩<span class="title_common_number">${ size }</span></div>
 	</div>
 	
@@ -100,9 +100,7 @@
 								<button>&lt;</button>
 							</c:if>
 							<c:if test="${ pi.currentPage > 1 }">
-								<c:url var="before" value="RList.rp">
-									<c:param name="sort_no" value="${ sort_no}"/>
-									<c:param name="type" value="${ type}"/>
+								<c:url var="before" value="myPage.me">
 									<c:param name="page" value="${ pi.currentPage - 1 }"/>
 								</c:url>
 								<a href="${ before }"><button>&lt;</button></a> 
@@ -115,9 +113,7 @@
 								</c:if>  
 								
 								<c:if test="${ p ne pi.currentPage }">
-									<c:url var="pagenation" value="RList.rp">
-										<c:param name="sort_no" value="${ sort_no}"/>
-										<c:param name="type" value="${ type}"/>
+									<c:url var="pagenation" value="myPage.me">
 										<c:param name="page" value="${ p }"/>
 									</c:url>
 									<a href="${ pagenation }"><button>${ p }</button></a>
@@ -128,9 +124,7 @@
 								<button>&gt;</button>
 							</c:if>
 							<c:if test="${ pi.currentPage < pi.maxPage }">
-								<c:url var="after" value="RList.rp">
-									<c:param name="sort_no" value="${ sort_no}"/>
-									<c:param name="type" value="${ type}"/>
+								<c:url var="after" value="myPage.me">
 									<c:param name="page" value="${ pi.currentPage + 1 }"/>
 								</c:url> 
 								<a href="${ after }"><button>&gt;</button></a>

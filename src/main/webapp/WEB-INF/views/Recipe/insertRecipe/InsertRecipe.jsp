@@ -108,7 +108,7 @@
 					<select name="specsecCate" class="specsecCate" id="specsecCate" onchange="setinfoArea(this.value)">
 						<option value="0" >지역 카테고리를 선택해주세요</option>
 					</select>
-					<input type="text" name="spec_qnt" class="spec_qnt"  placeholder="분량">
+					<input type="text" name="spec_qnt" class="spec_qnt" value="0">
 					<div class="expl"><p class="explfont">특산물 설명!</p></div>
 				</div>
 				
@@ -168,7 +168,7 @@
 						</div>
 					</div>
 					<div class="rp_tag_bot">
-						<div class="tag_title"><p>주제별요리</p></div>
+						<div class="tag_title"><p>지역별 특산물</p></div>
 						<div class="tag_btn">
 							<button type="button"value="1" class="spec_btn">서울</button>
 							<button type="button"value="2" class="spec_btn">경기도</button>
