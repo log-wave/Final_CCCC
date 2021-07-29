@@ -6,7 +6,7 @@ public class PagenationRecipe {
 public static PageInfo getPageInfo(int currentPage, int listCount) {
 		
 		int pageLimit = 5;
-		int boardLimit = 9;
+		int boardLimit = 12;
 		
 		int maxPage = (int)Math.ceil((double)listCount/boardLimit);
 		

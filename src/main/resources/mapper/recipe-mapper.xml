@@ -1,275 +1,275 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="recipeMapper">
-	<select id="selectsubList" resultMap="selectResult">
-		select *
-		from RECIPE
-		where sort_sub = #{sort_no} and r_status ='Y'
-		order by recipe_no
-	</select>
-	
-	<select id="selectmateList" resultMap="selectResult">
-		select *
-		from RECIPE
-		where sort_mate = #{sort_no} and r_status ='Y'
-		order by recipe_no
-	</select>
-	
-	<select id="selectspecList" resultMap="selectResult">
-		select *
-		from RECIPE
-		where sort_spec = #{sort_no} and r_status ='Y'
-		order by recipe_no
-	</select>
-	<select id="getListCount" resultType="_int">
-		SELECT COUNT(*) 
-		FROM RECIPE
-		WHERE R_STATUS='Y'
-	</select>
-	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe" id="selectResult">
-		<id property="recipe_no" column="RECIPE_NO"/>
-		<result property="recipe_title" column="RECIPE_TITLE"/>
-		<result property="recipe_explain" column="RECIPE_EXPLAN"/>
-		<result property="cooking_time" column="COOKING_TIME"/>
-		<result property="user_no" column="USER_NO"/>
-		<result property="material_no" column="MATERIAL_NO"/>
-		<result property="sort_sub" column="SORT_SUB"/>
-		<result property="sort_mate" column="SORT_MATE"/>
-		<result property="sort_spec" column="SORT_SPEC"/>
-		<result property="recipe_create_date" column="RECIPE_CREATEDATE"/>
-		<result property="recipe_modify_date" column="RECIPE_MODIFYDATE"/>
-		<result property="r_status" column="R_STATUS"/>
-		<result property="view_count" column="VIEW_COUNT"/>
-	</resultMap>
-	
-	<select id="selectRecipe" resultMap="selectResult">
-		select * 
-		from RECIPE
-		where RECIPE_NO = #{recipeNo}
-	</select>
-	
-	<select id="selectrMate" resultMap="selectRMResult">
-		select rm.rm_no, rm.material_no, rm.recipe_no, rm.per_qnt, ma.material_name, ma.standard, ma.kcal, ma.protein, ma.fat, ma.carbo, ma.sugar
-		from recipe_mate rm, material ma
-		where rm.material_no = ma.material_no
-		and RECIPE_NO = #{recipeNo}
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.recipe.model.vo.ReMaterial" id="selectRMResult">
-		<id property="RM_no" column="RM_NO"/>
-		<result property="material_no" column="MATERIAL_NO"/>
-		<result property="recipe_no" column="RECIPE_NO"/>
-		<result property ="per_qnt" column="PER_QNT"/>
-		<result property="material_name" column="MATERIAL_NAME"/>
-		<result property="standard" column="STANDARD"/>
-		<result property="protein" column="PROTEIN"/>
-		<result property="kcal" column="KCAL"/>
-		<result property="fat" column="FAT"/>
-		<result property="carbo" column="CARBO"/>
-		<result property="sugar" column="SUGAR"/>
-	</resultMap>
-	
-	<select id="selectProcess" resultMap="selectRPResult">
-		select *
-		from R_PROCESS
-		where RECIPE_NO = #{recipeNo}
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.recipe.model.vo.RecipeProcess" id="selectRPResult">
-		<id property="rp_no" column="RP_NO"/>
-		<result property="rp_comment" column="RP_COMENT"/>
-		<result property="recipe_no" column="RECIPE_NO"/>
-	</resultMap>
-	
-	<select id="selectMaterialList" resultMap="selectMtResult">
-		select * 
-		from MATERIAL 
-		where CLASSFI = #{mNo}
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.material.model.vo.Material" id="selectMtResult">
-		<id column="MATERIAL_NO" property="materialNo"/>
-		<result column="MATERIAL_NAME" property="materialName"/>
-		<result column="STANDARD" property="standard"/>
-		<result column="KCAL" property="kcal"/>
-		<result column="PROTEIN" property="protein"/>
-		<result column="FAT" property="fat"/>
-		<result column="CARBO" property="carbo"/>
-		<result column="SUGAR" property="sugar"/>
-		<result column="CLASSFI" property="classFi"/>
-		<result column="STATUS" property="status"/>
-	</resultMap>
-	
-	<select id="selectSpecialityList" resultMap="selectSPResult">
-		SELECT *
-		FROM SPECIALITY
-		WHERE SPECIALITY_REGION = #{sNo}
-	</select>
-	<select id="selectSpecinfo" resultType="String">
-		SELECT SPECIALITY_INFO
-		FROM SPECIALITY
-		WHERE SPECIALITY_NO = #{sNo}
-	</select>
-	<insert id="inesrtRecipeSpec">
-		INSERT INTO RECIPE_SPEC VALUES(SEQ_RS_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, #{speciality_no}, #{per_qnt})
-	</insert>
-	
-	<resultMap type="com.kh.Final_cccc.speciality.model.vo.Speciality" id="selectSPResult">
-		<id column="SPECIALITY_NO" property="specialityNo"/>
-		<result column="SPECIALITY_REGION" property="specialityRegion"/>
-		<result column="SPECIALITY_NAME" property="specialityName"/>
-		<result column="SPECIALITY_INFO" property="specialityInfo"/>
-		<result column="MATERIAL_NO" property="materialNo"/>
-	</resultMap>
-	<insert id="insertRecipe" >
-		INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y', default)
-	</insert>
-	
-	<insert id="insertRecipeProcess">
-		INSERT INTO R_PROCESS VALUES(SEQ_RP_NO.NEXTVAL, #{rp_coment}, SEQ_RECIPE_NO.CURRVAL)
-	</insert>
-	
-	<insert id="insertRecipeMate">
-		INSERT INTO RECIPE_MATE VALUES(SEQ_RM_NO.NEXTVAL, #{material_no}, SEQ_RECIPE_NO.CURRVAL, #{per_qnt})
-	</insert>
-	
-	<select id="selectUserName" resultType="string">
-		select nickname from member where user_no = #{uesrNo}
-	</select>
-	
-	<insert id="insertReply">
-		INSERT INTO REPLY VALUES(SEQ_REPLY_NO.NEXTVAL, #{reply_content}, SYSDATE, #{user_no}, #{recipe_no})
-	</insert>
-	
-	<select id="selectReplyList" resultMap="replyResult">
-		select reply_no,reply_content, reply_create_date, reply.user_no, recipe_no, nickname
-		from member, reply
-		where member.user_no = reply.user_no and recipe_no = #{recipe_no}
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Reply" id="replyResult">
-		<id column="REPLY_NO" property="reply_no"/>
-		<result column="REPLY_CONTENT" property="reply_content"/>
-		<result column="REPLY_CREATE_DATE" property="reply_create_date"/>
-		<result column="USER_NO" property="user_no"/>
-		<result column="RECIPE_NO" property="recipe_no"/>
-		<result column="NICKNAME" property="reply_nick"/>
-	</resultMap>
-	
-	
-	<!-- 스크랩 관련 -->
-	<select id="selectScrapcheck" resultType="_int">
-		select count(*) from scrap 
-		where user_no = #{user_no} and recipe_no = #{recipe_no}
-	</select>
-	
-	<select id="selectSpec" resultMap="selectSpecResult">
-		SELECT * FROM RECIPE_SPEC WHERE RECIPE_NO = #{recipe_no}
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe_spec" id="selectSpecResult">
-		<id column="RS_NO" property="rs_no"/>
-		<result column="RECIPE_NO" property="recipe_no"/>
-		<result column="SPECIALITY_NO" property="speciality_no"/>
-		<result column="PER_QNT" property="per_qnt"/>
-	</resultMap>
-	<insert id="inesertScrap">
-		INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, #{recipe_no}, #{user_no})
-	</insert>
-	
-	<select id="selectSpecname" resultType="String">
-		SELECT SPECIALITY_NAME FROM RECIPE_SPEC, SPECIALITY
-		WHERE RECIPE_SPEC.SPECIALITY_NO = SPECIALITY.SPECIALITY_NO AND  RECIPE_SPEC.SPECIALITY_NO = #{speciality_no}
-	</select>
-	
-	<delete id="deleteScrap">
-		DELETE FROM SCRAP
-		WHERE RECIPE_NO = #{recipe_no} AND USER_NO =#{user_no}
-	</delete>
-	
-	<update id="deleteRecipe">
-		UPDATE RECIPE
-		SET R_STATUS='N'
-		WHERE RECIPE_NO = #{rId}
-	</update>
-	
-	<update id="increViewCount">
-		UPDATE RECIPE
-		SET VIEW_COUNT = VIEW_COUNT + 1
-		WHERE RECIPE_NO = #{recipeNo}
-	</update>
-	
-	<select id="selectMateRecipeList" resultMap="selectResult">
-		select recipe.recipe_no, recipe_title, view_count
-		from recipe, material, recipe_mate
-		where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no and material_name = #{mateRecipe}
-	</select>
-	
-	<select id="mainPopularRecipe" resultMap="selectResult">
-		select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
-		from (select *
-			from recipe
-        	where r_status = 'Y' 
-			order by view_Count DESC)
-		where <![CDATA[  ROWNUM <= 4 ]]> 
-	</select>	
-	
-	<select id="mainPopularRecipeFiles" resultMap="filesResultSet">
-	 	select *
- 		from table_file
- 		where ref_flag = 1 
-	</select>
-	
-	<resultMap type="com.kh.Final_cccc.Files.vo.Files" id="filesResultSet">
-		<id property="fileNo" column="FILE_NO"/>
-		<result property="fileName" column="FILE_NAME"/>
-		<result property="changeName" column="CHANGE_NAME"/>
-		<result property="filePath" column="FILE_PATH"/>
-		<result property="uploadDate" column="UPLOAD_DATE"/>
-		<result property="fileYn" column="FILE_YN"/>
-		<result property="refNo" column="REF_NO"/>
-		<result property="refFlag" column="REF_FLAG"/>
-	</resultMap>
-	
-	<select id="mainSpecialityRecipe" resultMap="selectResult">
-		 select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
-			from(select *
- 		 from recipe
- 		 where r_status = 'Y' and sort_spec != 0 
+   <select id="selectsubList" resultMap="selectResult">
+      select *
+      from RECIPE
+      where sort_sub = #{sort_no} and r_status ='Y'
+      order by recipe_no
+   </select>
+   
+   <select id="selectmateList" resultMap="selectResult">
+      select *
+      from RECIPE
+      where sort_mate = #{sort_no} and r_status ='Y'
+      order by recipe_no
+   </select>
+   
+   <select id="selectspecList" resultMap="selectResult">
+      select *
+      from RECIPE
+      where sort_spec = #{sort_no} and r_status ='Y'
+      order by recipe_no
+   </select>
+   <select id="getListCount" resultType="_int">
+      SELECT COUNT(*) 
+      FROM RECIPE
+      WHERE R_STATUS='Y'
+   </select>
+   <resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe" id="selectResult">
+      <id property="recipe_no" column="RECIPE_NO"/>
+      <result property="recipe_title" column="RECIPE_TITLE"/>
+      <result property="recipe_explain" column="RECIPE_EXPLAN"/>
+      <result property="cooking_time" column="COOKING_TIME"/>
+      <result property="user_no" column="USER_NO"/>
+      <result property="material_no" column="MATERIAL_NO"/>
+      <result property="sort_sub" column="SORT_SUB"/>
+      <result property="sort_mate" column="SORT_MATE"/>
+      <result property="sort_spec" column="SORT_SPEC"/>
+      <result property="recipe_create_date" column="RECIPE_CREATEDATE"/>
+      <result property="recipe_modify_date" column="RECIPE_MODIFYDATE"/>
+      <result property="r_status" column="R_STATUS"/>
+      <result property="view_count" column="VIEW_COUNT"/>
+   </resultMap>
+   
+   <select id="selectRecipe" resultMap="selectResult">
+      select * 
+      from RECIPE
+      where RECIPE_NO = #{recipeNo}
+   </select>
+   
+   <select id="selectrMate" resultMap="selectRMResult">
+      select rm.rm_no, rm.material_no, rm.recipe_no, rm.per_qnt, ma.material_name, ma.standard, ma.kcal, ma.protein, ma.fat, ma.carbo, ma.sugar
+      from recipe_mate rm, material ma
+      where rm.material_no = ma.material_no
+      and RECIPE_NO = #{recipeNo}
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.recipe.model.vo.ReMaterial" id="selectRMResult">
+      <id property="RM_no" column="RM_NO"/>
+      <result property="material_no" column="MATERIAL_NO"/>
+      <result property="recipe_no" column="RECIPE_NO"/>
+      <result property ="per_qnt" column="PER_QNT"/>
+      <result property="material_name" column="MATERIAL_NAME"/>
+      <result property="standard" column="STANDARD"/>
+      <result property="protein" column="PROTEIN"/>
+      <result property="kcal" column="KCAL"/>
+      <result property="fat" column="FAT"/>
+      <result property="carbo" column="CARBO"/>
+      <result property="sugar" column="SUGAR"/>
+   </resultMap>
+   
+   <select id="selectProcess" resultMap="selectRPResult">
+      select *
+      from R_PROCESS
+      where RECIPE_NO = #{recipeNo}
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.recipe.model.vo.RecipeProcess" id="selectRPResult">
+      <id property="rp_no" column="RP_NO"/>
+      <result property="rp_comment" column="RP_COMENT"/>
+      <result property="recipe_no" column="RECIPE_NO"/>
+   </resultMap>
+   
+   <select id="selectMaterialList" resultMap="selectMtResult">
+      select * 
+      from MATERIAL 
+      where CLASSFI = #{mNo}
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.material.model.vo.Material" id="selectMtResult">
+      <id column="MATERIAL_NO" property="materialNo"/>
+      <result column="MATERIAL_NAME" property="materialName"/>
+      <result column="STANDARD" property="standard"/>
+      <result column="KCAL" property="kcal"/>
+      <result column="PROTEIN" property="protein"/>
+      <result column="FAT" property="fat"/>
+      <result column="CARBO" property="carbo"/>
+      <result column="SUGAR" property="sugar"/>
+      <result column="CLASSFI" property="classFi"/>
+      <result column="STATUS" property="status"/>
+   </resultMap>
+   
+   <select id="selectSpecialityList" resultMap="selectSPResult">
+      SELECT *
+      FROM SPECIALITY
+      WHERE SPECIALITY_REGION = #{sNo}
+   </select>
+   <select id="selectSpecinfo" resultType="String">
+      SELECT SPECIALITY_INFO
+      FROM SPECIALITY
+      WHERE SPECIALITY_NO = #{sNo}
+   </select>
+   <insert id="inesrtRecipeSpec">
+      INSERT INTO RECIPE_SPEC VALUES(SEQ_RS_NO.NEXTVAL, SEQ_RECIPE_NO.CURRVAL, #{speciality_no}, #{per_qnt})
+   </insert>
+   
+   <resultMap type="com.kh.Final_cccc.speciality.model.vo.Speciality" id="selectSPResult">
+      <id column="SPECIALITY_NO" property="specialityNo"/>
+      <result column="SPECIALITY_REGION" property="specialityRegion"/>
+      <result column="SPECIALITY_NAME" property="specialityName"/>
+      <result column="SPECIALITY_INFO" property="specialityInfo"/>
+      <result column="MATERIAL_NO" property="materialNo"/>
+   </resultMap>
+   <insert id="insertRecipe" >
+      INSERT INTO RECIPE VALUES(SEQ_RECIPE_NO.NEXTVAL, #{recipe_title}, #{recipe_explain},#{cooking_time}, #{user_no}, #{sort_sub}, #{sort_mate}, #{sort_spec}, sysdate, null, 'Y', default)
+   </insert>
+   
+   <insert id="insertRecipeProcess">
+      INSERT INTO R_PROCESS VALUES(SEQ_RP_NO.NEXTVAL, #{rp_coment}, SEQ_RECIPE_NO.CURRVAL)
+   </insert>
+   
+   <insert id="insertRecipeMate">
+      INSERT INTO RECIPE_MATE VALUES(SEQ_RM_NO.NEXTVAL, #{material_no}, SEQ_RECIPE_NO.CURRVAL, #{per_qnt})
+   </insert>
+   
+   <select id="selectUserName" resultType="string">
+      select nickname from member where user_no = #{uesrNo}
+   </select>
+   
+   <insert id="insertReply">
+      INSERT INTO REPLY VALUES(SEQ_REPLY_NO.NEXTVAL, #{reply_content}, SYSDATE, #{user_no}, #{recipe_no})
+   </insert>
+   
+   <select id="selectReplyList" resultMap="replyResult">
+      select reply_no,reply_content, reply_create_date, reply.user_no, recipe_no, nickname
+      from member, reply
+      where member.user_no = reply.user_no and recipe_no = #{recipe_no}
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.recipe.model.vo.Reply" id="replyResult">
+      <id column="REPLY_NO" property="reply_no"/>
+      <result column="REPLY_CONTENT" property="reply_content"/>
+      <result column="REPLY_CREATE_DATE" property="reply_create_date"/>
+      <result column="USER_NO" property="user_no"/>
+      <result column="RECIPE_NO" property="recipe_no"/>
+      <result column="NICKNAME" property="reply_nick"/>
+   </resultMap>
+   
+   
+   <!-- 스크랩 관련 -->
+   <select id="selectScrapcheck" resultType="_int">
+      select count(*) from scrap 
+      where user_no = #{user_no} and recipe_no = #{recipe_no}
+   </select>
+   
+   <select id="selectSpec" resultMap="selectSpecResult">
+      SELECT * FROM RECIPE_SPEC WHERE RECIPE_NO = #{recipe_no}
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.recipe.model.vo.Recipe_spec" id="selectSpecResult">
+      <id column="RS_NO" property="rs_no"/>
+      <result column="RECIPE_NO" property="recipe_no"/>
+      <result column="SPECIALITY_NO" property="speciality_no"/>
+      <result column="PER_QNT" property="per_qnt"/>
+   </resultMap>
+   <insert id="inesertScrap">
+      INSERT INTO SCRAP VALUES(SEQ_SCRAP_NO.NEXTVAL, #{recipe_no}, #{user_no})
+   </insert>
+   
+   <select id="selectSpecname" resultType="String">
+      SELECT SPECIALITY_NAME FROM RECIPE_SPEC, SPECIALITY
+      WHERE RECIPE_SPEC.SPECIALITY_NO = SPECIALITY.SPECIALITY_NO AND  RECIPE_SPEC.SPECIALITY_NO = #{speciality_no} AND RECIPE_SPEC.RECIPE_NO = #{recipeNo}
+   </select>
+   
+   <delete id="deleteScrap">
+      DELETE FROM SCRAP
+      WHERE RECIPE_NO = #{recipe_no} AND USER_NO =#{user_no}
+   </delete>
+   
+   <update id="deleteRecipe">
+      UPDATE RECIPE
+      SET R_STATUS='N'
+      WHERE RECIPE_NO = #{rId}
+   </update>
+   
+   <update id="increViewCount">
+      UPDATE RECIPE
+      SET VIEW_COUNT = VIEW_COUNT + 1
+      WHERE RECIPE_NO = #{recipeNo}
+   </update>
+   
+   <select id="selectMateRecipeList" resultMap="selectResult">
+      select recipe.recipe_no, recipe_title, view_count
+      from recipe, material, recipe_mate
+      where recipe.recipe_no = recipe_mate.recipe_no and material.material_no = recipe_mate.material_no and material_name = #{mateRecipe}
+   </select>
+   
+   <select id="mainPopularRecipe" resultMap="selectResult">
+      select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
+      from (select *
+         from recipe
+           where r_status = 'Y' 
+         order by view_Count DESC)
+      where <![CDATA[  ROWNUM <= 4 ]]> 
+   </select>   
+   
+   <select id="mainPopularRecipeFiles" resultMap="filesResultSet">
+       select *
+       from table_file
+       where ref_flag = 1 
+   </select>
+   
+   <resultMap type="com.kh.Final_cccc.Files.vo.Files" id="filesResultSet">
+      <id property="fileNo" column="FILE_NO"/>
+      <result property="fileName" column="FILE_NAME"/>
+      <result property="changeName" column="CHANGE_NAME"/>
+      <result property="filePath" column="FILE_PATH"/>
+      <result property="uploadDate" column="UPLOAD_DATE"/>
+      <result property="fileYn" column="FILE_YN"/>
+      <result property="refNo" column="REF_NO"/>
+      <result property="refFlag" column="REF_FLAG"/>
+   </resultMap>
+   
+   <select id="mainSpecialityRecipe" resultMap="selectResult">
+       select recipe_no, recipe_title, recipe_explan, cooking_time, user_no, recipe_createDate, view_Count, cooking_Time
+         from(select *
+        from recipe
+        where r_status = 'Y' and sort_spec != 0 
          order by recipe_no DESC)
-		where <![CDATA[  ROWNUM <= 4 ]]> 
-	</select>
-	
-	<select id="mainSpecialityRecipeFiles" resultMap="filesResultSet">
-		select *
- 		from table_file
- 		where ref_flag = 1
-	</select>
-	
-	<select id="selectSearchMate" resultMap="selectMtResult">
-		select * 
-		from material
-		where Status = 'Y'
-		and material_name like '%' || #{sv} || '%'
-	</select>
-	
-	<select id="selectspecinfo" resultType="String">
-		SELECT SPECIALITY_INFO
-		FROM RECIPE, SPECIALITY, RECIPE_SPEC
-		WHERE RECIPE.RECIPE_NO = RECIPE_SPEC.RECIPE_NO AND SPECIALITY.SPECIALITY_NO = RECIPE_SPEC.SPECIALITY_NO
-			AND RECIPE_SPEC.RECIPE_NO = #{recipeNo} 
-	</select>
-	
-	<select id="selectSearchKeyword" resultMap="selectResult">
-		select *
-		<if test="condition == 1">
-			from recipe
-			where recipe_title like '%' || #{ svalue } || '%'
-		</if>
-		<if test="condition == 2">
-			FROM RECIPE, MEMBER
-			WHERE RECIPE.USER_NO = MEMBER.USER_NO and nickname like '%' || #{ svalue } || '%'
-		</if>
-	</select>
-	
+      where <![CDATA[  ROWNUM <= 4 ]]> 
+   </select>
+   
+   <select id="mainSpecialityRecipeFiles" resultMap="filesResultSet">
+      select *
+       from table_file
+       where ref_flag = 1
+   </select>
+   
+   <select id="selectSearchMate" resultMap="selectMtResult">
+      select * 
+      from material
+      where Status = 'Y'
+      and material_name like '%' || #{sv} || '%'
+   </select>
+   
+   <select id="selectspecinfo" resultType="String">
+      SELECT SPECIALITY_INFO
+      FROM RECIPE, SPECIALITY, RECIPE_SPEC
+      WHERE RECIPE.RECIPE_NO = RECIPE_SPEC.RECIPE_NO AND SPECIALITY.SPECIALITY_NO = RECIPE_SPEC.SPECIALITY_NO
+         AND RECIPE_SPEC.RECIPE_NO = #{recipeNo} 
+   </select>
+   
+   <select id="selectSearchKeyword" resultMap="selectResult">
+      select *
+      <if test="condition == 1">
+         from recipe
+         where recipe_title like '%' || #{ svalue } || '%'
+      </if>
+      <if test="condition == 2">
+         FROM RECIPE, MEMBER
+         WHERE RECIPE.USER_NO = MEMBER.USER_NO and nickname like '%' || #{ svalue } || '%'
+      </if>
+   </select>
+   
 </mapper>

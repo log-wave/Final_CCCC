@@ -52,7 +52,7 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['month', '월별 게시글 등록 평균수'],
+          ['month', '월별 게시글 등록 수'],
           ${result3}
         ]);
 

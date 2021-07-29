@@ -22,173 +22,176 @@ import com.kh.Final_cccc.speciality.model.vo.Speciality;
 @Repository("rDAO")
 public class recipeDAO {
 
-	public ArrayList<Recipe> selectsubList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
-		// 주제별 검색
-		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectsubList", sort_no, rowBounds);
-	}
+   public ArrayList<Recipe> selectsubList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
+      // 주제별 검색
+      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectsubList", sort_no, rowBounds);
+   }
 
-	public ArrayList<Recipe> selectmateList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
-		// 재료별 검색
-		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectmateList", sort_no, rowBounds);
-	}
+   public ArrayList<Recipe> selectmateList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
+      // 재료별 검색
+      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectmateList", sort_no, rowBounds);
+   }
 
-	public ArrayList<Recipe> selectspecList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
-		// 특산물 검색
-		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectspecList", sort_no, rowBounds);
-	}
+   public ArrayList<Recipe> selectspecList(int sort_no, SqlSessionTemplate sqlSession, PageInfo pi) {
+      // 특산물 검색
+      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectspecList", sort_no, rowBounds);
+   }
 
-	public Recipe selectRecipe(int recipeNo, SqlSessionTemplate sqlSession) {
-		// 레시피 선택
-		return sqlSession.selectOne("recipeMapper.selectRecipe", recipeNo);
-	}
+   public Recipe selectRecipe(int recipeNo, SqlSessionTemplate sqlSession) {
+      // 레시피 선택
+      return sqlSession.selectOne("recipeMapper.selectRecipe", recipeNo);
+   }
 
-	public ArrayList<ReMaterial> selectrMate(int recipeNo, SqlSessionTemplate sqlSession) {
-		// 레시피 재료 불러오기
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectrMate", recipeNo);
-	}
+   public ArrayList<ReMaterial> selectrMate(int recipeNo, SqlSessionTemplate sqlSession) {
+      // 레시피 재료 불러오기
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectrMate", recipeNo);
+   }
 
-	public ArrayList<RecipeProcess> selectProcess(int recipeNo, SqlSessionTemplate sqlSession) {
-		// 조리과정 불러오기
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectProcess", recipeNo);
-	}
+   public ArrayList<RecipeProcess> selectProcess(int recipeNo, SqlSessionTemplate sqlSession) {
+      // 조리과정 불러오기
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectProcess", recipeNo);
+   }
 
-	public ArrayList<Material> selectmaterialList(SqlSessionTemplate sqlSession, int mNo) {
-		// 재료 리스트 가져오기
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectMaterialList", mNo);
-	}
+   public ArrayList<Material> selectmaterialList(SqlSessionTemplate sqlSession, int mNo) {
+      // 재료 리스트 가져오기
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectMaterialList", mNo);
+   }
 
-	public int insertRecipe(SqlSessionTemplate sqlSession, Recipe recipe) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.insertRecipe", recipe);
-	}
+   public int insertRecipe(SqlSessionTemplate sqlSession, Recipe recipe) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.insertRecipe", recipe);
+   }
 
-	public int insertRecipemate(SqlSessionTemplate sqlSession, ReMaterial mate) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.insertRecipeMate", mate);
-	}
+   public int insertRecipemate(SqlSessionTemplate sqlSession, ReMaterial mate) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.insertRecipeMate", mate);
+   }
 
-	public int insertRecipeProcess(SqlSessionTemplate sqlSession, String rp_coment) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.insertRecipeProcess", rp_coment);
-	}
+   public int insertRecipeProcess(SqlSessionTemplate sqlSession, String rp_coment) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.insertRecipeProcess", rp_coment);
+   }
 
-	public String selectUserName(SqlSessionTemplate sqlSession, int userNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectUserName", userNo);
-	}
+   public String selectUserName(SqlSessionTemplate sqlSession, int userNo) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.selectUserName", userNo);
+   }
 
-	public int insertReply(SqlSessionTemplate sqlSession, Reply reply) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.insertReply", reply);
-	}
+   public int insertReply(SqlSessionTemplate sqlSession, Reply reply) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.insertReply", reply);
+   }
 
-	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, int recipeNo) {
-		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectReplyList", recipeNo);
-	}
+   public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, int recipeNo) {
+      // TODO Auto-generated method stub
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectReplyList", recipeNo);
+   }
 
-	public int selectScrapcheck(SqlSessionTemplate sqlSession, Scrap s) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectScrapcheck", s);
-	}
+   public int selectScrapcheck(SqlSessionTemplate sqlSession, Scrap s) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.selectScrapcheck", s);
+   }
 
-	public int insertScrap(SqlSessionTemplate sqlSession, Scrap s) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.inesertScrap", s);
-	}
+   public int insertScrap(SqlSessionTemplate sqlSession, Scrap s) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.inesertScrap", s);
+   }
 
-	public int deleteScrap(SqlSessionTemplate sqlSession, Scrap s) {
-		// TODO Auto-generated method stub
-		return sqlSession.delete("recipeMapper.deleteScrap", s);
-	}
+   public int deleteScrap(SqlSessionTemplate sqlSession, Scrap s) {
+      // TODO Auto-generated method stub
+      return sqlSession.delete("recipeMapper.deleteScrap", s);
+   }
 
-	public int deleteRecipe(SqlSessionTemplate sqlSession, int rId) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("recipeMapper.deleteRecipe", rId);
-	}
+   public int deleteRecipe(SqlSessionTemplate sqlSession, int rId) {
+      // TODO Auto-generated method stub
+      return sqlSession.update("recipeMapper.deleteRecipe", rId);
+   }
 
-	public int getListCount(SqlSessionTemplate sqlSession) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.getListCount");
-	}
+   public int getListCount(SqlSessionTemplate sqlSession) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.getListCount");
+   }
 
-	public int increViewCount(SqlSessionTemplate sqlSession, int recipeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.update("recipeMapper.increViewCount", recipeNo);
-	}
+   public int increViewCount(SqlSessionTemplate sqlSession, int recipeNo) {
+      // TODO Auto-generated method stub
+      return sqlSession.update("recipeMapper.increViewCount", recipeNo);
+   }
 
-	public ArrayList<Recipe> mateSelectRecipeList(SqlSessionTemplate sqlSession, String mateRecipe, PageInfo pi) {
-		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectMateRecipeList", mateRecipe, rowBounds);
-	}
+   public ArrayList<Recipe> mateSelectRecipeList(SqlSessionTemplate sqlSession, String mateRecipe, PageInfo pi) {
+      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectMateRecipeList", mateRecipe, rowBounds);
+   }
 
-	public ArrayList<Speciality> selectSpecialityList(SqlSessionTemplate sqlSession, String sNo) {
-		// TODO Auto-generated method stub
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectSpecialityList", sNo);
-	}
+   public ArrayList<Speciality> selectSpecialityList(SqlSessionTemplate sqlSession, String sNo) {
+      // TODO Auto-generated method stub
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectSpecialityList", sNo);
+   }
 
-	public String getSpecinfo(SqlSessionTemplate sqlSession, int sNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectSpecinfo", sNo);
-	}
+   public String getSpecinfo(SqlSessionTemplate sqlSession, int sNo) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.selectSpecinfo", sNo);
+   }
 
-	public int insertRecipeSpec(SqlSessionTemplate sqlSession, Recipe_spec rs) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("recipeMapper.inesrtRecipeSpec", rs);
-	}
+   public int insertRecipeSpec(SqlSessionTemplate sqlSession, Recipe_spec rs) {
+      // TODO Auto-generated method stub
+      return sqlSession.insert("recipeMapper.inesrtRecipeSpec", rs);
+   }
 
-	public Recipe_spec selectSpec(SqlSessionTemplate sqlSession, int recipeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectSpec", recipeNo);
-	}
+   public Recipe_spec selectSpec(SqlSessionTemplate sqlSession, int recipeNo) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.selectSpec", recipeNo);
+   }
 
-	public String selectSpecname(SqlSessionTemplate sqlSession, int speciality_no) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectSpecname", speciality_no);
-	}
+   public String selectSpecname(SqlSessionTemplate sqlSession, int speciality_no, int recipeNo) {
+      // TODO Auto-generated method stub
+      HashMap hm = new HashMap();
+      hm.put("recipeNo", recipeNo);
+      hm.put("speciality_no", speciality_no);
+      return sqlSession.selectOne("recipeMapper.selectSpecname", hm);
+   }
 
-	public ArrayList<Recipe> mainPopularRecipe(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipe");
-	}
+   public ArrayList<Recipe> mainPopularRecipe(SqlSessionTemplate sqlSession) {
+      return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipe");
+   }
 
-	public ArrayList<Files> mainPopularRecipeFiles(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipeFiles");
-	}
+   public ArrayList<Files> mainPopularRecipeFiles(SqlSessionTemplate sqlSession) {
+      return (ArrayList)sqlSession.selectList("recipeMapper.mainPopularRecipeFiles");
+   }
 
-	public ArrayList<Recipe> mainSpecialityRecipe(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipe");
-	}
+   public ArrayList<Recipe> mainSpecialityRecipe(SqlSessionTemplate sqlSession) {
+      return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipe");
+   }
 
-	public ArrayList<Files> mainSpecialityRecipeFiles(SqlSessionTemplate sqlSession) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipeFiles");
-	}
+   public ArrayList<Files> mainSpecialityRecipeFiles(SqlSessionTemplate sqlSession) {
+      return (ArrayList)sqlSession.selectList("recipeMapper.mainSpecialityRecipeFiles");
+   }
 
-	public ArrayList<Material> selectSearchMaterialList(SqlSessionTemplate sqlSession, String sv) {
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchMate", sv);
-	}
+   public ArrayList<Material> selectSearchMaterialList(SqlSessionTemplate sqlSession, String sv) {
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchMate", sv);
+   }
 
-	public Files selectprofile(SqlSessionTemplate sqlSession, int user_no) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("filesMapper.selectprofile", user_no);
-	}
+   public Files selectprofile(SqlSessionTemplate sqlSession, int user_no) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("filesMapper.selectprofile", user_no);
+   }
 
-	public String selectspecinfo(SqlSessionTemplate sqlSession, int recipeNo) {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("recipeMapper.selectspecinfo", recipeNo);
-	}
+   public String selectspecinfo(SqlSessionTemplate sqlSession, int recipeNo) {
+      // TODO Auto-generated method stub
+      return sqlSession.selectOne("recipeMapper.selectspecinfo", recipeNo);
+   }
 
-	public ArrayList<Recipe> selectSearchKeyword(SqlSessionTemplate sqlSession, HashMap sc, PageInfo pi) {
-		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
-		RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
-		return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchKeyword", sc, rowBounds);
-	}
+   public ArrayList<Recipe> selectSearchKeyword(SqlSessionTemplate sqlSession, HashMap sc, PageInfo pi) {
+      int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+      RowBounds rowBounds = new RowBounds(offset, pi.getBoardLimit());
+      return (ArrayList)sqlSession.selectList("recipeMapper.selectSearchKeyword", sc, rowBounds);
+   }
 
 
 }

@@ -83,6 +83,7 @@
 				<li><a href="RList.rp?sort_no=5&&type=2">유제품/치즈류</a></li>
 				<li><a href="RList.rp?sort_no=6&&type=2">감자/고구마류</a></li>
 				<li><a href="RList.rp?sort_no=7&&type=2">햄/소시지</a></li>
+				<li><a href="RList.rp?sort_no=8&&type=2">기타</a></li>
 			</ul>
 		</li>
 		<li class="menu3">특산물별 레시피

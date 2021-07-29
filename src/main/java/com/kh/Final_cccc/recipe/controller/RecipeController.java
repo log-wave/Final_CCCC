@@ -127,9 +127,11 @@ public class RecipeController {
 		Recipe_spec rs_original=  rService.selectSpec(recipeNo);
 		HashMap rs = new HashMap();
 		if(rs_original != null) {
-			rs.put("spec_name", rService.selectSpecname(rs_original.getSpeciality_no()));
+			rs.put("spec_name", rService.selectSpecname(rs_original.getSpeciality_no(), recipeNo));
 			rs.put("per_qnt", rs_original.getPer_qnt());
 		}
+		
+	
 		//영양정보  계산하기 + 재료의 수량만큼 늘어나는 로직 하나 더 짜야함
 		int kcal = 0, fat = 0, protein = 0, carbo = 0, sugar = 0;
 		

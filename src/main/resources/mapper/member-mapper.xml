@@ -202,7 +202,7 @@
    <select id="getListCount" resultType="_int">
       SELECT COUNT(*) 
       FROM RECIPE
-      WHERE R_STATUS='Y'
+      WHERE R_STATUS='Y' <!-- 유저아이디를 같이 보내서 같이 조건절로 검색해야함 -->
    </select>
     
     <select id="selectmrList" resultMap="selectResult">
