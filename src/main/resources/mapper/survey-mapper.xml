@@ -26,6 +26,12 @@
 
 	</update>
 	
+	<select id="selectYn" resultType="String">
+		select SURVEY_YN
+		from  member
+		where USER_NO = #{user} 
+   </select>
+	
 	
 	
 	

@@ -27,4 +27,10 @@ public class SurveyServiceImpl implements SurveyService{
 		return sDAO.member_yn_chk(sqlSession, user_no);
 	}
 
+	@Override
+	public String selectYn(int user) {
+		return sDAO.selectYn(sqlSession, user);
+	}
+
+
 }

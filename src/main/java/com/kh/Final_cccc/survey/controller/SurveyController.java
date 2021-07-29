@@ -2,18 +2,22 @@ package com.kh.Final_cccc.survey.controller;
 
 // 다시
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.Final_cccc.member.controller.MemberController;
+import com.kh.Final_cccc.member.model.vo.MemberVO;
 import com.kh.Final_cccc.survey.exception.SurveyException;
 import com.kh.Final_cccc.survey.model.vo.Survey;
 import com.kh.Final_cccc.survey.service.SurveyService;
@@ -61,8 +65,22 @@ public class SurveyController {
 		
 		//설문조사 상세 페이지 이동
 		@RequestMapping("surveydetail.sv")
-		public String surveydetailForm () {
+		public String surveydetailForm (HttpSession session, Model model) {
+			System.out.println("항");
+			int user = ((MemberVO)session.getAttribute("loginUser")).getUser_no();
+			String result = sService.selectYn(user);
+			System.out.println("result" + result);
+			
+			model.addAttribute("result", result);
 			return "Surveydetailform";
+		}
+		
+		//회원 Yn 받아오기 
+		@RequestMapping("selectYn.sv") 
+		public String selectYn (HttpSession session, Model model) {
+			
+			return "forward:surveydetail.sv" ;
+			
 		}
 }
 

@@ -8,4 +8,6 @@ public interface SurveyService {
 
 	int member_yn_chk(int user_no);
 
+	String selectYn(int user);
+
 }
