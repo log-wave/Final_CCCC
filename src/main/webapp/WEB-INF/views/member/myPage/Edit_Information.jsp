@@ -40,21 +40,6 @@
                 
                 
                 </div>
-                
-
-                <!-- PW1 -->
-                <div>
-                	<input type="hidden" id="SessionPwd" name="SessionPwd" value=${ loginUser.user_password }>
-                    <h3 class="join_title"><label for="pswd1">현재 비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="password" name="user_password" id="pass01" class="int" maxlength="20">
-                    </span>
-                   <div style="margin-top: 20px"></div>
-                </div>
-                 <div id="pass01_check">
-                
-                
-                </div>
 
  				<!-- NAME -->
                 <div>
@@ -187,30 +172,6 @@
 		}
 		
 		
-
-		//비밀번호 유효성 검사 
-       	$("#pass01").blur(function(){
-       		
-       		var pass01 = $('#pass01').val();
-       		var sessionPwd = $('#SessionPwd').val();
-       		 if(pass01 != sessionPwd){
-       			 $("#pass01_check").text("비밀번호가 올바르지 않습니다.");
-     			 $("#pass01_check").css("color", "red");
-       			 disabeldSignUpBtn();
-       			$("#pass01_check").focus();
-   				
-       		 }else{
-       			 $("#pass01_check").text("비밀번호가 일치합니다. ");
-   				 $("#pass01_check").css("color", "green");
-   				 $("#signUpBtn").prop("disabled", false);
-					
-       		 }
-       		 
-       		
-       		
-       		
-       	});
-       	
        	//이름 유효성 검사 
        	
        	$("#name").blur(function(){
@@ -247,8 +208,7 @@
    				$("#name_check").css("color", "green");
    				$("#signUpBtn").prop("disabled", false);
        		}else{
-       			$("#name_check").text("사용 가능한 이름입니다. ");
-   				$("#name_check").css("color", "green");
+       			$("#name_check").text(" ");
    				$("#signUpBtn").prop("disabled", false);
        		}
 

@@ -214,6 +214,11 @@ public class MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("memberMapper.selectMyRecipecount", user_no);
 	}
+
+	public String checkstatus(SqlSessionTemplate sqlSession, String user_id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.checkstatus", user_id);
+	}
 	
 	
 

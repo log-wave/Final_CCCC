@@ -69,6 +69,8 @@ public interface MemberService {
 	int selectScrapcount(int user_no);
 
 	int selectMyRecipecount(int user_no);
+
+	String checkstatus(String user_id);
     
     
 	
