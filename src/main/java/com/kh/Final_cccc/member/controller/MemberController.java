@@ -360,10 +360,14 @@ public class MemberController {
     
   //승재 Edit_my_inform 컨트롤러
     @RequestMapping(value = "Edit_MyInform.me", method = RequestMethod.POST)
-    public String Edit_MyInform(@ModelAttribute MemberVO m ,@RequestParam("yy")String age,@RequestParam("user_name")String user_name, @RequestParam("nickname")String nickname, Model model) {
+    public String Edit_MyInform(@RequestParam("yy")String age,@RequestParam("user_name")String user_name, @RequestParam("nickname")String nickname, Model model,
+    		HttpServletRequest request) {
         logger.info("내정보 수정 컨트롤러 진입");
-        
+      
+      HttpSession session = request.getSession();
+      MemberVO m = (MemberVO)session.getAttribute("loginUser");
   	  int year = Calendar.getInstance().get(Calendar.YEAR);
+  	  m.setUser_id(m.getUser_id());
   	  m.setAge(Integer.toString(year - Integer.parseInt(age) + 1));
   	  m.setUser_name(user_name);
   	  m.setNickname(nickname);
@@ -372,7 +376,7 @@ public class MemberController {
   	  System.out.println(m);
   	  
         mService.Edit_MyInform(m);  
-        return "myPage/MyPage";
+        return "redirect:myPage.me";
         
     }
     

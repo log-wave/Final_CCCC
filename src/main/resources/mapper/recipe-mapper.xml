@@ -5,21 +5,21 @@
       select *
       from RECIPE
       where sort_sub = #{sort_no} and r_status ='Y'
-      order by recipe_no
+      order by recipe_no desc
    </select>
    
    <select id="selectmateList" resultMap="selectResult">
       select *
       from RECIPE
       where sort_mate = #{sort_no} and r_status ='Y'
-      order by recipe_no
+      order by recipe_no desc
    </select>
    
    <select id="selectspecList" resultMap="selectResult">
       select *
       from RECIPE
       where sort_spec = #{sort_no} and r_status ='Y'
-      order by recipe_no
+      order by recipe_no desc
    </select>
    <select id="getListCount" resultType="_int">
       SELECT COUNT(*) 

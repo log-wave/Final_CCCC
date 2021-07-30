@@ -86,7 +86,7 @@
 							<button>&lt;</button>
 						</c:if>
 						<c:if test="${ pi.currentPage > 1 }">
-							<c:url var="before" value="adminEvent.ad">
+							<c:url var="before" value="adminRecipe.ad">
 								<c:param name="page" value="${ pi.currentPage - 1 }"/>
 							</c:url>
 							<a href="${ before }"><button>&lt;</button></a>
@@ -99,7 +99,7 @@
 							</c:if>
 							
 							<c:if test="${ p ne pi.currentPage }">
-								<c:url var="pagination" value="adminEvent.ad">
+								<c:url var="pagination" value="adminRecipe.ad">
 									<button><c:param name="page" value="${ p }"/></button>
 								</c:url>
 								<a href="${ pagination }"><button>${ p }</button></a>
@@ -111,7 +111,7 @@
 							<button>&gt;</button>
 						</c:if>
 						<c:if test="${ pi.currentPage < pi.maxPage }">
-							<c:url var="after" value="adminEvent.ad">
+							<c:url var="after" value="adminRecipe.ad">
 								<button><c:param name="page" value="${ pi.currentPage + 1 }"/></button>
 							</c:url> 
 							<a href="${ after }"><button>&gt;</button></a>
