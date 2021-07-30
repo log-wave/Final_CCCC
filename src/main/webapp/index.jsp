@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지 초안</title>
+<title>콕콕!쿡쿡</title>
 
 
 

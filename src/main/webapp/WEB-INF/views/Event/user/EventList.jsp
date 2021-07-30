@@ -6,7 +6,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이벤트 목록</title>
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/index.css" rel="stylesheet" type="text/css">
 <link href="${ pageContext.servletContext.contextPath }/resources/css/style.css/Event/EventList.css" rel="stylesheet" type="text/css">
 </head>
