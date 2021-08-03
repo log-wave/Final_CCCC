@@ -21,6 +21,7 @@
 
 ## 핵심 특징
 <img src ="https://user-images.githubusercontent.com/73329610/127971641-2dd3fb6b-cca2-45a2-a027-9458d160770b.png" width="50%" height="50%">
+
 * 사이트의 메인페이지 
   * 레시피 조회 순 별로 인기 TOP4를 보여줌 
   * 지역 특산물을 사용한 횟수 순으로 인기 TOP4를 보여줌 
