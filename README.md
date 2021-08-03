@@ -26,7 +26,7 @@
   * 자신이 작성한 레시피는 마이 페이지에서 확인 가능 
 
 
-<img src ="https://user-images.githubusercontent.com/73329610/127974761-3dcc1c15-0d00-4d22-b782-8b29eb711186.png" width="50%" height="50%">
+<img src ="https://user-images.githubusercontent.com/73329610/127976609-e0288243-c94a-455a-9c74-b7dc77d02d83.png" width="50%" height="50%">
 
 * 사용자가 설문조사를 작성하면 DB에 저장되고 , 설문조사를 구글 통계 API를 이용하여 집계처리
   * 집계 결과를 바탕으로 사용자에게 차별화된 서비스 제공
