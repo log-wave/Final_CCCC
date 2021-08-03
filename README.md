@@ -6,8 +6,7 @@
 + 사용자들이 실제로 가지고 있는 재료들에 맞게 레시피들을 제공해주는 큐레이션 기능을 통해 재료 구비에 대한 부담을 덜어줌
 + 사용자들에 대한 설문조사를 진행하여 사용자들의 식생활에 대한 정보를 얻고 사용자들에게 서비스를 제공할 때 이를 활용
 
-<img src="https://user-images.githubusercontent.com/73329610/127971641-2dd3fb6b-cca2-45a2-a027-9458d160770b.png  width="200" height="400"/>
-
+<img src ="https://user-images.githubusercontent.com/73329610/127971641-2dd3fb6b-cca2-45a2-a027-9458d160770b.png" width="70%" height="70%">
 ## 구현 기능 
 
 + 사용자 회원가입 / 로그인/ 회원탈퇴 / 내정보 수정 / 아이디 찾기 / 비밀번호 찾기 
